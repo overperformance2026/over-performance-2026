@@ -1,0 +1,6 @@
+﻿data/raw/
+__pycache__/
+.pytest_cache/
+PLAN-DRAFT.md
+BICYCLE-GUIDE.md
+data/2024/sheet-with-politico.csv
