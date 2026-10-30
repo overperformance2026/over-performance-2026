@@ -87,16 +87,15 @@ const getJson = async (path) => {
   return res.json();
 };
 
-// Headline for the selected category: simple average over/under across all its races.
+// Headline for the selected category (or all races): simple average over/under across its races.
 function showAverage(attr, rows) {
   const el = document.getElementById("avg");
-  el.hidden = !attr;
-  if (!attr) return;
+  el.hidden = false;
   const { mean, counted, total } = averageOverUnder(rows);
   const sub = `${counted} of ${total} race${total === 1 ? "" : "s"} with ≥${LOW_REPORTING * 100}% reporting; simple average, not vote-weighted`;
   el.replaceChildren();
   const strong = document.createElement("strong");
-  strong.textContent = `${attr}: ${mean === null ? "—" : `${signed(mean)} points`}`;
+  strong.textContent = `${attr || "All races"}: ${mean === null ? "—" : `${signed(mean)} points`}`;
   strong.className = sign(mean);
   const small = document.createElement("span");
   small.textContent = ` (${sub})`;
