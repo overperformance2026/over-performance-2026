@@ -72,18 +72,14 @@ export function attributeNames(rows) {
   return [...new Set(rows.flatMap((r) => r.attrs))].sort();
 }
 
-/** Rows with less than this share of expected vote counted are greyed and left out of averages. */
-export const LOW_REPORTING = 0.5;
+/** Rows with at least `min` (0-1) of the expected vote counted. Unknown % reporting is kept. */
+export function filterByReporting(rows, min) {
+  return rows.filter((r) => r.pctReporting === null || r.pctReporting >= min);
+}
 
-/**
- * Simple (unweighted) mean over/under across rows that have a number and are not below
- * LOW_REPORTING. mean is null if none qualify. counted = rows averaged, total = rows given.
- */
+/** Simple (unweighted) mean over/under across rows that have a number. mean is null if none do. */
 export function averageOverUnder(rows) {
-  const vals = rows
-    .filter((r) => r.pctReporting === null || r.pctReporting >= LOW_REPORTING)
-    .map((r) => r.overUnder)
-    .filter(isNum);
+  const vals = rows.map((r) => r.overUnder).filter(isNum);
   const mean = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
   return { mean, counted: vals.length, total: rows.length };
 }

@@ -18,14 +18,13 @@ th[aria-sort="descending"]::after { content: " ▼"; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.pos { color: var(--pos); font-weight: 600; }
 td.neg { color: var(--neg); font-weight: 600; }
-tr.low { opacity: 0.5; }
 @media (max-width: 600px) {
   table { min-width: 0; }
   .hide-sm { display: none; }
   th, td { padding: 6px 4px; white-space: normal; font-size: 0.85rem; }
   th { font-size: 0.75rem; }
 }
-#filter-box { display: block; margin-top: 10px; font-size: 0.9rem; }
+#filter-box, #reporting-box { display: inline-block; margin: 10px 16px 0 0; font-size: 0.9rem; }
 #filter-box[hidden] { display: none; }
 select { font: inherit; padding: 4px 6px; }
 .avg { margin: 10px 0 0; font-size: 1.1rem; }

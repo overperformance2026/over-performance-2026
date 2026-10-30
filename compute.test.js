@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { computeRows, filterRows, attributeNames, averageOverUnder, LOW_REPORTING } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting } from "./compute.js";
 
 // ---- synthetic fixtures -------------------------------------------------
 
@@ -152,18 +152,19 @@ test("filterRows keeps rows with the attribute; null/empty means all; attributeN
   assert.deepEqual(attributeNames([]), []);
 });
 
-test("averageOverUnder: simple mean over rows with a number and >= LOW_REPORTING; counts both", () => {
-  const rows = [
-    { overUnder: 0.04, pctReporting: 0.9 },
-    { overUnder: -0.02, pctReporting: LOW_REPORTING - 0.01 }, // too little counted: excluded
-    { overUnder: null, pctReporting: 0.9 },
-    { overUnder: 0.01, pctReporting: LOW_REPORTING }, // exactly at the line: included
-    { overUnder: 0.01, pctReporting: null }, // unknown % reporting is not greyed, so included
-  ];
+test("filterByReporting keeps rows at or above the minimum; unknown % reporting is kept", () => {
+  const rows = [{ id: 1, pctReporting: 0.9 }, { id: 2, pctReporting: 0.49 }, { id: 3, pctReporting: 0.5 }, { id: 4, pctReporting: null }];
+  assert.deepEqual(filterByReporting(rows, 0.5).map((r) => r.id), [1, 3, 4]);
+  assert.deepEqual(filterByReporting(rows, 0.95).map((r) => r.id), [4]);
+  assert.deepEqual(filterByReporting(rows, 0).map((r) => r.id), [1, 2, 3, 4]);
+});
+
+test("averageOverUnder: simple mean over rows that have a number; counts both", () => {
+  const rows = [{ overUnder: 0.04 }, { overUnder: -0.02 }, { overUnder: null }, { overUnder: 0.01 }];
   const { mean, counted, total } = averageOverUnder(rows);
-  assert.ok(Math.abs(mean - 0.02) < 1e-12);
+  assert.ok(Math.abs(mean - 0.01) < 1e-12);
   assert.equal(counted, 3);
-  assert.equal(total, 5);
+  assert.equal(total, 4);
   assert.deepEqual(averageOverUnder([{ overUnder: null }]), { mean: null, counted: 0, total: 1 });
   assert.deepEqual(averageOverUnder([]), { mean: null, counted: 0, total: 0 });
 });

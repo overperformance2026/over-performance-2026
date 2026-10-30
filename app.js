@@ -1,6 +1,8 @@
-import { computeRows, filterRows, attributeNames, averageOverUnder, LOW_REPORTING } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting } from "./compute.js";
 
 const DATA = "data/2024";
+// Minimum share of expected vote counted for a race to show (and to count in the average).
+const REPORTING_OPTIONS = [[0.5, ">50%"], [0.75, ">75%"], [0.9, ">90%"], [0.95, ">95%"]];
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
 
 const COLUMNS = [
@@ -42,7 +44,6 @@ function renderTable(initialRows) {
     const sorted = state.key ? [...rows].sort(compareBy(state.key, state.dir)) : rows;
     tbody.replaceChildren(...sorted.map((r) => {
       const tr = document.createElement("tr");
-      if (r.pctReporting !== null && r.pctReporting < LOW_REPORTING) tr.className = "low";
       if (r.problem) tr.title = `Data problem: ${r.problem}`;
       for (const col of COLUMNS) {
         const td = tr.insertCell();
@@ -88,11 +89,12 @@ const getJson = async (path) => {
 };
 
 // Headline for the selected category (or all races): simple average over/under across its races.
-function showAverage(attr, rows) {
+// rows: the races that pass the % reporting filter; total: all races in the category.
+function showAverage(attr, rows, total, minLabel) {
   const el = document.getElementById("avg");
   el.hidden = false;
-  const { mean, counted, total } = averageOverUnder(rows);
-  const sub = `${counted} of ${total} race${total === 1 ? "" : "s"} with ≥${LOW_REPORTING * 100}% reporting; simple average, not vote-weighted`;
+  const { mean, counted } = averageOverUnder(rows);
+  const sub = `${counted} of ${total} race${total === 1 ? "" : "s"} with ${minLabel} reporting; simple average, not vote-weighted`;
   el.replaceChildren();
   const strong = document.createElement("strong");
   strong.textContent = `${attr || "All races"}: ${mean === null ? "—" : `${signed(mean)} points`}`;
@@ -118,26 +120,33 @@ async function main() {
     sections.push({ title, rows, h2, table });
   }
 
-  // One filter drives all three sections. Attributes are Sheet TRUE/FALSE columns.
+  // Two filters drive all three sections: category (Sheet TRUE/FALSE columns) and % reporting.
   const allRows = sections.flatMap((s) => s.rows);
-  const apply = (attr) => {
+  const select = document.getElementById("filter");
+  const reporting = document.getElementById("reporting");
+  reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
+  const apply = () => {
+    const attr = select.value;
+    const min = Number(reporting.value);
     for (const s of sections) {
-      const shown = filterRows(s.rows, attr);
+      const shown = filterByReporting(filterRows(s.rows, attr), min);
       s.h2.textContent = `${s.title} (${shown.length} race${shown.length === 1 ? "" : "s"})`;
       s.table.setRows(shown);
       // With a category selected, a section with no races is just noise.
       s.h2.hidden = s.table.el.hidden = Boolean(attr) && shown.length === 0;
     }
-    showAverage(attr, filterRows(allRows, attr));
+    const inCategory = filterRows(allRows, attr);
+    const label = reporting.selectedOptions[0].textContent;
+    showAverage(attr, filterByReporting(inCategory, min), inCategory.length, label);
   };
+  reporting.addEventListener("change", apply);
   const names = attributeNames(allRows);
   if (names.length) {
-    const select = document.getElementById("filter");
     select.append(new Option("All races", ""), ...names.map((n) => new Option(n, n)));
-    select.addEventListener("change", () => apply(select.value));
+    select.addEventListener("change", apply);
     document.getElementById("filter-box").hidden = false;
   }
-  apply("");
+  apply();
 }
 
 main().catch((e) => {
