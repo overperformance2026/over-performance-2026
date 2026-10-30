@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { computeRows, filterRows, attributeNames } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, LOW_REPORTING } from "./compute.js";
 
 // ---- synthetic fixtures -------------------------------------------------
 
@@ -150,6 +150,22 @@ test("filterRows keeps rows with the attribute; null/empty means all; attributeN
   assert.equal(filterRows(rows, ""), rows);
   assert.deepEqual(attributeNames(rows), ["Incumbent", "Sanders"]);
   assert.deepEqual(attributeNames([]), []);
+});
+
+test("averageOverUnder: simple mean over rows with a number and >= LOW_REPORTING; counts both", () => {
+  const rows = [
+    { overUnder: 0.04, pctReporting: 0.9 },
+    { overUnder: -0.02, pctReporting: LOW_REPORTING - 0.01 }, // too little counted: excluded
+    { overUnder: null, pctReporting: 0.9 },
+    { overUnder: 0.01, pctReporting: LOW_REPORTING }, // exactly at the line: included
+    { overUnder: 0.01, pctReporting: null }, // unknown % reporting is not greyed, so included
+  ];
+  const { mean, counted, total } = averageOverUnder(rows);
+  assert.ok(Math.abs(mean - 0.02) < 1e-12);
+  assert.equal(counted, 3);
+  assert.equal(total, 5);
+  assert.deepEqual(averageOverUnder([{ overUnder: null }]), { mean: null, counted: 0, total: 1 });
+  assert.deepEqual(averageOverUnder([]), { mean: null, counted: 0, total: 0 });
 });
 
 // ---- real 2024 data -----------------------------------------------------

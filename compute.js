@@ -72,6 +72,22 @@ export function attributeNames(rows) {
   return [...new Set(rows.flatMap((r) => r.attrs))].sort();
 }
 
+/** Rows with less than this share of expected vote counted are greyed and left out of averages. */
+export const LOW_REPORTING = 0.5;
+
+/**
+ * Simple (unweighted) mean over/under across rows that have a number and are not below
+ * LOW_REPORTING. mean is null if none qualify. counted = rows averaged, total = rows given.
+ */
+export function averageOverUnder(rows) {
+  const vals = rows
+    .filter((r) => r.pctReporting === null || r.pctReporting >= LOW_REPORTING)
+    .map((r) => r.overUnder)
+    .filter(isNum);
+  const mean = vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
+  return { mean, counted: vals.length, total: rows.length };
+}
+
 const single = (list) => (list.length === 1 ? list[0] : null);
 const byId = (cands, id) => cands.find((c) => c.id === String(id)) ?? null;
 

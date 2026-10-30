@@ -1,8 +1,7 @@
-import { computeRows, filterRows, attributeNames } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, LOW_REPORTING } from "./compute.js";
 
 const DATA = "data/2024";
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
-const LOW_REPORTING = 0.5; // grey out rows below this share of expected vote counted
 
 const COLUMNS = [
   { key: "label", title: "State / district", text: (r) => r.label },
@@ -88,6 +87,22 @@ const getJson = async (path) => {
   return res.json();
 };
 
+// Headline for the selected category: simple average over/under across all its races.
+function showAverage(attr, rows) {
+  const el = document.getElementById("avg");
+  el.hidden = !attr;
+  if (!attr) return;
+  const { mean, counted, total } = averageOverUnder(rows);
+  const sub = `${counted} of ${total} race${total === 1 ? "" : "s"} with ≥${LOW_REPORTING * 100}% reporting; simple average, not vote-weighted`;
+  el.replaceChildren();
+  const strong = document.createElement("strong");
+  strong.textContent = `${attr}: ${mean === null ? "—" : `${signed(mean)} points`}`;
+  strong.className = sign(mean);
+  const small = document.createElement("span");
+  small.textContent = ` (${sub})`;
+  el.append(strong, small);
+}
+
 async function main() {
   const root = document.getElementById("sections");
   const races = await getJson(`${DATA}/races.json`);
@@ -111,7 +126,10 @@ async function main() {
       const shown = filterRows(s.rows, attr);
       s.h2.textContent = `${s.title} (${shown.length} race${shown.length === 1 ? "" : "s"})`;
       s.table.setRows(shown);
+      // With a category selected, a section with no races is just noise.
+      s.h2.hidden = s.table.el.hidden = Boolean(attr) && shown.length === 0;
     }
+    showAverage(attr, filterRows(allRows, attr));
   };
   const names = attributeNames(allRows);
   if (names.length) {

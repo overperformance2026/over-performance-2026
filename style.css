@@ -28,4 +28,9 @@ tr.low { opacity: 0.5; }
 #filter-box { display: block; margin-top: 10px; font-size: 0.9rem; }
 #filter-box[hidden] { display: none; }
 select { font: inherit; padding: 4px 6px; }
+.avg { margin: 10px 0 0; font-size: 1.1rem; }
+.avg[hidden] { display: none; }
+.avg span { font-size: 0.85rem; color: var(--muted); }
+.avg .pos { color: var(--pos); }
+.avg .neg { color: var(--neg); }
 .err { color: var(--neg); }

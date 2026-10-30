@@ -2,7 +2,7 @@
 
 import unittest
 
-from build_races import build_races
+from build_races import apply_categories, build_races
 
 META = {
     "senate": [
@@ -56,6 +56,51 @@ class BuildRaces(unittest.TestCase):
         self.assertEqual(race["attrs"], ["Sanders"])
         with self.assertRaises(SystemExit):
             build_races([row(**{"Sanders": "TURE"})], META)
+
+
+CATS = [{"category": "Sanders Endorsed", "office": "Senate", "state/district": "AZ",
+         "candidate": "Dana Dem", "check": "1"}]
+
+
+class ApplyCategories(unittest.TestCase):
+    def races(self):
+        return build_races([row()], META)
+
+    def test_adds_category_to_matching_race(self):
+        races = apply_categories(self.races(), CATS)
+        self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"])
+
+    def test_unmatched_row_and_name_mismatch_fail_loudly(self):
+        with self.assertRaises(SystemExit) as ctx:
+            apply_categories(self.races(), [{**CATS[0], "state/district": "TX"}])
+        self.assertIn("matches no race", str(ctx.exception))
+        with self.assertRaises(SystemExit) as ctx:
+            apply_categories(self.races(), [{**CATS[0], "candidate": "Someone Else"}])
+        self.assertIn("Someone Else", str(ctx.exception))
+
+    def test_check_is_strict_like_attribute_columns(self):
+        for ok in ("1", "TRUE", "true"):
+            races = apply_categories(self.races(), [{**CATS[0], "check": ok}])
+            self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"], ok)
+        for skip in ("0", "FALSE", ""):
+            races = apply_categories(self.races(), [{**CATS[0], "check": skip}])
+            self.assertEqual(races[0]["attrs"], [], skip)
+        with self.assertRaises(SystemExit) as ctx:
+            apply_categories(self.races(), [{**CATS[0], "check": "yes"}])
+        self.assertIn("check", str(ctx.exception))
+
+    def test_accepts_the_sheets_dem_spelling(self):
+        cats = [{**CATS[0], "candidate": "D. Dem"}]
+        with self.assertRaises(SystemExit):
+            apply_categories(self.races(), cats)
+        races = apply_categories(self.races(), cats, {("senate", "AZ"): "D. Dem"})
+        self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"])
+
+    def test_duplicate_office_label_fails(self):
+        races = self.races() * 2
+        with self.assertRaises(SystemExit) as ctx:
+            apply_categories(races, CATS)
+        self.assertIn("duplicate", str(ctx.exception))
 
 
 if __name__ == "__main__":
