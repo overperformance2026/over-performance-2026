@@ -24,6 +24,7 @@ def row(**over):
         "Office": "Senate",
         "State/District": "AZ",
         "Special Election": "",
+        "Incumbent": "Democrat",
         "Harris 2-p": "47.2%",
         "Politico contest ID": "c1",
         "Politico Dem ID": "1",
@@ -50,6 +51,18 @@ class BuildRaces(unittest.TestCase):
             build_races([row(**{"Politico contest ID": "nope"})], META)
         with self.assertRaises(SystemExit):
             build_races([row(**{"Harris 2-p": "n/a"})], META)
+
+    def test_incumbent_is_carried_as_dem_rep_open(self):
+        for sheet, want in (("Democrat", "dem"), ("Republican", "rep"), ("Neither", "open"), (" democrat ", "dem")):
+            (race,) = build_races([row(Incumbent=sheet)], META)
+            self.assertEqual(race["incumbent"], want, sheet)
+
+    def test_bad_or_blank_incumbent_fails_loudly(self):
+        for bad in ("", "Dem", "Both", "TRUE"):
+            with self.assertRaises(SystemExit) as ctx:
+                build_races([row(Incumbent=bad)], META)
+            self.assertIn("Incumbent", str(ctx.exception), bad)
+            self.assertIn("line 2", str(ctx.exception), bad)
 
     def test_attribute_columns(self):
         (race,) = build_races([row(**{"Sanders": "TRUE", "Other": "FALSE"})], META)

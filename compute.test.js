@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting, applyFilters } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting, applyFilters, incumbencyEffect, applyIncumbency, MIN_GROUP } from "./compute.js";
 
 // ---- synthetic fixtures -------------------------------------------------
 
@@ -186,6 +186,97 @@ test("averageOverUnder: simple mean over rows that have a number; counts both", 
   assert.deepEqual(averageOverUnder([]), { mean: null, counted: 0, total: 0 });
 });
 
+// ---- incumbency effect ---------------------------------------------------
+
+const ir = (incumbent, raw, pct = 0.9, extra = {}) => ({ incumbent, rawOverUnder: raw, overUnder: raw, pctReporting: pct, attrs: [], ...extra });
+const many = (incumbent, raws, pct) => raws.map((x) => ir(incumbent, x, pct));
+// 5 / 5 / 5: dem mean .03, rep mean -.02, open mean .01 -> dem +.02, rep -.03
+const SAMPLE = [
+  ...many("dem", [0.01, 0.02, 0.03, 0.04, 0.05]),
+  ...many("rep", [-0.04, -0.03, -0.02, -0.01, 0.0]),
+  ...many("open", [0.0, 0.005, 0.01, 0.015, 0.02]),
+];
+const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-12, `${a} vs ${b}`);
+
+test("incumbencyEffect: boosts are group means minus the open-seat mean (slope fixed at 1)", () => {
+  const e = incumbencyEffect(SAMPLE, 0);
+  assert.equal(e.enabled, true);
+  assert.deepEqual(e.n, { dem: 5, rep: 5, open: 5 });
+  near(e.dem, 0.02);
+  near(e.rep, -0.03);
+});
+
+test("incumbencyEffect: disabled below MIN_GROUP in any one group, with the counts to show", () => {
+  const four = [...SAMPLE.slice(0, 4), ...SAMPLE.slice(5)]; // 4 dem
+  const e = incumbencyEffect(four, 0);
+  assert.equal(MIN_GROUP, 5);
+  assert.equal(e.enabled, false);
+  assert.deepEqual(e.n, { dem: 4, rep: 5, open: 5 });
+  assert.equal(e.dem, null);
+  assert.equal(e.rep, null);
+  assert.equal(incumbencyEffect([], 0).enabled, false);
+});
+
+test("incumbencyEffect: excludes rows below the threshold, null over/under and unknown incumbent", () => {
+  const extra = [
+    ir("dem", 0.5, 0.3), // below threshold
+    ir("dem", null, 0.9), // no number
+    ir(null, 0.5, 0.9), // unknown group
+    ir("rep", 0.5, 0.2),
+  ];
+  const e = incumbencyEffect([...SAMPLE, ...extra], 0.5);
+  assert.deepEqual(e.n, { dem: 5, rep: 5, open: 5 });
+  near(e.dem, 0.02);
+  // Raising the threshold removes rows: only the 0.9-reporting ones remain at 0.85; at 0.95 none.
+  assert.equal(incumbencyEffect(SAMPLE, 0.85).enabled, true);
+  assert.equal(incumbencyEffect(SAMPLE, 0.95).enabled, false);
+  // Unknown % reporting is kept, like the % reporting filter.
+  assert.equal(incumbencyEffect([...SAMPLE, ir("dem", 0.1, null)], 0.95).n.dem, 1);
+});
+
+test("incumbencyEffect ignores the category: it takes rows, not a filter", () => {
+  const tagged = SAMPLE.map((r, i) => ({ ...r, attrs: i % 2 ? ["Sanders"] : [] }));
+  assert.deepEqual(incumbencyEffect(tagged, 0), incumbencyEffect(SAMPLE, 0));
+  assert.equal(incumbencyEffect.length, 2);
+});
+
+test("applyIncumbency: over/under = raw - boost, open rows boost 0, raw untouched, no mutation", () => {
+  const e = incumbencyEffect(SAMPLE, 0);
+  const out = applyIncumbency(SAMPLE, e);
+  near(out[0].overUnder, 0.01 - 0.02);
+  near(out[0].incumbencyBoost, 0.02);
+  near(out[5].overUnder, -0.04 + 0.03);
+  const open = out.find((r) => r.incumbent === "open");
+  assert.equal(open.incumbencyBoost, 0);
+  near(open.overUnder, open.rawOverUnder);
+  assert.ok(out.every((r, i) => r.rawOverUnder === SAMPLE[i].rawOverUnder));
+  assert.equal(SAMPLE[0].overUnder, 0.01, "input rows are not mutated");
+  // The adjusted group means line up: dem rows now average the open-seat mean.
+  near(averageOverUnder(out.filter((r) => r.incumbent === "dem")).mean, averageOverUnder(out.filter((r) => r.incumbent === "open")).mean);
+});
+
+test("applyIncumbency: disabled effect or null effect returns the rows unchanged", () => {
+  const off = incumbencyEffect(SAMPLE.slice(0, 6), 0);
+  assert.equal(applyIncumbency(SAMPLE, off), SAMPLE);
+  assert.equal(applyIncumbency(SAMPLE, null), SAMPLE);
+  const e = incumbencyEffect(SAMPLE, 0);
+  const odd = applyIncumbency([ir(null, 0.07), ir("dem", null)], e);
+  assert.equal(odd[0].overUnder, 0.07);
+  assert.equal(odd[0].incumbencyBoost, null);
+  assert.equal(odd[1].overUnder, null);
+});
+
+test("computeRows carries incumbent and rawOverUnder; unknown incumbent is null, not open", () => {
+  const rows = computeRows({
+    metadata: META,
+    summaries: SUMS,
+    races: [race("c1", { incumbent: "dem", harris2p: 0.55 }), race("c1", { incumbent: "weird" }), race("c1")],
+  });
+  assert.deepEqual(rows.map((r) => r.incumbent), ["dem", null, null]);
+  assert.equal(rows[0].rawOverUnder, rows[0].overUnder);
+  assert.equal(rows[0].incumbencyBoost, null);
+});
+
 // ---- real 2024 data -----------------------------------------------------
 
 const load = (f) => JSON.parse(readFileSync(new URL(`./data/2024/${f}`, import.meta.url), "utf8"));
@@ -265,4 +356,21 @@ test("2024 end to end: every races.json entry yields a row; spot checks", () => 
   const gallego = rows.find((r) => r.dem.name === "Ruben Gallego");
   assert.ok(Math.abs(gallego.overUnder - (1676335 / (1676335 + 1595761) - 0.472)) < 1e-9);
   assert.ok(rows.every((r) => typeof r.harris2p === "number" && r.harris2p > 0.2 && r.harris2p < 0.95));
+});
+
+test("2024 incumbency effect matches the oracle's independent check: +2.0 / -1.6, n 185 / 185 / 68", () => {
+  const races = load("races.json");
+  const rows = ["senate", "governor", "house"].flatMap((office) =>
+    computeRows({ metadata: load(`meta-${office}.json`), summaries: load(`sum-${office}.json`), races: races.filter((r) => r.office === office) }));
+  assert.equal(rows.length, 438);
+  const e = incumbencyEffect(rows, 0);
+  assert.deepEqual(e.n, { dem: 185, rep: 185, open: 68 });
+  assert.equal(e.enabled, true);
+  assert.equal((e.dem * 100).toFixed(1), "2.0"); // not +3.1: that would be a free Harris slope
+  assert.equal((e.rep * 100).toFixed(1), "-1.6"); // not -2.3
+  // The default 50% threshold keeps all 438 here too, and the adjusted group means equalize.
+  assert.deepEqual(incumbencyEffect(rows, 0.5).n, e.n);
+  const adj = applyIncumbency(rows, e);
+  const m = (g) => averageOverUnder(adj.filter((r) => r.incumbent === g)).mean;
+  assert.ok(Math.abs(m("dem") - m("open")) < 1e-9 && Math.abs(m("rep") - m("open")) < 1e-9);
 });

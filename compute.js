@@ -3,6 +3,10 @@
 
 const isNum = (x) => typeof x === "number" && Number.isFinite(x);
 
+/** Smallest number of races required in EACH incumbency group for the effect to be estimated. */
+export const MIN_GROUP = 5;
+const INCUMBENT_GROUPS = ["dem", "rep", "open"];
+
 /**
  * @param {{metadata: object[], summaries: {contests: object[]}, races: object[]}} input
  *   races: [{contestId, office, label, harris2p, attrs?, demId?, repId?, demName?, repName?}]. attrs is a
@@ -55,6 +59,10 @@ export function computeRows({ metadata, summaries, races }) {
       dem2p,
       harris2p: race.harris2p,
       overUnder: dem2p !== null && isNum(race.harris2p) ? dem2p - race.harris2p : null,
+      // rawOverUnder never changes; overUnder is replaced by applyIncumbency when the box is checked.
+      rawOverUnder: dem2p !== null && isNum(race.harris2p) ? dem2p - race.harris2p : null,
+      incumbent: INCUMBENT_GROUPS.includes(race.incumbent) ? race.incumbent : null,
+      incumbencyBoost: null,
       pctReporting: !problem && isNum(summary?.progress?.pct) ? summary.progress.pct : null,
       problem,
       attrs: Array.isArray(race.attrs) ? race.attrs : [],
@@ -85,6 +93,51 @@ export function applyFilters(rows, attr, min) {
   const inCategory = filterRows(rows, attr);
   const shown = filterByReporting(inCategory, min);
   return { inCategory, shown, hidden: inCategory.length - shown.length };
+}
+
+/**
+ * Incumbency effect, pooled across offices. The Harris coefficient is fixed at 1, so the regression
+ * of (dem2p - harris2p) on intercept + DemInc + RepInc is just group means of the raw over/under:
+ *   dem = mean(raw | Dem incumbent) - mean(raw | open),  rep = mean(raw | Rep incumbent) - mean(raw | open).
+ * Sample: races with a numeric raw over/under at least `minPct` reporting (unknown % reporting is
+ * kept, as in filterByReporting) and a known incumbent group. The category filter plays no part.
+ * enabled needs MIN_GROUP races in each of dem / rep / open; dem and rep are null when disabled.
+ * @returns {{dem: number|null, rep: number|null, n: {dem: number, rep: number, open: number}, enabled: boolean}}
+ */
+export function incumbencyEffect(rows, minPct) {
+  const groups = { dem: [], rep: [], open: [] };
+  for (const r of rows) {
+    if (!isNum(r.rawOverUnder) || !INCUMBENT_GROUPS.includes(r.incumbent)) continue;
+    if (r.pctReporting !== null && r.pctReporting < minPct) continue;
+    groups[r.incumbent].push(r.rawOverUnder);
+  }
+  const n = { dem: groups.dem.length, rep: groups.rep.length, open: groups.open.length };
+  const enabled = INCUMBENT_GROUPS.every((g) => n[g] >= MIN_GROUP);
+  const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+  return {
+    dem: enabled ? mean(groups.dem) - mean(groups.open) : null,
+    rep: enabled ? mean(groups.rep) - mean(groups.open) : null,
+    n,
+    enabled,
+  };
+}
+
+/**
+ * Rows with the incumbency boost taken out: overUnder = raw - boost (0 for open seats), and
+ * incumbencyBoost set for the column. Returns the rows unchanged when the effect is not enabled.
+ * Rows with no known incumbent group keep their raw over/under and get no boost.
+ */
+export function applyIncumbency(rows, effect) {
+  if (!effect?.enabled) return rows;
+  const boosts = { dem: effect.dem, rep: effect.rep, open: 0 };
+  return rows.map((r) => {
+    const boost = boosts[r.incumbent] ?? null;
+    return {
+      ...r,
+      incumbencyBoost: boost,
+      overUnder: boost !== null && isNum(r.rawOverUnder) ? r.rawOverUnder - boost : r.overUnder,
+    };
+  });
 }
 
 /** Simple (unweighted) mean over/under across rows that have a number. mean is null if none do. */

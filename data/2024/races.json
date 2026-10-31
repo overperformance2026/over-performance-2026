@@ -8,6 +8,7 @@
   "repId": "70992",
   "demName": "Ruben Gallego",
   "repName": "Kari Lake",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -19,6 +20,7 @@
   "repId": "160951",
   "demName": "Adam Schiff",
   "repName": "Steve Garvey",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -30,6 +32,7 @@
   "repId": "160951",
   "demName": "Adam Schiff",
   "repName": "Steve Garvey",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -41,6 +44,7 @@
   "repId": "62729",
   "demName": "Chris Murphy",
   "repName": "Matthew Corey",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -52,6 +56,7 @@
   "repId": "167103",
   "demName": "Lisa Blunt Rochester",
   "repName": "Eric Hansen",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -63,6 +68,7 @@
   "repId": "61149",
   "demName": "Debbie Mucarsel-Powell",
   "repName": "Rick Scott",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -74,6 +80,7 @@
   "repId": "1591",
   "demName": "Mazie Hirono",
   "repName": "Bob McDermott",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -85,6 +92,7 @@
   "repId": "64756",
   "demName": "Valerie McCray",
   "repName": "Jim Banks",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -96,6 +104,7 @@
   "repId": "165705",
   "demName": "Elizabeth Warren",
   "repName": "John Deaton",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -107,6 +116,7 @@
   "repId": "63859",
   "demName": "Angela Alsobrooks",
   "repName": "Larry Hogan",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -118,6 +128,7 @@
   "repId": "162122",
   "demName": "Angus King",
   "repName": "Demi Kouzounas",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -129,6 +140,7 @@
   "repId": "1169",
   "demName": "Elissa Slotkin",
   "repName": "Mike Rogers",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -140,6 +152,7 @@
   "repId": "71241",
   "demName": "Amy Klobuchar",
   "repName": "Royce White",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -151,6 +164,7 @@
   "repId": "67257",
   "demName": "Lucas Kunce",
   "repName": "Josh Hawley",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -162,6 +176,7 @@
   "repId": "212",
   "demName": "Ty Pinkins",
   "repName": "Roger Wicker",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -173,6 +188,7 @@
   "repId": "163465",
   "demName": "Jon Tester",
   "repName": "Tim Sheehy",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -184,6 +200,7 @@
   "repId": "62068",
   "demName": "Katrina Christiansen",
   "repName": "Kevin Cramer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -195,6 +212,7 @@
   "repId": "51566",
   "demName": "Preston Love",
   "repName": "Pete Ricketts",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -206,6 +224,7 @@
   "repId": "162653",
   "demName": "Andy Kim",
   "repName": "Curtis Bashaw",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -217,6 +236,7 @@
   "repId": "163864",
   "demName": "Martin Heinrich",
   "repName": "Nella Domenici",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -228,6 +248,7 @@
   "repId": "70756",
   "demName": "Jacky Rosen",
   "repName": "Sam Brown",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -239,6 +260,7 @@
   "repId": "163788",
   "demName": "Kirsten Gillibrand",
   "repName": "Michael Sapraicone",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -250,6 +272,7 @@
   "repId": "161550",
   "demName": "Sherrod Brown",
   "repName": "Bernie Moreno",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -261,6 +284,7 @@
   "repId": "70075",
   "demName": "Bob Casey",
   "repName": "Dave McCormick",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -272,6 +296,7 @@
   "repId": "67604",
   "demName": "Sheldon Whitehouse",
   "repName": "Patricia Morgan",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -283,6 +308,7 @@
   "repId": "682",
   "demName": "Gloria Johnson",
   "repName": "Marsha Blackburn",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -294,6 +320,7 @@
   "repId": "61815",
   "demName": "Colin Allred",
   "repName": "Ted Cruz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -305,6 +332,7 @@
   "repId": "44042",
   "demName": "Caroline Gleich",
   "repName": "John Curtis",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -316,6 +344,7 @@
   "repId": "71716",
   "demName": "Timothy Kaine",
   "repName": "Hung Cao",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -327,6 +356,7 @@
   "repId": "68977",
   "demName": "Maria Cantwell",
   "repName": "Raul Garcia",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -338,6 +368,7 @@
   "repId": "62528",
   "demName": "Tammy Baldwin",
   "repName": "Eric Hovde",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -349,6 +380,7 @@
   "repId": "64870",
   "demName": "Glenn Elliott",
   "repName": "Jim Justice",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -360,6 +392,7 @@
   "repId": "52935",
   "demName": "Scott Morrow",
   "repName": "John Barrasso",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -371,6 +404,7 @@
   "repId": "10289",
   "demName": "Matt Meyer",
   "repName": "Mike Ramone",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -382,6 +416,7 @@
   "repId": "66197",
   "demName": "Jennifer McCormick",
   "repName": "Mike Braun",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -393,6 +428,7 @@
   "repId": "130548",
   "demName": "Crystal Quade",
   "repName": "Mike Kehoe",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -404,6 +440,7 @@
   "repId": "65131",
   "demName": "Ryan Busse",
   "repName": "Greg Gianforte",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -415,6 +452,7 @@
   "repId": "136491",
   "demName": "Josh Stein",
   "repName": "Mark Robinson",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -426,6 +464,7 @@
   "repId": "66922",
   "demName": "Merrill Piepkorn",
   "repName": "Kelly Armstrong",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -437,6 +476,7 @@
   "repId": "61040",
   "demName": "Joyce Craig",
   "repName": "Kelly Ayotte",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -448,6 +488,7 @@
   "repId": "68830",
   "demName": "Brian Smith King",
   "repName": "Spencer Cox",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -459,6 +500,7 @@
   "repId": "45443",
   "demName": "Esther Charlestin",
   "repName": "Phil Scott",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -470,6 +512,7 @@
   "repId": "50215",
   "demName": "Bob Ferguson",
   "repName": "Dave Reichert",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -481,6 +524,7 @@
   "repId": "66287",
   "demName": "Steve Williams",
   "repName": "Patrick Morrisey",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -492,6 +536,7 @@
   "repId": "70724",
   "demName": "Mary Peltola",
   "repName": "Nick Begich",
+  "incumbent": "dem",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -505,6 +550,7 @@
   "repId": "66781",
   "demName": "Tom Holmes",
   "repName": "Barry Moore",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -516,6 +562,7 @@
   "repId": "160910",
   "demName": "Shomari Figures",
   "repName": "Caroleene Dobson",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -527,6 +574,7 @@
   "repId": "63532",
   "demName": "Elizabeth Anderson",
   "repName": "Gary Palmer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -538,6 +586,7 @@
   "repId": "100483",
   "demName": "Terri Sewell",
   "repName": "Robin Litaker",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -549,6 +598,7 @@
   "repId": "60226",
   "demName": "Rodney Govens",
   "repName": "Rick Crawford",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -560,6 +610,7 @@
   "repId": "63416",
   "demName": "Marcus Jones",
   "repName": "French Hill",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -571,6 +622,7 @@
   "repId": "60238",
   "demName": "Caitlin Draper",
   "repName": "Steve Womack",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -582,6 +634,7 @@
   "repId": "63418",
   "demName": "Risie Howard",
   "repName": "Bruce Westerman",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -593,6 +646,7 @@
   "repId": "5397",
   "demName": "Amish Shah",
   "repName": "David Schweikert",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -604,6 +658,7 @@
   "repId": "70963",
   "demName": "Jonathan Nez",
   "repName": "Eli Crane",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -615,6 +670,7 @@
   "repId": "70970",
   "demName": "Yassamin Ansari",
   "repName": "Jeff Zink",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -626,6 +682,7 @@
   "repId": "70973",
   "demName": "Greg Stanton",
   "repName": "Kelly Cooper",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -637,6 +694,7 @@
   "repId": "52611",
   "demName": "Katrina Schaffner",
   "repName": "Andy Biggs",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -648,6 +706,7 @@
   "repId": "70979",
   "demName": "Kirsten Engel",
   "repName": "Juan Ciscomani",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -659,6 +718,7 @@
   "repId": "164828",
   "demName": "Raul Grijalva",
   "repName": "Daniel Butierez",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -670,6 +730,7 @@
   "repId": "101964",
   "demName": "Gregory Whitten",
   "repName": "Abraham Hamadeh",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -681,6 +742,7 @@
   "repId": "61002",
   "demName": "Quacy Smith",
   "repName": "Paul Gosar",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -692,6 +754,7 @@
   "repId": "52531",
   "demName": "Rose Yee",
   "repName": "Doug LaMalfa",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -703,6 +766,7 @@
   "repId": "70565",
   "demName": "Jared Huffman",
   "repName": "Chris Coulombe",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -714,6 +778,7 @@
   "repId": "69756",
   "demName": "Jessica Morse",
   "repName": "Kevin Kiley",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -725,6 +790,7 @@
   "repId": "7959",
   "demName": "Mike Thompson",
   "repName": "John Munn",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -736,6 +802,7 @@
   "repId": "52499",
   "demName": "Michael Barkley",
   "repName": "Tom McClintock",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -747,6 +814,7 @@
   "repId": "67993",
   "demName": "Ami Bera",
   "repName": "Christine Bish",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -758,6 +826,7 @@
   "repId": "160967",
   "demName": "Doris Matsui",
   "repName": "Tom Silva",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -769,6 +838,7 @@
   "repId": "70672",
   "demName": "John Garamendi",
   "repName": "Rudy Recile",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -780,6 +850,7 @@
   "repId": "105816",
   "demName": "Josh Harder",
   "repName": "Kevin Lincoln",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -791,6 +862,7 @@
   "repId": "161040",
   "demName": "Mark DeSaulnier",
   "repName": "Katherine Piccinini",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -802,6 +874,7 @@
   "repId": "161045",
   "demName": "Nancy Pelosi",
   "repName": "Bruce Lou",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -813,6 +886,7 @@
   "repId": "70543",
   "demName": "Adam Gray",
   "repName": "John Duarte",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -824,6 +898,7 @@
   "repId": "161052",
   "demName": "Eric Swalwell",
   "repName": "Vin Kruttiventi",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -835,6 +910,7 @@
   "repId": "161053",
   "demName": "Kevin Mullin",
   "repName": "Anna Kramer",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -846,6 +922,7 @@
   "repId": "161060",
   "demName": "Ro Khanna",
   "repName": "Anita Chen",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -857,6 +934,7 @@
   "repId": "70562",
   "demName": "Zoe Lofgren",
   "repName": "Peter Hernandez",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -868,6 +946,7 @@
   "repId": "161064",
   "demName": "Jimmy Panetta",
   "repName": "Jason Anderson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -879,6 +958,7 @@
   "repId": "69982",
   "demName": "Jim Costa",
   "repName": "Michael Maher",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -890,6 +970,7 @@
   "repId": "62229",
   "demName": "Rudy Salas",
   "repName": "David Valadao",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -901,6 +982,7 @@
   "repId": "67998",
   "demName": "Derek Marshall",
   "repName": "Jay Obernolte",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -912,6 +994,7 @@
   "repId": "161073",
   "demName": "Salud Carbajal",
   "repName": "Thomas Cole",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -923,6 +1006,7 @@
   "repId": "106951",
   "demName": "Raul Ruiz",
   "repName": "Ian Weeks",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -934,6 +1018,7 @@
   "repId": "161078",
   "demName": "Julia Brownley",
   "repName": "Michael Koslow",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -945,6 +1030,7 @@
   "repId": "68109",
   "demName": "George Whitesides",
   "repName": "Mike Garcia",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -956,6 +1042,7 @@
   "repId": "161080",
   "demName": "Judy Chu",
   "repName": "April Verlato",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -967,6 +1054,7 @@
   "repId": "6525",
   "demName": "Luz Rivas",
   "repName": "Benny Bernal",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -978,6 +1066,7 @@
   "repId": "161089",
   "demName": "Laura Friedman",
   "repName": "Alex Balekian",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -989,6 +1078,7 @@
   "repId": "70602",
   "demName": "Gil Cisneros",
   "repName": "Daniel Martinez",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1000,6 +1090,7 @@
   "repId": "68116",
   "demName": "Brad Sherman",
   "repName": "Larry Thompson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1011,6 +1102,7 @@
   "repId": "161102",
   "demName": "Pete Aguilar",
   "repName": "Tom Herman",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1022,6 +1114,7 @@
   "repId": "68059",
   "demName": "Norma Torres",
   "repName": "Mike Cargile",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1033,6 +1126,7 @@
   "repId": "70606",
   "demName": "Ted Lieu",
   "repName": "Melissa Toomim",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1044,6 +1138,7 @@
   "repId": "70626",
   "demName": "Linda Sanchez",
   "repName": "Eric Ching",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1055,6 +1150,7 @@
   "repId": "161111",
   "demName": "Mark Takano",
   "repName": "David Serpa",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1066,6 +1162,7 @@
   "repId": "66573",
   "demName": "Joe Kerr",
   "repName": "Young Kim",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1077,6 +1174,7 @@
   "repId": "132",
   "demName": "Will Rollins",
   "repName": "Ken Calvert",
+  "incumbent": "rep",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -1090,6 +1188,7 @@
   "repId": "66602",
   "demName": "Robert Garcia",
   "repName": "John Briscoe",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1101,6 +1200,7 @@
   "repId": "70619",
   "demName": "Maxine Waters",
   "repName": "Steve Williams",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1112,6 +1212,7 @@
   "repId": "161114",
   "demName": "Nanette Barragan",
   "repName": "Roger Groh",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1123,6 +1224,7 @@
   "repId": "68079",
   "demName": "Derek Tran",
   "repName": "Michelle Steel",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1134,6 +1236,7 @@
   "repId": "161119",
   "demName": "Lou Correa",
   "repName": "David Pan",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1145,6 +1248,7 @@
   "repId": "6488",
   "demName": "Dave Min",
   "repName": "Scott Baugh",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1156,6 +1260,7 @@
   "repId": "146",
   "demName": "Stephen Houlahan",
   "repName": "Darrell Issa",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1167,6 +1272,7 @@
   "repId": "106792",
   "demName": "Mike Levin",
   "repName": "Matt Gunderson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1178,6 +1284,7 @@
   "repId": "161133",
   "demName": "Scott Peters",
   "repName": "Peter Bono",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1189,6 +1296,7 @@
   "repId": "66663",
   "demName": "Sara Jacobs",
   "repName": "Bill Wells",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1200,6 +1308,7 @@
   "repId": "161135",
   "demName": "Juan Vargas",
   "repName": "Justin Lee",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1211,6 +1320,7 @@
   "repId": "163738",
   "demName": "Diana DeGette",
   "repName": "Valdamar Archuleta",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1222,6 +1332,7 @@
   "repId": "70788",
   "demName": "Joe Neguse",
   "repName": "Marshall Dawson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1233,6 +1344,7 @@
   "repId": "164158",
   "demName": "Adam Frisch",
   "repName": "Jeff Hurd",
+  "incumbent": "open",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -1246,6 +1358,7 @@
   "repId": "68897",
   "demName": "Trisha Calvarese",
   "repName": "Lauren Boebert",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1257,6 +1370,7 @@
   "repId": "164202",
   "demName": "River Gassen",
   "repName": "Jeff Crank",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1268,6 +1382,7 @@
   "repId": "163739",
   "demName": "Jason Crow",
   "repName": "John Fabbricatore",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1279,6 +1394,7 @@
   "repId": "163740",
   "demName": "Brittany Pettersen",
   "repName": "Sergei Matveyuk",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1290,6 +1406,7 @@
   "repId": "104836",
   "demName": "Yadira Caraveo",
   "repName": "Gabe Evans",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1301,6 +1418,7 @@
   "repId": "69421",
   "demName": "John Larson",
   "repName": "Jim Griffin",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1312,6 +1430,7 @@
   "repId": "71294",
   "demName": "Joe Courtney",
   "repName": "Mike France",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1323,6 +1442,7 @@
   "repId": "166618",
   "demName": "Rosa DeLauro",
   "repName": "Michael Massey",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1334,6 +1454,7 @@
   "repId": "71515",
   "demName": "Jim Himes",
   "repName": "Michael Goldstein",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1345,6 +1466,7 @@
   "repId": "71297",
   "demName": "Jahana Hayes",
   "repName": "George Logan",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1356,6 +1478,7 @@
   "repId": "166592",
   "demName": "Sarah McBride",
   "repName": "John Whalen",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1367,6 +1490,7 @@
   "repId": "65653",
   "demName": "Gay Valimont",
   "repName": "Matt Gaetz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1378,6 +1502,7 @@
   "repId": "65654",
   "demName": "Yen Bailey",
   "repName": "Neal Dunn",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1389,6 +1514,7 @@
   "repId": "69383",
   "demName": "Tom Wells",
   "repName": "Kat Cammack",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1400,6 +1526,7 @@
   "repId": "52113",
   "demName": "LaShonda Holloway",
   "repName": "Aaron Bean",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1411,6 +1538,7 @@
   "repId": "65658",
   "demName": "Jay McGovern",
   "repName": "John Rutherford",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1422,6 +1550,7 @@
   "repId": "67625",
   "demName": "James Stockton",
   "repName": "Michael Waltz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1433,6 +1562,7 @@
   "repId": "71559",
   "demName": "Jennifer Adams",
   "repName": "Cory Mills",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1444,6 +1574,7 @@
   "repId": "53079",
   "demName": "Sandy Kennedy",
   "repName": "Mike Haridopolos",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1455,6 +1586,7 @@
   "repId": "166310",
   "demName": "Darren Soto",
   "repName": "Thomas Chalifoux",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1466,6 +1598,7 @@
   "repId": "69413",
   "demName": "Maxwell Frost",
   "repName": "Willie Montague",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1477,6 +1610,7 @@
   "repId": "53062",
   "demName": "Barbie Harden Hall",
   "repName": "Daniel Webster",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1488,6 +1622,7 @@
   "repId": "52981",
   "demName": "Rock Aboujaoude",
   "repName": "Gus Bilirakis",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1499,6 +1634,7 @@
   "repId": "69410",
   "demName": "Whitney Fox",
   "repName": "Anna Luna",
+  "incumbent": "rep",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -1512,6 +1648,7 @@
   "repId": "166324",
   "demName": "Kathy Castor",
   "repName": "Robert Rochford",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1523,6 +1660,7 @@
   "repId": "71597",
   "demName": "Patricia Kemp",
   "repName": "Laurel Lee",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1534,6 +1672,7 @@
   "repId": "53213",
   "demName": "Jan Schneider",
   "repName": "Vern Buchanan",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1545,6 +1684,7 @@
   "repId": "67645",
   "demName": "Manny Lopez",
   "repName": "Greg Steube",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1556,6 +1696,7 @@
   "repId": "69374",
   "demName": "Andrea Kale",
   "repName": "Scott Franklin",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1567,6 +1708,7 @@
   "repId": "62408",
   "demName": "Kari Lerner",
   "repName": "Byron Donalds",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1578,6 +1720,7 @@
   "repId": "65757",
   "demName": "Thomas Witkop",
   "repName": "Brian Mast",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1589,6 +1732,7 @@
   "repId": "71616",
   "demName": "Lois Frankel",
   "repName": "Dan Franzese",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1600,6 +1744,7 @@
   "repId": "64167",
   "demName": "Jared Moskowitz",
   "repName": "Joe Kaufman",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1611,6 +1756,7 @@
   "repId": "71627",
   "demName": "Frederica Wilson",
   "repName": "Jesus Navarro",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1622,6 +1768,7 @@
   "repId": "166339",
   "demName": "Debbie Wasserman Schultz",
   "repName": "Chris Eddy",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1633,6 +1780,7 @@
   "repId": "878",
   "demName": "Joey Atkins",
   "repName": "Mario Diaz-Balart",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1644,6 +1792,7 @@
   "repId": "67671",
   "demName": "Lucia Baez-Geller",
   "repName": "Maria Elvira Salazar",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1655,6 +1804,7 @@
   "repId": "69391",
   "demName": "Phil Ehr",
   "repName": "Carlos Gimenez",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1666,6 +1816,7 @@
   "repId": "63354",
   "demName": "Patti Hewitt",
   "repName": "Buddy Carter",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1677,6 +1828,7 @@
   "repId": "69469",
   "demName": "Sanford Bishop",
   "repName": "Wayne Johnson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1688,6 +1840,7 @@
   "repId": "162599",
   "demName": "Maura Keller",
   "repName": "Brian Jack",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -1699,6 +1852,7 @@
   "repId": "63374",
   "demName": "Hank Johnson",
   "repName": "Eugene Yu",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1710,6 +1864,7 @@
   "repId": "162601",
   "demName": "Nikema Williams",
   "repName": "John Salvesen",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1721,6 +1876,7 @@
   "repId": "162603",
   "demName": "Lucy McBath",
   "repName": "Jeff Criswell",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1732,6 +1888,7 @@
   "repId": "68907",
   "demName": "Bob Christian",
   "repName": "Rich McCormick",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1743,6 +1900,7 @@
   "repId": "13031",
   "demName": "Darrius Butler",
   "repName": "Austin Scott",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1754,6 +1912,7 @@
   "repId": "68908",
   "demName": "Tambrei Cash",
   "repName": "Andrew Clyde",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1765,6 +1924,7 @@
   "repId": "63367",
   "demName": "Lexy Doherty",
   "repName": "Mike Collins",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1776,6 +1936,7 @@
   "repId": "63369",
   "demName": "Katy Stamper",
   "repName": "Barry Loudermilk",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1787,6 +1948,7 @@
   "repId": "61316",
   "demName": "Elizabeth Johnson",
   "repName": "Rick Allen",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1798,6 +1960,7 @@
   "repId": "70385",
   "demName": "David Scott",
   "repName": "Jonathan Chavez",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1809,6 +1972,7 @@
   "repId": "68795",
   "demName": "Shawn Harris",
   "repName": "Marjorie Taylor Greene",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1820,6 +1984,7 @@
   "repId": "71267",
   "demName": "Ed Case",
   "repName": "Patrick Largey",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1831,6 +1996,7 @@
   "repId": "69276",
   "demName": "Jill Tokuda",
   "repName": "Steven Bond",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1842,6 +2008,7 @@
   "repId": "59745",
   "demName": "Christina Bohannan",
   "repName": "Mariannette Miller-Meeks",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1853,6 +2020,7 @@
   "repId": "68744",
   "demName": "Sarah Corkery",
   "repName": "Ashley Hinson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1864,6 +2032,7 @@
   "repId": "70417",
   "demName": "Lanon Baccam",
   "repName": "Zach Nunn",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1875,6 +2044,7 @@
   "repId": "68750",
   "demName": "Ryan Melton",
   "repName": "Randy Feenstra",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1886,6 +2056,7 @@
   "repId": "63500",
   "demName": "Kaylee Peterson",
   "repName": "Russ Fulcher",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1897,6 +2068,7 @@
   "repId": "504",
   "demName": "David Roth",
   "repName": "Mike Simpson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -1908,6 +2080,7 @@
   "repId": "62245",
   "demName": "Jonathan Jackson",
   "repName": "Marcus Lewis",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1919,6 +2092,7 @@
   "repId": "71070",
   "demName": "Robin Kelly",
   "repName": "Ashley Ramos",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1930,6 +2104,7 @@
   "repId": "161780",
   "demName": "Delia Ramirez",
   "repName": "John Booras",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1941,6 +2116,7 @@
   "repId": "119629",
   "demName": "Chuy Garcia",
   "repName": "Lupe Castillo",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1952,6 +2128,7 @@
   "repId": "59282",
   "demName": "Mike Quigley",
   "repName": "Tommy Hanson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1963,6 +2140,7 @@
   "repId": "71083",
   "demName": "Sean Casten",
   "repName": "Niki Conforti",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1974,6 +2152,7 @@
   "repId": "16946",
   "demName": "Danny Davis",
   "repName": "Chad Koppie",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1985,6 +2164,7 @@
   "repId": "161784",
   "demName": "Raja Krishnamoorthi",
   "repName": "Mark Rice",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -1996,6 +2176,7 @@
   "repId": "167407",
   "demName": "Janice Schakowsky",
   "repName": "Seth Cohen",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2007,6 +2188,7 @@
   "repId": "161785",
   "demName": "Brad Schneider",
   "repName": "Jim Carris",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2018,6 +2200,7 @@
   "repId": "68405",
   "demName": "Bill Foster",
   "repName": "Jerry Evans",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2029,6 +2212,7 @@
   "repId": "15698",
   "demName": "Brian Roberts",
   "repName": "Mike Bost",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2040,6 +2224,7 @@
   "repId": "161789",
   "demName": "Nikki Budzinski",
   "repName": "Joshua Loyd",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2051,6 +2236,7 @@
   "repId": "64572",
   "demName": "Lauren Underwood",
   "repName": "James Marter",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2062,6 +2248,7 @@
   "repId": "161793",
   "demName": "Eric Sorensen",
   "repName": "Joe McGraw",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2073,6 +2260,7 @@
   "repId": "162915",
   "demName": "Frank Mrvan",
   "repName": "Randy Niemeyer",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2084,6 +2272,7 @@
   "repId": "71760",
   "demName": "Lori Camp",
   "repName": "Rudy Yakym",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2095,6 +2284,7 @@
   "repId": "53887",
   "demName": "Kiley Adolph",
   "repName": "Marlin Stutzman",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2106,6 +2296,7 @@
   "repId": "66172",
   "demName": "Derrick Holder",
   "repName": "Jim Baird",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2117,6 +2308,7 @@
   "repId": "68728",
   "demName": "Deborah Pickett",
   "repName": "Victoria Spartz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2128,6 +2320,7 @@
   "repId": "113296",
   "demName": "Cynthia Wirth",
   "repName": "Jefferson Shreve",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2139,6 +2332,7 @@
   "repId": "113981",
   "demName": "Andre Carson",
   "repName": "John Schmitz",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2150,6 +2344,7 @@
   "repId": "112975",
   "demName": "Erik Hurt",
   "repName": "Mark Messmer",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2161,6 +2356,7 @@
   "repId": "64767",
   "demName": "Timothy Peck",
   "repName": "Erin Houchin",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2172,6 +2368,7 @@
   "repId": "69297",
   "demName": "Paul Buskirk",
   "repName": "Tracey Mann",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2183,6 +2380,7 @@
   "repId": "54125",
   "demName": "Nancy Boyda",
   "repName": "Derek Schmidt",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2194,6 +2392,7 @@
   "repId": "165368",
   "demName": "Sharice Davids",
   "repName": "Prasanth Reddy",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2205,6 +2404,7 @@
   "repId": "67322",
   "demName": "Esau Freeman",
   "repName": "Ron Estes",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2216,6 +2416,7 @@
   "repId": "54203",
   "demName": "Erin Marshall",
   "repName": "James Comer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2227,6 +2428,7 @@
   "repId": "54282",
   "demName": "Hank Linderman",
   "repName": "Brett Guthrie",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2238,6 +2440,7 @@
   "repId": "66275",
   "demName": "Morgan McGarvey",
   "repName": "Mike Craven",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2249,6 +2452,7 @@
   "repId": "60705",
   "demName": "Randy Cravens",
   "repName": "Andy Barr",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2260,6 +2464,7 @@
   "repId": "71287",
   "demName": "Stephen Lynch",
   "repName": "Robert Burke",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2271,6 +2476,7 @@
   "repId": "71289",
   "demName": "Bill Keating",
   "repName": "Dan Sullivan",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2282,6 +2488,7 @@
   "repId": "58831",
   "demName": "Blane Miller",
   "repName": "Andy Harris",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2293,6 +2500,7 @@
   "repId": "68475",
   "demName": "John Olszewski",
   "repName": "Kim Klacik",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2304,6 +2512,7 @@
   "repId": "162488",
   "demName": "Sarah Elfreth",
   "repName": "Robert Steinberger",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2315,6 +2524,7 @@
   "repId": "28197",
   "demName": "Glenn Ivey",
   "repName": "George McDermott",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2326,6 +2536,7 @@
   "repId": "122710",
   "demName": "Steny Hoyer",
   "repName": "Michelle Talkington",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2337,6 +2548,7 @@
   "repId": "68531",
   "demName": "April McClain Delaney",
   "repName": "Neil Parrott",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2348,6 +2560,7 @@
   "repId": "68600",
   "demName": "Kweisi Mfume",
   "repName": "Scott Collier",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2359,6 +2572,7 @@
   "repId": "162511",
   "demName": "Jamie Raskin",
   "repName": "Cheryl Riley",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2370,6 +2584,7 @@
   "repId": "164623",
   "demName": "Chellie Pingree",
   "repName": "Ronald Russell",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2381,6 +2596,7 @@
   "repId": "121764",
   "demName": "Jared Golden",
   "repName": "Austin Theriault",
+  "incumbent": "dem",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -2394,6 +2610,7 @@
   "repId": "65336",
   "demName": "Callie Barr",
   "repName": "Jack Bergman",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2405,6 +2622,7 @@
   "repId": "55100",
   "demName": "Michael Lynch",
   "repName": "John Moolenaar",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2416,6 +2634,7 @@
   "repId": "130496",
   "demName": "Hillary Scholten",
   "repName": "Paul Hudson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2427,6 +2646,7 @@
   "repId": "55092",
   "demName": "Jessica Swartz",
   "repName": "Bill Huizenga",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2438,6 +2658,7 @@
   "repId": "25659",
   "demName": "Libbi Urban",
   "repName": "Tim Walberg",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2449,6 +2670,7 @@
   "repId": "166560",
   "demName": "Debbie Dingell",
   "repName": "Heather Smiley",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2460,6 +2682,7 @@
   "repId": "70830",
   "demName": "Curtis Hertel",
   "repName": "Tom Barrett",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2471,6 +2694,7 @@
   "repId": "69079",
   "demName": "Kristen McDonald Rivet",
   "repName": "Paul Junge",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2482,6 +2706,7 @@
   "repId": "69093",
   "demName": "Clinton St. Mosley",
   "repName": "Lisa McClain",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2493,6 +2718,7 @@
   "repId": "166570",
   "demName": "Carl Marlinga",
   "repName": "John James",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2504,6 +2730,7 @@
   "repId": "166573",
   "demName": "Haley Stevens",
   "repName": "Nick Somberg",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2515,6 +2742,7 @@
   "repId": "70842",
   "demName": "Rashida Tlaib",
   "repName": "James Hooper",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2526,6 +2754,7 @@
   "repId": "70852",
   "demName": "Shri Thanedar",
   "repName": "Martell Bivings",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2537,6 +2766,7 @@
   "repId": "55192",
   "demName": "Rachel Bohman",
   "repName": "Brad Finstad",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2548,6 +2778,7 @@
   "repId": "164648",
   "demName": "Angie Craig",
   "repName": "Joe Teirab",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2559,6 +2790,7 @@
   "repId": "124249",
   "demName": "Kelly Morrison",
   "repName": "Tad Jude",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2570,6 +2802,7 @@
   "repId": "71234",
   "demName": "Betty McCollum",
   "repName": "May Lor Xiong",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2581,6 +2814,7 @@
   "repId": "69187",
   "demName": "Ilhan Omar",
   "repName": "Dalia Al-Aqidi",
+  "incumbent": "dem",
   "attrs": [
    "Sanders Endorsed"
   ]
@@ -2594,6 +2828,7 @@
   "repId": "60721",
   "demName": "Jeanne Hendricks",
   "repName": "Tom Emmer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2605,6 +2840,7 @@
   "repId": "55298",
   "demName": "AJ Peters",
   "repName": "Michelle Fischbach",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2616,6 +2852,7 @@
   "repId": "67384",
   "demName": "Jen Schultz",
   "repName": "Pete Stauber",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2627,6 +2864,7 @@
   "repId": "71326",
   "demName": "Wesley Bell",
   "repName": "Andrew Jones",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2638,6 +2876,7 @@
   "repId": "62594",
   "demName": "Ray Hartmann",
   "repName": "Ann Wagner",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2649,6 +2888,7 @@
   "repId": "130690",
   "demName": "Bethany Mann",
   "repName": "Bob Onder",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2660,6 +2900,7 @@
   "repId": "71342",
   "demName": "Jeanette Cass",
   "repName": "Mark Alford",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2671,6 +2912,7 @@
   "repId": "131317",
   "demName": "Emanuel Cleaver",
   "repName": "Sean Smith",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2682,6 +2924,7 @@
   "repId": "1342",
   "demName": "Pam May",
   "repName": "Sam Graves",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2693,6 +2936,7 @@
   "repId": "71357",
   "demName": "Missi Hesketh",
   "repName": "Eric Burlison",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2704,6 +2948,7 @@
   "repId": "62802",
   "demName": "Randi McCallian",
   "repName": "Jason Smith",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2715,6 +2960,7 @@
   "repId": "64498",
   "demName": "Dianne Black",
   "repName": "Trent Kelly",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2726,6 +2972,7 @@
   "repId": "70474",
   "demName": "Bennie Thompson",
   "repName": "Ron Eller",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2737,6 +2984,7 @@
   "repId": "70484",
   "demName": "Craig Raybon",
   "repName": "Mike Ezell",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2748,6 +2996,7 @@
   "repId": "63730",
   "demName": "Monica Tranel",
   "repName": "Ryan Zinke",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2759,6 +3008,7 @@
   "repId": "66818",
   "demName": "John Driscoll",
   "repName": "Troy Downing",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2770,6 +3020,7 @@
   "repId": "160568",
   "demName": "Don Davis",
   "repName": "Laurie Buckhout",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2781,6 +3032,7 @@
   "repId": "68332",
   "demName": "Deborah Ross",
   "repName": "Alan Swain",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2792,6 +3044,7 @@
   "repId": "160572",
   "demName": "Valerie Foushee",
   "repName": "Eric Blankenburg",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2803,6 +3056,7 @@
   "repId": "1877",
   "demName": "Chuck Hubbard",
   "repName": "Virginia Foxx",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2814,6 +3068,7 @@
   "repId": "35605",
   "demName": "Marlando Pridgen",
   "repName": "David Rouzer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2825,6 +3080,7 @@
   "repId": "63306",
   "demName": "Justin Dues",
   "repName": "Mark Harris",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2836,6 +3092,7 @@
   "repId": "61758",
   "demName": "Nigel Bristow",
   "repName": "Richard Hudson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2847,6 +3104,7 @@
   "repId": "70312",
   "demName": "Ralph Scott",
   "repName": "Pat Harrigan",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2858,6 +3116,7 @@
   "repId": "70289",
   "demName": "Caleb Rudow",
   "repName": "Chuck Edwards",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2869,6 +3128,7 @@
   "repId": "160588",
   "demName": "Alma Adams",
   "repName": "Addul Ali",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2880,6 +3140,7 @@
   "repId": "160591",
   "demName": "Frank Pierce",
   "repName": "Brad Knott",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2891,6 +3152,7 @@
   "repId": "35346",
   "demName": "Pam Genant",
   "repName": "Tim Moore",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2902,6 +3164,7 @@
   "repId": "134890",
   "demName": "Trygve Hammer",
   "repName": "Julie Fedorchak",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2913,6 +3176,7 @@
   "repId": "69972",
   "demName": "Carol Blood",
   "repName": "Mike Flood",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2924,6 +3188,7 @@
   "repId": "64838",
   "demName": "Tony Vargas",
   "repName": "Don Bacon",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2935,6 +3200,7 @@
   "repId": "30010",
   "demName": "Daniel Ebers",
   "repName": "Adrian Smith",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2946,6 +3212,7 @@
   "repId": "56639",
   "demName": "Chris Pappas",
   "repName": "Russell Prescott",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2957,6 +3224,7 @@
   "repId": "71514",
   "demName": "Maggie Goodlander",
   "repName": "Lily Tang Williams",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -2968,6 +3236,7 @@
   "repId": "163026",
   "demName": "Donald Norcross",
   "repName": "Theodore Liddell",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -2979,6 +3248,7 @@
   "repId": "56642",
   "demName": "Joseph Salerno",
   "repName": "Jeff Van Drew",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -2990,6 +3260,7 @@
   "repId": "1352",
   "demName": "Matthew Jenkins",
   "repName": "Christopher Smith",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3001,6 +3272,7 @@
   "repId": "163051",
   "demName": "Josh Gottheimer",
   "repName": "Mary Jo Guinchard",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3012,6 +3284,7 @@
   "repId": "163055",
   "demName": "Frank Pallone",
   "repName": "Scott Fegler",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3023,6 +3296,7 @@
   "repId": "56741",
   "demName": "Sue Altman",
   "repName": "Thomas Kean Jr.",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3034,6 +3308,7 @@
   "repId": "163080",
   "demName": "Rob Menendez",
   "repName": "Anthony Valdes",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3045,6 +3320,7 @@
   "repId": "163023",
   "demName": "Nellie Pou",
   "repName": "Billy Prempeh",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -3056,6 +3332,7 @@
   "repId": "134469",
   "demName": "LaMonica McIver",
   "repName": "Carmen Bucco",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3067,6 +3344,7 @@
   "repId": "134583",
   "demName": "Mikie Sherrill",
   "repName": "Joseph Belnome",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3078,6 +3356,7 @@
   "repId": "70469",
   "demName": "Bonnie Watson Coleman",
   "repName": "Darius Mayfield",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3089,6 +3368,7 @@
   "repId": "163872",
   "demName": "Melanie Stansbury",
   "repName": "Steve Jones",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3100,6 +3380,7 @@
   "repId": "66477",
   "demName": "Gabriel Vasquez",
   "repName": "Yvette Herrell",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3111,6 +3392,7 @@
   "repId": "133155",
   "demName": "Teresa Leger Fernandez",
   "repName": "Sharon Clahchischilliage",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3122,6 +3404,7 @@
   "repId": "70760",
   "demName": "Dina Titus",
   "repName": "Mark Robertson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3133,6 +3416,7 @@
   "repId": "164354",
   "demName": "Susie Lee",
   "repName": "Drew Johnson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3144,6 +3428,7 @@
   "repId": "30525",
   "demName": "Steven Horsford",
   "repName": "John Lee",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3155,6 +3440,7 @@
   "repId": "71409",
   "demName": "John Avlon",
   "repName": "Nicholas LaLota",
+  "incumbent": "rep",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -3168,6 +3454,7 @@
   "repId": "68984",
   "demName": "Rob Lubin",
   "repName": "Andrew Garbarino",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3179,6 +3466,7 @@
   "repId": "68983",
   "demName": "Thomas Suozzi",
   "repName": "Michael LiPetri",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3190,6 +3478,7 @@
   "repId": "71420",
   "demName": "Laura Gillen",
   "repName": "Anthony D'Esposito",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3201,6 +3490,7 @@
   "repId": "71685",
   "demName": "Gregory Meeks",
   "repName": "Paul King",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3212,6 +3502,7 @@
   "repId": "69050",
   "demName": "Grace Meng",
   "repName": "Thomas Zmich",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3223,6 +3514,7 @@
   "repId": "163870",
   "demName": "Nydia Velazquez",
   "repName": "Bill Kregler",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3234,6 +3526,7 @@
   "repId": "163865",
   "demName": "Hakeem Jeffries",
   "repName": "John Delaney",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3245,6 +3538,7 @@
   "repId": "71424",
   "demName": "Yvette Clarke",
   "repName": "Menachem Raitport",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3256,6 +3550,7 @@
   "repId": "163868",
   "demName": "Daniel Goldman",
   "repName": "Alexander Dodenhoff",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3267,6 +3562,7 @@
   "repId": "68997",
   "demName": "Andrea Morse",
   "repName": "Nicole Malliotakis",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3278,6 +3574,7 @@
   "repId": "34098",
   "demName": "Jerrold Nadler",
   "repName": "Michael Zumbluskas",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3289,6 +3586,7 @@
   "repId": "150493",
   "demName": "Adriano Espaillat",
   "repName": "Ruben Vargas",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3300,6 +3598,7 @@
   "repId": "71442",
   "demName": "Alexandria Ocasio-Cortez",
   "repName": "Tina Forte",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3311,6 +3610,7 @@
   "repId": "160024",
   "demName": "Ritchie Torres",
   "repName": "Gonzalo Duran",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3322,6 +3622,7 @@
   "repId": "36596",
   "demName": "George Latimer",
   "repName": "Miriam Flisser",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -3333,6 +3634,7 @@
   "repId": "71449",
   "demName": "Mondaire Jones",
   "repName": "Mike Lawler",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3344,6 +3646,7 @@
   "repId": "159776",
   "demName": "Pat Ryan",
   "repName": "Alison Esposito",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3355,6 +3658,7 @@
   "repId": "67747",
   "demName": "Josh Riley",
   "repName": "Marcus Molinaro",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3366,6 +3670,7 @@
   "repId": "163795",
   "demName": "Paul Tonko",
   "repName": "Kevin Waltz",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3377,6 +3682,7 @@
   "repId": "63754",
   "demName": "Paula Collins",
   "repName": "Elise Stefanik",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3388,6 +3694,7 @@
   "repId": "71464",
   "demName": "John Mannion",
   "repName": "Brandon Williams",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3399,6 +3706,7 @@
   "repId": "71466",
   "demName": "Thomas Carle",
   "repName": "Nicholas Langworthy",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3410,6 +3718,7 @@
   "repId": "63809",
   "demName": "David Wagenhauser",
   "repName": "Claudia Tenney",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3421,6 +3730,7 @@
   "repId": "163808",
   "demName": "Joseph Morelle",
   "repName": "Gregg Sadwick",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3432,6 +3742,7 @@
   "repId": "159708",
   "demName": "Timothy Kennedy",
   "repName": "Anthony Marecki",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3443,6 +3754,7 @@
   "repId": "142860",
   "demName": "Greg Landsman",
   "repName": "Orlando Sonza",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3454,6 +3766,7 @@
   "repId": "161559",
   "demName": "Samantha Meadows",
   "repName": "David Taylor",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -3465,6 +3778,7 @@
   "repId": "161561",
   "demName": "Joyce Beatty",
   "repName": "Michael Young",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3476,6 +3790,7 @@
   "repId": "57253",
   "demName": "Tamie Wilson",
   "repName": "Jim Jordan",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3487,6 +3802,7 @@
   "repId": "57148",
   "demName": "Keith Mundy",
   "repName": "Bob Latta",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3498,6 +3814,7 @@
   "repId": "142433",
   "demName": "Michael Kripchak",
   "repName": "Michael Rulli",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3509,6 +3826,7 @@
   "repId": "70139",
   "demName": "Matthew Diemer",
   "repName": "Max Miller",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3520,6 +3838,7 @@
   "repId": "64698",
   "demName": "Vanessa Enoch",
   "repName": "Warren Davidson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3531,6 +3850,7 @@
   "repId": "142329",
   "demName": "Marcy Kaptur",
   "repName": "Derek Merrin",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3542,6 +3862,7 @@
   "repId": "1376",
   "demName": "Amy Cox",
   "repName": "Mike Turner",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3553,6 +3874,7 @@
   "repId": "161572",
   "demName": "Shontel Brown",
   "repName": "Alan Rapoport",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3564,6 +3886,7 @@
   "repId": "66237",
   "demName": "Jerrad Christian",
   "repName": "Troy Balderson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3575,6 +3898,7 @@
   "repId": "57268",
   "demName": "Emilia Sykes",
   "repName": "Kevin Coughlin",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3586,6 +3910,7 @@
   "repId": "62559",
   "demName": "Brian Kenderes",
   "repName": "David Joyce",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3597,6 +3922,7 @@
   "repId": "161548",
   "demName": "Adam Miller",
   "repName": "Mike Carey",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3608,6 +3934,7 @@
   "repId": "67018",
   "demName": "Dennis Baker",
   "repName": "Kevin Hern",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3619,6 +3946,7 @@
   "repId": "70937",
   "demName": "Brandon Wade",
   "repName": "Josh Brecheen",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3630,6 +3958,7 @@
   "repId": "1398",
   "demName": "Mary Brannon",
   "repName": "Tom Cole",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3641,6 +3970,7 @@
   "repId": "68613",
   "demName": "Madison Horn",
   "repName": "Stephanie Bice",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3652,6 +3982,7 @@
   "repId": "162704",
   "demName": "Suzanne Bonamici",
   "repName": "Bob Todd",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3663,6 +3994,7 @@
   "repId": "68648",
   "demName": "Dan Ruby",
   "repName": "Cliff Bentz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3674,6 +4006,7 @@
   "repId": "68659",
   "demName": "Maxine Dexter",
   "repName": "Joanna Harbour",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -3685,6 +4018,7 @@
   "repId": "162738",
   "demName": "Val Hoyle",
   "repName": "Monique DeSpain",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3696,6 +4030,7 @@
   "repId": "70186",
   "demName": "Janelle Bynum",
   "repName": "Lori Chavez-DeRemer",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3707,6 +4042,7 @@
   "repId": "51801",
   "demName": "Andrea Salinas",
   "repName": "Mike Erickson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3718,6 +4054,7 @@
   "repId": "64827",
   "demName": "Ashley Ehasz",
   "repName": "Brian Fitzpatrick",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3729,6 +4066,7 @@
   "repId": "70040",
   "demName": "Brendan Boyle",
   "repName": "Aaron Bashir",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3740,6 +4078,7 @@
   "repId": "161761",
   "demName": "Madeleine Dean",
   "repName": "David Winkler",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3751,6 +4090,7 @@
   "repId": "161762",
   "demName": "Mary Gay Scanlon",
   "repName": "Alfeia Goodwin",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3762,6 +4102,7 @@
   "repId": "161763",
   "demName": "Chrissy Houlahan",
   "repName": "Neil Young",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3773,6 +4114,7 @@
   "repId": "145268",
   "demName": "Susan Wild",
   "repName": "Ryan Mackenzie",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3784,6 +4126,7 @@
   "repId": "161765",
   "demName": "Matt Cartwright",
   "repName": "Robert Bresnahan",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3795,6 +4138,7 @@
   "repId": "58537",
   "demName": "Amanda Waldman",
   "repName": "Dan Meuser",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3806,6 +4150,7 @@
   "repId": "61618",
   "demName": "Janelle Stelson",
   "repName": "Scott Perry",
+  "incumbent": "rep",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -3819,6 +4164,7 @@
   "repId": "64833",
   "demName": "Jim Atkinson",
   "repName": "Lloyd Smucker",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3830,6 +4176,7 @@
   "repId": "161773",
   "demName": "Summer Lee",
   "repName": "James Hayes",
+  "incumbent": "dem",
   "attrs": [
    "Sanders Endorsed"
   ]
@@ -3843,6 +4190,7 @@
   "repId": "66452",
   "demName": "Beth Farnham",
   "repName": "John Joyce",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3854,6 +4202,7 @@
   "repId": "66458",
   "demName": "Chris Dziados",
   "repName": "Guy Reschenthaler",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3865,6 +4214,7 @@
   "repId": "58283",
   "demName": "Zach Womer",
   "repName": "Glenn Thompson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3876,6 +4226,7 @@
   "repId": "60917",
   "demName": "Preston Nouri",
   "repName": "Mike Kelly",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3887,6 +4238,7 @@
   "repId": "146694",
   "demName": "Chris Deluzio",
   "repName": "Rob Mercuri",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3898,6 +4250,7 @@
   "repId": "69417",
   "demName": "Gabriel Amo",
   "repName": "Allen Waters",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3909,6 +4262,7 @@
   "repId": "167152",
   "demName": "Seth Magaziner",
   "repName": "Steven Corvi",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3920,6 +4274,7 @@
   "repId": "63782",
   "demName": "Michael Moore",
   "repName": "Nancy Mace",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3931,6 +4286,7 @@
   "repId": "1410",
   "demName": "David Robinson",
   "repName": "Joe Wilson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3942,6 +4298,7 @@
   "repId": "163529",
   "demName": "Bryon Best",
   "repName": "Sheri Biggs",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -3953,6 +4310,7 @@
   "repId": "66899",
   "demName": "Kathryn Harvey",
   "repName": "William Timmons",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3964,6 +4322,7 @@
   "repId": "51896",
   "demName": "Evangeline Hundley",
   "repName": "Ralph Norman",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3975,6 +4334,7 @@
   "repId": "68757",
   "demName": "James Clyburn",
   "repName": "Duke Buckner",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -3986,6 +4346,7 @@
   "repId": "70931",
   "demName": "Mal Hyman",
   "repName": "Russell Fry",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -3997,6 +4358,7 @@
   "repId": "66830",
   "demName": "Sheryl Johnson",
   "repName": "Dusty Johnson",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4008,6 +4370,7 @@
   "repId": "69252",
   "demName": "Kevin Jenkins",
   "repName": "Diana Harshbarger",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4019,6 +4382,7 @@
   "repId": "58256",
   "demName": "Jane George",
   "repName": "Tim Burchett",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4030,6 +4394,7 @@
   "repId": "60964",
   "demName": "Jack Allen",
   "repName": "Chuck Fleischmann",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4041,6 +4406,7 @@
   "repId": "61091",
   "demName": "Victoria Broderick",
   "repName": "Scott DesJarlais",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4052,6 +4418,7 @@
   "repId": "70864",
   "demName": "Maryam Abolfazli",
   "repName": "Andy Ogles",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4063,6 +4430,7 @@
   "repId": "67431",
   "demName": "Lore Bergman",
   "repName": "John Rose",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4074,6 +4442,7 @@
   "repId": "67432",
   "demName": "Megan Barry",
   "repName": "Mark Green",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4085,6 +4454,7 @@
   "repId": "65268",
   "demName": "Sarah Freeman",
   "repName": "David Kustoff",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4096,6 +4466,7 @@
   "repId": "60986",
   "demName": "Steve Cohen",
   "repName": "Charlotte Bergmann",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4107,6 +4478,7 @@
   "repId": "66054",
   "demName": "Peter Filler",
   "repName": "Dan Crenshaw",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4118,6 +4490,7 @@
   "repId": "43333",
   "demName": "Sandeep Srivastava",
   "repName": "Keith Self",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4129,6 +4502,7 @@
   "repId": "69628",
   "demName": "Simon Cardell",
   "repName": "Pat Fallon",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4140,6 +4514,7 @@
   "repId": "66063",
   "demName": "Ruth Torres",
   "repName": "Lance Gooden",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4151,6 +4526,7 @@
   "repId": "65914",
   "demName": "John Love",
   "repName": "Jake Ellzey",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4162,6 +4538,7 @@
   "repId": "160777",
   "demName": "Lizzie Fletcher",
   "repName": "Caroline Kane",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4173,6 +4550,7 @@
   "repId": "69823",
   "demName": "Laura Jones",
   "repName": "Morgan Luttrell",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4184,6 +4562,7 @@
   "repId": "38751",
   "demName": "Theresa Boisseau",
   "repName": "Michael McCaul",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4195,6 +4574,7 @@
   "repId": "150570",
   "demName": "Trey Hunt",
   "repName": "Craig Goldman",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4206,6 +4586,7 @@
   "repId": "61980",
   "demName": "Rhonda Hart",
   "repName": "Randy Weber",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4217,6 +4598,7 @@
   "repId": "69841",
   "demName": "Michelle Vallejo",
   "repName": "Monica De La Cruz",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4228,6 +4610,7 @@
   "repId": "68298",
   "demName": "Veronica Escobar",
   "repName": "Irene Armendariz Jackson",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4239,6 +4622,7 @@
   "repId": "358",
   "demName": "Mark Lorenzen",
   "repName": "Pete Sessions",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4250,6 +4634,7 @@
   "repId": "160814",
   "demName": "Sylvester Turner",
   "repName": "Lana Centonze",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4261,6 +4646,7 @@
   "repId": "168475",
   "demName": "Erica Lee Carter",
   "repName": "Maria Dunn",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4272,6 +4658,7 @@
   "repId": "66080",
   "demName": "Kristin Hook",
   "repName": "Chip Roy",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4283,6 +4670,7 @@
   "repId": "68186",
   "demName": "Marquette Greene-Scott",
   "repName": "Troy Nehls",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4294,6 +4682,7 @@
   "repId": "68302",
   "demName": "S. Limon",
   "repName": "Tony Gonzales",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4305,6 +4694,7 @@
   "repId": "68157",
   "demName": "Sam Eppler",
   "repName": "Beth Van Duyne",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4316,6 +4706,7 @@
   "repId": "160826",
   "demName": "Ernest Lineberger",
   "repName": "Brandon Gill",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4327,6 +4718,7 @@
   "repId": "66028",
   "demName": "Tanya Lloyd",
   "repName": "Michael Cloud",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4338,6 +4730,7 @@
   "repId": "160834",
   "demName": "Henry Cuellar",
   "repName": "Jay Furman",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4349,6 +4742,7 @@
   "repId": "160840",
   "demName": "Sylvia Garcia",
   "repName": "Alan Garza",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4360,6 +4754,7 @@
   "repId": "1441",
   "demName": "Stuart Whitlow",
   "repName": "John Carter",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4371,6 +4766,7 @@
   "repId": "69897",
   "demName": "Julie Johnson",
   "repName": "Darrell Day",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4382,6 +4778,7 @@
   "repId": "69900",
   "demName": "Marc Veasey",
   "repName": "Patrick Gillespie",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4393,6 +4790,7 @@
   "repId": "69905",
   "demName": "Vicente Gonzalez",
   "repName": "Mayra Flores",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4404,6 +4802,7 @@
   "repId": "160851",
   "demName": "Greg Casar",
   "repName": "Steven Wright",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4415,6 +4814,7 @@
   "repId": "41484",
   "demName": "Dayna Steele",
   "repName": "Brian Babin",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4426,6 +4826,7 @@
   "repId": "160852",
   "demName": "Lloyd Doggett",
   "repName": "Jenny Garcia Sharon",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4437,6 +4838,7 @@
   "repId": "68242",
   "demName": "Melissa McDonough",
   "repName": "Wesley Hunt",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4448,6 +4850,7 @@
   "repId": "68817",
   "demName": "Bill Campbell",
   "repName": "Blake Moore",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4459,6 +4862,7 @@
   "repId": "71846",
   "demName": "Nathaniel Woodward",
   "repName": "Celeste Maloy",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4470,6 +4874,7 @@
   "repId": "67064",
   "demName": "Glenn Wright",
   "repName": "Mike Kennedy",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4481,6 +4886,7 @@
   "repId": "68823",
   "demName": "Katrina Fallick-Wang",
   "repName": "Burgess Owens",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4492,6 +4898,7 @@
   "repId": "57798",
   "demName": "Leslie Mehta",
   "repName": "Rob Wittman",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4503,6 +4910,7 @@
   "repId": "70896",
   "demName": "Missy Cotter Smasal",
   "repName": "Jen Kiggans",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4514,6 +4922,7 @@
   "repId": "72853",
   "demName": "Robert Scott",
   "repName": "John Sitka",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4525,6 +4934,7 @@
   "repId": "166967",
   "demName": "Jennifer McClellan",
   "repName": "William Moher",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4536,6 +4946,7 @@
   "repId": "148085",
   "demName": "Gloria Witt",
   "repName": "John McGuire",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4547,6 +4958,7 @@
   "repId": "45587",
   "demName": "Ken Mitchell",
   "repName": "Ben Cline",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4558,6 +4970,7 @@
   "repId": "70905",
   "demName": "Eugene Vindman",
   "repName": "Derrick Anderson",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4569,6 +4982,7 @@
   "repId": "166970",
   "demName": "Donald Beyer",
   "repName": "Jerry Torres",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4580,6 +4994,7 @@
   "repId": "58574",
   "demName": "Karen Baker",
   "repName": "Morgan Griffith",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4591,6 +5006,7 @@
   "repId": "163862",
   "demName": "Suhas Subramanyam",
   "repName": "Mike Clancy",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4602,6 +5018,7 @@
   "repId": "72695",
   "demName": "Gerald Connolly",
   "repName": "Mike Van Meter",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4613,6 +5030,7 @@
   "repId": "71696",
   "demName": "Becca Balint",
   "repName": "Mark Coester",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4624,6 +5042,7 @@
   "repId": "153360",
   "demName": "Suzan DelBene",
   "repName": "Jeb Brewer",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4635,6 +5054,7 @@
   "repId": "68914",
   "demName": "Rick Larsen",
   "repName": "Cody Hart",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4646,6 +5066,7 @@
   "repId": "71013",
   "demName": "Marie Gluesenkamp Perez",
   "repName": "Joe Kent",
+  "incumbent": "dem",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -4659,6 +5080,7 @@
   "repId": "62292",
   "demName": "Carmela Conroy",
   "repName": "Michael Baumgartner",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4670,6 +5092,7 @@
   "repId": "151444",
   "demName": "Emily Randall",
   "repName": "Drew MacEwen",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4681,6 +5104,7 @@
   "repId": "165734",
   "demName": "Pramila Jayapal",
   "repName": "Dan Alexander",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4692,6 +5116,7 @@
   "repId": "154711",
   "demName": "Kim Schrier",
   "repName": "Carmen Goers",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4703,6 +5128,7 @@
   "repId": "68945",
   "demName": "Marilyn Strickland",
   "repName": "Don Hewett",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4714,6 +5140,7 @@
   "repId": "67339",
   "demName": "Peter Barca",
   "repName": "Bryan Steil",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4725,6 +5152,7 @@
   "repId": "164785",
   "demName": "Mark Pocan",
   "repName": "Erik Olsen",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4736,6 +5164,7 @@
   "repId": "69183",
   "demName": "Rebecca Cooke",
   "repName": "Derrick Van Orden",
+  "incumbent": "rep",
   "attrs": [
    "Welcome PAC Endorsed"
   ]
@@ -4749,6 +5178,7 @@
   "repId": "67353",
   "demName": "Gwen Moore",
   "repName": "Tim Rogers",
+  "incumbent": "dem",
   "attrs": []
  },
  {
@@ -4760,6 +5190,7 @@
   "repId": "59140",
   "demName": "Ben Steinhoff",
   "repName": "Scott Fitzgerald",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4771,6 +5202,7 @@
   "repId": "59087",
   "demName": "John Zarbano",
   "repName": "Glenn Grothman",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4782,6 +5214,7 @@
   "repId": "67975",
   "demName": "Kyle Kilbourn",
   "repName": "Tom Tiffany",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4793,6 +5226,7 @@
   "repId": "164795",
   "demName": "Kristin Lyerly",
   "repName": "Tony Wied",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4804,6 +5238,7 @@
   "repId": "164795",
   "demName": "Kristin Lyerly",
   "repName": "Tony Wied",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4815,6 +5250,7 @@
   "repId": "47557",
   "demName": "Chris Reed",
   "repName": "Carol Miller",
+  "incumbent": "rep",
   "attrs": []
  },
  {
@@ -4826,6 +5262,7 @@
   "repId": "155080",
   "demName": "Steve Wendelin",
   "repName": "Riley Moore",
+  "incumbent": "open",
   "attrs": []
  },
  {
@@ -4837,6 +5274,7 @@
   "repId": "67595",
   "demName": "Kyle Cameron",
   "repName": "Harriet Hageman",
+  "incumbent": "rep",
   "attrs": []
  }
 ]

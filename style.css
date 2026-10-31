@@ -28,6 +28,10 @@ td.neg { color: var(--neg); font-weight: 600; }
 #filter-box[hidden] { display: none; }
 /* 16px: iOS Safari zooms the page when a smaller select is focused. */
 select { font: inherit; font-size: 16px; padding: 4px 6px; }
+.inc-col { display: none; }
+.show-incumbency th.inc-col, .show-incumbency td.inc-col { display: table-cell; }
+#incumbency-box { margin: 10px 0 0; font-size: 0.9rem; }
+#incumbency-info { color: var(--muted); }
 .note { margin: 6px 0 0; font-size: 0.85rem; color: var(--muted); }
 .note[hidden], .err[hidden] { display: none; }
 .avg { margin: 10px 0 0; font-size: 1.1rem; }

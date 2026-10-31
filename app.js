@@ -1,4 +1,4 @@
-import { computeRows, attributeNames, averageOverUnder, applyFilters } from "./compute.js";
+import { computeRows, attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency, MIN_GROUP } from "./compute.js";
 import { createPoller, makeFetchOffice, isStale } from "./poller.js";
 import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource } from "./plans.js";
 
@@ -22,6 +22,8 @@ const COLUMNS = [
   { key: "dem2p", title: "Dem 2-party %", num: true, text: (r) => pct(r.dem2p) },
   { key: "harris2p", title: "Harris 2-party %", num: true, hideSm: true, text: (r) => pct(r.harris2p) },
   { key: "pctReporting", title: "% reporting", num: true, text: (r) => pct(r.pctReporting, 0) },
+  // Shown only while the incumbency box is checked (CSS: main.show-incumbency .inc-col).
+  { key: "incumbencyBoost", title: "Incumbency effect", num: true, optional: true, text: (r) => (hasBoost(r) ? signed(r.incumbencyBoost) : "—") },
 ];
 
 const pct = (x, digits = 1) => (x === null || x === undefined ? "—" : `${(x * 100).toFixed(digits)}%`);
@@ -29,7 +31,10 @@ const signed = (x) => (x === null ? "—" : `${x >= 0 ? "+" : "−"}${Math.abs(x
 const sign = (x) => (x === null ? "" : x >= 0 ? "pos" : "neg");
 
 // Sort value per column; nulls always sort last.
-const sortValue = (r, key) => (key === "dem" || key === "rep" ? r[key].name : r[key]);
+// Open seats show "—" in the incumbency column, so they sort as empty, not as 0.
+const hasBoost = (r) => r.incumbent !== "open" && r.incumbencyBoost !== null;
+const sortValue = (r, key) =>
+  key === "dem" || key === "rep" ? r[key].name : key === "incumbencyBoost" ? (hasBoost(r) ? r.incumbencyBoost : null) : r[key];
 
 function compareBy(key, dir) {
   return (a, b) => {
@@ -57,7 +62,7 @@ function renderTable(initialRows) {
       for (const col of COLUMNS) {
         const td = tr.insertCell();
         td.textContent = col.text(r);
-        td.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.cls?.(r) ?? ""].join(" ").trim();
+        td.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : "", col.cls?.(r) ?? ""].join(" ").trim();
       }
       return tr;
     }));
@@ -70,7 +75,7 @@ function renderTable(initialRows) {
     const th = document.createElement("th");
     th.textContent = col.title;
     th.dataset.key = col.key;
-    th.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : ""].join(" ").trim();
+    th.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : ""].join(" ").trim();
     th.addEventListener("click", () => {
       state.dir = state.key === col.key ? -state.dir : col.num ? -1 : 1; // numbers start high-to-low
       state.key = col.key;
@@ -184,17 +189,41 @@ async function main() {
     });
   };
 
+  // Incumbency effect: coefficients come from ALL races passing the % reporting threshold
+  // (not the category), and are recomputed on every apply(), so data refreshes update them too.
+  const incBox = document.getElementById("incumbency");
+  const incInfo = document.getElementById("incumbency-info");
+  let incAutoOff = false;
+  const renderIncumbency = (effect) => {
+    const { n } = effect;
+    const counts = `${n.dem} / ${n.rep} / ${n.open}`;
+    if (incBox.checked && !effect.enabled) {
+      incBox.checked = false; // too few races now: revert to raw over/under
+      incAutoOff = true;
+    } else if (effect.enabled) {
+      incAutoOff = false;
+    }
+    incBox.disabled = !effect.enabled;
+    incInfo.textContent = effect.enabled
+      ? `Dem incumbent ${signed(effect.dem)}, Rep incumbent ${signed(effect.rep)} (from ${counts} races: Dem incumbent / Rep incumbent / open)`
+      : `${incAutoOff ? "Turned off: " : ""}needs ${MIN_GROUP}+ races in each group (now ${counts})`;
+    document.getElementById("sections").classList.toggle("show-incumbency", incBox.checked);
+  };
+
   const apply = () => {
     const attr = select.value;
     const min = Number(reporting.value);
+    const effect = incumbencyEffect(allRows(), min);
+    renderIncumbency(effect);
+    const adjust = (rows) => applyIncumbency(rows, incBox.checked ? effect : null);
     for (const s of sections) {
-      const { shown } = applyFilters(s.rows, attr, min);
+      const { shown } = applyFilters(adjust(s.rows), attr, min);
       s.h2.textContent = `${s.title} (${shown.length} race${shown.length === 1 ? "" : "s"})`;
       s.table.setRows(shown);
       // With a category selected, a section with no races is just noise.
       s.h2.hidden = s.table.el.hidden = Boolean(attr) && shown.length === 0;
     }
-    const all = applyFilters(allRows(), attr, min);
+    const all = applyFilters(adjust(allRows()), attr, min);
     const label = reporting.selectedOptions[0].textContent;
     showAverage(attr, all.shown, all.inCategory.length, label);
     // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
@@ -203,6 +232,7 @@ async function main() {
     renderSource();
   };
   reporting.addEventListener("change", apply);
+  incBox.addEventListener("change", apply);
   const names = attributeNames(allRows());
   if (names.length) {
     select.append(new Option("All races", ""), ...names.map((n) => new Option(n, n)));

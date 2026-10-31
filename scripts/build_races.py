@@ -37,6 +37,9 @@ KNOWN = set(REQUIRED) | {
 }
 
 
+INCUMBENT = {"democrat": "dem", "republican": "rep", "neither": "open"}
+
+
 def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]:
     """rows: sheet rows; metadata: office -> Politico metadata list. Returns races.json entries."""
     errors: list[str] = []
@@ -45,9 +48,12 @@ def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]
     seen: set[str] = set()
     for i, row in enumerate(rows, start=2):  # sheet line number
         where = f"line {i} ({row.get('Office')} {row.get('State/District')})"
-        missing = [c for c in REQUIRED if c not in row]
+        missing = [c for c in REQUIRED + ["Incumbent"] if c not in row]
         if missing:
             raise SystemExit(f"sheet is missing columns: {missing}")
+        incumbent = INCUMBENT.get((row["Incumbent"] or "").strip().lower())
+        if incumbent is None:
+            errors.append(f"{where}: Incumbent {row['Incumbent']!r} is not Democrat/Republican/Neither")
         office = row["Office"].strip().lower()
         cid = row["Politico contest ID"].strip()
         dem, rep = row["Politico Dem ID"].strip(), row["Politico Rep ID"].strip()
@@ -89,6 +95,7 @@ def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]
                 # Politico's spelling, used when live metadata can't resolve the candidate.
                 "demName": entry["candidates"].get(dem, {}).get("fullName"),
                 "repName": entry["candidates"].get(rep, {}).get("fullName"),
+                "incumbent": incumbent,
                 "attrs": attrs,
             }
         )
