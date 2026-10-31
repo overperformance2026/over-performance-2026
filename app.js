@@ -1,4 +1,4 @@
-import { computeRows, attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency, MIN_GROUP } from "./compute.js";
+import { computeRows, attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency } from "./compute.js";
 import { createPoller, makeFetchOffice, isStale } from "./poller.js";
 import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource } from "./plans.js";
 
@@ -16,14 +16,14 @@ const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "Hous
 
 const COLUMNS = [
   { key: "label", title: "State / district", text: (r) => r.label },
-  { key: "dem", title: "Democrat", text: (r) => r.dem.name ?? "—" },
+  { key: "dem", title: "Dem (or anti-Rep Indep.)", text: (r) => r.dem.name ?? "—" },
   { key: "overUnder", title: "Over / under", num: true, text: (r) => signed(r.overUnder), cls: (r) => sign(r.overUnder) },
   { key: "rep", title: "Republican", hideSm: true, text: (r) => r.rep.name ?? "—" },
-  { key: "dem2p", title: "Dem 2-party %", num: true, text: (r) => pct(r.dem2p) },
-  { key: "harris2p", title: "Harris 2-party %", num: true, hideSm: true, text: (r) => pct(r.harris2p) },
-  { key: "pctReporting", title: "% reporting", num: true, text: (r) => pct(r.pctReporting, 0) },
+  { key: "dem2p", title: "Dem 2-p %", num: true, text: (r) => pct(r.dem2p) },
+  { key: "harris2p", title: "Harris 2-p %", num: true, hideSm: true, text: (r) => pct(r.harris2p) },
   // Shown only while the incumbency box is checked (CSS: main.show-incumbency .inc-col).
-  { key: "incumbencyBoost", title: "Incumbency effect", num: true, optional: true, text: (r) => (hasBoost(r) ? signed(r.incumbencyBoost) : "—") },
+  { key: "incumbencyBoost", title: "Incumb. eff.", num: true, optional: true, text: (r) => (hasBoost(r) ? signed(r.incumbencyBoost) : "—") },
+  { key: "pctReporting", title: "% reporting", num: true, text: (r) => pct(r.pctReporting, 0) },
 ];
 
 const pct = (x, digits = 1) => (x === null || x === undefined ? "—" : `${(x * 100).toFixed(digits)}%`);
@@ -193,20 +193,13 @@ async function main() {
   // (not the category), and are recomputed on every apply(), so data refreshes update them too.
   const incBox = document.getElementById("incumbency");
   const incInfo = document.getElementById("incumbency-info");
-  let incAutoOff = false;
   const renderIncumbency = (effect) => {
-    const { n } = effect;
-    const counts = `${n.dem} / ${n.rep} / ${n.open}`;
-    if (incBox.checked && !effect.enabled) {
-      incBox.checked = false; // too few races now: revert to raw over/under
-      incAutoOff = true;
-    } else if (effect.enabled) {
-      incAutoOff = false;
-    }
+    if (!effect.enabled) incBox.checked = false; // too few races now: revert to raw over/under
     incBox.disabled = !effect.enabled;
+    incBox.closest("label").classList.toggle("off", !effect.enabled); // greyed out
     incInfo.textContent = effect.enabled
-      ? `Dem incumbent ${signed(effect.dem)}, Rep incumbent ${signed(effect.rep)} (from ${counts} races: Dem incumbent / Rep incumbent / open)`
-      : `${incAutoOff ? "Turned off: " : ""}needs ${MIN_GROUP}+ races in each group (now ${counts})`;
+      ? `(Dem. incumbents ${signed(effect.dem)}, Rep. incumbents ${signed(effect.rep)})`
+      : "Not enough results reporting to calculate incumbency effects";
     document.getElementById("sections").classList.toggle("show-incumbency", incBox.checked);
   };
 

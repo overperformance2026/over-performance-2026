@@ -3,25 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2024 Data: Democratic over/under-performance vs Harris</title>
+<title>2024 Data: Democratic over/under-performance</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-dir="data/2024" data-date="2024-11-05" data-live="false">
 <header>
-  <h1>2024 Data: How far are Democrats over- or under-performing Harris?</h1>
+  <h1>2024 Data: How far are Democrats over- or under-performing?</h1>
   <p class="sub">Dem two-party share (D / (D + R)) minus Harris's 2024 two-party share in the same state or district.
     Data set: <strong id="dataset">2024 results</strong>.</p>
-  <p id="source" class="sub"></p>
   <label id="filter-box" hidden>Show: <select id="filter"></select></label>
   <label id="reporting-box">% reporting: <select id="reporting"></select></label>
-  <p id="incumbency-box"><label><input type="checkbox" id="incumbency" disabled> Incumbency effect</label>
+  <p id="incumbency-box"><label><input type="checkbox" id="incumbency" disabled> Account for incumbency effect</label>
     <span id="incumbency-info"></span></p>
   <p id="avg" class="avg" hidden></p>
   <p id="hidden-note" class="note" hidden></p>
   <p id="load-warn" class="err" hidden></p>
 </header>
 <main id="sections"></main>
-<footer>Results: Politico / AP. Click a column header to sort.</footer>
+<footer>
+  <p id="source"></p>
+  <p>Results: Politico / AP. Click a column header to sort.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
