@@ -77,6 +77,16 @@ export function filterByReporting(rows, min) {
   return rows.filter((r) => r.pctReporting === null || r.pctReporting >= min);
 }
 
+/**
+ * Both page filters at once. inCategory: rows in the chosen category (all rows if attr is empty);
+ * shown: those also at least `min` reported; hidden: how many the reporting filter removed.
+ */
+export function applyFilters(rows, attr, min) {
+  const inCategory = filterRows(rows, attr);
+  const shown = filterByReporting(inCategory, min);
+  return { inCategory, shown, hidden: inCategory.length - shown.length };
+}
+
 /** Simple (unweighted) mean over/under across rows that have a number. mean is null if none do. */
 export function averageOverUnder(rows) {
   const vals = rows.map((r) => r.overUnder).filter(isNum);

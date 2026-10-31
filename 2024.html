@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Democratic over/under-performance vs Harris 2024</title>
+<title>2024 Data: Democratic over/under-performance vs Harris</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
   <h1>2024 Data: How far are Democrats over- or under-performing Harris?</h1>
   <p class="sub">Dem two-party share (D / (D + R)) minus Harris's 2024 two-party share in the same state or district.
-    Data set: <strong id="dataset">2024 results (mock-up)</strong>. <span id="updated"></span></p>
+    Data set: <strong id="dataset">2024 results</strong>. <span id="updated"></span></p>
   <label id="filter-box" hidden>Show: <select id="filter"></select></label>
   <label id="reporting-box">% reporting: <select id="reporting"></select></label>
   <p id="avg" class="avg" hidden></p>
+  <p id="hidden-note" class="note" hidden></p>
+  <p id="load-warn" class="err" hidden></p>
 </header>
 <main id="sections"></main>
 <footer>Results: Politico / AP. Click a column header to sort.</footer>

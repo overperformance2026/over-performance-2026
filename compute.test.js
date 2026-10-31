@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting, applyFilters } from "./compute.js";
 
 // ---- synthetic fixtures -------------------------------------------------
 
@@ -157,6 +157,23 @@ test("filterByReporting keeps rows at or above the minimum; unknown % reporting 
   assert.deepEqual(filterByReporting(rows, 0.5).map((r) => r.id), [1, 3, 4]);
   assert.deepEqual(filterByReporting(rows, 0.95).map((r) => r.id), [4]);
   assert.deepEqual(filterByReporting(rows, 0).map((r) => r.id), [1, 2, 3, 4]);
+});
+
+test("applyFilters: category then reporting; hidden counts what the reporting filter removed", () => {
+  const rows = [
+    { id: 1, attrs: ["A"], pctReporting: 0.9 },
+    { id: 2, attrs: ["A"], pctReporting: 0.3 },
+    { id: 3, attrs: [], pctReporting: 0.99 },
+    { id: 4, attrs: ["A"], pctReporting: null },
+  ];
+  const a = applyFilters(rows, "A", 0.5);
+  assert.deepEqual(a.inCategory.map((r) => r.id), [1, 2, 4]);
+  assert.deepEqual(a.shown.map((r) => r.id), [1, 4]);
+  assert.equal(a.hidden, 1);
+  const all = applyFilters(rows, "", 0.95);
+  assert.deepEqual(all.shown.map((r) => r.id), [3, 4]);
+  assert.equal(all.hidden, 2);
+  assert.deepEqual(applyFilters([], "A", 0.5), { inCategory: [], shown: [], hidden: 0 });
 });
 
 test("averageOverUnder: simple mean over rows that have a number; counts both", () => {

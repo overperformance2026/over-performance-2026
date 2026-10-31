@@ -1,8 +1,8 @@
-import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting } from "./compute.js";
+import { computeRows, attributeNames, averageOverUnder, applyFilters } from "./compute.js";
 
 const DATA = "data/2024";
 // Minimum share of expected vote counted for a race to show (and to count in the average).
-const REPORTING_OPTIONS = [[0.5, ">50%"], [0.75, ">75%"], [0.9, ">90%"], [0.95, ">95%"]];
+const REPORTING_OPTIONS = [[0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
 
 const COLUMNS = [
@@ -104,14 +104,37 @@ function showAverage(attr, rows, total, minLabel) {
   el.append(strong, small);
 }
 
+// One office's files failing to load must not blank the whole page: computeRows turns null
+// metadata or summaries into rows with a problem and no numbers.
+const getJsonOrNull = (path, failures, what) =>
+  getJson(path).catch(() => {
+    failures.push(what);
+    return null;
+  });
+
+// "Data as of" line from data/<year>/updated.json (written by the fetch script). Optional.
+async function showUpdated() {
+  try {
+    const { fetchedAt } = await getJson(`${DATA}/updated.json`);
+    const when = new Date(fetchedAt);
+    if (Number.isNaN(when.getTime())) return;
+    document.getElementById("updated").textContent =
+      `Data as of ${when.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}.`;
+  } catch {
+    /* no timestamp: leave the line empty */
+  }
+}
+
 async function main() {
   const root = document.getElementById("sections");
   const races = await getJson(`${DATA}/races.json`);
+  showUpdated();
   const sections = [];
+  const failures = [];
   for (const [office, title] of OFFICES) {
     const [metadata, summaries] = await Promise.all([
-      getJson(`${DATA}/meta-${office}.json`),
-      getJson(`${DATA}/sum-${office}.json`),
+      getJsonOrNull(`${DATA}/meta-${office}.json`, failures, `${title} candidates`),
+      getJsonOrNull(`${DATA}/sum-${office}.json`, failures, `${title} results`),
     ]);
     const rows = computeRows({ metadata, summaries, races: races.filter((r) => r.office === office) });
     const h2 = document.createElement("h2");
@@ -125,19 +148,28 @@ async function main() {
   const select = document.getElementById("filter");
   const reporting = document.getElementById("reporting");
   reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
+  const note = document.getElementById("hidden-note");
+  if (failures.length) {
+    const warn = document.getElementById("load-warn");
+    warn.textContent = `Could not load: ${failures.join(", ")}. Affected races show no numbers.`;
+    warn.hidden = false;
+  }
   const apply = () => {
     const attr = select.value;
     const min = Number(reporting.value);
     for (const s of sections) {
-      const shown = filterByReporting(filterRows(s.rows, attr), min);
+      const { shown } = applyFilters(s.rows, attr, min);
       s.h2.textContent = `${s.title} (${shown.length} race${shown.length === 1 ? "" : "s"})`;
       s.table.setRows(shown);
       // With a category selected, a section with no races is just noise.
       s.h2.hidden = s.table.el.hidden = Boolean(attr) && shown.length === 0;
     }
-    const inCategory = filterRows(allRows, attr);
+    const all = applyFilters(allRows, attr, min);
     const label = reporting.selectedOptions[0].textContent;
-    showAverage(attr, filterByReporting(inCategory, min), inCategory.length, label);
+    showAverage(attr, all.shown, all.inCategory.length, label);
+    // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
+    note.hidden = all.hidden === 0;
+    note.textContent = `${all.hidden} race${all.hidden === 1 ? "" : "s"} hidden: under ${Math.round(min * 100)}% of the vote reporting.`;
   };
   reporting.addEventListener("change", apply);
   const names = attributeNames(allRows);

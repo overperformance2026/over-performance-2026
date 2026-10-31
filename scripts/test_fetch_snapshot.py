@@ -40,3 +40,17 @@ def test_slim_keeps_only_chosen_candidates_and_contests():
             }
         ]
     }
+
+
+def test_slim_tolerates_contest_without_progress_or_results():
+    sums = {"contests": [{"id": "ap:04:1"}, {"id": "ap:04:9", "results": None}]}
+    _, out = slim(RACES, META, sums)
+    assert out == {"contests": [{"id": "ap:04:1", "results": [], "progress": {"pct": None}}]}
+
+
+def test_sums_only_makes_three_calls_and_date_sets_url():
+    from fetch_snapshot import jobs, url
+
+    assert jobs(sums_only=True) == [("sum", "senate"), ("sum", "governor"), ("sum", "house")]
+    assert len(jobs(sums_only=False)) == 6
+    assert "2026-11-03" in url("sum", "house", "2026-11-03")
