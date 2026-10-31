@@ -1,0 +1,85 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource, PLAN_LABELS } from "./plans.js";
+
+const fmt = (t) => `T${t}`;
+const sum = (votes) => ({ contests: [{ id: "c", results: [{ id: "1", votes }] }] });
+
+test("a 2026 page may only read data/2026", () => {
+  assertDataDir("data/2026", "2026-11-03");
+  for (const bad of ["data/2024", "data/2026/old", "other/2026", "data/2025"]) {
+    assert.throws(() => assertDataDir(bad, "2026-11-03"), /does not match/, bad);
+  }
+});
+
+test("hasResults: empty, missing and zero-vote data have none", () => {
+  assert.equal(hasResults({ contests: [] }), false);
+  assert.equal(hasResults(null), false);
+  assert.equal(hasResults({}), false);
+  assert.equal(hasResults(sum(0)), false);
+  assert.equal(hasResults({ contests: [{ results: {} }] }), false);
+  assert.equal(hasResults(sum(5)), true);
+});
+
+test("fallBack walks A -> B -> C in order and skips plans with no source", async () => {
+  const asked = [];
+  const sources = {
+    C: async (o) => (asked.push(["C", o]), { summaries: sum(1), asOf: 100 }),
+  };
+  const got = await fallBack({ office: "senate", after: "A", sources });
+  assert.deepEqual(asked, [["C", "senate"]]);
+  assert.deepEqual(got, { plan: "C", summaries: sum(1), asOf: 100 });
+});
+
+test("fallBack: B slots in later, before C, with no other change", async () => {
+  const sources = {
+    B: async () => ({ summaries: sum(2), asOf: 50 }),
+    C: async () => ({ summaries: sum(1), asOf: 100 }),
+  };
+  assert.equal((await fallBack({ office: "house", after: "A", sources })).plan, "B");
+  assert.equal((await fallBack({ office: "house", after: "B", sources })).plan, "C");
+});
+
+test("fallBack skips a source that returns null or throws; returns null when none work", async () => {
+  const sources = { B: async () => { throw new Error("sheet down"); }, C: async () => null };
+  assert.equal(await fallBack({ office: "house", after: "A", sources }), null);
+  assert.equal(await fallBack({ office: "house", after: "C", sources: { C: async () => ({}) } }), null);
+});
+
+test("fallBack never replaces fresher data with an older snapshot", async () => {
+  const sources = { C: async () => ({ summaries: sum(1), asOf: 100 }) };
+  assert.equal(await fallBack({ office: "senate", after: "A", sources, newerThan: 200 }), null);
+  assert.equal((await fallBack({ office: "senate", after: "A", sources, newerThan: 100 })).plan, "C");
+});
+
+test("tracker: worst plan wins, oldest asOf, mixed flag", () => {
+  const t = createPlanTracker(["senate", "governor", "house"]);
+  assert.equal(t.summary(), null);
+  t.set("senate", "A", 300);
+  assert.deepEqual(t.summary(), { plan: "A", asOf: 300, mixed: false });
+  t.set("governor", "C", 100);
+  t.set("house", "A", 400);
+  assert.deepEqual(t.summary(), { plan: "C", asOf: 100, mixed: true });
+  t.set("governor", "A", 500); // switched back to A
+  assert.deepEqual(t.summary(), { plan: "A", asOf: 300, mixed: false });
+  t.set("house", "C", undefined);
+  assert.equal(t.summary().asOf, 300);
+});
+
+test("describeSource: no results yet is never blank", () => {
+  const base = { live: true, formatTime: fmt };
+  assert.match(describeSource({ ...base, summary: null, anyResults: false }), /No results yet/);
+  assert.match(describeSource({ ...base, summary: { plan: "C", asOf: 1, mixed: false }, anyResults: false }), /No results yet/);
+});
+
+test("describeSource: shows the active plan and the data-as-of time", () => {
+  const live = describeSource({ live: true, formatTime: fmt, anyResults: true, summary: { plan: "A", asOf: 7, mixed: false } });
+  assert.ok(live.includes(PLAN_LABELS.A) && live.includes("Data as of T7") && !live.includes("unavailable"));
+  const fb = describeSource({ live: true, formatTime: fmt, anyResults: true, summary: { plan: "C", asOf: 9, mixed: true } });
+  assert.ok(fb.includes(PLAN_LABELS.C) && fb.includes("live feed is unavailable") && fb.includes("Data as of T9"));
+  assert.ok(fb.includes("older source"));
+  const stat = describeSource({ live: false, formatTime: fmt, anyResults: true, summary: { plan: "C", asOf: 9, mixed: false } });
+  assert.ok(stat.includes("Committed snapshot") && !stat.includes("unavailable"));
+  assert.match(describeSource({ live: true, formatTime: fmt, anyResults: true, stale: true, summary: { plan: "A", asOf: 1, mixed: false } }), /out of date/);
+  assert.match(describeSource({ live: false, formatTime: fmt, anyResults: true, summary: { plan: "C", asOf: null, mixed: false } }), /Data as of unknown/);
+});

@@ -1,6 +1,15 @@
 import { computeRows, attributeNames, averageOverUnder, applyFilters } from "./compute.js";
+import { createPoller, makeFetchOffice, isStale } from "./poller.js";
+import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource } from "./plans.js";
 
-const DATA = "data/2024";
+// Each page says what it shows: <body data-dir="data/2024" data-date="2024-11-05" data-live="false">.
+// live pages poll Politico (Plan A) and fall back to the committed snapshot (Plan C).
+const CONFIG = {
+  dir: document.body.dataset.dir ?? "data/2024",
+  date: document.body.dataset.date ?? "2024-11-05",
+  live: document.body.dataset.live === "true",
+};
+const DATA = CONFIG.dir;
 // Minimum share of expected vote counted for a race to show (and to count in the average).
 const REPORTING_OPTIONS = [[0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
@@ -104,47 +113,58 @@ function showAverage(attr, rows, total, minLabel) {
   el.append(strong, small);
 }
 
-// One office's files failing to load must not blank the whole page: computeRows turns null
-// metadata or summaries into rows with a problem and no numbers.
+// One office's candidate file failing to load must not blank the whole page: computeRows turns
+// null metadata or summaries into rows with a problem and no numbers.
 const getJsonOrNull = (path, failures, what) =>
   getJson(path).catch(() => {
     failures.push(what);
     return null;
   });
 
-// "Data as of" line from data/<year>/updated.json (written by the fetch script). Optional.
-async function showUpdated() {
-  try {
-    const { fetchedAt } = await getJson(`${DATA}/updated.json`);
-    const when = new Date(fetchedAt);
-    if (Number.isNaN(when.getTime())) return;
-    document.getElementById("updated").textContent =
-      `Data as of ${when.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}.`;
-  } catch {
-    /* no timestamp: leave the line empty */
-  }
-}
+const formatTime = (ms) => new Date(ms).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
 
 async function main() {
+  assertDataDir(DATA, CONFIG.date); // a page only ever reads its own year's folder
   const root = document.getElementById("sections");
-  const races = await getJson(`${DATA}/races.json`);
-  showUpdated();
-  const sections = [];
+  let races;
+  try {
+    races = await getJson(`${DATA}/races.json`);
+  } catch (e) {
+    if (!CONFIG.live) throw e;
+    races = []; // live page before its data exists: shows "No results yet", never blank
+  }
+
+  // Plan C (committed snapshot) is also the first thing drawn, so the page is never empty.
+  const snapshotAsOf = await getJson(`${DATA}/updated.json`).then((j) => Date.parse(j.fetchedAt)).catch(() => NaN);
+  const sources = {
+    C: async (office) => ({ summaries: await getJson(`${DATA}/sum-${office}.json`), asOf: Number.isFinite(snapshotAsOf) ? snapshotAsOf : null }),
+    // B (spreadsheet backup) plugs in here later: sources.B = async (office) => ({summaries, asOf}).
+  };
+  const tracker = createPlanTracker(OFFICES.map(([office]) => office));
   const failures = [];
+
+  const sections = [];
+  const setOffice = (s, summaries, plan, asOf) => {
+    s.rows = computeRows({ metadata: s.metadata, summaries, races: s.races });
+    s.hasResults = hasResults(summaries);
+    tracker.set(s.office, plan, asOf);
+  };
   for (const [office, title] of OFFICES) {
-    const [metadata, summaries] = await Promise.all([
+    const [metadata, snap] = await Promise.all([
       getJsonOrNull(`${DATA}/meta-${office}.json`, failures, `${title} candidates`),
-      getJsonOrNull(`${DATA}/sum-${office}.json`, failures, `${title} results`),
+      sources.C(office).catch(() => (failures.push(`${title} results`), null)),
     ]);
-    const rows = computeRows({ metadata, summaries, races: races.filter((r) => r.office === office) });
     const h2 = document.createElement("h2");
-    const table = renderTable(rows);
-    root.append(h2, table.el);
-    sections.push({ title, rows, h2, table });
+    const s = { office, title, metadata, races: races.filter((r) => r.office === office), h2, rows: [], hasResults: false };
+    s.table = renderTable([]);
+    setOffice(s, snap?.summaries ?? null, "C", snap?.asOf ?? null);
+    s.table.setRows(s.rows);
+    root.append(h2, s.table.el);
+    sections.push(s);
   }
 
   // Two filters drive all three sections: category (Sheet TRUE/FALSE columns) and % reporting.
-  const allRows = sections.flatMap((s) => s.rows);
+  const allRows = () => sections.flatMap((s) => s.rows);
   const select = document.getElementById("filter");
   const reporting = document.getElementById("reporting");
   reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
@@ -154,6 +174,16 @@ async function main() {
     warn.textContent = `Could not load: ${failures.join(", ")}. Affected races show no numbers.`;
     warn.hidden = false;
   }
+
+  // The public status line: which plan is active and when the data is as of.
+  const renderSource = () => {
+    const summary = tracker.summary();
+    const stale = CONFIG.live && summary?.plan === "A" && isStale(summary.asOf, Date.now());
+    document.getElementById("source").textContent = describeSource({
+      summary, live: CONFIG.live, anyResults: sections.some((s) => s.hasResults), formatTime, stale,
+    });
+  };
+
   const apply = () => {
     const attr = select.value;
     const min = Number(reporting.value);
@@ -164,21 +194,58 @@ async function main() {
       // With a category selected, a section with no races is just noise.
       s.h2.hidden = s.table.el.hidden = Boolean(attr) && shown.length === 0;
     }
-    const all = applyFilters(allRows, attr, min);
+    const all = applyFilters(allRows(), attr, min);
     const label = reporting.selectedOptions[0].textContent;
     showAverage(attr, all.shown, all.inCategory.length, label);
     // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
     note.hidden = all.hidden === 0;
     note.textContent = `${all.hidden} race${all.hidden === 1 ? "" : "s"} hidden: under ${Math.round(min * 100)}% of the vote reporting.`;
+    renderSource();
   };
   reporting.addEventListener("change", apply);
-  const names = attributeNames(allRows);
+  const names = attributeNames(allRows());
   if (names.length) {
     select.append(new Option("All races", ""), ...names.map((n) => new Option(n, n)));
     select.addEventListener("change", apply);
     document.getElementById("filter-box").hidden = false;
   }
   apply();
+
+  if (CONFIG.live && races.length) startLive({ sections, tracker, sources, setOffice, apply, renderSource });
+}
+
+// Plan A: poll Politico (poller.js). A failure falls back to the next plan in order (B, then C),
+// but never replaces newer live data with an older snapshot. A later success switches back to A.
+// A 429 stops polling for this viewer (a page reload tries again).
+function startLive({ sections, tracker, sources, setOffice, apply, renderSource }) {
+  const byOffice = new Map(sections.map((s) => [s.office, s]));
+  const fallBackFor = async (office) => {
+    const cur = tracker.get(office);
+    if (cur && cur.plan !== "A") return renderSource(); // already on a backup
+    const got = await fallBack({ office, after: "A", sources, newerThan: cur?.asOf ?? -Infinity });
+    if (got) {
+      setOffice(byOffice.get(office), got.summaries, got.plan, got.asOf);
+      apply();
+    } else {
+      renderSource(); // kept the last live data; the status line shows the stale warning
+    }
+  };
+  createPoller({
+    offices: sections.map((s) => s.office),
+    fetchOffice: makeFetchOffice({ date: CONFIG.date }),
+    onData: (office, summaries) => {
+      setOffice(byOffice.get(office), summaries, "A", Date.now());
+      apply();
+    },
+    onError: fallBackFor,
+    onRateLimited: () => Promise.all(sections.map((s) => fallBackFor(s.office))),
+    isHidden: () => document.hidden,
+    onVisibilityChange: (cb) => document.addEventListener("visibilitychange", cb),
+    setTimer: (fn, ms) => setTimeout(fn, ms),
+    clearTimer: (h) => clearTimeout(h),
+    now: () => Date.now(),
+  }).start();
+  setInterval(renderSource, 15_000); // let the stale warning appear without waiting for a fetch
 }
 
 main().catch((e) => {
@@ -187,3 +254,4 @@ main().catch((e) => {
   p.textContent = `Could not load data: ${e.message}`;
   document.getElementById("sections").appendChild(p);
 });
+
