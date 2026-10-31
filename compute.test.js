@@ -230,8 +230,14 @@ test("incumbencyEffect: excludes rows below the threshold, null over/under and u
   // Raising the threshold removes rows: only the 0.9-reporting ones remain at 0.85; at 0.95 none.
   assert.equal(incumbencyEffect(SAMPLE, 0.85).enabled, true);
   assert.equal(incumbencyEffect(SAMPLE, 0.95).enabled, false);
-  // Unknown % reporting is kept, like the % reporting filter.
-  assert.equal(incumbencyEffect([...SAMPLE, ir("dem", 0.1, null)], 0.95).n.dem, 1);
+  // Unknown % reporting can't meet a threshold: excluded whenever minPct > 0, counted at 0.
+  const unknown = [...SAMPLE, ir("dem", 0.1, null)];
+  assert.equal(incumbencyEffect(unknown, 0.5).n.dem, 5);
+  assert.equal(incumbencyEffect(unknown, 0.0001).n.dem, 5);
+  assert.equal(incumbencyEffect(unknown, 0.95).n.dem, 0);
+  assert.equal(incumbencyEffect(unknown, 0).n.dem, 6);
+  // ...while the table filter still keeps such a row.
+  assert.equal(filterByReporting([ir("dem", 0.1, null)], 0.5).length, 1);
 });
 
 test("incumbencyEffect ignores the category: it takes rows, not a filter", () => {

@@ -99,8 +99,9 @@ export function applyFilters(rows, attr, min) {
  * Incumbency effect, pooled across offices. The Harris coefficient is fixed at 1, so the regression
  * of (dem2p - harris2p) on intercept + DemInc + RepInc is just group means of the raw over/under:
  *   dem = mean(raw | Dem incumbent) - mean(raw | open),  rep = mean(raw | Rep incumbent) - mean(raw | open).
- * Sample: races with a numeric raw over/under at least `minPct` reporting (unknown % reporting is
- * kept, as in filterByReporting) and a known incumbent group. The category filter plays no part.
+ * Sample: races with a numeric raw over/under at least `minPct` reporting (unknown % reporting
+ * counts only when minPct is 0; the table filter, filterByReporting, still keeps such rows) and a
+ * known incumbent group. The category filter plays no part.
  * enabled needs MIN_GROUP races in each of dem / rep / open; dem and rep are null when disabled.
  * @returns {{dem: number|null, rep: number|null, n: {dem: number, rep: number, open: number}, enabled: boolean}}
  */
@@ -108,7 +109,8 @@ export function incumbencyEffect(rows, minPct) {
   const groups = { dem: [], rep: [], open: [] };
   for (const r of rows) {
     if (!isNum(r.rawOverUnder) || !INCUMBENT_GROUPS.includes(r.incumbent)) continue;
-    if (r.pctReporting !== null && r.pctReporting < minPct) continue;
+    // Unknown % reporting can't be shown to meet a threshold, so it only counts when there is none.
+    if (r.pctReporting === null ? minPct > 0 : r.pctReporting < minPct) continue;
     groups[r.incumbent].push(r.rawOverUnder);
   }
   const n = { dem: groups.dem.length, rep: groups.rep.length, open: groups.open.length };
