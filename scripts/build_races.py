@@ -100,8 +100,8 @@ def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]
 def apply_categories(races: list[dict], cat_rows: list[dict]) -> list[dict]:
     """Add each category-tab row's category to the matching race's attrs.
 
-    cat_rows: category, office, state/district, candidate, check. Principal rule: check = 0 (or
-    FALSE) skips the row; any other value, including blank, applies it. Matches on office + label;
+    cat_rows: category, office, state/district, candidate, check. Principal rule: check = 0, FALSE
+    or blank skips the row; any other value applies it. Matches on office + label;
     the candidate must be exactly the race's Dem as Politico spells it, so an applied row that
     matches no race or names the wrong candidate fails the build. Skipped rows are listed in the
     output because each one leaves a candidate out of the category average.
@@ -113,7 +113,7 @@ def apply_categories(races: list[dict], cat_rows: list[dict]) -> list[dict]:
     skipped: list[str] = []
     for i, c in enumerate(cat_rows, start=2):
         where = f"categories line {i} ({c['category']}: {c['office']} {c['state/district']})"
-        if c["check"].strip().upper() in ("0", "FALSE"):
+        if c["check"].strip().upper() in ("0", "FALSE", ""):
             skipped.append(f"{where} {c['candidate']}")
             continue
         race = next(
@@ -132,7 +132,7 @@ def apply_categories(races: list[dict], cat_rows: list[dict]) -> list[dict]:
             race["attrs"].append(c["category"].strip())
     if errors:
         raise SystemExit("apply_categories failed:\n  " + "\n  ".join(errors))
-    print(f"categories: {len(cat_rows) - len(skipped)} rows applied, {len(skipped)} skipped (check = 0)")
+    print(f"categories: {len(cat_rows) - len(skipped)} rows applied, {len(skipped)} skipped (check = 0 or blank)")
     for s in skipped:
         print(f"  skipped: {s}")
     return races

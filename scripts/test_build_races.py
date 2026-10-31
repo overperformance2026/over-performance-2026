@@ -78,13 +78,13 @@ class ApplyCategories(unittest.TestCase):
             apply_categories(self.races(), [{**CATS[0], "candidate": "Someone Else"}])
         self.assertIn("Someone Else", str(ctx.exception))
 
-    def test_check_zero_skips_the_row(self):
-        for check in ("0", "FALSE", "false", " 0 "):
+    def test_check_zero_false_or_blank_skips_the_row(self):
+        for check in ("0", "FALSE", "false", " 0 ", "", "  "):
             races = apply_categories(self.races(), [{**CATS[0], "check": check}])
             self.assertEqual(races[0]["attrs"], [], check)
 
     def test_any_other_check_applies_the_row(self):
-        for check in ("1", "TRUE", "", "yes"):
+        for check in ("1", "TRUE", "yes"):
             races = apply_categories(self.races(), [{**CATS[0], "check": check}])
             self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"], check)
 
