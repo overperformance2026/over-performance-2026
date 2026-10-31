@@ -78,23 +78,15 @@ class ApplyCategories(unittest.TestCase):
             apply_categories(self.races(), [{**CATS[0], "candidate": "Someone Else"}])
         self.assertIn("Someone Else", str(ctx.exception))
 
-    def test_check_is_strict_like_attribute_columns(self):
-        for ok in ("1", "TRUE", "true"):
-            races = apply_categories(self.races(), [{**CATS[0], "check": ok}])
-            self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"], ok)
-        for skip in ("0", "FALSE", ""):
-            races = apply_categories(self.races(), [{**CATS[0], "check": skip}])
-            self.assertEqual(races[0]["attrs"], [], skip)
-        with self.assertRaises(SystemExit) as ctx:
-            apply_categories(self.races(), [{**CATS[0], "check": "yes"}])
-        self.assertIn("check", str(ctx.exception))
+    def test_check_is_ignored_and_no_row_is_skipped(self):
+        for check in ("1", "TRUE", "0", "FALSE", "", "yes"):
+            races = apply_categories(self.races(), [{**CATS[0], "check": check}])
+            self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"], check)
 
-    def test_accepts_the_sheets_dem_spelling(self):
-        cats = [{**CATS[0], "candidate": "D. Dem"}]
-        with self.assertRaises(SystemExit):
-            apply_categories(self.races(), cats)
-        races = apply_categories(self.races(), cats, {("senate", "AZ"): "D. Dem"})
-        self.assertEqual(races[0]["attrs"], ["Sanders Endorsed"])
+    def test_unchecked_name_mismatch_fails_not_skips(self):
+        with self.assertRaises(SystemExit) as ctx:
+            apply_categories(self.races(), [{**CATS[0], "candidate": "D. Dem", "check": "0"}])
+        self.assertIn("D. Dem", str(ctx.exception))
 
     def test_duplicate_office_label_fails(self):
         races = self.races() * 2

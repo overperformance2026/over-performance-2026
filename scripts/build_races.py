@@ -97,32 +97,20 @@ def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]
     return races
 
 
-def apply_categories(
-    races: list[dict],
-    cat_rows: list[dict],
-    sheet_names: dict[tuple[str, str], str] | None = None,
-) -> list[dict]:
+def apply_categories(races: list[dict], cat_rows: list[dict]) -> list[dict]:
     """Add each category-tab row's category to the matching race's attrs.
 
-    cat_rows: category, office, state/district, candidate, check. check is strict like the
-    attribute columns: 1/TRUE includes the row, 0/FALSE/blank skips it, anything else fails.
-    Matches on office + label; the candidate must be the race's Dem, spelled as Politico does or
-    as the Sheet's Dem column does (sheet_names: (office, label) -> Sheet spelling).
+    cat_rows: category, office, state/district, candidate (check is ignored: it is the Sheet's own
+    name-match flag, and the match below does the real check). Matches on office + label; the
+    candidate must be exactly the race's Dem as Politico spells it. No row is ever skipped: a row
+    that matches no race or names the wrong candidate fails the build.
     """
     errors: list[str] = []
     keys = [(r["office"], r["label"]) for r in races]
     for key in sorted({k for k in keys if keys.count(k) > 1}):
         errors.append(f"duplicate race {key[0]} {key[1]}")
-    skipped = 0
     for i, c in enumerate(cat_rows, start=2):
         where = f"categories line {i} ({c['category']}: {c['office']} {c['state/district']})"
-        check = c["check"].strip().upper()
-        if check in ("0", "FALSE", ""):
-            skipped += 1
-            continue
-        if check not in ("1", "TRUE"):
-            errors.append(f"{where}: check {c['check']!r} is not 1/TRUE/0/FALSE/blank")
-            continue
         race = next(
             (
                 r
@@ -133,16 +121,13 @@ def apply_categories(
         )
         if race is None:
             errors.append(f"{where}: matches no race")
-        elif c["candidate"].strip() not in {
-            race["demName"],
-            (sheet_names or {}).get((race["office"], race["label"])),
-        }:
+        elif c["candidate"].strip() != race["demName"]:
             errors.append(f"{where}: candidate {c['candidate']!r} but the race's Dem is {race['demName']!r}")
         elif c["category"].strip() not in race["attrs"]:
             race["attrs"].append(c["category"].strip())
     if errors:
         raise SystemExit("apply_categories failed:\n  " + "\n  ".join(errors))
-    print(f"categories: {len(cat_rows) - skipped} rows applied, {skipped} skipped (check off)")
+    print(f"categories: {len(cat_rows)} rows applied")
     return races
 
 
@@ -155,12 +140,7 @@ def main(sheet: str, data_dir: str, out: str, categories: str | None = None) -> 
     races = build_races(rows, metadata)
     if categories:
         cat_rows = list(csv.DictReader(Path(categories).open(encoding="utf-8")))
-        # build_races keeps one race per sheet row, in order, so the two lists line up.
-        sheet_names = {
-            (r["office"], r["label"]): row["Democrat (or non-R indie)"].strip()
-            for r, row in zip(races, rows)
-        }
-        races = apply_categories(races, cat_rows, sheet_names)
+        races = apply_categories(races, cat_rows)
     Path(out).write_text(json.dumps(races, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {out}: {len(races)} races")
 
