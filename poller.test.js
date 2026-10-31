@@ -16,11 +16,13 @@ function harness({ fail = () => false, throwInData = () => false } = {}) {
   const calls = []; // [timeMs, office]
   const data = [];
   const errors = [];
+  const rateLimited = [];
   const poller = createPoller({
     offices: OFFICES,
     fetchOffice: async (office) => {
       calls.push([t, office]);
-      if (fail(office, calls.length)) throw new Error("boom");
+      const f = fail(office, calls.length);
+      if (f) throw Object.assign(new Error("boom"), f === 429 ? { status: 429 } : {});
       return { office };
     },
     onData: (office, d) => {
@@ -28,6 +30,7 @@ function harness({ fail = () => false, throwInData = () => false } = {}) {
       data.push([office, d.office]);
     },
     onError: (office) => errors.push(office),
+    onRateLimited: (office) => rateLimited.push(office),
     isHidden: () => hidden,
     onVisibilityChange: (cb) => (visibilityCb = cb),
     setTimer: (fn, ms) => {
@@ -55,7 +58,7 @@ function harness({ fail = () => false, throwInData = () => false } = {}) {
     hidden = h;
     visibilityCb();
   };
-  return { poller, advance, setHidden, calls, data, errors, now: () => t };
+  return { poller, advance, setHidden, calls, data, errors, rateLimited, now: () => t };
 }
 
 test("first load: senate 0 s, governor 2 s, house 4 s, each rendered as it arrives", async () => {
@@ -135,6 +138,21 @@ test("starting while hidden waits for the tab to show", async () => {
   h.setHidden(false);
   await h.advance(0);
   assert.deepEqual(h.calls, [[60000, "senate"]]);
+});
+
+test("a 429 stops polling for good: onRateLimited once, no more requests, not even after hide/show", async () => {
+  const h = harness({ fail: (office) => (office === "governor" ? 429 : false) });
+  h.poller.start();
+  await h.advance(2000);
+  assert.deepEqual(h.rateLimited, ["governor"]);
+  assert.deepEqual(h.errors, [], "a 429 is not an ordinary error");
+  const n = h.calls.length;
+  await h.advance(10 * 60_000);
+  h.setHidden(true);
+  h.setHidden(false);
+  await h.advance(10 * 60_000);
+  assert.equal(h.calls.length, n);
+  assert.deepEqual(h.rateLimited, ["governor"]);
 });
 
 test("onData throwing reaches onError and the cycle continues", async () => {

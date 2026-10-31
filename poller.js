@@ -82,6 +82,8 @@ export function makeFetchOffice({
  * @param {(office: string) => Promise<any>} o.fetchOffice
  * @param {(office: string, data: any) => void} o.onData
  * @param {(office: string, err: unknown) => void} [o.onError]
+ * @param {(office: string, err: unknown) => void} [o.onRateLimited]  a 429: polling has stopped for
+ *   good (no retry until the page reloads); the caller falls back to the committed snapshot
  * @param {() => boolean} o.isHidden
  * @param {(cb: () => void) => void} o.onVisibilityChange  registers the visibilitychange listener
  * @param {(fn: () => void, ms: number) => any} o.setTimer
@@ -89,12 +91,13 @@ export function makeFetchOffice({
  * @param {() => number} o.now
  */
 export function createPoller(o) {
-  const { offices, fetchOffice, onData, onError = () => {}, isHidden, setTimer, clearTimer, now } = o;
+  const { offices, fetchOffice, onData, onError = () => {}, onRateLimited = () => {}, isHidden, setTimer, clearTimer, now } = o;
   let next = 0; // index into offices of the next fetch
   let fetched = 0; // fetches started so far; < offices.length means still in the first load
   let timer = null;
   let lastAt = -Infinity;
   let started = false;
+  let stopped = false;
 
   const gap = () => (fetched < offices.length ? INITIAL_GAP_MS : CYCLE_MS);
 
@@ -105,7 +108,7 @@ export function createPoller(o) {
 
   function step() {
     timer = null;
-    if (isHidden()) return; // resumed by the visibility handler
+    if (stopped || isHidden()) return; // hidden: resumed by the visibility handler
     const office = offices[next];
     next = (next + 1) % offices.length;
     fetched += 1;
@@ -115,12 +118,24 @@ export function createPoller(o) {
     Promise.resolve()
       .then(() => fetchOffice(office))
       .then((data) => onData(office, data))
-      .catch((err) => onError(office, err))
-      .catch(() => {}); // onError itself threw: nothing left to do, but never an unhandled rejection
+      .catch((err) => {
+        if (err?.status === 429) return stopForRateLimit(office, err);
+        onError(office, err);
+      })
+      .catch(() => {}); // a callback threw: nothing left to do, but never an unhandled rejection
+  }
+
+  // Politico said 429: this viewer stops polling for good (a page reload tries again) and the
+  // caller falls back to the committed snapshot.
+  function stopForRateLimit(office, err) {
+    stopped = true;
+    clearTimer(timer);
+    timer = null;
+    onRateLimited(office, err);
   }
 
   function onVisibility() {
-    if (!started) return;
+    if (!started || stopped) return;
     if (isHidden()) {
       clearTimer(timer);
       timer = null;
