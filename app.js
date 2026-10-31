@@ -199,7 +199,7 @@ async function main() {
     incBox.closest("label").classList.toggle("off", !effect.enabled); // greyed out
     incInfo.textContent = effect.enabled
       ? `(Dem. incumbents ${signed(effect.dem)}, Rep. incumbents ${signed(effect.rep)})`
-      : "Not enough results reporting to calculate incumbency effects";
+      : "(Not enough results reporting to calculate incumbency effects)";
     document.getElementById("sections").classList.toggle("show-incumbency", incBox.checked);
   };
 
