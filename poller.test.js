@@ -1,11 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createPoller, summariesUrl, CYCLE_MS, INITIAL_GAP_MS } from "./poller.js";
+import {
+  createPoller, summariesUrl, makeFetchOffice, isStale, HttpError, CYCLE_MS, INITIAL_GAP_MS, STALE_AFTER_MS,
+} from "./poller.js";
 
 const OFFICES = ["senate", "governor", "house"];
 
 // A manual clock: advance(ms) runs due timers in time order, then lets promises settle.
-function harness({ fail = () => false } = {}) {
+function harness({ fail = () => false, throwInData = () => false } = {}) {
   let t = 0;
   let nextId = 1;
   const timers = new Map();
@@ -21,7 +23,10 @@ function harness({ fail = () => false } = {}) {
       if (fail(office, calls.length)) throw new Error("boom");
       return { office };
     },
-    onData: (office, d) => data.push([office, d.office]),
+    onData: (office, d) => {
+      if (throwInData(office)) throw new Error("render bug");
+      data.push([office, d.office]);
+    },
     onError: (office) => errors.push(office),
     isHidden: () => hidden,
     onVisibilityChange: (cb) => (visibilityCb = cb),
@@ -130,6 +135,71 @@ test("starting while hidden waits for the tab to show", async () => {
   h.setHidden(false);
   await h.advance(0);
   assert.deepEqual(h.calls, [[60000, "senate"]]);
+});
+
+test("onData throwing reaches onError and the cycle continues", async () => {
+  const h = harness({ throwInData: (office) => office === "senate" });
+  h.poller.start();
+  await h.advance(4000);
+  assert.deepEqual(h.errors, ["senate"]);
+  assert.equal(h.calls.length, 3);
+});
+
+// ---- makeFetchOffice ----------------------------------------------------
+
+const okRes = (body, status = 200) => ({ ok: status < 400, status, json: async () => body });
+
+test("makeFetchOffice: returns good data, requests a query-free URL with the default cache mode", async () => {
+  const seen = [];
+  const f = makeFetchOffice({
+    date: "2026-11-03",
+    fetchImpl: async (url, opts) => (seen.push([url, Object.keys(opts)]), okRes({ contests: [] })),
+  });
+  assert.deepEqual(await f("senate"), { contests: [] });
+  assert.ok(!seen[0][0].includes("?"));
+  assert.deepEqual(seen[0][1], ["signal"]); // no cache option set
+});
+
+test("makeFetchOffice: 429 and 500 throw HttpError with the status", async () => {
+  for (const status of [429, 500]) {
+    const f = makeFetchOffice({ date: "d", fetchImpl: async () => okRes({}, status) });
+    await assert.rejects(f("house"), (e) => e instanceof HttpError && e.status === status);
+  }
+});
+
+test("makeFetchOffice: malformed bodies throw; empty contests is valid", async () => {
+  for (const body of [null, [], {}, { contests: {} }, { contests: [{ id: "x", results: {} }] }]) {
+    await assert.rejects(makeFetchOffice({ date: "d", fetchImpl: async () => okRes(body) })("house"), /malformed/);
+  }
+  const ok = await makeFetchOffice({ date: "d", fetchImpl: async () => okRes({ contests: [{ id: "x" }] }) })("house");
+  assert.equal(ok.contests.length, 1);
+});
+
+test("makeFetchOffice: a hung fetch is aborted at the timeout and rejects", async () => {
+  let fire;
+  let cleared = false;
+  const f = makeFetchOffice({
+    date: "d",
+    timeoutMs: 15_000,
+    setTimer: (fn, ms) => {
+      assert.equal(ms, 15_000);
+      fire = fn;
+      return 1;
+    },
+    clearTimer: () => (cleared = true),
+    fetchImpl: (url, { signal }) =>
+      new Promise((_, reject) => signal.addEventListener("abort", () => reject(new Error("aborted")))),
+  });
+  const p = f("senate");
+  fire();
+  await assert.rejects(p, /aborted/);
+  assert.ok(cleared);
+});
+
+test("isStale is based on time since the last success", () => {
+  assert.equal(isStale(null, 1000), true);
+  assert.equal(isStale(1000, 1000 + STALE_AFTER_MS), false);
+  assert.equal(isStale(1000, 1001 + STALE_AFTER_MS), true);
 });
 
 test("Politico URLs never carry a query string or fragment", () => {

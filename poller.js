@@ -22,9 +22,63 @@ export function summariesUrl(date, office) {
   return `${BASE}/results__${date}__collections__${date}-collection-${office}__summaries/data.json`;
 }
 
+export const FETCH_TIMEOUT_MS = 15_000;
+/** A office's data older than this (since its last SUCCESS) gets the stale warning. */
+export const STALE_AFTER_MS = 150_000;
+
+/** A non-2xx response. status 429 means Politico is rate-limiting this viewer. */
+export class HttpError extends Error {
+  constructor(status) {
+    super(`HTTP ${status}`);
+    this.status = status;
+  }
+}
+
+/** Stale = no successful fetch within maxAgeMs (or none yet). Not based on an error count. */
+export function isStale(lastSuccessAt, nowMs, maxAgeMs = STALE_AFTER_MS) {
+  return lastSuccessAt === null || lastSuccessAt === undefined || nowMs - lastSuccessAt > maxAgeMs;
+}
+
+/** A summaries payload we can use: {contests: [...]} with array `results` where present. */
+function validSummaries(d) {
+  return (
+    d !== null &&
+    typeof d === "object" &&
+    Array.isArray(d.contests) &&
+    d.contests.every((c) => c !== null && typeof c === "object" && (c.results === undefined || Array.isArray(c.results)))
+  );
+}
+
+/**
+ * Builds the fetchOffice for createPoller: GET the summaries file (no query string, default cache
+ * mode), abort after timeoutMs, throw HttpError on non-2xx (fetch resolves normally on 429/500)
+ * and throw on a malformed body, so every failure reaches onError.
+ */
+export function makeFetchOffice({
+  date,
+  fetchImpl = (...a) => fetch(...a),
+  timeoutMs = FETCH_TIMEOUT_MS,
+  setTimer = (fn, ms) => setTimeout(fn, ms),
+  clearTimer = (h) => clearTimeout(h),
+}) {
+  return async (office) => {
+    const ctl = new AbortController();
+    const timer = setTimer(() => ctl.abort(), timeoutMs);
+    try {
+      const res = await fetchImpl(summariesUrl(date, office), { signal: ctl.signal });
+      if (!res.ok) throw new HttpError(res.status);
+      const data = await res.json();
+      if (!validSummaries(data)) throw new Error(`${office}: malformed summaries`);
+      return data;
+    } finally {
+      clearTimer(timer);
+    }
+  };
+}
+
 /**
  * @param {object} o
- * @param {string[]} o.offices        round-robin order, e.g. ["senate", "governor", "house"]
+ * @param {string[]} o.offices       round-robin order, e.g. ["senate", "governor", "house"]
  * @param {(office: string) => Promise<any>} o.fetchOffice
  * @param {(office: string, data: any) => void} o.onData
  * @param {(office: string, err: unknown) => void} [o.onError]
@@ -57,9 +111,12 @@ export function createPoller(o) {
     fetched += 1;
     lastAt = now();
     schedule(gap()); // schedule before awaiting: a slow or failed fetch never stalls the cycle
+    // One .catch after both steps: a throw from fetchOffice OR from onData (a render bug) is an error.
     Promise.resolve()
       .then(() => fetchOffice(office))
-      .then((data) => onData(office, data), (err) => onError(office, err));
+      .then((data) => onData(office, data))
+      .catch((err) => onError(office, err))
+      .catch(() => {}); // onError itself threw: nothing left to do, but never an unhandled rejection
   }
 
   function onVisibility() {
