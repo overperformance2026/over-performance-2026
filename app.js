@@ -2,7 +2,7 @@ import { attributeNames, averageOverUnder, applyFilters, incumbencyEffect, apply
 import { createPoller, makeFetchOffice } from "./poller.js";
 import { createRefresher } from "./refresher.js";
 import { parseSheet, parseCategories, applyCategories, fetchSheetText } from "./sheet.js";
-import { buildRows, backupIndex } from "./merge.js";
+import { buildRows, backupLayers } from "./merge.js";
 import { assertDataDir, summarizeSources, liveIsStale, describeSource } from "./status.js";
 
 // One code path for every year. Each page says what it shows, e.g.
@@ -191,12 +191,7 @@ async function main() {
     const base = state.live ?? state.committed;
     if (!base) return;
     const tagged = applyCategories(base.races, state.liveCats ?? state.committedCats ?? []);
-    const rows = buildRows({
-      races: tagged.races,
-      committed: backupIndex(state.committed?.races ?? []),
-      sheet: backupIndex(state.live?.races ?? []),
-      politico: state.politico,
-    });
+    const rows = buildRows({ races: tagged.races, ...backupLayers(state.committed, state.live), politico: state.politico });
     for (const s of sections) s.rows = rows.filter((r) => r.office === s.office);
     state.warnings = [
       ...base.warnings,
@@ -305,6 +300,7 @@ async function main() {
   reloadSheet();
   createRefresher({
     load: reloadSheet,
+    onError: (err) => console.warn(`[sheet] re-read failed: ${err.message}`),
     isHidden: () => document.hidden,
     onVisibilityChange: (cb) => document.addEventListener("visibilitychange", cb),
     setTimer: (fn, ms) => setTimeout(fn, ms),
@@ -319,8 +315,8 @@ async function main() {
     fetchOffice: makeFetchOffice({ date: CONFIG.date }),
     onData: (office, summaries) => {
       state.politico[office] = { summaries, asOf: Date.now() };
-      state.lastSuccess[office] = Date.now();
       refresh();
+      state.lastSuccess[office] = Date.now(); // only after the page rendered it: a render bug must still raise the stale warning
     },
     onError: (office, err) => console.warn(`[politico] ${office}: ${err.message}`),
     onRateLimited: () => {

@@ -92,3 +92,17 @@ export function buildRows({ races, committed = new Map(), sheet = new Map(), pol
 
 /** Index a parsed race list's backups by contest ID, for buildRows. */
 export const backupIndex = (races) => new Map(races.filter((r) => r.backup).map((r) => [r.contestId, r.backup]));
+
+/**
+ * The backup layers for buildRows. The committed copy is only a STAND-IN for the published Sheet: once
+ * the Sheet has loaded it replaces the committed backups entirely, so a typo that was committed can be
+ * undone by clearing it in the Sheet (otherwise its higher total would keep winning). Before the Sheet
+ * has loaded, the committed backups are all there is.
+ * @param {{races: object[]}|null} committed  parsed committed copy
+ * @param {{races: object[]}|null} live       parsed published Sheet, or null if it has not loaded
+ */
+export function backupLayers(committed, live) {
+  return live
+    ? { committed: new Map(), sheet: backupIndex(live.races) }
+    : { committed: backupIndex(committed?.races ?? []), sheet: new Map() };
+}

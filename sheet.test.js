@@ -30,12 +30,46 @@ test("cell parsers", () => {
   for (const bad of ["", "abc", "-5", "1.5", "12k", null]) assert.equal(parseVotes(bad), null, String(bad));
   for (const ok of ["85%", "85", "0.85", " 85% "]) assert.ok(Math.abs(parsePct(ok) - 0.85) < 1e-12, ok);
   assert.equal(parsePct("100"), 1);
-  for (const bad of ["", "abc", "-1", "150%", "250"]) assert.equal(parsePct(bad), null, bad);
-  assert.equal(parseTime("10/1/2025 8:01:18"), new Date(2025, 9, 1, 8, 1, 18).getTime());
+  for (const bad of ["", "abc", "-1", "150%", "250", "100.5", "1e3"]) assert.equal(parsePct(bad), null, bad);
+  // a bare whole number is percent points, so typing "1" on election night means 1%, not 100%
+  assert.equal(parsePct("1"), 0.01);
+  assert.equal(parsePct("0"), 0);
+  assert.equal(parsePct("45"), 0.45);
+  assert.equal(parsePct("45.5"), 0.455);
+  assert.equal(parsePct("1.0"), 1, "a decimal up to 1 is a fraction");
+  assert.equal(parsePct("0.99"), 0.99);
+  assert.equal(parsePct("0.9999"), 0.9999);
+  assert.equal(parsePct("100%"), 1);
+  assert.equal(parsePct("1%"), 0.01);
+  assert.equal(parsePct("0.5%"), 0.005);
   assert.equal(parseTime("soon"), null);
   assert.equal(parseHarris("47.2%"), 0.472);
   assert.equal(parseHarris("34.65%"), 0.3465);
   for (const bad of ["47.2", "", "n/a", "-3%", "1,5%"]) assert.equal(parseHarris(bad), null, bad);
+});
+
+test("parseTime: M/D/YYYY and ISO without a zone are read as US Eastern, in any viewer's zone", () => {
+  // summer (EDT, UTC-4) and winter (EST, UTC-5); the 2026 election is just after daylight saving ends
+  assert.equal(parseTime("10/1/2025 8:01:18"), Date.UTC(2025, 9, 1, 12, 1, 18));
+  assert.equal(parseTime("11/3/2026 21:15:00"), Date.UTC(2026, 10, 4, 2, 15, 0));
+  assert.equal(parseTime("11/3/2026 21:15"), Date.UTC(2026, 10, 4, 2, 15, 0), "seconds optional");
+  assert.equal(parseTime("11/3/2026 9:15 PM"), Date.UTC(2026, 10, 4, 2, 15, 0));
+  assert.equal(parseTime("11/3/2026 12:05 AM"), Date.UTC(2026, 10, 3, 5, 5, 0));
+  assert.equal(parseTime("11/3/2026 12:05 PM"), Date.UTC(2026, 10, 3, 17, 5, 0));
+  assert.equal(parseTime("1/5/2026 7:00:00"), Date.UTC(2026, 0, 5, 12, 0, 0));
+  assert.equal(parseTime("2026-11-03 21:15"), Date.UTC(2026, 10, 4, 2, 15, 0));
+  assert.equal(parseTime("2026-11-03T21:15:00"), Date.UTC(2026, 10, 4, 2, 15, 0));
+  // an explicit zone wins
+  assert.equal(parseTime("2026-11-03T21:15:00Z"), Date.UTC(2026, 10, 3, 21, 15, 0));
+  assert.equal(parseTime("2026-11-03T21:15:00-05:00"), Date.UTC(2026, 10, 4, 2, 15, 0));
+  assert.equal(parseTime("2026-11-03T21:15:00+0100"), Date.UTC(2026, 10, 3, 20, 15, 0));
+  // the day daylight saving ends (Nov 1, 2026, 2:00 -> 1:00): 12:30 is already EST
+  assert.equal(parseTime("11/1/2026 12:30"), Date.UTC(2026, 10, 1, 17, 30, 0));
+  assert.equal(parseTime("11/1/2026 0:30"), Date.UTC(2026, 10, 1, 4, 30, 0), "before the change: EDT");
+  // impossible or unreadable
+  for (const bad of ["", "soon", "13/1/2025 8:00", "2/30/2026 8:00", "11/3/2026 25:00", "11/3/2026 9:75", "11/3/2026 13:00 PM", "11/3/2026", "8:00", "2026-13-01T00:00:00Z", null, undefined]) {
+    assert.equal(parseTime(bad), null, String(bad));
+  }
 });
 
 test("parseSheet: a good row, with the backup cells read", () => {
@@ -204,5 +238,8 @@ test("the committed 2024 copy parses to 438 clean races, every one with a backup
   assert.deepEqual(warnings, []);
   assert.ok(races.every((r) => r.problem === undefined));
   assert.equal(races.filter((r) => r.backup).length, 438);
+  // the 2024 Sheet's decimals ("0.99", "0.988", MS-02's "0.8841") and "100%" read as fractions, not 1% steps
+  assert.ok(races.every((r) => r.backup.pct >= 0.85 && r.backup.pct <= 1), "every 2024 backup % is between 85% and 100%");
+  assert.ok(races.every((r) => Number.isFinite(r.backup.asOf)), "every 2024 backup time is readable");
   assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 185, open: 68 });
 });

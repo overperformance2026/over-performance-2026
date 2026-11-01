@@ -67,20 +67,69 @@ export function parseVotes(v) {
   return /^\d+$/.test(s) ? Number(s) : null;
 }
 
-/** "85%", "85", "0.85" or 0.85 -> 0.85. Blank or nonsense -> null. A bare number up to 1 is a fraction. */
+/**
+ * % reporting cell -> fraction 0-1, or null. "45%" is 45 percent; a decimal up to 1 ("0.45", "1.0")
+ * is a fraction; a bare whole number is percent points ("45" -> 0.45, "1" -> 1%, "100" -> 100%).
+ * Blank, negative, over 100 or non-numeric -> null.
+ */
 export function parsePct(v) {
   const s = String(v ?? "").trim();
   if (!s) return null;
-  const n = Number(s.replace(/%$/, ""));
+  const n = Number(s.replace(/\s*%$/, ""));
   if (!Number.isFinite(n) || n < 0) return null;
-  const frac = s.endsWith("%") || n > 1 ? n / 100 : n;
+  const isFraction = !s.endsWith("%") && s.includes(".") && n <= 1;
+  const frac = isFraction ? n : n / 100;
   return frac <= 1 ? frac : null;
 }
 
-/** Sheet time text -> epoch ms, or null if it cannot be read. */
+const EASTERN = "America/New_York";
+
+/** Offset of US Eastern from UTC, in ms, at the instant `ms` (negative: -4 h in summer, -5 h in winter). */
+function easternOffset(ms) {
+  const p = Object.fromEntries(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: EASTERN, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric",
+      hour: "numeric", minute: "numeric", second: "numeric",
+    }).formatToParts(new Date(ms)).map((x) => [x.type, x.value]),
+  );
+  return Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(ms / 1000) * 1000;
+}
+
+/** A wall-clock time read as US Eastern (election-night convention) -> epoch ms, or null if impossible. */
+function easternToEpoch(y, mo, d, h, mi, s) {
+  const wall = Date.UTC(y, mo - 1, d, h, mi, s);
+  const check = new Date(wall);
+  if (check.getUTCMonth() !== mo - 1 || check.getUTCDate() !== d || h > 23 || mi > 59 || s > 59) return null; // 2/30, 25:00
+  let t = wall - easternOffset(wall);
+  t = wall - easternOffset(t); // second pass lands on the right side of a daylight-saving change
+  return t;
+}
+
+/**
+ * Sheet time text -> epoch ms, or null if it cannot be read. Accepts "M/D/YYYY H:MM[:SS] [AM|PM]"
+ * and ISO ("2026-11-03T21:15:00Z", with an offset, or without a zone), reading anything without a
+ * zone as US Eastern so every viewer sees the same time. Anything else is null.
+ */
 export function parseTime(v) {
-  const t = Date.parse(String(v ?? "").trim());
-  return Number.isFinite(t) ? t : null;
+  const s = String(v ?? "").trim();
+  let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})[ T]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?$/i);
+  if (m) {
+    let h = Number(m[4]);
+    if (m[7]) {
+      if (h < 1 || h > 12) return null;
+      h = (h % 12) + (m[7].toUpperCase() === "PM" ? 12 : 0);
+    }
+    return easternToEpoch(Number(m[3]), Number(m[1]), Number(m[2]), h, Number(m[5]), Number(m[6] ?? 0));
+  }
+  m = s.match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?(Z|[+-]\d{2}:?\d{2})?$/i);
+  if (m) {
+    if (m[7]) {
+      const t = Date.parse(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6] ?? "00"}${m[7].toUpperCase()}`.replace(/([+-]\d{2})(\d{2})$/, "$1:$2"));
+      return Number.isFinite(t) ? t : null;
+    }
+    return easternToEpoch(Number(m[1]), Number(m[2]), Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] ?? 0));
+  }
+  return null;
 }
 
 /** "47.2%" -> 0.472 (6 places, like the old build). Anything else -> null. */

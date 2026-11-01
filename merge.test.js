@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
-import { mergeVotes, politicoLayer, buildRows, backupIndex, PRIORITY } from "./merge.js";
+import { mergeVotes, politicoLayer, buildRows, backupIndex, backupLayers, PRIORITY } from "./merge.js";
 import { parseBundle } from "./sheet.js";
 import { incumbencyEffect, averageOverUnder } from "./compute.js";
 
@@ -110,6 +110,27 @@ test("buildRows: politico layer is per office; the same contest ID in another of
 test("buildRows: % reporting comes from the winner (so the reporting filter and incumbency use it)", () => {
   const [r] = buildRows({ races: [race()], committed: new Map([["c1", L(50, 50, 0.99)]]), politico: { senate: payload([contest("c1", 80, 30, 0.2)]) } });
   assert.deepEqual([r.votesSource, r.pctReporting], ["politico", 0.2]);
+});
+
+test("backupLayers: the committed backups stand in only until the published Sheet has loaded", () => {
+  const withBackup = (v) => ({ races: [race({ backup: v })] });
+  const committed = withBackup({ demVotes: 9, repVotes: 90000, pct: 0.9, asOf: 1 }); // a committed typo (R 9000 -> 90000)
+  const live = withBackup({ demVotes: 9, repVotes: 9000, pct: 0.9, asOf: 2 }); // fixed in the Sheet
+  const before = backupLayers(committed, null);
+  assert.equal(before.committed.size, 1);
+  assert.equal(before.sheet.size, 0);
+  const after = backupLayers(committed, live);
+  assert.equal(after.committed.size, 0, "committed backups are dropped once the Sheet loaded");
+  assert.equal(after.sheet.size, 1);
+  // end to end: the typo wins before the Sheet loads, and is gone after the Sheet corrects it
+  const rowsBefore = buildRows({ races: [race()], ...before });
+  assert.deepEqual([rowsBefore[0].votesSource, rowsBefore[0].repVotes], ["committed", 90000]);
+  const rowsAfter = buildRows({ races: [race()], ...after });
+  assert.deepEqual([rowsAfter[0].votesSource, rowsAfter[0].repVotes], ["sheet", 9000]);
+  // a Sheet that cleared the backup entirely also wipes the committed typo: no votes, no source
+  const cleared = backupLayers(committed, { races: [race({ backup: null })] });
+  assert.equal(buildRows({ races: [race()], ...cleared })[0].votesSource, null);
+  assert.equal(backupLayers(null, null).committed.size, 0);
 });
 
 // ---- real 2024 data ----------------------------------------------------------------------------------
