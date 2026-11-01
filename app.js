@@ -1,16 +1,21 @@
-import { computeRows, attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency } from "./compute.js";
-import { createPoller, makeFetchOffice, isStale } from "./poller.js";
-import { assertDataDir, hasResults, fallBack, shouldAdopt, createPlanTracker, describeSource } from "./plans.js";
-import { backupSource, sheetCsvUrl } from "./backup.js";
+import { attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency } from "./compute.js";
+import { createPoller, makeFetchOffice } from "./poller.js";
+import { createRefresher } from "./refresher.js";
+import { parseSheet, parseCategories, applyCategories, fetchSheetText } from "./sheet.js";
+import { buildRows, backupIndex } from "./merge.js";
+import { assertDataDir, summarizeSources, liveIsStale, describeSource } from "./status.js";
 
-// Each page says what it shows: <body data-dir="data/2024" data-date="2024-11-05" data-live="false">.
-// live pages poll Politico (Plan A) and fall back to the committed snapshot (Plan C).
+// One code path for every year. Each page says what it shows, e.g.
+//   <body data-dir="data/2026" data-date="2026-11-03" data-poll="true"
+//         data-sheet-url="...pub?gid=0&single=true&output=csv" data-categories-url="...">
+// poll=true keeps polling Politico; poll=false fetches Politico once (a finished election).
 const CONFIG = {
   dir: document.body.dataset.dir ?? "data/2024",
   date: document.body.dataset.date ?? "2024-11-05",
-  live: document.body.dataset.live === "true",
+  poll: document.body.dataset.poll === "true",
+  sheetUrl: document.body.dataset.sheetUrl ?? null,
+  categoriesUrl: document.body.dataset.categoriesUrl ?? null,
 };
-const DATA = CONFIG.dir;
 // Minimum share of expected vote counted for a race to show (and to count in the average).
 const REPORTING_OPTIONS = [[0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
@@ -97,12 +102,6 @@ function renderTable(initialRows) {
   };
 }
 
-const getJson = async (path) => {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
-  return res.json();
-};
-
 // Headline for the selected category (or all races): simple average over/under across its races.
 // rows: the races that pass the % reporting filter; total: all races in the category.
 function showAverage(attr, rows, total, minLabel, anyResults) {
@@ -123,79 +122,123 @@ function showAverage(attr, rows, total, minLabel, anyResults) {
   el.append(strong, small);
 }
 
-// One office's candidate file failing to load must not blank the whole page: computeRows turns
-// null metadata or summaries into rows with a problem and no numbers.
-const getJsonOrNull = (path, failures, what) =>
-  getJson(path).catch(() => {
-    failures.push(what);
-    return null;
-  });
-
 const formatTime = (ms) => new Date(ms).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+const committedUrl = (file) => `${CONFIG.dir}/${file}`;
 
 async function main() {
-  assertDataDir(DATA, CONFIG.date); // a page only ever reads its own year's folder
+  assertDataDir(CONFIG.dir, CONFIG.date); // a page only ever reads its own year's folder
   const root = document.getElementById("sections");
-  let races;
-  try {
-    races = await getJson(`${DATA}/races.json`);
-  } catch (e) {
-    if (!CONFIG.live) throw e;
-    races = []; // live page before its data exists: shows "No results yet", never blank
-  }
+  const startedAt = Date.now();
 
-  // Plan C (committed snapshot) is also the first thing drawn, so the page is never empty.
-  const snapshotAsOf = await getJson(`${DATA}/updated.json`).then((j) => Date.parse(j.fetchedAt)).catch(() => NaN);
-  const sources = {
-    C: async (office) => ({ summaries: await getJson(`${DATA}/sum-${office}.json`), asOf: Number.isFinite(snapshotAsOf) ? snapshotAsOf : null }),
+  // ---- the three layers of data -------------------------------------------------------------
+  // committed: the Sheet as last committed (race list, categories, backup votes)
+  // live:      the published Sheet, read on load and every 5 minutes; null until it has loaded
+  // politico:  the latest summaries payload per office
+  const state = {
+    committed: null, committedCats: null,
+    live: null, liveCats: null,
+    liveFailure: null, sheetTried: false,
+    politico: {}, lastSuccess: Object.fromEntries(OFFICES.map(([o]) => [o, null])),
+    rateLimited: false, warnings: [],
   };
-  // Plan B: the backup_* columns of the canonical Sheet (data-backup-sheet = its id; live pages only).
-  if (CONFIG.live && document.body.dataset.backupSheet) {
-    sources.B = backupSource({ sheetUrl: sheetCsvUrl(document.body.dataset.backupSheet), races });
-  }
-  const tracker = createPlanTracker(OFFICES.map(([office]) => office));
-  const failures = [];
 
-  const sections = [];
-  // plan null = draw the rows but don't record a plan: a live page has not heard from Plan A yet,
-  // so nothing may be called a backup until a live attempt has failed.
-  const setOffice = (s, summaries, plan, asOf) => {
-    s.rows = computeRows({ metadata: s.metadata, summaries, races: s.races });
-    s.hasResults = hasResults(summaries);
-    if (plan !== null) tracker.set(s.office, plan, asOf);
+  const readCommitted = async () => {
+    const [sheetText, catText] = await Promise.allSettled([fetchSheetText(committedUrl("sheet.csv")), fetchSheetText(committedUrl("categories.csv"))]);
+    if (sheetText.status === "fulfilled") state.committed = parseSheet(sheetText.value);
+    else state.warnings.push(`Committed race list unavailable: ${sheetText.reason.message}`);
+    if (catText.status === "fulfilled") state.committedCats = parseCategories(catText.value);
   };
-  for (const [office, title] of OFFICES) {
-    const [metadata, snap] = await Promise.all([
-      getJsonOrNull(`${DATA}/meta-${office}.json`, failures, `${title} candidates`),
-      sources.C(office).catch(() => (failures.push(`${title} results`), null)),
+  await readCommitted().catch((e) => state.warnings.push(`Committed copy unusable: ${e.message}`));
+
+  // The published Sheet. Each tab succeeds or fails on its own; on failure the last good data stays.
+  const readLive = async () => {
+    if (!CONFIG.sheetUrl) return;
+    const failures = [];
+    const [sheet, cats] = await Promise.allSettled([
+      fetchSheetText(CONFIG.sheetUrl),
+      CONFIG.categoriesUrl ? fetchSheetText(CONFIG.categoriesUrl) : Promise.resolve(null),
     ]);
-    const h2 = document.createElement("h2");
-    const s = { office, title, metadata, races: races.filter((r) => r.office === office), h2, rows: [], hasResults: false };
-    s.table = renderTable([]);
-    setOffice(s, snap?.summaries ?? null, CONFIG.live ? null : "C", snap?.asOf ?? null);
-    s.table.setRows(s.rows);
-    root.append(h2, s.table.el);
-    sections.push(s);
-  }
+    if (sheet.status === "fulfilled") {
+      try {
+        state.live = parseSheet(sheet.value);
+      } catch (e) {
+        failures.push(`race list: ${e.message}`);
+      }
+    } else failures.push(`race list: ${sheet.reason.message}`);
+    if (cats.status === "fulfilled" && cats.value !== null) {
+      try {
+        state.liveCats = parseCategories(cats.value);
+      } catch (e) {
+        failures.push(`categories: ${e.message}`);
+      }
+    } else if (cats.status === "rejected") failures.push(`categories: ${cats.reason.message}`);
+    state.liveFailure = failures.length ? failures.join("; ") : null;
+    state.sheetTried = true;
+  };
 
-  // Two filters drive all three sections: category (Sheet TRUE/FALSE columns) and % reporting.
+  if (!state.committed && !CONFIG.sheetUrl) throw new Error("no race list available");
+
+  // ---- rows ---------------------------------------------------------------------------------
+  const sections = OFFICES.map(([office, title]) => {
+    const h2 = document.createElement("h2");
+    const table = renderTable([]);
+    root.append(h2, table.el);
+    return { office, title, h2, table, rows: [] };
+  });
   const allRows = () => sections.flatMap((s) => s.rows);
+
+  const recompute = () => {
+    const base = state.live ?? state.committed;
+    if (!base) return;
+    const tagged = applyCategories(base.races, state.liveCats ?? state.committedCats ?? []);
+    const rows = buildRows({
+      races: tagged.races,
+      committed: backupIndex(state.committed?.races ?? []),
+      sheet: backupIndex(state.live?.races ?? []),
+      politico: state.politico,
+    });
+    for (const s of sections) s.rows = rows.filter((r) => r.office === s.office);
+    state.warnings = [
+      ...base.warnings,
+      ...tagged.warnings,
+      ...(state.liveFailure ? [`Published Sheet not updated (${state.liveFailure}); showing ${state.live ? "the last good read" : "the committed copy"}.`] : []),
+    ];
+  };
+
+  // ---- controls -----------------------------------------------------------------------------
   const select = document.getElementById("filter");
   const reporting = document.getElementById("reporting");
   reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
   const note = document.getElementById("hidden-note");
-  if (failures.length) {
-    const warn = document.getElementById("load-warn");
-    warn.textContent = `Could not load: ${failures.join(", ")}. Affected races show no numbers.`;
-    warn.hidden = false;
-  }
+  const warnEl = document.getElementById("load-warn");
 
-  // The public status line: which plan is active and when the data is as of.
+  // The category drop-down follows the Sheet: rebuilt when a re-read changes the category names.
+  const refreshCategories = () => {
+    const names = attributeNames(allRows());
+    const have = [...select.options].slice(1).map((o) => o.value);
+    if (names.join("|") !== have.join("|") || (names.length && !select.options.length)) {
+      const keep = names.includes(select.value) ? select.value : "";
+      select.replaceChildren(new Option("All races", ""), ...names.map((n) => new Option(n, n)));
+      select.value = keep;
+    }
+    document.getElementById("filter-box").hidden = names.length === 0;
+  };
+
+  let loggedWarnings = "";
+  const renderWarnings = () => {
+    const w = state.warnings;
+    warnEl.hidden = w.length === 0;
+    warnEl.textContent = w.length ? `${w.slice(0, 3).join(" · ")}${w.length > 3 ? ` · and ${w.length - 3} more (see the browser console)` : ""}` : "";
+    if (w.join("\n") !== loggedWarnings) w.forEach((x) => console.warn("[data]", x)); // log changes only, not every refresh
+    loggedWarnings = w.join("\n");
+  };
+
+  // The public status line: where the votes come from and when they are as of.
   const renderSource = () => {
-    const summary = tracker.summary();
-    const stale = CONFIG.live && summary?.plan === "A" && isStale(summary.asOf, Date.now());
+    const stale = CONFIG.poll && !state.rateLimited && liveIsStale(state.lastSuccess, startedAt, Date.now());
     document.getElementById("source").textContent = describeSource({
-      summary, live: CONFIG.live, anyResults: sections.some((s) => s.hasResults), formatTime, stale,
+      summary: summarizeSources(allRows()), polling: CONFIG.poll, stale, rateLimited: state.rateLimited,
+      sheetLoaded: !CONFIG.sheetUrl || !state.sheetTried || Boolean(state.live), formatTime,
     });
   };
 
@@ -228,62 +271,62 @@ async function main() {
     }
     const all = applyFilters(adjust(allRows()), attr, min);
     const label = reporting.selectedOptions[0].textContent;
-    showAverage(attr, all.shown, all.inCategory.length, label, sections.some((s) => s.hasResults));
+    showAverage(attr, all.shown, all.inCategory.length, label, summarizeSources(allRows()).anyResults);
     // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
     note.hidden = all.hidden === 0;
     note.textContent = `${all.hidden} race${all.hidden === 1 ? "" : "s"} hidden: under ${Math.round(min * 100)}% of the vote reporting.`;
     renderSource();
+    renderWarnings();
+  };
+
+  /** Everything that changed (data, not controls): rebuild rows, categories, then redraw. */
+  const refresh = () => {
+    recompute();
+    refreshCategories();
+    apply();
   };
   reporting.addEventListener("change", apply);
   incBox.addEventListener("change", apply);
-  const names = attributeNames(allRows());
-  if (names.length) {
-    select.append(new Option("All races", ""), ...names.map((n) => new Option(n, n)));
-    select.addEventListener("change", apply);
-    document.getElementById("filter-box").hidden = false;
+  select.addEventListener("change", apply);
+
+  refresh(); // first paint from the committed copy (and any warnings)
+  if (!state.committed && !state.live) {
+    const p = document.createElement("p");
+    p.className = "err";
+    p.textContent = "Could not load the race list.";
+    root.append(p);
   }
-  apply();
 
-  if (CONFIG.live && races.length) startLive({ sections, tracker, sources, setOffice, apply, renderSource });
-}
-
-const BACKUP_RECHECK_MS = 60_000;
-
-// Plan A: poll Politico (poller.js). A failure falls back to the next plan in order (B spreadsheet,
-// then C snapshot), but never replaces newer live data with an older backup and never downgrades
-// a backup. A later live success switches back to A. A 429 stops polling Politico for this viewer
-// (a page reload tries again); the backups are still re-checked every minute while an office is
-// on one (or its live data has gone stale), because someone updates the sheet during the night.
-function startLive({ sections, tracker, sources, setOffice, apply, renderSource }) {
-  const byOffice = new Map(sections.map((s) => [s.office, s]));
-  const fallBackFor = async (office) => {
-    const before = tracker.get(office);
-    const got = await fallBack({ office, after: "A", sources, newerThan: before?.plan === "A" ? before.asOf ?? -Infinity : -Infinity });
-    // Judge against the CURRENT state: a live fetch may have landed while we waited.
-    if (shouldAdopt(tracker.get(office), got)) {
-      setOffice(byOffice.get(office), got.summaries, got.plan, got.asOf);
-      apply();
-    } else {
-      renderSource(); // kept what we had; the status line shows the stale warning if due
-    }
+  // ---- the published Sheet: read now, then every 5 minutes -----------------------------------
+  const reloadSheet = async () => {
+    await readLive();
+    refresh();
   };
-  const recheckBackups = () => {
-    if (document.hidden) return;
-    for (const s of sections) {
-      const cur = tracker.get(s.office);
-      if (!cur || cur.plan !== "A" || isStale(cur.asOf, Date.now())) fallBackFor(s.office);
-    }
-  };
-  setInterval(recheckBackups, BACKUP_RECHECK_MS);
+  reloadSheet();
+  createRefresher({
+    load: reloadSheet,
+    isHidden: () => document.hidden,
+    onVisibilityChange: (cb) => document.addEventListener("visibilitychange", cb),
+    setTimer: (fn, ms) => setTimeout(fn, ms),
+    clearTimer: (h) => clearTimeout(h),
+    now: () => Date.now(),
+  }).start();
+
+  // ---- Politico: the 0 / 2 / 4 s first load, then (if polling) one office every 20 s ---------
   createPoller({
-    offices: sections.map((s) => s.office),
+    offices: OFFICES.map(([o]) => o),
+    once: !CONFIG.poll,
     fetchOffice: makeFetchOffice({ date: CONFIG.date }),
     onData: (office, summaries) => {
-      setOffice(byOffice.get(office), summaries, "A", Date.now());
-      apply();
+      state.politico[office] = { summaries, asOf: Date.now() };
+      state.lastSuccess[office] = Date.now();
+      refresh();
     },
-    onError: fallBackFor,
-    onRateLimited: () => Promise.all(sections.map((s) => fallBackFor(s.office))),
+    onError: (office, err) => console.warn(`[politico] ${office}: ${err.message}`),
+    onRateLimited: () => {
+      state.rateLimited = true;
+      renderSource();
+    },
     isHidden: () => document.hidden,
     onVisibilityChange: (cb) => document.addEventListener("visibilitychange", cb),
     setTimer: (fn, ms) => setTimeout(fn, ms),
@@ -299,4 +342,3 @@ main().catch((e) => {
   p.textContent = `Could not load data: ${e.message}`;
   document.getElementById("sections").appendChild(p);
 });
-
