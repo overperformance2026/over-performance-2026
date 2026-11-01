@@ -72,6 +72,12 @@ test("describeSource: no results yet is never blank", () => {
   assert.match(describeSource({ ...base, summary: { plan: "C", asOf: 1, mixed: false }, anyResults: false }), /No results yet/);
 });
 
+test("describeSource: a live page with snapshot results but no live answer yet says loading, not backup", () => {
+  const text = describeSource({ live: true, formatTime: fmt, anyResults: true, summary: null });
+  assert.match(text, /Loading live results/);
+  assert.ok(!text.includes("unavailable") && !text.includes("Committed snapshot"));
+});
+
 test("describeSource: shows the active plan and the data-as-of time", () => {
   const live = describeSource({ live: true, formatTime: fmt, anyResults: true, summary: { plan: "A", asOf: 7, mixed: false } });
   assert.ok(live.includes(PLAN_LABELS.A) && live.includes("Data as of T7") && !live.includes("unavailable"));

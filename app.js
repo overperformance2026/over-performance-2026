@@ -104,9 +104,13 @@ const getJson = async (path) => {
 
 // Headline for the selected category (or all races): simple average over/under across its races.
 // rows: the races that pass the % reporting filter; total: all races in the category.
-function showAverage(attr, rows, total, minLabel) {
+function showAverage(attr, rows, total, minLabel, anyResults) {
   const el = document.getElementById("avg");
   el.hidden = false;
+  if (!anyResults) {
+    el.textContent = "No results yet"; // not "All races: —"
+    return;
+  }
   const { mean, counted } = averageOverUnder(rows);
   const sub = `${counted} of ${total} race${total === 1 ? "" : "s"} with ${minLabel} reporting; simple average, not vote-weighted`;
   el.replaceChildren();
@@ -149,10 +153,12 @@ async function main() {
   const failures = [];
 
   const sections = [];
+  // plan null = draw the rows but don't record a plan: a live page has not heard from Plan A yet,
+  // so nothing may be called a backup until a live attempt has failed.
   const setOffice = (s, summaries, plan, asOf) => {
     s.rows = computeRows({ metadata: s.metadata, summaries, races: s.races });
     s.hasResults = hasResults(summaries);
-    tracker.set(s.office, plan, asOf);
+    if (plan !== null) tracker.set(s.office, plan, asOf);
   };
   for (const [office, title] of OFFICES) {
     const [metadata, snap] = await Promise.all([
@@ -162,7 +168,7 @@ async function main() {
     const h2 = document.createElement("h2");
     const s = { office, title, metadata, races: races.filter((r) => r.office === office), h2, rows: [], hasResults: false };
     s.table = renderTable([]);
-    setOffice(s, snap?.summaries ?? null, "C", snap?.asOf ?? null);
+    setOffice(s, snap?.summaries ?? null, CONFIG.live ? null : "C", snap?.asOf ?? null);
     s.table.setRows(s.rows);
     root.append(h2, s.table.el);
     sections.push(s);
@@ -218,7 +224,7 @@ async function main() {
     }
     const all = applyFilters(adjust(allRows()), attr, min);
     const label = reporting.selectedOptions[0].textContent;
-    showAverage(attr, all.shown, all.inCategory.length, label);
+    showAverage(attr, all.shown, all.inCategory.length, label, sections.some((s) => s.hasResults));
     // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
     note.hidden = all.hidden === 0;
     note.textContent = `${all.hidden} race${all.hidden === 1 ? "" : "s"} hidden: under ${Math.round(min * 100)}% of the vote reporting.`;

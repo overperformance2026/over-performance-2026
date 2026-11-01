@@ -62,7 +62,10 @@ export function createPlanTracker(offices) {
  * snapshot page); anyResults: some office has votes; formatTime: ms -> string.
  */
 export function describeSource({ summary, live, anyResults, formatTime, stale = false }) {
-  if (!summary || !anyResults) return "No results yet. This page updates when votes are counted.";
+  if (!anyResults) return "No results yet. This page updates when votes are counted.";
+  // A live page has not heard back from any plan yet: don't call anything a backup before the
+  // first live attempt has actually failed.
+  if (!summary) return "Loading live results…";
   const when = summary.asOf === null ? "unknown" : formatTime(summary.asOf);
   const label = PLAN_LABELS[summary.plan];
   let text;
