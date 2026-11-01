@@ -37,6 +37,8 @@ test("parsePct: 85%, 85, 0.85 and 0.85 all mean 85 percent; nonsense is null", (
 test("parseTime: readable times become epoch ms, others null", () => {
   assert.equal(parseTime("2026-11-03T21:15:00Z"), Date.UTC(2026, 10, 3, 21, 15));
   assert.ok(Number.isFinite(parseTime("11/3/2026 21:15:00")));
+  // the 2024 sheet's format (month/day/year, no zone: read as the viewer's local time)
+  assert.equal(parseTime("10/1/2025 8:01:18"), new Date(2025, 9, 1, 8, 1, 18).getTime());
   assert.equal(parseTime(""), null);
   assert.equal(parseTime("soon"), null);
 });
