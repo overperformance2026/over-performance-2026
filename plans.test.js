@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource, PLAN_LABELS } from "./plans.js";
+import { assertDataDir, hasResults, fallBack, shouldAdopt, createPlanTracker, describeSource, PLAN_LABELS } from "./plans.js";
 
 const fmt = (t) => `T${t}`;
 const sum = (votes) => ({ contests: [{ id: "c", results: [{ id: "1", votes }] }] });
@@ -50,6 +50,30 @@ test("fallBack never replaces fresher data with an older snapshot", async () => 
   const sources = { C: async () => ({ summaries: sum(1), asOf: 100 }) };
   assert.equal(await fallBack({ office: "senate", after: "A", sources, newerThan: 200 }), null);
   assert.equal((await fallBack({ office: "senate", after: "A", sources, newerThan: 100 })).plan, "C");
+});
+
+test("fallBack: a backup with an unknown time cannot replace live data, but can fill an empty office", async () => {
+  const sources = { B: async () => ({ summaries: sum(1), asOf: null }) };
+  assert.equal(await fallBack({ office: "house", after: "A", sources, newerThan: 100 }), null);
+  const got = await fallBack({ office: "house", after: "A", sources });
+  assert.deepEqual([got.plan, got.asOf], ["B", null]);
+});
+
+test("shouldAdopt: first data wins, live is replaced by newer, a backup is never downgraded", () => {
+  const got = (plan, asOf) => ({ plan, asOf, summaries: {} });
+  assert.equal(shouldAdopt(null, got("C", 5)), true);
+  assert.equal(shouldAdopt(undefined, got("B", null)), true);
+  assert.equal(shouldAdopt({ plan: "A", asOf: 1 }, got("B", 9)), true); // newer than the live data
+  assert.equal(shouldAdopt({ plan: "A", asOf: 10 }, got("B", 9)), false); // a live fetch landed meanwhile
+  assert.equal(shouldAdopt({ plan: "A", asOf: 10 }, got("C", null)), false); // unknown time can't beat live
+  assert.equal(shouldAdopt({ plan: "C", asOf: 5 }, got("B", 1)), true); // B beats C even if older
+  assert.equal(shouldAdopt({ plan: "B", asOf: 5 }, got("C", 99)), false); // never downgrade
+  assert.equal(shouldAdopt({ plan: "B", asOf: 5 }, got("B", 6)), true); // same plan, newer sheet
+  assert.equal(shouldAdopt({ plan: "B", asOf: 5 }, got("B", 5)), false);
+  assert.equal(shouldAdopt({ plan: "B", asOf: 5 }, got("B", null)), false);
+  assert.equal(shouldAdopt({ plan: "C", asOf: 5 }, got("C", 5)), false);
+  assert.equal(shouldAdopt({ plan: "C", asOf: null }, got("C", 5)), true);
+  assert.equal(shouldAdopt({ plan: "C", asOf: 5 }, null), false);
 });
 
 test("tracker: worst plan wins, oldest asOf, mixed flag", () => {

@@ -1,6 +1,7 @@
 import { computeRows, attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency } from "./compute.js";
 import { createPoller, makeFetchOffice, isStale } from "./poller.js";
-import { assertDataDir, hasResults, fallBack, createPlanTracker, describeSource } from "./plans.js";
+import { assertDataDir, hasResults, fallBack, shouldAdopt, createPlanTracker, describeSource } from "./plans.js";
+import { backupSource, sheetCsvUrl } from "./backup.js";
 
 // Each page says what it shows: <body data-dir="data/2024" data-date="2024-11-05" data-live="false">.
 // live pages poll Politico (Plan A) and fall back to the committed snapshot (Plan C).
@@ -147,8 +148,11 @@ async function main() {
   const snapshotAsOf = await getJson(`${DATA}/updated.json`).then((j) => Date.parse(j.fetchedAt)).catch(() => NaN);
   const sources = {
     C: async (office) => ({ summaries: await getJson(`${DATA}/sum-${office}.json`), asOf: Number.isFinite(snapshotAsOf) ? snapshotAsOf : null }),
-    // B (spreadsheet backup) plugs in here later: sources.B = async (office) => ({summaries, asOf}).
   };
+  // Plan B: the backup_* columns of the canonical Sheet (data-backup-sheet = its id; live pages only).
+  if (CONFIG.live && document.body.dataset.backupSheet) {
+    sources.B = backupSource({ sheetUrl: sheetCsvUrl(document.body.dataset.backupSheet), races });
+  }
   const tracker = createPlanTracker(OFFICES.map(([office]) => office));
   const failures = [];
 
@@ -243,22 +247,34 @@ async function main() {
   if (CONFIG.live && races.length) startLive({ sections, tracker, sources, setOffice, apply, renderSource });
 }
 
-// Plan A: poll Politico (poller.js). A failure falls back to the next plan in order (B, then C),
-// but never replaces newer live data with an older snapshot. A later success switches back to A.
-// A 429 stops polling for this viewer (a page reload tries again).
+const BACKUP_RECHECK_MS = 60_000;
+
+// Plan A: poll Politico (poller.js). A failure falls back to the next plan in order (B spreadsheet,
+// then C snapshot), but never replaces newer live data with an older backup and never downgrades
+// a backup. A later live success switches back to A. A 429 stops polling Politico for this viewer
+// (a page reload tries again); the backups are still re-checked every minute while an office is
+// on one (or its live data has gone stale), because someone updates the sheet during the night.
 function startLive({ sections, tracker, sources, setOffice, apply, renderSource }) {
   const byOffice = new Map(sections.map((s) => [s.office, s]));
   const fallBackFor = async (office) => {
-    const cur = tracker.get(office);
-    if (cur && cur.plan !== "A") return renderSource(); // already on a backup
-    const got = await fallBack({ office, after: "A", sources, newerThan: cur?.asOf ?? -Infinity });
-    if (got) {
+    const before = tracker.get(office);
+    const got = await fallBack({ office, after: "A", sources, newerThan: before?.plan === "A" ? before.asOf ?? -Infinity : -Infinity });
+    // Judge against the CURRENT state: a live fetch may have landed while we waited.
+    if (shouldAdopt(tracker.get(office), got)) {
       setOffice(byOffice.get(office), got.summaries, got.plan, got.asOf);
       apply();
     } else {
-      renderSource(); // kept the last live data; the status line shows the stale warning
+      renderSource(); // kept what we had; the status line shows the stale warning if due
     }
   };
+  const recheckBackups = () => {
+    if (document.hidden) return;
+    for (const s of sections) {
+      const cur = tracker.get(s.office);
+      if (!cur || cur.plan !== "A" || isStale(cur.asOf, Date.now())) fallBackFor(s.office);
+    }
+  };
+  setInterval(recheckBackups, BACKUP_RECHECK_MS);
   createPoller({
     offices: sections.map((s) => s.office),
     fetchOffice: makeFetchOffice({ date: CONFIG.date }),

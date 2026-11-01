@@ -31,13 +31,31 @@ export async function fallBack({ office, after, sources, newerThan = -Infinity }
     try {
       const got = await sources[plan](office);
       if (!got) continue;
-      if (Number.isFinite(got.asOf) && got.asOf < newerThan) continue;
-      return { plan, summaries: got.summaries, asOf: got.asOf ?? null };
+      // While we hold data with a known time, a backup must prove it is newer: an unknown time
+      // does not.
+      if (newerThan > -Infinity && !(Number.isFinite(got.asOf) && got.asOf >= newerThan)) continue;
+      return { plan, summaries: got.summaries, asOf: Number.isFinite(got.asOf) ? got.asOf : null };
     } catch {
       /* try the next plan */
     }
   }
   return null;
+}
+
+/**
+ * Should a fallBack result replace what an office shows now? `current` is tracker.get(office)
+ * (null before any data), `got` is the fallBack result. Rules: the first data always wins; live
+ * data (A) is replaced only by something with a known, at least as new time; a backup is replaced
+ * only by a BETTER plan (B over C), or by the same plan with a newer time. Never downgrades.
+ * Call it with the office's CURRENT state after any await: a live fetch may have landed meanwhile.
+ */
+export function shouldAdopt(current, got) {
+  if (!got) return false;
+  if (!current) return true;
+  if (current.plan === "A") return Number.isFinite(got.asOf) && got.asOf >= (current.asOf ?? -Infinity);
+  const better = PLAN_ORDER.indexOf(got.plan) < PLAN_ORDER.indexOf(current.plan);
+  const newer = got.plan === current.plan && Number.isFinite(got.asOf) && got.asOf > (current.asOf ?? -Infinity);
+  return better || newer;
 }
 
 /** Remembers, per office, which plan its data came from and when it is as of. */
