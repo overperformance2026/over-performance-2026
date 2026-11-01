@@ -184,7 +184,7 @@ test("fetchSheetText: non-200, 401/HTML pages and timeouts throw", async () => {
 
 const committed = (year, f) => readFileSync(new URL(`./data/${year}/${f}`, import.meta.url), "utf8");
 
-test("the committed 2026 copy parses to 481 clean races, matching the races.json the page used before", () => {
+test("the committed 2026 copy parses to 481 clean races", () => {
   const { races, warnings } = parseBundle(committed(2026, "sheet.csv"), committed(2026, "categories.csv"));
   assert.equal(races.length, 481);
   assert.deepEqual(warnings.filter((w) => !/Pressley/.test(w)), [], "no warnings (the skipped Pressley row has check 0 and makes none)");
@@ -195,14 +195,7 @@ test("the committed 2026 copy parses to 481 clean races, matching the races.json
   assert.equal(races.filter((r) => r.office === "senate").length, 35);
   assert.equal(races.filter((r) => r.office === "governor").length, 36);
   assert.equal(races.filter((r) => r.office === "house").length, 410);
-  // today's committed races.json (built from the same Sheet by the old pipeline) agrees field by field
-  const old = JSON.parse(committed(2026, "races.json"));
-  assert.equal(old.length, races.length);
-  const byId = new Map(races.map((r) => [r.contestId, r]));
-  for (const o of old) {
-    const r = byId.get(o.contestId);
-    assert.deepEqual([r.office, r.label, r.harris2p, r.demId, r.repId, r.incumbent], [o.office, o.label, o.harris2p, o.demId, o.repId, o.incumbent], o.label);
-  }
+  // (commit afdcc10 also compared these 481 races field by field with the old pipeline's races.json: identical)
 });
 
 test("the committed 2024 copy parses to 438 clean races, every one with a backup", () => {

@@ -285,9 +285,8 @@ test("computeRows carries incumbent and rawOverUnder; unknown incumbent is null,
 
 // ---- real 2024 data -----------------------------------------------------
 
-const load = (f) => JSON.parse(readFileSync(new URL(`./data/2024/${f}`, import.meta.url), "utf8"));
-// The full-universe tests below need the raw Politico files (git-ignored; fetch with
-// scripts/fetch_snapshot.py). They skip on a fresh clone; the end-to-end test uses committed files.
+// The full-universe tests below need the raw Politico 2024 files (git-ignored, kept locally in
+// data/raw/2024). They skip on a fresh clone; merge.test.js covers the committed Sheet copies.
 const RAW = new URL("./data/raw/2024/", import.meta.url);
 const hasRaw = existsSync(RAW);
 const loadRaw = (f) => JSON.parse(readFileSync(new URL(f, RAW), "utf8"));
@@ -337,68 +336,4 @@ test("2024 House: all 437 contests kept, 393 clean; PA-8 Cartwright ~49.19%", { 
   assert.equal(rows.filter((r) => r.problem === null).length, 393);
   const pa8 = rows.find((r) => r.dem.name === "Matt Cartwright");
   assert.ok(Math.abs(pa8.dem2p - 0.4919) < 1e-4);
-});
-
-// ---- end to end: sheet -> races.json -> rows ------------------------------
-
-test("2024 end to end: every races.json entry yields a row; spot checks", () => {
-  const races = load("races.json");
-  const rows = [];
-  for (const office of ["senate", "governor", "house"]) {
-    const part = races.filter((r) => r.office === office);
-    rows.push(...computeRows({ metadata: load(`meta-${office}.json`), summaries: load(`sum-${office}.json`), races: part }));
-  }
-  assert.equal(rows.length, races.length, "no race may be silently dropped");
-  assert.ok(rows.every((r) => r.problem === null), "every 2024 race resolves cleanly");
-  assert.ok(races.every((r) => r.demName && r.repName), "races.json carries Politico names");
-  // A failed metadata fetch must still leave a full table (names from races.json, numbers empty).
-  const blind = computeRows({ metadata: null, summaries: null, races });
-  assert.equal(blind.length, races.length);
-  assert.ok(blind.every((r) => r.dem.name && r.rep.name && r.dem2p === null));
-  assert.equal(rows.filter((r) => r.office === "senate").length, 33);
-  assert.equal(rows.filter((r) => r.office === "governor").length, 11);
-  const king = rows.find((r) => r.dem.name === "Angus King");
-  assert.ok(king.dem2p > 0.5, "King is the Dem in ME");
-  const gallego = rows.find((r) => r.dem.name === "Ruben Gallego");
-  assert.ok(Math.abs(gallego.overUnder - (1676335 / (1676335 + 1595761) - 0.472)) < 1e-9);
-  assert.ok(rows.every((r) => typeof r.harris2p === "number" && r.harris2p > 0.2 && r.harris2p < 0.95));
-});
-
-// ---- real 2026 data (committed snapshot: candidates known, no votes yet) ---------------
-
-const load26 = (f) => JSON.parse(readFileSync(new URL(`./data/2026/${f}`, import.meta.url), "utf8"));
-
-test("2026: every race resolves from the committed metadata; with no votes yet there are no numbers", () => {
-  const races = load26("races.json");
-  const rows = ["senate", "governor", "house"].flatMap((office) =>
-    computeRows({ metadata: load26(`meta-${office}.json`), summaries: load26(`sum-${office}.json`), races: races.filter((r) => r.office === office) }));
-  assert.equal(rows.length, races.length, "no race silently dropped");
-  assert.equal(rows.length, 481);
-  assert.ok(rows.every((r) => r.problem === null), "every race resolves to a Dem and a Rep");
-  assert.ok(rows.every((r) => r.dem.name && r.rep.name));
-  assert.ok(rows.every((r) => r.overUnder === null && r.pctReporting === null), "empty results give empty numbers, not zeros");
-  // AL-04 (16.5%) and KY-05 (17.7%) really are that red, so the lower bound is 10%.
-  assert.ok(rows.every((r) => typeof r.harris2p === "number" && r.harris2p > 0.1 && r.harris2p < 0.95));
-  const inc ={ dem: 0, rep: 0, open: 0 };
-  for (const r of rows) inc[r.incumbent]++; // a null/unknown incumbent would throw NaN below
-  assert.deepEqual(inc, { dem: 185, rep: 193, open: 103 });
-  assert.equal(incumbencyEffect(rows, 0.5).enabled, false, "incumbency needs real results");
-  assert.equal(filterRows(rows, "The Squad").length, 6);
-});
-
-test("2024 incumbency effect matches the oracle's independent check: +2.0 / -1.6, n 185 / 185 / 68", () => {
-  const races = load("races.json");
-  const rows = ["senate", "governor", "house"].flatMap((office) =>
-    computeRows({ metadata: load(`meta-${office}.json`), summaries: load(`sum-${office}.json`), races: races.filter((r) => r.office === office) }));
-  assert.equal(rows.length, 438);
-  const e = incumbencyEffect(rows, 0);
-  assert.deepEqual(e.n, { dem: 185, rep: 185, open: 68 });
-  assert.equal(e.enabled, true);
-  assert.equal((e.dem * 100).toFixed(1), "2.0"); // not +3.1: that would be a free Harris slope
-  assert.equal((e.rep * 100).toFixed(1), "-1.6"); // not -2.3
-  // The default 50% threshold keeps all 438 here too, and the adjusted group means equalize.
-  assert.deepEqual(incumbencyEffect(rows, 0.5).n, e.n);
-  const adj = applyIncumbency(rows, e);
-  const m = (g) => averageOverUnder(adj.filter((r) => r.incumbent === g)).mean;
-  assert.ok(Math.abs(m("dem") - m("open")) < 1e-9 && Math.abs(m("rep") - m("open")) < 1e-9);
 });
