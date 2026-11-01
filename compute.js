@@ -30,7 +30,9 @@ export function computeRows({ metadata, summaries, races }) {
     const cands = Object.values(entry?.candidates ?? {});
     const dem = !entry ? null : race.demId ? byId(cands, race.demId) : pickDem(cands, race.demName);
     const rep = !entry ? null : race.repId ? byId(cands, race.repId) : single(cands.filter((c) => c.party === "gop"));
-    const problem = !metaOk
+    const problem = race.problem // a problem found while reading the Sheet wins: no numbers for that race
+      ? race.problem
+      : !metaOk
       ? "metadata unavailable"
       : !entry
         ? "contest not in metadata"

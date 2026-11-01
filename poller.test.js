@@ -7,7 +7,7 @@ import {
 const OFFICES = ["senate", "governor", "house"];
 
 // A manual clock: advance(ms) runs due timers in time order, then lets promises settle.
-function harness({ fail = () => false, throwInData = () => false } = {}) {
+function harness({ fail = () => false, throwInData = () => false, once = false } = {}) {
   let t = 0;
   let nextId = 1;
   const timers = new Map();
@@ -40,6 +40,7 @@ function harness({ fail = () => false, throwInData = () => false } = {}) {
     },
     clearTimer: (id) => timers.delete(id),
     now: () => t,
+    once,
   });
   async function advance(ms) {
     const end = t + ms;
@@ -218,6 +219,33 @@ test("isStale is based on time since the last success", () => {
   assert.equal(isStale(null, 1000), true);
   assert.equal(isStale(1000, 1000 + STALE_AFTER_MS), false);
   assert.equal(isStale(1000, 1001 + STALE_AFTER_MS), true);
+});
+
+test("once: the 0 / 2 / 4 s first load happens, then nothing, even after hide/show", async () => {
+  const h = harness({ once: true });
+  h.poller.start();
+  await h.advance(0); // let the first fetch start at t = 0 before the clock moves
+  await h.advance(4000);
+  assert.deepEqual(h.calls, [[0, "senate"], [2000, "governor"], [4000, "house"]]);
+  await h.advance(10 * 60_000);
+  h.setHidden(true);
+  h.setHidden(false);
+  await h.advance(10 * 60_000);
+  assert.equal(h.calls.length, 3);
+});
+
+test("once: hidden during the first load, the remaining offices are fetched when the tab shows, then it stops", async () => {
+  const h = harness({ once: true });
+  h.poller.start();
+  await h.advance(0);
+  h.setHidden(true);
+  await h.advance(60_000);
+  assert.equal(h.calls.length, 1);
+  h.setHidden(false);
+  await h.advance(2000 + 2000);
+  assert.deepEqual(h.calls.map((c) => c[1]), ["senate", "governor", "house"]);
+  await h.advance(10 * 60_000);
+  assert.equal(h.calls.length, 3);
 });
 
 test("Politico URLs never carry a query string or fragment", () => {

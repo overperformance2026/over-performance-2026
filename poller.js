@@ -82,6 +82,7 @@ export function makeFetchOffice({
  * @param {(office: string) => Promise<any>} o.fetchOffice
  * @param {(office: string, data: any) => void} o.onData
  * @param {(office: string, err: unknown) => void} [o.onError]
+ * @param {boolean} [o.once]  fetch each office once (the 0/2/4 s first load) and stop; no 20 s cycle
  * @param {(office: string, err: unknown) => void} [o.onRateLimited]  a 429: polling has stopped for
  *   good (no retry until the page reloads); the caller falls back to the committed snapshot
  * @param {() => boolean} o.isHidden
@@ -91,7 +92,7 @@ export function makeFetchOffice({
  * @param {() => number} o.now
  */
 export function createPoller(o) {
-  const { offices, fetchOffice, onData, onError = () => {}, onRateLimited = () => {}, isHidden, setTimer, clearTimer, now } = o;
+  const { offices, fetchOffice, onData, onError = () => {}, onRateLimited = () => {}, isHidden, setTimer, clearTimer, now, once = false } = o;
   let next = 0; // index into offices of the next fetch
   let fetched = 0; // fetches started so far; < offices.length means still in the first load
   let timer = null;
@@ -113,7 +114,8 @@ export function createPoller(o) {
     next = (next + 1) % offices.length;
     fetched += 1;
     lastAt = now();
-    schedule(gap()); // schedule before awaiting: a slow or failed fetch never stalls the cycle
+    // once: fetch each office a single time (first load only), e.g. a finished election's final files
+    if (!(once && fetched >= offices.length)) schedule(gap()); // before awaiting: a slow or failed fetch never stalls the cycle
     // One .catch after both steps: a throw from fetchOffice OR from onData (a render bug) is an error.
     Promise.resolve()
       .then(() => fetchOffice(office))
@@ -135,7 +137,7 @@ export function createPoller(o) {
   }
 
   function onVisibility() {
-    if (!started || stopped) return;
+    if (!started || stopped || (once && fetched >= offices.length)) return;
     if (isHidden()) {
       clearTimer(timer);
       timer = null;
