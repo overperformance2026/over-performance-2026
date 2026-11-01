@@ -41,6 +41,15 @@ class BuildRaces(unittest.TestCase):
         self.assertEqual(race["harris2p"], 0.472)
         self.assertEqual(race["attrs"], [])
 
+    def test_2026_sheet_column_names_work(self):
+        r = row()
+        for old, new in (("Politico contest ID", "AP contest ID"), ("Politico Dem ID", "AP Dem ID"),
+                         ("Politico Rep ID", "AP Rep ID"), ("Harris 2-p", "Harris 2-p %")):
+            r[new] = r.pop(old)
+        r["AP Dem name"] = "Dana Dem"
+        (race,) = build_races([r], META)
+        self.assertEqual((race["contestId"], race["demId"], race["harris2p"], race["attrs"]), ("c1", "1", 0.472, []))
+
     def test_bad_dem_id_fails_loudly(self):
         with self.assertRaises(SystemExit) as ctx:
             build_races([row(**{"Politico Dem ID": "99"})], META)

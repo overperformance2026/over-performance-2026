@@ -40,8 +40,23 @@ KNOWN = set(REQUIRED) | {
 INCUMBENT = {"democrat": "dem", "republican": "rep", "neither": "open"}
 
 
+def canonical_headers(row: dict) -> dict:
+    """The 2026 Sheet says "AP ..." where the 2024 one says "Politico ...", and "Harris 2-p %"."""
+    out = {}
+    for key, value in row.items():
+        name = key.strip() if isinstance(key, str) else key
+        if isinstance(name, str):
+            if name.startswith("AP "):
+                name = "Politico " + name[3:]
+            if name == "Harris 2-p %":
+                name = "Harris 2-p"
+        out[name] = value
+    return out
+
+
 def build_races(rows: list[dict], metadata: dict[str, list[dict]]) -> list[dict]:
     """rows: sheet rows; metadata: office -> Politico metadata list. Returns races.json entries."""
+    rows = [canonical_headers(r) for r in rows]
     errors: list[str] = []
     attr_cols = [c for c in (rows[0] if rows else {}) if c not in KNOWN and c.strip()]
     races: list[dict] = []
@@ -146,14 +161,14 @@ def apply_categories(races: list[dict], cat_rows: list[dict]) -> list[dict]:
 
 
 def main(sheet: str, data_dir: str, out: str, categories: str | None = None) -> None:
-    rows = list(csv.DictReader(Path(sheet).open(encoding="utf-8")))
+    rows = list(csv.DictReader(Path(sheet).open(encoding="utf-8-sig")))
     metadata = {
         o: json.loads((Path(data_dir) / f"meta-{o}.json").read_text(encoding="utf-8"))
         for o in ("senate", "governor", "house")
     }
     races = build_races(rows, metadata)
     if categories:
-        cat_rows = list(csv.DictReader(Path(categories).open(encoding="utf-8")))
+        cat_rows = list(csv.DictReader(Path(categories).open(encoding="utf-8-sig")))
         races = apply_categories(races, cat_rows)
     Path(out).write_text(json.dumps(races, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {out}: {len(races)} races")

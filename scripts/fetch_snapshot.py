@@ -1,6 +1,6 @@
 """Politico files -> raw (git-ignored) -> slim files committed to the repo.
 
-Usage: uv run scripts/fetch_snapshot.py [--date YYYY-MM-DD] [--sums-only] [--no-fetch]
+Usage: uv run scripts/fetch_snapshot.py [--date YYYY-MM-DD] [--sums-only | --meta-only] [--no-fetch]
 
 Fetches the files one at a time, 30 seconds apart (Politico rate limit; never lower it).
 Raw files land in data/raw/<year>/ and are NOT committed. The slim files in data/<year>/ keep the
@@ -10,6 +10,7 @@ the files were last fetched, for the page's "data as of" line.
 --date       election date (default 2024-11-05); the year picks the data directories.
 --sums-only  fetch only the three summaries files (3 calls, not 6): the metadata does not change
              on election night. Candidate names come from the slim meta files already committed.
+--meta-only  fetch only the three metadata files into data/raw/<year>/ and stop (3 calls).
 --no-fetch   re-slim whatever is already in data/raw/<year>/ (no calls, timestamp untouched).
 """
 
@@ -33,14 +34,14 @@ def url(kind: str, office: str, date: str = DEFAULT_DATE) -> str:
     return f"{BASE}/results__{date}__collections__{date}-collection-{office}__summaries/data.json"
 
 
-def jobs(sums_only: bool) -> list[tuple[str, str]]:
-    kinds = ("sum",) if sums_only else ("meta", "sum")
+def jobs(sums_only: bool, meta_only: bool = False) -> list[tuple[str, str]]:
+    kinds = ("sum",) if sums_only else ("meta",) if meta_only else ("meta", "sum")
     return [(k, o) for o in OFFICES for k in kinds]
 
 
-def fetch_all(date: str, raw: Path, sums_only: bool) -> None:
+def fetch_all(date: str, raw: Path, sums_only: bool, meta_only: bool = False) -> None:
     raw.mkdir(parents=True, exist_ok=True)
-    for i, (kind, office) in enumerate(jobs(sums_only)):
+    for i, (kind, office) in enumerate(jobs(sums_only, meta_only)):
         if i:
             print(f"waiting {GAP_SECONDS}s", flush=True)
             time.sleep(GAP_SECONDS)
@@ -81,10 +82,15 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--date", default=DEFAULT_DATE)
     ap.add_argument("--sums-only", action="store_true")
+    ap.add_argument("--meta-only", action="store_true")
     ap.add_argument("--no-fetch", action="store_true")
     args = ap.parse_args()
     year = args.date[:4]
     raw, out = ROOT / "data" / "raw" / year, ROOT / "data" / year
+
+    if args.meta_only:  # just refresh the raw metadata (e.g. to list candidates); no slimming
+        fetch_all(args.date, raw, sums_only=False, meta_only=True)
+        return
 
     if not args.no_fetch:
         fetch_all(args.date, raw, args.sums_only)
@@ -94,11 +100,12 @@ def main() -> None:
     for office in OFFICES:
         part = [r for r in races if r["office"] == office]
         # Re-slimming an already-slim meta file is a no-op, so --sums-only can reuse the committed one.
-        meta_src = out if args.sums_only else raw
+        # (the very first run for a new year has no committed meta yet, so it slims the raw one.)
+        meta_src = out if args.sums_only and (out / f"meta-{office}.json").exists() else raw
         meta = json.loads((meta_src / f"meta-{office}.json").read_text(encoding="utf-8"))
         sums = json.loads((raw / f"sum-{office}.json").read_text(encoding="utf-8"))
         slim_meta, slim_sums = slim(part, meta, sums)
-        if not args.sums_only:
+        if meta_src == raw:
             (out / f"meta-{office}.json").write_text(json.dumps(slim_meta, separators=(",", ":")))
         (out / f"sum-{office}.json").write_text(json.dumps(slim_sums, separators=(",", ":")))
         print(f"{office}: {len(slim_sums['contests'])} contests slimmed")

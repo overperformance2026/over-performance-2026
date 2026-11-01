@@ -6,12 +6,25 @@
 <title>2026 Data: Democratic over/under-performance</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-year="2026" data-dir="data/2026" data-date="2026-11-03" data-live="true"
+      data-other-href="2024.html" data-other-label="See how it looks with the finished 2024 results">
 <header>
   <h1>2026 Data: How far are Democrats over- or under-performing?</h1>
-  <p class="sub">Live results start on election night, Tuesday, November 3, 2026.
-    Until then, see how it looks with <a href="2024.html">the 2024 results</a>.</p>
+  <p class="sub">Dem two-party share (D / (D + R)) minus Harris's 2024 two-party share in the same state or district.
+    Data set: <strong id="dataset">2026 live results</strong>.</p>
+  <label id="filter-box" hidden>Show: <select id="filter"></select></label>
+  <label id="reporting-box">% reporting: <select id="reporting"></select></label>
+  <p id="incumbency-box"><label><input type="checkbox" id="incumbency" disabled> Account for incumbency effect</label>
+    <span id="incumbency-info"></span></p>
+  <p id="avg" class="avg" hidden></p>
+  <p id="hidden-note" class="note" hidden></p>
+  <p id="load-warn" class="err" hidden></p>
 </header>
-<footer>Results: Politico / AP.</footer>
+<main id="sections"></main>
+<footer>
+  <p id="source"></p>
+  <p>Results: Politico / AP. Click a column header to sort. <a id="other-page" href="2024.html">See how it looks with the finished 2024 results</a>.</p>
+</footer>
+<script type="module" src="app.js"></script>
 </body>
 </html>

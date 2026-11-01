@@ -364,6 +364,28 @@ test("2024 end to end: every races.json entry yields a row; spot checks", () => 
   assert.ok(rows.every((r) => typeof r.harris2p === "number" && r.harris2p > 0.2 && r.harris2p < 0.95));
 });
 
+// ---- real 2026 data (committed snapshot: candidates known, no votes yet) ---------------
+
+const load26 = (f) => JSON.parse(readFileSync(new URL(`./data/2026/${f}`, import.meta.url), "utf8"));
+
+test("2026: every race resolves from the committed metadata; with no votes yet there are no numbers", () => {
+  const races = load26("races.json");
+  const rows = ["senate", "governor", "house"].flatMap((office) =>
+    computeRows({ metadata: load26(`meta-${office}.json`), summaries: load26(`sum-${office}.json`), races: races.filter((r) => r.office === office) }));
+  assert.equal(rows.length, races.length, "no race silently dropped");
+  assert.equal(rows.length, 481);
+  assert.ok(rows.every((r) => r.problem === null), "every race resolves to a Dem and a Rep");
+  assert.ok(rows.every((r) => r.dem.name && r.rep.name));
+  assert.ok(rows.every((r) => r.overUnder === null && r.pctReporting === null), "empty results give empty numbers, not zeros");
+  // AL-04 (16.5%) and KY-05 (17.7%) really are that red, so the lower bound is 10%.
+  assert.ok(rows.every((r) => typeof r.harris2p === "number" && r.harris2p > 0.1 && r.harris2p < 0.95));
+  const inc ={ dem: 0, rep: 0, open: 0 };
+  for (const r of rows) inc[r.incumbent]++; // a null/unknown incumbent would throw NaN below
+  assert.deepEqual(inc, { dem: 185, rep: 193, open: 103 });
+  assert.equal(incumbencyEffect(rows, 0.5).enabled, false, "incumbency needs real results");
+  assert.equal(filterRows(rows, "The Squad").length, 6);
+});
+
 test("2024 incumbency effect matches the oracle's independent check: +2.0 / -1.6, n 185 / 185 / 68", () => {
   const races = load("races.json");
   const rows = ["senate", "governor", "house"].flatMap((office) =>
