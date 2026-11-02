@@ -15,7 +15,7 @@ th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: lef
 th { cursor: pointer; user-select: none; font-weight: 600; font-size: 0.85rem; }
 th[aria-sort="ascending"]::after { content: " ▲"; }
 th[aria-sort="descending"]::after { content: " ▼"; }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.num, th.num { text-align: center; font-variant-numeric: tabular-nums; }
 td.pos { color: var(--pos); font-weight: 600; }
 td.neg { color: var(--neg); font-weight: 600; }
 @media (max-width: 600px) {
@@ -28,6 +28,7 @@ td.neg { color: var(--neg); font-weight: 600; }
 #filter-box[hidden] { display: none; }
 /* 16px: iOS Safari zooms the page when a smaller select is focused. */
 select { font: inherit; font-size: 16px; padding: 4px 6px; }
+body[data-hide-reporting-col] .reporting-col { display: none; }
 .inc-col { display: none; }
 .show-incumbency th.inc-col, .show-incumbency td.inc-col { display: table-cell; }
 #incumbency-box { margin: 10px 0 0; font-size: 0.9rem; }

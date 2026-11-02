@@ -25,13 +25,13 @@ const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "Hous
 const COLUMNS = [
   { key: "label", title: "State / district", text: (r) => r.label },
   { key: "dem", title: "Dem (or anti-Rep Indep.)", text: (r) => r.dem.name ?? "—" },
-  { key: "overUnder", title: "Over / under", num: true, text: (r) => signed(r.overUnder), cls: (r) => sign(r.overUnder) },
+  { key: "overUnder", title: "Over/under", num: true, text: (r) => signed(r.overUnder), cls: (r) => sign(r.overUnder) },
   { key: "rep", title: "Republican", hideSm: true, text: (r) => r.rep.name ?? "—" },
   { key: "dem2p", title: "Dem 2-p %", num: true, text: (r) => pct(r.dem2p) },
   { key: "harris2p", title: "Harris 2-p %", num: true, hideSm: true, text: (r) => pct(r.harris2p) },
   // Shown only while the incumbency box is checked (CSS: main.show-incumbency .inc-col).
   { key: "incumbencyBoost", title: "Incumb. eff.", num: true, optional: true, text: (r) => (hasBoost(r) ? signed(r.incumbencyBoost) : "—") },
-  { key: "pctReporting", title: "% reporting", num: true, text: (r) => pct(r.pctReporting, 0) },
+  { key: "pctReporting", title: "% reporting", num: true, reportingCol: true, text: (r) => pct(r.pctReporting, 0) },
 ];
 
 const pct = (x, digits = 1) => (x === null || x === undefined ? "—" : `${(x * 100).toFixed(digits)}%`);
@@ -70,7 +70,7 @@ function renderTable(initialRows) {
       for (const col of COLUMNS) {
         const td = tr.insertCell();
         td.textContent = col.text(r);
-        td.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : "", col.cls?.(r) ?? ""].join(" ").trim();
+        td.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : "", col.reportingCol ? "reporting-col" : "", col.cls?.(r) ?? ""].join(" ").trim();
       }
       return tr;
     }));
@@ -83,7 +83,7 @@ function renderTable(initialRows) {
     const th = document.createElement("th");
     th.textContent = col.title;
     th.dataset.key = col.key;
-    th.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : ""].join(" ").trim();
+    th.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : "", col.reportingCol ? "reporting-col" : ""].join(" ").trim();
     th.addEventListener("click", () => {
       state.dir = state.key === col.key ? -state.dir : col.num ? -1 : 1; // numbers start high-to-low
       state.key = col.key;
