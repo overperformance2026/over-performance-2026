@@ -245,8 +245,11 @@ async function main() {
   // (not the category), and are recomputed on every apply(), so data refreshes update them too.
   const incBox = document.getElementById("incumbency");
   const incInfo = document.getElementById("incumbency-info");
+  // The box is on whenever there is enough data, unless the user switched it off. Their choice is
+  // remembered, so it survives the box being forced off (and greyed out) for a while.
+  let wantsIncumbency = true;
   const renderIncumbency = (effect) => {
-    if (!effect.enabled) incBox.checked = false; // too few races now: revert to raw over/under
+    incBox.checked = effect.enabled && wantsIncumbency; // too few races: raw over/under, box greyed out
     incBox.disabled = !effect.enabled;
     incBox.closest("label").classList.toggle("off", !effect.enabled); // greyed out
     incInfo.textContent = effect.enabled
@@ -285,7 +288,10 @@ async function main() {
     apply();
   };
   reporting.addEventListener("change", apply);
-  incBox.addEventListener("change", apply);
+  incBox.addEventListener("change", () => {
+    wantsIncumbency = incBox.checked;
+    apply();
+  });
   select.addEventListener("change", apply);
 
   refresh(); // first paint from the committed copy (and any warnings)
