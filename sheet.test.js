@@ -173,6 +173,23 @@ test("categories: check rule (0 / FALSE / blank skip), name must equal AP Dem na
   assert.ok(warnings.some((w) => /Wrong Name/.test(w)));
 });
 
+test("categories: a plain state matches the regular and the special race; '(special)' only the special", () => {
+  const FL = sheet(
+    row({ Office: "Senate", "State/District": "FL", "AP Dem name": "Regular Dem", "AP contest ID": "f1" }),
+    row({ Office: "Senate", "State/District": "FL", "Special Election": "Yes", "AP Dem name": "Special Dem", "AP contest ID": "f2" }),
+    row({ Office: "Senate", "State/District": "OH", "AP Dem name": "Only Dem", "AP contest ID": "o1" }),
+  );
+  const cats = "category,office,state/district,candidate,check\n"
+    + "A,Senate,FL,Regular Dem,1\nA,Senate,FL,Special Dem,1\n"      // plain FL: the candidate picks the race
+    + "B,Senate,FL (special),Special Dem,1\nB,Senate,FL (special),Regular Dem,1\n" // special only
+    + "C,Senate,OH,Only Dem,1\nC,Senate,OH (special),Only Dem,1";   // no OH special exists
+  const { races, warnings } = parseBundle(FL, cats);
+  assert.deepEqual(races.map((r) => r.attrs), [["A"], ["A", "B"], ["C"]]);
+  assert.equal(warnings.length, 2);
+  assert.ok(warnings.some((w) => /Regular Dem.*"Special Dem"/.test(w)), "wrong candidate for the special row");
+  assert.ok(warnings.some((w) => /OH \(special\).*matches no race/.test(w)));
+});
+
 test("categories: pure (inputs untouched); missing column throws; no categories text = no tags", () => {
   const { races } = parseSheet(HOUSE);
   const out = applyCategories(races, parseCategories(CATS));

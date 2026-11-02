@@ -15,7 +15,8 @@ const REQUIRED = [
 ];
 const BACKUP = { dem: "backup_votes_dem", rep: "backup_votes_rep", pct: "backup_pct_reporting", time: "backup_time_updated" };
 const CATEGORY_COLUMNS = ["category", "office", "state/district", "candidate", "check"];
-const INCUMBENT = { democrat: "dem", republican: "rep", neither: "open" };
+const SPECIAL = " (special)"; // appended to the label of a special election
+const INCUMBENT ={ democrat: "dem", republican: "rep", neither: "open" };
 
 export class SheetError extends Error {}
 
@@ -175,7 +176,7 @@ export function parseSheet(text) {
     const base = `line ${line} (${row.Office} ${row["State/District"]})`;
     if (!OFFICES.includes(office)) return warnings.push(`${base}: Office is not Senate/Governor/House; row skipped`);
     if (!row["State/District"]) return warnings.push(`line ${line}: State/District is blank; row skipped`);
-    const label = row["State/District"] + (row["Special Election"].toLowerCase() === "yes" ? " (special)" : "");
+    const label = row["State/District"] + (row["Special Election"].toLowerCase() === "yes" ? SPECIAL : "");
     const problems = [];
     const incumbent = INCUMBENT[row.Incumbent.toLowerCase()] ?? null;
     if (incumbent === null) problems.push(`Incumbent ${JSON.stringify(row.Incumbent)} is not Democrat/Republican/Neither`);
@@ -231,10 +232,14 @@ export function applyCategories(races, categoryRows) {
     const where = `categories line ${i + 2} (${c.category}: ${c.office} ${c.label})`;
     if (["0", "FALSE", ""].includes(c.check.trim().toUpperCase())) return;
     if (!c.category) return warnings.push(`${where}: no category name; row skipped`);
-    const race = races.find((r) => r.office === c.office && r.label === c.label);
-    if (!race) return warnings.push(`${where}: matches no race; row skipped`);
-    if (c.candidate !== race.demName) {
-      return warnings.push(`${where}: candidate ${JSON.stringify(c.candidate)} is not the race's AP Dem name ${JSON.stringify(race.demName)}; row skipped`);
+    // A plain "FL" covers both the regular and the special race; "FL (special)" only the special.
+    // The candidate then picks the race, so a state with two races needs no extra column.
+    const inState = races.filter((r) => r.office === c.office && (r.label === c.label || r.label === `${c.label}${SPECIAL}`));
+    if (!inState.length) return warnings.push(`${where}: matches no race; row skipped`);
+    const race = inState.find((r) => r.demName === c.candidate);
+    if (!race) {
+      const names = inState.map((r) => JSON.stringify(r.demName)).join(" / ");
+      return warnings.push(`${where}: candidate ${JSON.stringify(c.candidate)} is not the race's AP Dem name ${names}; row skipped`);
     }
     if (!attrs.get(race).includes(c.category)) attrs.get(race).push(c.category);
   });
