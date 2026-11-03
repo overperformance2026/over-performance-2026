@@ -8,7 +8,8 @@ import { assertDataDir, summarizeSources, liveIsStale, describeSource } from "./
 // One code path for every year. Each page says what it shows, e.g.
 //   <body data-dir="data/2026" data-date="2026-11-03" data-poll="true"
 //         data-sheet-url="...pub?gid=0&single=true&output=csv" data-categories-url="...">
-// poll=true keeps polling Politico; poll=false fetches Politico once (a finished election).
+// poll=true polls Politico and merges it with the Sheet's backup votes; poll=false (a finished
+// election) uses the Sheet alone and never contacts Politico.
 const CONFIG = {
   dir: document.body.dataset.dir ?? "data/2024",
   date: document.body.dataset.date ?? "2024-11-05",
@@ -318,10 +319,10 @@ async function main() {
     now: () => Date.now(),
   }).start();
 
-  // ---- Politico: the 0 / 2 / 4 s first load, then (if polling) one office every 20 s ---------
-  createPoller({
+  // ---- Politico (live pages only): the 0 / 2 / 4 s first load, then one office every 20 s ---
+  // A finished election (poll=false) is the Sheet alone: Politico is never contacted.
+  if (CONFIG.poll) createPoller({
     offices: OFFICES.map(([o]) => o),
-    once: !CONFIG.poll,
     fetchOffice: makeFetchOffice({ date: CONFIG.date }),
     onData: (office, summaries) => {
       state.politico[office] = { summaries, asOf: Date.now() };

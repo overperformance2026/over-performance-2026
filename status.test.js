@@ -31,22 +31,32 @@ test("liveIsStale: some office with no successful fetch for 150 s", () => {
 
 test("describeSource: no results yet is never blank, and says nothing about a source", () => {
   const text = describeSource({ summary: summarizeSources([]), polling: true, formatTime: fmt });
-  assert.match(text, /No results yet/);
+  assert.match(text, /^Results: No results yet/);
   assert.ok(!/Source:/.test(text));
 });
 
 test("describeSource: one source, with the data-as-of time", () => {
   const live = describeSource({ summary: { counts: { politico: 5, sheet: 0, committed: 0 }, anyResults: true, asOf: 7 }, polling: true, formatTime: fmt });
-  assert.equal(live, "Source: Live results (Politico). Data as of T7.");
-  const final = describeSource({ summary: { counts: { politico: 5, sheet: 0, committed: 0 }, anyResults: true, asOf: 7 }, polling: false, formatTime: fmt });
-  assert.equal(final, "Source: Politico. Data as of T7.");
+  assert.equal(live, "Results: Live results. Data as of T7.");
   const sheet = describeSource({ summary: { counts: { politico: 0, sheet: 3, committed: 0 }, anyResults: true, asOf: null }, polling: true, formatTime: fmt });
-  assert.equal(sheet, "Source: the backup sheet. Data as of unknown.");
+  assert.equal(sheet, "Results: the backup sheet. Data as of unknown.");
+});
+
+test("describeSource: a finished election just says the results are final, whatever the sources", () => {
+  const summary = { counts: { politico: 208, sheet: 233, committed: 0 }, anyResults: true, asOf: 7 };
+  assert.equal(describeSource({ summary, polling: false, formatTime: fmt }), "Results: Final results.");
 });
 
 test("describeSource: mixed sources say how many races come from each, and that the time is the oldest", () => {
   const text = describeSource({ summary: { counts: { politico: 400, sheet: 1, committed: 2 }, anyResults: true, asOf: 9 }, polling: true, formatTime: fmt });
-  assert.equal(text, "Source: Live results (Politico) for 400 races, the backup sheet for 1 race, the committed backup for 2 races. Data as of T9 (oldest).");
+  assert.equal(text, "Results: Live results for 400 races, the backup sheet for 1 race, the committed backup for 2 races. Data as of T9 (oldest).");
+});
+
+test("describeSource: never names Politico, in any state", () => {
+  const counts = { politico: 1, sheet: 1, committed: 1 };
+  for (const o of [{ polling: true }, { polling: false }, { polling: true, rateLimited: true, stale: true, sheetLoaded: false }]) {
+    assert.ok(!/politico/i.test(describeSource({ summary: { counts, anyResults: true, asOf: 1 }, formatTime: fmt, ...o })));
+  }
 });
 
 test("describeSource: stale, rate-limited and race-list-backup notes", () => {

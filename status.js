@@ -36,30 +36,32 @@ export function liveIsStale(lastSuccess, startedAt, nowMs, maxAgeMs = 150_000) {
 }
 
 /**
+ * The footer's first line. It never names the live feed's provider (it may change): "Live results".
  * @param {object} o
  * @param {ReturnType<typeof summarizeSources>} o.summary
- * @param {boolean} o.polling       the page polls Politico (false: one fetch of final files)
+ * @param {boolean} o.polling       the page follows live results (false: a finished election, "Final results.")
  * @param {boolean} [o.stale]       liveIsStale(...)
- * @param {boolean} [o.rateLimited] Politico answered 429; polling stopped until reload
+ * @param {boolean} [o.rateLimited] the live feed answered 429; polling stopped until reload
  * @param {boolean} [o.sheetLoaded] the published Sheet has been read at least once
  * @param {(ms: number) => string} o.formatTime
  */
 export function describeSource({ summary, polling, stale = false, rateLimited = false, sheetLoaded = true, formatTime }) {
-  const names = { politico: polling ? "Live results (Politico)" : "Politico", sheet: "the backup sheet", committed: "the committed backup" };
+  if (!polling) return "Results: Final results.";
+  const names = { politico: "Live results", sheet: "the backup sheet", committed: "the committed backup" };
   const used = SOURCES.filter((s) => summary.counts[s] > 0);
   let text;
   if (!summary.anyResults) {
-    text = "No results yet. This page updates when votes are counted.";
+    text = "Results: No results yet. This page updates when votes are counted.";
   } else {
     const where =
       used.length === 1
         ? names[used[0]]
         : used.map((s) => `${names[s]} for ${summary.counts[s]} race${summary.counts[s] === 1 ? "" : "s"}`).join(", ");
     const when = summary.asOf === null ? "unknown" : formatTime(summary.asOf);
-    text = `Source: ${where}. Data as of ${when}${used.length > 1 ? " (oldest)" : ""}.`;
+    text = `Results: ${where}. Data as of ${when}${used.length > 1 ? " (oldest)" : ""}.`;
   }
   if (stale) text += " Warning: live results may be out of date.";
-  if (rateLimited) text += " Live feed paused (Politico asked us to slow down); reload to retry.";
+  if (rateLimited) text += " Live feed paused (the results provider asked us to slow down); reload to retry.";
   if (!sheetLoaded) text += " Race list: backup copy (the Sheet could not be read).";
   return text;
 }
