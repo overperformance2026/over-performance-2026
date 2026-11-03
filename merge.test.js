@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { mergeVotes, politicoLayer, buildRows, backupIndex, backupLayers, PRIORITY } from "./merge.js";
 import { parseBundle } from "./sheet.js";
 import { incumbencyEffect, averageOverUnder } from "./compute.js";
@@ -137,63 +137,29 @@ test("backupLayers: the committed backups stand in only until the published Shee
 
 const committed = (f) => readFileSync(new URL(`./data/2024/${f}`, import.meta.url), "utf8");
 
-test("2024 from the committed Sheet copy alone: 438 rows, all from the committed backup", () => {
+test("2024 from the committed Sheet copy alone: 441 rows, all from the committed backup", () => {
   const { races } = parseBundle(committed("sheet.csv"), committed("categories.csv"));
   const rows = buildRows({ races, committed: backupIndex(races) });
-  assert.equal(rows.length, 438);
+  assert.equal(rows.length, 441);
   assert.ok(rows.every((r) => r.votesSource === "committed" && r.problem === null && r.overUnder !== null));
   const e = incumbencyEffect(rows, 0.5);
-  assert.deepEqual(e.n, { dem: 185, rep: 185, open: 68 });
+  assert.deepEqual(e.n, { dem: 186, rep: 186, open: 69 });
   assert.equal((e.dem * 100).toFixed(1), "2.0");
   assert.equal((e.rep * 100).toFixed(1), "-1.5");
-  assert.ok(Math.abs(averageOverUnder(rows).mean * 100 - -0.2) < 0.05);
+  assert.ok(Math.abs(averageOverUnder(rows).mean * 100 - -0.1) < 0.05);
   const gallego = rows.find((r) => r.dem.name === "Ruben Gallego");
   assert.ok(Math.abs(gallego.overUnder - (1676335 / (1676335 + 1595761) - 0.472)) < 1e-9);
 });
 
-const RAW = new URL("./data/raw/2024/", import.meta.url);
-function rawPolitico() {
-  const politico = {};
-  for (const o of ["senate", "governor", "house"]) {
-    politico[o] = { asOf: 1, summaries: JSON.parse(readFileSync(new URL(`sum-${o}.json`, RAW), "utf8")) };
-  }
-  return politico;
-}
-
-// The Oracle's earlier +2.0 / -1.6 used the old Indiana House baselines; the principal has since
-// corrected IN-01..IN-09 in the Sheet (IN-01 49.5% -> 50.2%), which moves the Rep estimate to -1.5.
-test("2024 raw Politico alone: incumbency +2.0 / -1.5 on 185 / 185 / 68 (with the corrected Indiana baselines)", { skip: !existsSync(RAW) }, () => {
-  const { races } = parseBundle(committed("sheet.csv"), null);
-  const rows = buildRows({ races, politico: rawPolitico() });
-  assert.equal(rows.length, 438);
-  assert.ok(rows.every((r) => r.votesSource === "politico"));
-  const e = incumbencyEffect(rows, 0);
-  assert.deepEqual(e.n, { dem: 185, rep: 185, open: 68 });
-  assert.equal((e.dem * 100).toFixed(1), "2.0");
-  assert.equal((e.rep * 100).toFixed(1), "-1.5");
-});
-
-test("2024: the Sheet backup equals Politico everywhere except where it is AHEAD (11 Virginia House races: final counts)", { skip: !existsSync(RAW) }, () => {
-  const { races } = parseBundle(committed("sheet.csv"), null);
-  const viaPolitico = buildRows({ races, politico: rawPolitico() });
-  const viaBackup = buildRows({ races, committed: backupIndex(races) });
-  const both = buildRows({ races, committed: backupIndex(races), politico: rawPolitico() });
-  const differ = viaPolitico.map((p, i) => [p, viaBackup[i], both[i]]).filter(([p, b]) => p.demVotes !== b.demVotes || p.repVotes !== b.repVotes);
-  assert.deepEqual(differ.map(([p]) => p.label), Array.from({ length: 11 }, (_, i) => `VA-${String(i + 1).padStart(2, "0")}`));
-  for (const [p, b, merged] of differ) {
-    assert.ok(b.demVotes + b.repVotes > p.demVotes + p.repVotes, `${p.label}: backup is ahead of Politico`);
-    assert.equal(merged.votesSource, "committed", `${p.label}: the higher total wins`);
-    assert.equal(merged.pctReporting, 1);
-  }
-  assert.ok(both.filter((r) => r.votesSource === "politico").length === 427, "everywhere else the tie goes to Politico");
-});
+// (The raw-Politico comparisons of the old 438-race Sheet were retired: the 2024 Sheet now holds the certified
+// results, which differ from Politico's election-night files, and the 2024 page no longer reads Politico.)
 
 // ---- real 2026 data -----------------------------------------------------------------------------------
 
-test("2026 from the committed Sheet copy: 481 rows, no votes yet, so no numbers and no source", () => {
+test("2026 from the committed Sheet copy: 482 rows, no votes yet, so no numbers and no source", () => {
   const { races } = parseBundle(readFileSync(new URL("./data/2026/sheet.csv", import.meta.url), "utf8"), null);
   const rows = buildRows({ races, committed: backupIndex(races) });
-  assert.equal(rows.length, 481);
+  assert.equal(rows.length, 482);
   assert.ok(rows.every((r) => r.overUnder === null && r.votesSource === null && r.problem === null));
   assert.equal(incumbencyEffect(rows, 0.5).enabled, false);
 });

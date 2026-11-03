@@ -235,28 +235,28 @@ test("fetchSheetText: non-200, 401/HTML pages and timeouts throw", async () => {
 
 const committed = (year, f) => readFileSync(new URL(`./data/${year}/${f}`, import.meta.url), "utf8");
 
-test("the committed 2026 copy parses to 481 clean races", () => {
+test("the committed 2026 copy parses to 482 clean races", () => {
   const { races, warnings } = parseBundle(committed(2026, "sheet.csv"), committed(2026, "categories.csv"));
-  assert.equal(races.length, 481);
+  assert.equal(races.length, 482);
   assert.deepEqual(warnings.filter((w) => !/Pressley/.test(w)), [], "no warnings (the skipped Pressley row has check 0 and makes none)");
   assert.ok(races.every((r) => r.problem === undefined));
-  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 193, open: 103 });
+  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 194, open: 103 });
   assert.equal(races.filter((r) => r.attrs.includes("The Squad")).length, 6);
   assert.ok(races.some((r) => r.label === "AK-AL" && r.office === "house"), "at-large AL kept");
   assert.equal(races.filter((r) => r.office === "senate").length, 35);
   assert.equal(races.filter((r) => r.office === "governor").length, 36);
-  assert.equal(races.filter((r) => r.office === "house").length, 410);
-  // (commit afdcc10 also compared these 481 races field by field with the old pipeline's races.json: identical)
+  assert.equal(races.filter((r) => r.office === "house").length, 411);
+  // (commit afdcc10 also compared the first 481 races field by field with the old pipeline's races.json: identical)
 });
 
-test("the committed 2024 copy parses to 438 clean races, every one with a backup", () => {
+test("the committed 2024 copy parses to 441 clean races, every one with a backup", () => {
   const { races, warnings } = parseBundle(committed(2024, "sheet.csv"), committed(2024, "categories.csv"));
-  assert.equal(races.length, 438);
+  assert.equal(races.length, 441);
   assert.deepEqual(warnings, []);
   assert.ok(races.every((r) => r.problem === undefined));
-  assert.equal(races.filter((r) => r.backup).length, 438);
+  assert.equal(races.filter((r) => r.backup).length, 441);
   // the 2024 Sheet's decimals ("0.99", "0.988", MS-02's "0.8841") and "100%" read as fractions, not 1% steps
   assert.ok(races.every((r) => r.backup.pct >= 0.85 && r.backup.pct <= 1), "every 2024 backup % is between 85% and 100%");
   assert.ok(races.every((r) => Number.isFinite(r.backup.asOf)), "every 2024 backup time is readable");
-  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 185, open: 68 });
+  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 186, rep: 186, open: 69 });
 });
