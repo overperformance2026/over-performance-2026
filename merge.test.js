@@ -180,12 +180,13 @@ test("2024 from the committed Sheet copy alone: 441 rows, all from the committed
 
 // ---- real 2026 data -----------------------------------------------------------------------------------
 
-test("2026 from the committed Sheet copy: 481 rows (no AK-Gov); a row has a source only if it has votes, and then it is the committed copy", () => {
+test("2026 from the committed Sheet copy: 480 rows (no AK-Gov, no AK-AL); a row has a source only if it has votes, and then it is the committed copy", () => {
   const { races } = parseBundle(readFileSync(new URL("./data/2026/sheet.csv", import.meta.url), "utf8"), null);
   const rows = buildRows({ races, committed: backupIndex(races) });
-  assert.equal(rows.length, 481);
+  assert.equal(rows.length, 480);
   assert.ok(rows.every((r) => r.problem === null));
   assert.ok(rows.every((r) => (r.votesSource === null) === (r.overUnder === null)), "numbers come with a source, and only then");
   assert.ok(rows.every((r) => r.votesSource === null || r.votesSource === "committed"));
   assert.ok(!rows.some((r) => r.office === "governor" && r.label === "AK"), "AK-Gov is out until the final RCV count");
+  assert.ok(!rows.some((r) => r.label === "AK-AL"), "so is AK-AL");
 });
