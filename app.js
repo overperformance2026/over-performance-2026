@@ -125,7 +125,11 @@ function showAverage(attr, rows, total, minLabel, anyResults) {
   el.append(strong, small);
 }
 
-const formatTime = (ms) => new Date(ms).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+// Always US Eastern, with the zone named ("Nov 3, 2026, 7:04 PM EST"), whatever the viewer's own zone.
+const formatTime = (ms) => new Date(ms).toLocaleString("en-US", {
+  timeZone: "America/New_York", year: "numeric", month: "short", day: "numeric",
+  hour: "numeric", minute: "2-digit", timeZoneName: "short",
+});
 const committedUrl = (file) => `${CONFIG.dir}/${file}`;
 
 async function main() {

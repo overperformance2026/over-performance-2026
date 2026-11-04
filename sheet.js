@@ -122,10 +122,11 @@ export function parseTime(v) {
     }
     return easternToEpoch(Number(m[3]), Number(m[1]), Number(m[2]), h, Number(m[5]), Number(m[6] ?? 0));
   }
-  m = s.match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}))?(Z|[+-]\d{2}:?\d{2})?$/i);
+  // seconds may carry a fraction ("00:00:00.595Z", as the NBC import writes them)
+  m = s.match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2})(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?$/i);
   if (m) {
-    if (m[7]) {
-      const t = Date.parse(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6] ?? "00"}${m[7].toUpperCase()}`.replace(/([+-]\d{2})(\d{2})$/, "$1:$2"));
+    if (m[8]) {
+      const t = Date.parse(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6] ?? "00"}${m[7] ?? ""}${m[8].toUpperCase()}`.replace(/([+-]\d{2})(\d{2})$/, "$1:$2"));
       return Number.isFinite(t) ? t : null;
     }
     return easternToEpoch(Number(m[1]), Number(m[2]), Number(m[3]), Number(m[4]), Number(m[5]), Number(m[6] ?? 0));

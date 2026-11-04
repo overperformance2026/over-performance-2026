@@ -63,6 +63,11 @@ test("parseTime: M/D/YYYY and ISO without a zone are read as US Eastern, in any 
   assert.equal(parseTime("2026-11-03T21:15:00Z"), Date.UTC(2026, 10, 3, 21, 15, 0));
   assert.equal(parseTime("2026-11-03T21:15:00-05:00"), Date.UTC(2026, 10, 4, 2, 15, 0));
   assert.equal(parseTime("2026-11-03T21:15:00+0100"), Date.UTC(2026, 10, 3, 20, 15, 0));
+  // fractional seconds, as the NBC import writes them ("2026-11-04T00:00:00.595Z")
+  assert.equal(parseTime("2026-11-04T00:00:00.595Z"), Date.UTC(2026, 10, 4, 0, 0, 0, 595));
+  assert.equal(parseTime("2026-11-04T00:04:29.000Z"), Date.UTC(2026, 10, 4, 0, 4, 29));
+  assert.equal(parseTime("2026-11-03T21:15:00.5-05:00"), Date.UTC(2026, 10, 4, 2, 15, 0, 500));
+  assert.equal(parseTime("2026-11-03T21:15:00.250"), Date.UTC(2026, 10, 4, 2, 15, 0), "no zone: Eastern; the fraction is dropped");
   // the day daylight saving ends (Nov 1, 2026, 2:00 -> 1:00): 12:30 is already EST
   assert.equal(parseTime("11/1/2026 12:30"), Date.UTC(2026, 10, 1, 17, 30, 0));
   assert.equal(parseTime("11/1/2026 0:30"), Date.UTC(2026, 10, 1, 4, 30, 0), "before the change: EDT");
