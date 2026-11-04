@@ -16,10 +16,12 @@
   <label id="filter-box" hidden>Show: <select id="filter"></select></label>
   <label id="reporting-box">% reporting: <select id="reporting"></select></label>
   <a id="year-link" href="index.html" target="_blank" rel="noopener">2026 data</a>
-  <p id="incumbency-box"><label><input type="checkbox" id="incumbency" disabled> Account for incumbency effect</label>
-    <span id="incumbency-info"></span></p>
+  <div id="checks">
+    <p id="incumbency-box"><label><input type="checkbox" id="incumbency" disabled> Account for incumbency effect</label>
+      <span id="incumbency-info"></span></p>
+    <p id="challenger-box"><label><input type="checkbox" id="challengers"> Dem challengers only</label></p>
+  </div>
   <p id="avg" class="avg" hidden></p>
-  <p id="hidden-note" class="note" hidden></p>
   <p id="load-warn" class="err" hidden></p>
 </header>
 <main id="sections"></main>

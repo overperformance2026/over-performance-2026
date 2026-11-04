@@ -32,7 +32,9 @@ select { font: inherit; font-size: 16px; padding: 4px 6px; }
 body[data-hide-reporting-col] .reporting-col { display: none; }
 .inc-col { display: none; }
 .show-incumbency th.inc-col, .show-incumbency td.inc-col { display: table-cell; }
-#incumbency-box { margin: 10px 0 0; font-size: 0.9rem; }
+/* the two checkboxes share a line when there is room, and stack when there is not (a phone) */
+#checks { display: flex; flex-wrap: wrap; gap: 4px 28px; margin-top: 10px; }
+#incumbency-box, #challenger-box { margin: 0; font-size: 0.9rem; }
 #incumbency-info { color: var(--muted); }
 #incumbency-box label.off { color: var(--muted); opacity: 0.6; }
 .note { margin: 6px 0 0; font-size: 0.85rem; color: var(--muted); }

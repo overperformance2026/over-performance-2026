@@ -213,7 +213,7 @@ async function main() {
   reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
   reporting.value = String(DEFAULT_REPORTING);
   if (reporting.selectedIndex < 0) reporting.value = "0.5"; // an unknown data-default-reporting falls back to ≥50%
-  const note = document.getElementById("hidden-note");
+  const challengersBox = document.getElementById("challengers");
   const warnEl = document.getElementById("load-warn");
 
   // The category drop-down follows the Sheet: rebuilt when a re-read changes the category names.
@@ -268,7 +268,12 @@ async function main() {
     const min = Number(reporting.value);
     const effect = incumbencyEffect(allRows(), min);
     renderIncumbency(effect);
-    const adjust = (rows) => applyIncumbency(rows, incBox.checked ? effect : null);
+    // "Dem challengers only" drops Dem incumbents from the tables and from the average (and its "X of Y").
+    // The incumbency effect above still comes from all races, so it does not depend on this box.
+    const adjust = (rows) => {
+      const adjusted = applyIncumbency(rows, incBox.checked ? effect : null);
+      return challengersBox.checked ? adjusted.filter((r) => r.incumbent !== "dem") : adjusted;
+    };
     for (const s of sections) {
       const { shown } = applyFilters(adjust(s.rows), attr, min);
       s.h2.textContent = `${s.title} (${shown.length} race${shown.length === 1 ? "" : "s"})`;
@@ -279,9 +284,6 @@ async function main() {
     const all = applyFilters(adjust(allRows()), attr, min);
     const label = reporting.selectedOptions[0].textContent;
     showAverage(attr, all.shown, all.inCategory.length, label, summarizeSources(allRows()).anyResults);
-    // Early on, most races are below the cutoff; say so rather than show empty tables unexplained.
-    note.hidden = all.hidden === 0;
-    note.textContent = `${all.hidden} race${all.hidden === 1 ? "" : "s"} hidden: under ${Math.round(min * 100)}% of the vote reporting.`;
     renderSource();
     renderWarnings();
   };
@@ -298,6 +300,7 @@ async function main() {
     apply();
   });
   select.addEventListener("change", apply);
+  challengersBox.addEventListener("change", apply);
 
   refresh(); // first paint from the committed copy (and any warnings)
   if (!state.committed && !state.live) {
