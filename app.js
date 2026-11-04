@@ -18,8 +18,8 @@ const CONFIG = {
   categoriesUrl: document.body.dataset.categoriesUrl ?? null,
 };
 // Minimum share of expected vote counted for a race to show (and to count in the average).
-const REPORTING_OPTIONS = [[0, "≥0%"], [0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
-// The page picks its default: <body data-default-reporting="0"> shows every race (2026); omitted = ≥50%.
+const REPORTING_OPTIONS = [[0, "≥0%"], [0.1, "≥10%"], [0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
+// The page picks its default: <body data-default-reporting="0.1"> starts at ≥10% (2026); omitted = ≥50%.
 const DEFAULT_REPORTING = Number(document.body.dataset.defaultReporting ?? 0.5);
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
 
@@ -208,7 +208,7 @@ async function main() {
   const reporting = document.getElementById("reporting");
   reporting.append(...REPORTING_OPTIONS.map(([min, label]) => new Option(label, min)));
   reporting.value = String(DEFAULT_REPORTING);
-  if (reporting.selectedIndex < 0) reporting.selectedIndex = 1; // an unknown data-default-reporting falls back to ≥50%
+  if (reporting.selectedIndex < 0) reporting.value = "0.5"; // an unknown data-default-reporting falls back to ≥50%
   const note = document.getElementById("hidden-note");
   const warnEl = document.getElementById("load-warn");
 

@@ -82,9 +82,12 @@ export function attributeNames(rows) {
   return [...new Set(rows.flatMap((r) => r.attrs))].sort();
 }
 
-/** Rows with at least `min` (0-1) of the expected vote counted. Unknown % reporting is kept. */
+/**
+ * Rows with at least `min` (0-1) of the expected vote counted. A race with no % reporting yet (no
+ * results) can't meet a threshold, so it shows only at 0 ("≥0%"), the same rule the incumbency sample uses.
+ */
 export function filterByReporting(rows, min) {
-  return rows.filter((r) => r.pctReporting === null || r.pctReporting >= min);
+  return rows.filter((r) => (r.pctReporting === null ? min <= 0 : r.pctReporting >= min));
 }
 
 /**
@@ -102,7 +105,7 @@ export function applyFilters(rows, attr, min) {
  * of (dem2p - harris2p) on intercept + DemInc + RepInc is just group means of the raw over/under:
  *   dem = mean(raw | Dem incumbent) - mean(raw | open),  rep = mean(raw | Rep incumbent) - mean(raw | open).
  * Sample: races with a numeric raw over/under at least `minPct` reporting (unknown % reporting
- * counts only when minPct is 0; the table filter, filterByReporting, still keeps such rows) and a
+ * counts only when minPct is 0, as in the table filter, filterByReporting) and a
  * known incumbent group. The category filter plays no part.
  * enabled needs MIN_GROUP races in each of dem / rep / open; dem and rep are null when disabled.
  * @returns {{dem: number|null, rep: number|null, n: {dem: number, rep: number, open: number}, enabled: boolean}}

@@ -152,10 +152,12 @@ test("filterRows keeps rows with the attribute; null/empty means all; attributeN
   assert.deepEqual(attributeNames([]), []);
 });
 
-test("filterByReporting keeps rows at or above the minimum; unknown % reporting is kept", () => {
+test("filterByReporting keeps rows at or above the minimum; unknown % reporting shows only at 0", () => {
   const rows = [{ id: 1, pctReporting: 0.9 }, { id: 2, pctReporting: 0.49 }, { id: 3, pctReporting: 0.5 }, { id: 4, pctReporting: null }];
-  assert.deepEqual(filterByReporting(rows, 0.5).map((r) => r.id), [1, 3, 4]);
-  assert.deepEqual(filterByReporting(rows, 0.95).map((r) => r.id), [4]);
+  assert.deepEqual(filterByReporting(rows, 0.5).map((r) => r.id), [1, 3]);
+  assert.deepEqual(filterByReporting(rows, 0.95).map((r) => r.id), []);
+  assert.deepEqual(filterByReporting(rows, 0.1).map((r) => r.id), [1, 2, 3]);
+  assert.deepEqual(filterByReporting(rows, 0.0001).map((r) => r.id), [1, 2, 3]);
   assert.deepEqual(filterByReporting(rows, 0).map((r) => r.id), [1, 2, 3, 4]);
 });
 
@@ -168,11 +170,12 @@ test("applyFilters: category then reporting; hidden counts what the reporting fi
   ];
   const a = applyFilters(rows, "A", 0.5);
   assert.deepEqual(a.inCategory.map((r) => r.id), [1, 2, 4]);
-  assert.deepEqual(a.shown.map((r) => r.id), [1, 4]);
-  assert.equal(a.hidden, 1);
+  assert.deepEqual(a.shown.map((r) => r.id), [1]);
+  assert.equal(a.hidden, 2);
   const all = applyFilters(rows, "", 0.95);
-  assert.deepEqual(all.shown.map((r) => r.id), [3, 4]);
-  assert.equal(all.hidden, 2);
+  assert.deepEqual(all.shown.map((r) => r.id), [3]);
+  assert.equal(all.hidden, 3);
+  assert.deepEqual(applyFilters(rows, "A", 0).shown.map((r) => r.id), [1, 2, 4], "at 0 nothing is hidden");
   assert.deepEqual(applyFilters([], "A", 0.5), { inCategory: [], shown: [], hidden: 0 });
 });
 
@@ -236,8 +239,9 @@ test("incumbencyEffect: excludes rows below the threshold, null over/under and u
   assert.equal(incumbencyEffect(unknown, 0.0001).n.dem, 5);
   assert.equal(incumbencyEffect(unknown, 0.95).n.dem, 0);
   assert.equal(incumbencyEffect(unknown, 0).n.dem, 6);
-  // ...while the table filter still keeps such a row.
-  assert.equal(filterByReporting([ir("dem", 0.1, null)], 0.5).length, 1);
+  // ...and the table filter agrees: such a row shows at 0 and nowhere above it.
+  assert.equal(filterByReporting([ir("dem", 0.1, null)], 0.5).length, 0);
+  assert.equal(filterByReporting([ir("dem", 0.1, null)], 0).length, 1);
 });
 
 test("incumbencyEffect ignores the category: it takes rows, not a filter", () => {
