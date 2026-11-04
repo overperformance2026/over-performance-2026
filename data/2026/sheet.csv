@@ -1,483 +1,482 @@
-Office,State/District,District number,Special Election,Democrat (or non-R indie),Republican,Incumbent,Harris 2-p %,AP contest ID,AP Dem ID,AP Dem name,AP Dem party,AP Rep ID,AP Rep name,Match check,backup_votes_dem,backup_votes_rep,backup_pct_reporting,backup_time_updated
-Senate,AL,,,Everett Wess,Barry Moore,Neither,34.6%,ap:01:1755,171276,Everett Wess,Dem,66781,Barry Moore,OK,,,,
-Senate,AK,,,Mary Peltola,Dan Sullivan,Republican,43.2%,ap:02:3079,70718,Mary Peltola,Dem,64262,Dan Sullivan,OK,,,,
-Senate,AR,,,Hallie Shoffner,Tom Cotton,Republican,34.3%,ap:05:6345,169665,Hallie Shoffner,Dem,61872,Tom Cotton,OK,,,,
-Senate,CO,,,John Hickenlooper,Mark Baisley,Democrat,55.6%,ap:08:7168,60601,John Hickenlooper,Dem,104446,Mark Baisley,OK,,,,
-Senate,DE,,,Chris Coons,Michael Katz,Democrat,57.5%,ap:10:8362,60997,Chris Coons,Dem,103229,Michael Katz,OK,,,,
-Senate,FL,,Yes,Angie Nixon,Ashley Moody,Republican,43.4%,ap:12:84979,110984,Angie Nixon,Dem,109657,Ashley Moody,OK,,,,
-Senate,GA,,,Jon Ossoff,Mike Collins,Democrat,48.9%,ap:13:12301,65866,Jon Ossoff,Dem,63367,Mike Collins,OK,,,,
-Senate,ID,,,Todd Achilles,Jim Risch,Republican,31.2%,ap:16:13252,162421,Todd Achilles,Ind,15344,Jim Risch,OK,,,,
-Senate,IL,,,Juliana Stratton,Don Tracy,Neither,55.6%,ap:17:16430,118184,Juliana Stratton,Dem,170432,Don Tracy,OK,,,,
-Senate,IA,,,Josh Turek,Ashley Hinson,Neither,43.3%,ap:19:17247,114917,Josh Turek,Dem,68744,Ashley Hinson,OK,,,,
-Senate,KS,,,Adam Hamilton,Roger Marshall,Republican,41.8%,ap:20:17585,175305,Adam Hamilton,Dem,65324,Roger Marshall,OK,,,,
-Senate,KY,,,Charles Booker,Andy Barr,Neither,34.5%,ap:21:18783,68558,Charles Booker,Dem,60705,Andy Barr,OK,,,,
-Senate,LA,,,Jamie Davis,Julia Letlow,Neither,38.8%,ap:22:20157,172214,Jamie Davis,Dem,69687,Julia Letlow,OK,,,,
-Senate,ME,,,Troy Jackson,Susan Collins,Republican,53.5%,ap:23:20643,54967,Troy Jackson,Dem,1727,Susan Collins,OK,,,,
-Senate,MA,,,Ed Markey,John Deaton,Democrat,63.0%,ap:25:24467,888,Ed Markey,Dem,165705,John Deaton,OK,,,,
-Senate,MI,,,Abdul El-Sayed,Mike Rogers,Neither,49.3%,ap:26:24463,67151,Abdul El-Sayed,Dem,1169,Mike Rogers,OK,,,,
-Senate,MN,,,Peggy Flanagan,Michele Tafoya,Neither,52.2%,ap:27:25151,126236,Peggy Flanagan,Dem,177166,Michele Tafoya,OK,,,,
-Senate,MS,,,Scott Colom,Cindy Hyde-Smith,Republican,38.4%,ap:28:26692,169318,Scott Colom,Dem,28529,Cindy Hyde-Smith,OK,,,,
-Senate,MT,,,Seth Bodnar,Kurt Alme,Neither,39.7%,ap:30:27607,177955,Seth Bodnar,Ind,171710,Kurt Alme,OK,,,,
-Senate,NE,,,Dan Osborn,Pete Ricketts,Republican,39.6%,ap:31:28594,168007,Dan Osborn,Ind,51566,Pete Ricketts,OK,,,,
-Senate,NH,,,Chris Pappas,John E. Sununu,Neither,51.4%,ap:33:30003,56360,Chris Pappas,Dem,176348,John Sununu,OK,,,,
-Senate,NJ,,,Cory Booker,Justin Murphy,Democrat,53.0%,ap:34:31296,63133,Cory Booker,Dem,162656,Justin Murphy,OK,,,,
-Senate,NM,,,Ben Ray Lujan,Larry Marker,Democrat,53.1%,ap:35:33948,56805,Ben Lujan,Dem,163922,Larry Marker,OK,,,,
-Senate,NC,,,Roy Cooper,Michael Whatley,Neither,48.4%,ap:37:35984,34471,Roy Cooper,Dem,169297,Michael Whatley,OK,,,,
-Senate,OH,,Yes,Sherrod Brown,Jon Husted,Republican,44.3%,ap:39:84327,1384,Sherrod Brown,Dem,139415,Jon Husted,OK,,,,
-Senate,OK,,,N'Kiyla Jasmine Thomas,Kevin Hern,Neither,32.5%,ap:40:37960,173585,N'Kiyla Thomas,Dem,67018,Kevin Hern,OK,,,,
-Senate,OR,,,Jeff Merkley,David Brock Smith,Democrat,57.4%,ap:41:38952,57469,Jeff Merkley,Dem,141335,David Smith,OK,,,,
-Senate,RI,,,Jack Reed,Raymond McKay,Democrat,57.1%,ap:44:40003,964,Jack Reed,Dem,63908,Raymond McKay,OK,,,,
-Senate,SC,,,Annie Andrews,Darline Graham,Republican,40.9%,ap:45:41938,70916,Annie Andrews,Dem,178208,Darline Graham,OK,,,,
-Senate,SD,,,Brian Bengs,Mike Rounds,Republican,35.1%,ap:46:42003,70405,Brian Bengs,Ind,580,Mike Rounds,OK,,,,
-Senate,TN,,,Marquita Bradshaw,Bill Hagerty,Republican,34.9%,ap:47:43441,69240,Marquita Bradshaw,Dem,69233,Bill Hagerty,OK,,,,
-Senate,TX,,,James Talarico,Ken Paxton,Neither,43.1%,ap:48:46643,153037,James Talarico,Dem,58352,Ken Paxton,OK,,,,
-Senate,VA,,,Mark Warner,Bert Mizusawa,Democrat,52.9%,ap:51:47917,1782,Mark Warner,Dem,174928,Bert Mizusawa,OK,,,,
-Senate,WV,,,Rachel Fetty Anderson,Shelley Moore Capito,Republican,28.7%,ap:54:49137,46544,Rachel Anderson,Dem,441,Shelley Capito,OK,,,,
-Senate,WY,,,James Byrd,Harriet Hageman,Neither,26.5%,ap:56:51677,153086,James Byrd,Dem,67595,Harriet Hageman,OK,,,,
-Governor,AL,,,Doug Jones,Tommy Tuberville,Neither,34.6%,ap:01:1019,3610,Doug Jones,Dem,68308,Thomas Tuberville,OK,,,,
-Governor,AK,,,Jonathan Kreiss-Tomkins,Bernadette Wilson,Neither,43.2%,ap:02:2010,101017,Jonathan Kreiss-Tomkins,Dem,177707,Bernadette Wilson,OK,,,,
-Governor,AZ,,,Katie Hobbs,Andy Biggs,Democrat,47.2%,ap:04:3014,70987,Katie Hobbs,Dem,52611,Andy Biggs,OK,,,,
-Governor,AR,,,Fredrick Love,Sarah Huckabee Sanders,Republican,34.3%,ap:05:5626,102193,Fred Love,Dem,70516,Sarah Huckabee Sanders,OK,,,,
-Governor,CA,,,Xavier Becerra,Steve Hilton,Neither,60.4%,ap:06:6123,94,Xavier Becerra,Dem,172439,Steve Hilton,OK,,,,
-Governor,CO,,,Phil Weiser,Victor Marx,Neither,55.6%,ap:08:6619,104361,Phil Weiser,Dem,174624,Victor Marx,OK,,,,
-Governor,CT,,,Ned Lamont,Ryan Fazio,Democrat,57.4%,ap:09:7019,51911,Ned Lamont,Dem,109320,Ryan Fazio,OK,,,,
-Governor,FL,,,David Jolly,Byron Donalds,Neither,43.4%,ap:12:10045,63159,David Jolly,Dem,62408,Byron Donalds,OK,,,,
-Governor,GA,,,Keisha Lance Bottoms,Rick Jackson,Neither,48.9%,ap:13:12029,110638,Keisha Lance Bottoms,Dem,171426,Rick Jackson,OK,,,,
-Governor,HI,,,Josh Green,Gary Cordery,Democrat,61.8%,ap:15:12480,71471,Josh Green,Dem,71276,Gary Cordery,OK,,,,
-Governor,ID,,,Terri Pickens,Brad Little,Republican,31.2%,ap:16:13676,112763,Terri Pickens,Dem,53635,Brad Little,OK,,,,
-Governor,IL,,,JB Pritzker,Darren Bailey,Democrat,55.6%,ap:17:15989,17710,JB Pritzker,Dem,71049,Darren Bailey,OK,,,,
-Governor,IA,,,Rob Sand,Zach Lahn,Neither,43.3%,ap:19:17076,114528,Rob Sand,Dem,173748,Zach Lahn,OK,,,,
-Governor,KS,,,Cindy Holscher,Ty Masterson,Neither,41.8%,ap:20:17559,115817,Cindy Holscher,Dem,114681,Ty Masterson,OK,,,,
-Governor,ME,,,Hannah Pingree,Robert Charles,Neither,53.5%,ap:23:20646,174083,Hannah Pingree,Dem,174086,Robert Charles,OK,,,,
-Governor,MD,,,Wes Moore,Dan Cox,Democrat,64.8%,ap:24:22091,71129,Wes Moore,Dem,64816,Dan Cox,OK,,,,
-Governor,MA,,,Maura Healey,Mike Minogue,Democrat,63.0%,ap:25:22957,71279,Maura Healey,Dem,176606,Michael Minogue,OK,,,,
-Governor,MI,,,Jocelyn Benson,John James,Neither,49.3%,ap:26:24074,128670,Jocelyn Benson,Dem,166570,John James,OK,,,,
-Governor,MN,,,Amy Klobuchar,Lisa Demuth,Neither,52.2%,ap:27:24704,159027,Amy Klobuchar,Dem,126628,Lisa Demuth,OK,,,,
-Governor,NE,,,Lynne Walz,Jim Pillen,Republican,39.6%,ap:31:28006,129088,Lynne Walz,Dem,69957,Jim Pillen,OK,,,,
-Governor,NV,,,Aaron Ford,Joe Lombardo,Republican,48.4%,ap:32:29861,131963,Aaron Ford,Dem,70779,Joseph Lombardo,OK,,,,
-Governor,NH,,,Cinde Warmington,Kelly Ayotte,Republican,51.4%,ap:33:30005,139961,Cinde Warmington,Dem,61040,Kelly Ayotte,OK,,,,
-Governor,NM,,,Deb Haaland,Gregg Hull,Neither,53.1%,ap:35:32238,64378,Deb Haaland,Dem,172994,Greggory Hull,OK,,,,
-Governor,NY,,,Kathy Hochul,Bruce Blakeman,Democrat,56.3%,ap:36:39760,61285,Kathy Hochul,Dem,61145,Bruce Blakeman,OK,,,,
-Governor,OH,,,Amy Acton,Vivek Ramaswamy,Neither,44.3%,ap:39:36005,170750,Amy Acton,Dem,71843,Vivek Ramaswamy,OK,,,,
-Governor,OK,,,Cyndi Munson,Mike Mazzei,Neither,32.5%,ap:40:37857,138897,Cyndi Munson,Dem,137606,Mike Mazzei,OK,,,,
-Governor,OR,,,Tina Kotek,Christine Drazan,Democrat,57.4%,ap:41:38019,70205,Tina Kotek,Dem,70218,Christine Drazan,OK,,,,
-Governor,PA,,,Josh Shapiro,Stacy Garrity,Democrat,49.1%,ap:42:39292,70066,Josh Shapiro,Dem,146618,Stacy Garrity,OK,,,,
-Governor,RI,,,Helena Foulkes,Aaron Guckian,Neither,57.1%,ap:44:40005,71486,Helena Foulkes,Dem,143645,Aaron Guckian,OK,,,,
-Governor,SC,,,Jermaine Johnson,Alan Wilson,Neither,40.9%,ap:45:41191,145291,Jermaine Johnson,Dem,143843,Alan Wilson,OK,,,,
-Governor,SD,,,Dan Ahlers,Larry Rhoden,Republican,35.1%,ap:46:42222,68738,Dan Ahlers,Dem,58102,Larry Rhoden,OK,,,,
-Governor,TN,,,Jerri Green,Marsha Blackburn,Neither,34.9%,ap:47:43440,147782,Jerri Green,Dem,682,Marsha Blackburn,OK,,,,
-Governor,TX,,,Gina Hinojosa,Greg Abbott,Republican,43.1%,ap:48:45901,152027,Gina Hinojosa,Dem,41404,Greg Abbott,OK,,,,
-Governor,VT,,,Amanda Janoo,Phil Scott,Republican,66.4%,ap:50:46375,175074,Amanda Janoo,Dem,45443,Phil Scott,OK,,,,
-Governor,WI,,,David Crowley,Tom Tiffany,Neither,49.6%,ap:55:50016,156426,David Crowley,Dem,67975,Tom Tiffany,OK,,,,
-Governor,WY,,,Kenneth Casner,Eric Barlow,Neither,26.5%,ap:56:51403,49137,Kenneth Casner,Dem,153633,Eric Barlow,OK,,,,
-House,AK-AL,AL,,Bill Hill,Nick Begich III,Republican,43.2%,ap:02:2015,177719,Bill Hill,Ind,70724,Nick Begich,OK,,,,
-House,AL-01,1,,Clyde Jones Jr.,Jerry Carl,Neither,31.8%,ap:01:1005,171283,Clyde Jones,Dem,68313,Jerry Carl,OK,,,,
-House,AL-02,2,,Shomari Figures,Rhett Marques,Democrat,42.7%,ap:01:1374,160906,Shomari Figures,Dem,100547,Rhett Marques,OK,,,,
-House,AL-03,3,,Lee McInnis,Mike Rogers,Republican,26.5%,ap:01:1375,171289,Lee McInnis,Dem,1161,Mike Rogers,OK,,,,
-House,AL-04,4,,Amanda Pusczek,Robert Aderholt,Republican,16.5%,ap:01:1011,171292,Amanda Pusczek,Dem,523,Robert Aderholt,OK,,,,
-House,AL-05,5,,Andrew Sneed,Dale Strong,Republican,35.3%,ap:01:1376,171296,Andrew Sneed,Dem,70499,Dale Strong,OK,,,,
-House,AL-06,6,,Maurice Mercer,Gary Palmer,Republican,32.5%,ap:01:1377,176563,Maurice Mercer,Dem,63532,Gary Palmer,OK,,,,
-House,AL-07,7,,Terri Sewell,Ammie Akin,Democrat,59.0%,ap:01:1378,60639,Terri Sewell,Dem,176560,Ammie Akin,OK,,,,
-House,AR-01,1,,Terri Green,Rick Crawford,Republican,26.9%,ap:05:5104,169662,Terri Yarbrough Green,Dem,60226,Rick Crawford,OK,,,,
-House,AR-02,2,,Chris Jones,French Hill,Republican,42.0%,ap:05:5105,70529,Chris Jones,Dem,63416,French Hill,OK,,,,
-House,AR-03,3,,Robb Ryerse,Steve Womack,Republican,37.2%,ap:05:6092,66360,Robb Ryerse,Dem,60238,Steve Womack,OK,,,,
-House,AR-04,4,,James Russell,Bruce Westerman,Republican,29.7%,ap:05:5107,70528,James Russell,Dem,63418,Bruce Westerman,OK,,,,
-House,AZ-01,1,,Amish Shah,Jay Feely,Neither,48.4%,ap:04:3004,101869,Amish Shah,Dem,174913,Thomas Feely,OK,,,,
-House,AZ-02,2,,Jonathan Nez,Eli Crane,Republican,42.4%,ap:04:3006,164639,Jonathan Nez,Dem,70963,Eli Crane,OK,,,,
-House,AZ-04,4,,Greg Stanton,Zuhdi Jasser,Democrat,53.3%,ap:04:3010,67576,Greg Stanton,Dem,164826,Zuhdi Jasser,OK,,,,
-House,AZ-05,5,,Elizabeth Lee,Mark Lamb,Neither,39.9%,ap:04:3012,174922,Elizabeth Lee,Dem,164629,Mark Lamb,OK,,,,
-House,AZ-06,6,,JoAnna Mendoza,Juan Ciscomani,Republican,49.6%,ap:04:3544,101892,JoAnna Mendoza,Dem,70979,Juan Ciscomani,OK,,,,
-House,AZ-07,7,,Adelita Grijalva,Daniel Butierez,Democrat,61.2%,ap:04:3920,167589,Adelita Grijalva,Dem,164828,Daniel Butierez,OK,,,,
-House,AZ-08,8,,Bernadette Greene-Placentia,Abraham Hamadeh,Republican,41.8%,ap:04:3924,174923,Bernadette Greene-Placentia,Dem,101964,Abraham Hamadeh,OK,,,,
-House,AZ-09,9,,Dani Sterbinsky,Paul Gosar,Republican,34.3%,ap:04:4173,174925,Danielle Sterbinsky,Dem,61002,Paul Gosar,OK,,,,
-House,CA-01,1,,Mike McGuire,James Gallagher,Republican,56.3%,ap:06:6478,105490,Mike McGuire,Dem,105529,James Gallagher,OK,,,,
-House,CA-02,2,,Jared Huffman,Robin Littau,Democrat,62.7%,ap:06:5692,62063,Jared Huffman,Dem,172490,Robin Littau,OK,,,,
-House,CA-03,3,,Ami Bera,Robb Tucker,Democrat,55.3%,ap:06:5693,60686,Ami Bera,Dem,172498,Robb Tucker,OK,,,,
-House,CA-05,5,,Michael Masuda,Tom McClintock,Republican,39.4%,ap:06:5695,172505,Michael Masuda,Dem,52499,Tom McClintock,OK,,,,
-House,CA-06,6,,Richard Pan,Kevin Kiley,Republican,54.3%,ap:06:5696,105173,Richard Pan,Dem,69756,Kevin Kiley,OK,,,,
-House,CA-08,8,,John Garamendi,Rudy Recile,Democrat,67.6%,ap:06:5698,7136,John Garamendi,Dem,70672,Rudy Recile,OK,,,,
-House,CA-09,9,,Josh Harder,John McBride,Democrat,55.9%,ap:06:5699,66533,Josh Harder,Dem,161038,John McBride,OK,,,,
-House,CA-10,10,,Mark DeSaulnier,Jeff Frese,Democrat,67.3%,ap:06:8514,60108,Mark DeSaulnier,Dem,172523,Jeff Frese,OK,,,,
-House,CA-13,13,,Adam Gray,Kevin Lincoln,Democrat,50.2%,ap:06:5703,70545,Adam Gray,Dem,105816,Kevin Lincoln,OK,,,,
-House,CA-15,15,,Kevin Mullin,Charles Hoelter,Democrat,74.8%,ap:06:5705,70553,Kevin Mullin,Dem,172543,Charles Hoelter,OK,,,,
-House,CA-16,16,,Sam Liccardo,Peter Soule,Democrat,74.9%,ap:06:5706,105726,Sam Liccardo,Dem,172547,Peter Soule,OK,,,,
-House,CA-17,17,,Ro Khanna,Ritesh Tandon,Democrat,70.4%,ap:06:5707,7547,Ro Khanna,Dem,68020,Ritesh Tandon,OK,,,,
-House,CA-18,18,,Zoe Lofgren,Shane Lewis,Democrat,64.7%,ap:06:5708,49,Zoe Lofgren,Dem,172551,Shane Lewis,OK,,,,
-House,CA-19,19,,Jimmy Panetta,Peter Coe Verbica,Democrat,67.9%,ap:06:5709,65030,Jimmy Panetta,Dem,106620,Peter Verbica,OK,,,,
-House,CA-20,20,,Sandra Van Scotter,Vince Fong,Republican,33.5%,ap:06:5710,172559,Sandra Van Scotter,Dem,105858,Vince Fong,OK,,,,
-House,CA-21,21,,Jim Costa,Kyle Kirkland,Democrat,53.1%,ap:06:5711,6818,Jim Costa,Dem,161069,Kyle Kirkland,OK,,,,
-House,CA-22,22,,Randy Villegas,David Valadao,Republican,49.1%,ap:06:5712,172562,Randy Villegas,Dem,62229,David Valadao,OK,,,,
-House,CA-23,23,,Tessa Lynn Hodge,Jay Obernolte,Republican,40.0%,ap:06:5713,172565,Tessa Hodge,Dem,67998,Jay Obernolte,OK,,,,
-House,CA-24,24,,Salud Carbajal,Bob Smith,Democrat,62.8%,ap:06:5714,65043,Salud Carbajal,Dem,172569,Bob Smith,OK,,,,
-House,CA-25,25,,Raul Ruiz,Joe Males,Democrat,53.0%,ap:06:5715,62342,Raul Ruiz,Dem,172570,Joe Males,OK,,,,
-House,CA-26,26,,Jacqui Irwin,Sam Gallucci,Neither,57.8%,ap:06:5716,105658,Jacqui Irwin,Dem,172576,Sam Gallucci,OK,,,,
-House,CA-27,27,,George Whitesides,Jason Gibbs,Democrat,55.1%,ap:06:5717,161079,George Whitesides,Dem,172581,Jason Gibbs,OK,,,,
-House,CA-28,28,,Judy Chu,April Verlato,Democrat,63.1%,ap:06:5718,52450,Judy Chu,Dem,161080,April Verlato,OK,,,,
-House,CA-30,30,,Laura Friedman,Scott Meyers,Democrat,70.7%,ap:06:5720,105888,Laura Friedman,Dem,172584,Scott Meyers,OK,,,,
-House,CA-31,31,,Gil Cisneros,Eric Ching,Democrat,56.3%,ap:06:5721,66574,Gil Cisneros,Dem,70626,Eric Ching,OK,,,,
-House,CA-32,32,,Brad Sherman,Larry Thompson,Democrat,62.9%,ap:06:5722,84,Brad Sherman,Dem,68116,Larry Thompson,OK,,,,
-House,CA-33,33,,Pete Aguilar,Stephanie Vargas,Democrat,55.0%,ap:06:5723,62883,Pete Aguilar,Dem,172596,Stephanie Vargas,OK,,,,
-House,CA-35,35,,Norma Torres,Mike Cargile,Democrat,54.0%,ap:06:5725,63684,Norma Torres,Dem,68059,Mike Cargile,OK,,,,
-House,CA-36,36,,Ted Lieu,Houston Brignano,Democrat,70.2%,ap:06:5726,63666,Ted Lieu,Dem,172601,Houston Brignano,OK,,,,
-House,CA-38,38,,Hilda Solis,Pedro Casas,Neither,56.4%,ap:06:5728,105686,Hilda Solis,Dem,161095,Pedro Casas,OK,,,,
-House,CA-39,39,,Mark Takano,Steve Manos,Democrat,54.9%,ap:06:5729,8584,Mark Takano,Dem,106493,Steve Manos,OK,,,,
-House,CA-41,41,,Linda Sanchez,Mitch Clemmons,Democrat,57.3%,ap:06:5731,116,Linda Sanchez,Dem,106776,Mitch Clemmons,OK,,,,
-House,CA-42,42,,Robert Garcia,Brian Burley,Democrat,56.8%,ap:06:5732,70642,Robert Garcia,Dem,68082,Brian Burley,OK,,,,
-House,CA-43,43,,Maxine Waters,Cristian Morales,Democrat,75.3%,ap:06:5733,104,Maxine Waters,Dem,70695,Cristian Morales,OK,,,,
-House,CA-44,44,,Nanette BarragÃ¡n,Genevieve Angel,Democrat,68.2%,ap:06:5734,65073,Nanette Barragan,Dem,172622,Genevieve Angel,OK,,,,
-House,CA-45,45,,Derek Tran,Chuong Vo,Democrat,52.0%,ap:06:5735,161118,Derek Tran,Dem,172625,Chuong Vo,OK,,,,
-House,CA-46,46,,Lou Correa,David Pan,Democrat,58.3%,ap:06:5736,52470,Lou Correa,Dem,161119,David Pan,OK,,,,
-House,CA-47,47,,Dave Min,Jenny Le Roux,Democrat,55.2%,ap:06:5739,66599,Dave Min,Dem,69777,Jenny Rae Le Roux,OK,,,,
-House,CA-48,48,,Marni von Wilpert,Jim Desmond,Neither,51.7%,ap:06:8149,172653,Marni von Wilpert,Dem,172645,Jim Desmond,OK,,,,
-House,CA-49,49,,Mike Levin,Armen Kurdian,Democrat,56.2%,ap:06:5741,66621,Mike Levin,Dem,172642,Armen Kurdian,OK,,,,
-House,CA-50,50,,Scott Peters,Steve Cohen,Democrat,59.4%,ap:06:5742,50902,Scott Peters,Dem,172640,Steve Cohen,OK,,,,
-House,CA-51,51,,Sara Jacobs,Ricardo Cabrera,Democrat,59.4%,ap:06:6235,66619,Sara Jacobs,Dem,172637,Ricardo Cabrera,OK,,,,
-House,CA-52,52,,Juan Vargas,Jeff Belle,Democrat,59.0%,ap:06:7296,52480,Juan Vargas,Dem,172634,Jeff Belle,OK,,,,
-House,CO-01,1,,Melat Kiros,Christy Peterson,Neither,78.8%,ap:08:7191,174612,Melat Kiros,Dem,174613,Christy Peterson,OK,,,,
-House,CO-02,2,,Joe Neguse,Kelley Dennison,Democrat,70.5%,ap:08:6614,67047,Joe Neguse,Dem,174614,Kelley Dennison,OK,,,,
-House,CO-03,3,,Dwayne Romero,Jeff Hurd,Republican,45.0%,ap:08:6615,174617,Dwayne Romero,Dem,164158,Jeff Hurd,OK,,,,
-House,CO-04,4,,Eileen Laubacher,Lauren Boebert,Republican,40.6%,ap:08:6616,174618,Eileen Laubacher,Dem,68897,Lauren Boebert,OK,,,,
-House,CO-05,5,,Jessica Killin,Jeff Crank,Republican,45.3%,ap:08:6617,174619,Jessica Killin,Dem,164202,Jeff Crank,OK,,,,
-House,CO-06,6,,Jason Crow,Jason Clark,Democrat,60.2%,ap:08:6618,67060,Jason Crow,Dem,60607,Jason Clark,OK,,,,
-House,CO-07,7,,Brittany Pettersen,Tim Bennett,Democrat,57.7%,ap:08:6954,70799,Brittany Pettersen,Dem,174621,Tim Bennett,OK,,,,
-House,CO-08,8,,Manny Rutinel,Gabe Evans,Republican,49.1%,ap:08:7727,164328,Manny Rutinel,Dem,104836,Gabe Evans,OK,,,,
-House,CT-01,1,,Luke Bronin,Amy Chai,Neither,61.6%,ap:09:7007,72925,Luke Bronin,Dem,71816,Amy Chai,OK,,,,
-House,CT-02,2,,Joe Courtney,George Austin,Democrat,53.9%,ap:09:7009,1231,Joe Courtney,Dem,177493,George Austin,OK,,,,
-House,CT-03,3,,Rosa DeLauro,Chris Lancia,Democrat,57.2%,ap:09:7011,1141,Rosa DeLauro,Dem,177494,Christopher Lancia,OK,,,,
-House,CT-04,4,,Jim Himes,Michael Goldstein,Democrat,61.9%,ap:09:7013,59590,Jim Himes,Dem,71515,Michael Goldstein,OK,,,,
-House,CT-05,5,,Jahana Hayes,Chris Shea,Democrat,52.8%,ap:09:7015,67521,Jahana Hayes,Dem,177495,Chris Shea,OK,,,,
-House,DE-AL,AL,,Sarah McBride,Joseph Arminio,Democrat,57.5%,ap:10:8074,104205,Sarah McBride,Dem,168065,Joseph Arminio,OK,,,,
-House,FL-01,1,,Gay Valimont,Jimmy Patronis,Republican,31.2%,ap:12:11126,166296,Gay Valimont,Dem,168593,Jimmy Patronis,OK,,,,
-House,FL-02,2,,Amanda Green,Austin Rogers,Neither,40.9%,ap:12:10009,175643,Amanda Green,Dem,175650,Austin Rogers,OK,,,,
-House,FL-03,3,,Seth Harp,Kat Cammack,Republican,39.4%,ap:12:10011,175716,Seth Harp,Dem,69383,Kat Cammack,OK,,,,
-House,FL-04,4,,LaShonda Holloway,Aaron Bean,Republican,44.0%,ap:12:10013,65738,LaShonda Holloway,Dem,52113,Aaron Bean,OK,,,,
-House,FL-05,5,,Rachel Grage,John Rutherford,Republican,39.1%,ap:12:10015,166531,Rachel Grage,Dem,65658,John Rutherford,OK,,,,
-House,FL-06,6,,Eric Yonce,Randy Fine,Republican,34.8%,ap:12:10017,175726,Eric Yonce,Dem,108833,Randy Fine,OK,,,,
-House,FL-07,7,,Bale Dalton,Ryan Elijah,Neither,43.7%,ap:12:10019,175729,Bale Dalton,Dem,175731,Ryan Elijah,OK,,,,
-House,FL-08,8,,Jennifer Jenkins,Mike Haridopolos,Republican,41.8%,ap:12:10021,175733,Jennifer Jenkins,Dem,53079,Mike Haridopolos,OK,,,,
-House,FL-09,9,,Darren Soto,Dan Green,Democrat,41.1%,ap:12:10023,65743,Darren Soto,Dem,175734,Dan Green,OK,,,,
-House,FL-11,11,,James Pericola,Joe Strada,Neither,42.1%,ap:12:10027,175754,James Pericola,Dem,175760,Joe Strada,OK,,,,
-House,FL-12,12,,Kimberly Overman,Gus Bilirakis,Republican,42.2%,ap:12:10029,175763,Kimberly Overman,Dem,52981,Gus Bilirakis,OK,,,,
-House,FL-13,13,,Leela Gray,Anna Paulina Luna,Republican,43.3%,ap:12:10031,175764,Leela Gray,Dem,69410,Anna Luna,OK,,,,
-House,FL-14,14,,Kathy Castor,Mike Beltran,Democrat,44.7%,ap:12:10033,10546,Kathy Castor,Dem,110141,Mike Beltran,OK,,,,
-House,FL-15,15,,Robert People,Laurel Lee,Republican,40.0%,ap:12:10035,175772,Robert People,Dem,71597,Laurel Lee,OK,,,,
-House,FL-16,16,,Kelly Kirschner,Sydney Gruters,Neither,43.1%,ap:12:10037,175814,Kelly Kirschner,Dem,175816,Sydney Gruters,OK,,,,
-House,FL-17,17,,Matthew Montavon,Greg Steube,Republican,38.9%,ap:12:10039,166329,Matthew Montavon,Dem,67645,Greg Steube,OK,,,,
-House,FL-18,18,,Curtis Gibson,Scott Franklin,Republican,41.5%,ap:12:10041,175820,Curtis Gibson,Dem,69374,Scott Franklin,OK,,,,
-House,FL-19,19,,Victor Arias,Jim Schwartzel,Neither,34.8%,ap:12:11670,175822,Victor Arias,Dem,175834,Jim Schwartzel,OK,,,,
-House,FL-20,20,,Debbie Wasserman Schultz,Brent Andersen,Democrat,68.7%,ap:12:83114,11357,Debbie Wasserman Schultz,Dem,175842,Brent Andersen,OK,,,,
-House,FL-21,21,,James Martin,Brian Mast,Republican,41.8%,ap:12:10393,175844,James Martin,Dem,65757,Brian Mast,OK,,,,
-House,FL-22,22,,Pia Dandiya,Casey Askar,Neither,44.8%,ap:12:10396,175847,Pia Dandiya,Dem,69371,Casey Askar,OK,,,,
-House,FL-23,23,,Lois Frankel,Deborah Adeimy,Democrat,56.9%,ap:12:10398,10720,Lois Frankel,Dem,71614,Deborah Adeimy,OK,,,,
-House,FL-24,24,,Oliver Gilbert,Te Mayonna Brown,Neither,69.5%,ap:12:11128,175858,Oliver Gilbert,Dem,175862,Te Brown,OK,,,,
-House,FL-25,25,,Jared Moskowitz,Scott Singer,Democrat,45.4%,ap:12:11129,71620,Jared Moskowitz,Dem,175868,Scott Singer,OK,,,,
-House,FL-26,26,,Nicole Locklin,Mario DÃiaz-Balart,Republican,40.7%,ap:12:11586,175870,Nicole Locklin,Dem,878,Mario Diaz-Balart,OK,,,,
-House,FL-27,27,,Eliott Rodriguez,MarÃ­a Elvira Salazar,Republican,42.6%,ap:12:11587,175872,Eliott Rodriguez,Dem,67671,Maria Elvira Salazar,OK,,,,
-House,FL-28,28,,Phil Ehr,Carlos Gimenez,Republican,37.2%,ap:12:83078,67615,Phil Ehr,Dem,69391,Carlos Gimenez,OK,,,,
-House,GA-01,1,,Amanda Hollowell,Jim Kingston,Neither,42.1%,ap:13:11007,171463,Amanda Hollowell,Dem,171470,James Kingston,OK,,,,
-House,GA-02,2,,Sanford Bishop,Matt Day,Democrat,53.8%,ap:13:11009,1253,Sanford Bishop,Dem,171473,Matt Day,OK,,,,
-House,GA-03,3,,Maura Keller,Brian Jack,Republican,35.1%,ap:13:11011,162598,Maura Keller,Dem,162599,Brian Jack,OK,,,,
-House,GA-04,4,,Hank Johnson,James Duffie,Democrat,76.5%,ap:13:11013,59400,Hank Johnson,Dem,171475,Jim Duffie,OK,,,,
-House,GA-05,5,,Nikema Williams,John Oscar Salvesen,Democrat,86.2%,ap:13:11015,69465,Nikema Williams,Dem,162601,John Salvesen,OK,,,,
-House,GA-06,6,,Lucy McBath,Kevin Martin,Democrat,75.2%,ap:13:12547,66683,Lucy McBath,Dem,171478,Kevin Martin,OK,,,,
-House,GA-07,7,,Tony Kozycki,Rich McCormick,Republican,38.8%,ap:13:11019,171482,Tony Kozycki,Dem,68907,Rich McCormick,OK,,,,
-House,GA-08,8,,Kelly Esti,Austin Scott,Republican,34.6%,ap:13:11021,171484,Kelly Esti,Dem,13031,Austin Scott,OK,,,,
-House,GA-09,9,,Caitlyn Gegen,Andrew Clyde,Republican,32.8%,ap:13:11023,171485,Caitlyn Gegen,Dem,68908,Andrew Clyde,OK,,,,
-House,GA-10,10,,Pam Delancy,Houston Gaines,Neither,39.5%,ap:13:11025,171490,Pamela Delancy,Dem,110700,Houston Gaines,OK,,,,
-House,GA-11,11,,Chris Harden,John Cowan,Neither,38.2%,ap:13:11610,171494,Chris Harden,Dem,68797,John Cowan,OK,,,,
-House,GA-12,12,,Ceretta Smith,Rick Allen,Republican,42.9%,ap:13:12237,111431,Ceretta Smith,Dem,61316,Rick Allen,OK,,,,
-House,GA-13,13,,Jasmine Clark,Jonathan Chavez,Neither,71.3%,ap:13:12238,111174,Jasmine Clark,Dem,70385,Jonathan Chavez,OK,,,,
-House,GA-14,14,,Shawn Harris,Clay Fuller,Republican,31.5%,ap:13:12463,162594,Shawn Harris,Dem,68794,Clay Fuller,OK,,,,
-House,HI-01,1,,Ed Case,Adriel Lam,Democrat,62.6%,ap:15:12881,1786,Ed Case,Dem,110164,Adriel Lam,OK,,,,
-House,HI-02,2,,Jill Tokuda,Brenton Awa,Democrat,61.0%,ap:15:12008,71475,Jill Tokuda,Dem,110751,Brenton Awa,OK,,,,
-House,IA-01,1,,Christina Bohannan,Mariannette Miller-Meeks,Republican,45.7%,ap:19:17071,70409,Christina Bohannan,Dem,59745,Mariannette Miller-Meeks,OK,,,,
-House,IA-02,2,,Lindsay James,Joe Mitchell,Neither,44.9%,ap:19:17072,114693,Lindsay James,Dem,114676,Joe Mitchell,OK,,,,
-House,IA-03,3,,Sarah Trone Garriott,Zach Nunn,Republican,47.8%,ap:19:17073,114740,Sarah Trone Garriott,Dem,70417,Zach Nunn,OK,,,,
-House,IA-04,4,,Dave Dawson,Chris McGowan,Neither,34.0%,ap:19:17074,113747,Dave Dawson,Dem,173759,Chris McGowan,OK,,,,
-House,ID-01,1,,Kaylee Peterson,Russ Fulcher,Republican,26.9%,ap:16:13253,162330,Kaylee Peterson,Dem,63500,Russ Fulcher,OK,,,,
-House,ID-02,2,,Ellie Gilbreath,Mike Simpson,Republican,36.2%,ap:16:13254,172087,Ellie Gilbreath,Dem,504,Mike Simpson,OK,,,,
-House,IL-01,1,,Jonathan Jackson,Christian Maxwell,Democrat,66.2%,ap:17:15990,71064,Jonathan Jackson,Dem,170439,Christian Maxwell,OK,,,,
-House,IL-02,2,,Donna Miller,Michael Noack,Neither,66.8%,ap:17:16310,117308,Donna Miller,Dem,170444,Michael Noack,OK,,,,
-House,IL-03,3,,Delia Ramirez,Angel Oakley,Democrat,65.9%,ap:17:15992,71076,Delia Ramirez,Dem,167406,Angel Oakley,OK,,,,
-House,IL-04,4,,Patty Garcia,Lupe Castillo,Neither,64.4%,ap:17:15993,170445,Patty Garcia,Dem,119629,Lupe Castillo,OK,,,,
-House,IL-05,5,,Mike Quigley,Tommy Hanson,Democrat,68.8%,ap:17:15994,59914,Mike Quigley,Dem,59282,Tommy Hanson,OK,,,,
-House,IL-06,6,,Sean Casten,Niki Conforti,Democrat,52.8%,ap:17:15995,66114,Sean Casten,Dem,71083,Niki Conforti,OK,,,,
-House,IL-07,7,,La Shawn Ford,Chad Koppie,Neither,83.1%,ap:17:15996,16342,La Shawn Ford,Dem,16946,Chad Koppie,OK,,,,
-House,IL-08,8,,Melissa Bean,Jennifer Davis,Neither,53.5%,ap:17:15997,1273,Melissa Bean,Dem,170467,Jennifer Davis,OK,,,,
-House,IL-09,9,,Daniel Biss,John Elleson,Neither,68.5%,ap:17:15998,66099,Daniel Biss,Dem,66122,John Elleson,OK,,,,
-House,IL-10,10,,Brad Schneider,Carl Lambrecht,Democrat,61.2%,ap:17:15999,61646,Brad Schneider,Dem,161847,Carl Lambrecht,OK,,,,
-House,IL-11,11,,Bill Foster,Jeff Walter,Democrat,55.8%,ap:17:16000,58367,Bill Foster,Dem,170484,Jeff Walter,OK,,,,
-House,IL-12,12,,Julie Fortier,Mike Bost,Republican,27.9%,ap:17:16001,170487,Julie Fortier,Dem,15698,Mike Bost,OK,,,,
-House,IL-13,13,,Nikki Budzinski,Jeff Wilson,Democrat,55.3%,ap:17:16002,71104,Nikki Budzinski,Dem,170489,Jeff Wilson,OK,,,,
-House,IL-14,14,,Lauren Underwood,James Marter,Democrat,52.6%,ap:17:16003,66136,Lauren Underwood,Dem,64572,James Marter,OK,,,,
-House,IL-15,15,,Jennifer Todd,Mary Miller,Republican,29.8%,ap:17:16004,170491,Jennifer Todd,Dem,68410,Mary Miller,OK,,,,
-House,IL-16,16,,Paul Nolley,Darin LaHood,Republican,38.5%,ap:17:16005,170497,Paul Nolley,Dem,16982,Darin LaHood,OK,,,,
-House,IL-17,17,,Eric Sorensen,Dillan Vancil,Democrat,52.4%,ap:17:16006,71116,Eric Sorensen,Dem,170498,Dillan Vancil,OK,,,,
-House,IN-01,1,,Frank Mrvan,Barb Regnitz,Democrat,50.2%,ap:18:15014,69958,Frank Mrvan,Dem,170346,Barb Regnitz,OK,,,,
-House,IN-02,2,,Jamee Decio,Rudy Yakym,Republican,36.5%,ap:18:15017,170348,Jamee Decio,Dem,71760,Rudy Yakym,OK,,,,
-House,IN-03,3,,Kelly Thompson,Marlin Stutzman,Republican,34.1%,ap:18:15020,113870,Kelly Thompson,Dem,53887,Marlin Stutzman,OK,,,,
-House,IN-04,4,,Drew Cox,Jim Baird,Republican,35.0%,ap:18:15023,170349,Drew Cox,Dem,66172,Jim Baird,OK,,,,
-House,IN-05,5,,J. D. Ford,Victoria Spartz,Republican,41.4%,ap:18:15026,113146,J.D. Ford,Dem,162937,Victoria Spartz,OK,,,,
-House,IN-06,6,,Cinde Wirth,Jefferson Shreve,Republican,33.5%,ap:18:15029,70017,Cynthia Wirth,Dem,113296,Jefferson Shreve,OK,,,,
-House,IN-07,7,,André Carson,Patrick McAuley,Democrat,71.1%,ap:18:15032,57849,André Carson,Dem,170598,Patrick McAuley,OK,,,,
-House,IN-08,8,,Mary Allen,Mark Messmer,Republican,31.7%,ap:18:15035,170362,Mary Allen,Dem,112975,Mark Messmer,OK,,,,
-House,IN-09,9,,Brad Meyer,Erin Houchin,Republican,34.8%,ap:18:15038,170365,Brad Meyer,Dem,162955,Erin Houchin,OK,,,,
-House,KS-01,1,,Lauren Reinhold,Tracey Mann,Republican,34.1%,ap:20:17007,175314,Lauren Reinhold,Dem,69297,Tracey Mann,OK,,,,
-House,KS-02,2,,Don Coover,Derek Schmidt,Republican,40.0%,ap:20:17355,175316,Don Coover,Dem,54125,Derek Schmidt,OK,,,,
-House,KS-03,3,,Sharice Davids,Eric Jenkins,Democrat,52.1%,ap:20:17009,67314,Sharice Davids,Dem,115820,Eric Jenkins,OK,,,,
-House,KS-04,4,,Katy Tyndell,Ron Estes,Republican,38.1%,ap:20:17720,175322,Katy Tyndell,Dem,65853,Ron Estes,OK,,,,
-House,KY-01,1,,Drew Williams,James Comer,Republican,26.0%,ap:21:18622,116236,John Williams,Dem,54203,James Comer,OK,,,,
-House,KY-02,2,,Megan Wingfield,Brett Guthrie,Republican,29.0%,ap:21:18624,169784,Megan Wingfield,Dem,54282,S. Guthrie,OK,,,,
-House,KY-03,3,,Morgan McGarvey,Maria Teresa Rodriguez,Democrat,59.6%,ap:21:18009,69995,Morgan McGarvey,Dem,169788,Maria Rodriguez,OK,,,,
-House,KY-04,4,,Melissa Strange,Ed Gallrein,Neither,31.9%,ap:21:18835,169790,Melissa Strange,Dem,163294,Ed Gallrein,OK,,,,
-House,KY-05,5,,Ned Pillersdorf,Hal Rogers,Republican,17.7%,ap:21:18013,169791,Ned Pillersdorf,Dem,208,Hal Rogers,OK,,,,
-House,KY-06,6,,Zach Dembo,Ralph Alvarado,Neither,42.4%,ap:21:18015,169796,Zach Dembo,Dem,115622,Ralph Alvarado,OK,,,,
-House,MA-03,3,,Lori Trahan,Gary Grossi,Democrat,59.7%,ap:25:22949,67479,Lori Trahan,Dem,168132,Gary Grossi,OK,,,,
-House,MA-04,4,,Jake Auchincloss,Tom Stalcup,Democrat,60.1%,ap:25:22950,69114,Jake Auchincloss,Dem,176612,Thomas Stalcup,OK,,,,
-House,MA-06,6,,Dan Koh,Micah Jones,Neither,60.6%,ap:25:22952,67477,Dan Koh,Dem,176618,Micah Jones,OK,,,,
-House,MA-08,8,,Stephen Lynch,Robert Burke,Democrat,63.5%,ap:25:22954,890,Stephen Lynch,Dem,71287,Robert Burke,OK,,,,
-House,MA-09,9,,Bill Keating,Tyler MacAllister,Democrat,55.5%,ap:25:23865,22757,Bill Keating,Dem,176621,R. Macallister,OK,,,,
-House,MD-01,1,,Dan Schwartz,Andy Harris,Republican,41.4%,ap:24:21746,173037,Dan Schwartz,Dem,58831,Andy Harris,OK,,,,
-House,MD-02,2,,Johnny Olszewski,Dave Wallace,Democrat,59.5%,ap:24:21749,120088,John Olszewski,Dem,61587,Dave Wallace,OK,,,,
-House,MD-03,3,,Sarah Elfreth,Berney Flowers,Democrat,62.3%,ap:24:21752,122027,Sarah Elfreth,Dem,71145,Berney Flowers,OK,,,,
-House,MD-04,4,,Glenn Ivey,George McDermott,Democrat,87.9%,ap:24:21754,64788,Glenn Ivey,Dem,28197,George McDermott,OK,,,,
-House,MD-05,5,,Adrian Boafo,Chris Chaffee,Neither,67.0%,ap:24:21757,122885,Adrian Boafo,Dem,63872,Chris Chaffee,OK,,,,
-House,MD-06,6,,April McClain Delaney,Robin Ficker,Democrat,53.0%,ap:24:21760,162500,April McClain Delaney,Dem,28349,Robin Ficker,OK,,,,
-House,MD-07,7,,Kweisi Mfume,Scott Collier,Democrat,80.3%,ap:24:21762,57618,Kweisi Mfume,Dem,166880,Scott Collier,OK,,,,
-House,MD-08,8,,Jamie Raskin,Cheryl Riley,Democrat,79.0%,ap:24:21764,64804,Jamie Raskin,Dem,162511,Cheryl Riley,OK,,,,
-House,ME-01,1,,Chellie Pingree,Ronald Russell,Democrat,61.0%,ap:23:20644,59613,Chellie Pingree,Dem,164623,Ronald Russell,OK,,,,
-House,ME-02,2,,Matthew Dunlap,Paul LePage,Neither,45.4%,ap:23:20645,174146,Matthew Dunlap,Dem,60414,Paul LePage,OK,,,,
-House,MI-01,1,,Callie Barr,Jack Bergman,Republican,39.2%,ap:26:23805,166546,Callie Barr,Dem,65336,Jack Bergman,OK,,,,
-House,MI-02,2,,Ben Ambrose,John Moolenaar,Republican,34.7%,ap:26:23806,175186,Ben Ambrose,Dem,55100,John Moolenaar,OK,,,,
-House,MI-03,3,,Hillary Scholten,Terri DeBoer,Democrat,54.0%,ap:26:23807,69080,Hillary Scholten,Dem,175191,Terri DeBoer,OK,,,,
-House,MI-04,4,,Sean McCann,Bill Huizenga,Republican,47.2%,ap:26:23808,124461,Sean McCann,Dem,55092,Bill Huizenga,OK,,,,
-House,MI-05,5,,Christian Vukasovich,Tim Walberg,Republican,36.3%,ap:26:23809,175194,Christian Vukasovich,Dem,25659,Tim Walberg,OK,,,,
-House,MI-06,6,,Debbie Dingell,Heather Smiley,Democrat,61.9%,ap:26:23810,64120,Debbie Dingell,Dem,166560,Heather Smiley,OK,,,,
-House,MI-07,7,,William Lawrence,Tom Barrett,Republican,49.3%,ap:26:23811,117036,William Lawrence,Dem,70830,Tom Barrett,OK,,,,
-House,MI-08,8,,Kristen McDonald Rivet,Tom Smith,Democrat,49.0%,ap:26:23812,129761,Kristen McDonald Rivet,Dem,175198,Thomas Smith,OK,,,,
-House,MI-09,9,,Ray Pooley,Lisa McClain,Republican,33.6%,ap:26:23813,175199,Ray Pooley,Dem,69093,Lisa McClain,OK,,,,
-House,MI-10,10,,Christina Bertrand Hines,Mike Bouchard,Neither,46.7%,ap:26:23814,175201,Christina Hines,Dem,175202,Michael Bouchard,OK,,,,
-House,MI-11,11,,Jeremy Moss,Ethan Baker,Neither,58.2%,ap:26:23815,126863,Jeremy Moss,Dem,126141,Ethan Baker,OK,,,,
-House,MI-12,12,,Rashida Tlaib,James Hooper,Democrat,70.0%,ap:26:23816,67177,Rashida Tlaib,Dem,70842,James Hooper,OK,,,,
-House,MI-13,13,,Donavan McKinney,T.P. Nykoriak,Neither,71.0%,ap:26:23817,127012,Donavan McKinney,Dem,175209,T.P. Nykoriak,OK,,,,
-House,MN-01,1,,Jake Johnson,Brad Finstad,Republican,43.9%,ap:27:24007,177170,Jake Johnson,Dem,55192,Brad Finstad,OK,,,,
-House,MN-02,2,,Matt Little,Eric Pratt,Neither,53.0%,ap:27:24010,126020,Matt Little,Dem,124448,Eric Pratt,OK,,,,
-House,MN-03,3,,Kelly Morrison,Tyler Bass,Democrat,60.9%,ap:27:24013,126730,Kelly Morrison,Dem,177176,Tyler Bass,OK,,,,
-House,MN-04,4,,Betty McCollum,Paul Wikstrom,Democrat,68.2%,ap:27:24016,989,Betty McCollum,Dem,164734,Paul Wikstrom,OK,,,,
-House,MN-05,5,,Ilhan Omar,John Nagel,Democrat,81.7%,ap:27:24019,67375,Ilhan Omar,Dem,164742,John Nagel,OK,,,,
-House,MN-06,6,,Doug Chapin,Tom Emmer,Republican,40.0%,ap:27:24022,177185,Doug Chapin,Dem,60721,Tom Emmer,OK,,,,
-House,MN-07,7,,Erik Osberg,Michelle Fischbach,Republican,31.4%,ap:27:24025,177186,Erik Osberg,Dem,55298,Michelle Fischbach,OK,,,,
-House,MN-08,8,,Trina Swanson,Pete Stauber,Republican,42.7%,ap:27:24028,177189,Trina Swanson,Dem,67384,Pete Stauber,OK,,,,
-House,MO-01,1,,Wesley Bell,Paul Berry III,Democrat,79.0%,ap:29:27025,166001,Wesley Bell,Dem,65385,Paul Berry,OK,,,,
-House,MO-02,2,,FP Wellman,Ann Wagner,Republican,46.0%,ap:29:26023,175058,Fred Wellman,Dem,62594,Ann Wagner,OK,,,,
-House,MO-03,3,,Bethany Mann,Bob Onder,Republican,36.4%,ap:29:26025,71334,Bethany Mann,Dem,130690,Bob Onder,OK,,,,
-House,MO-04,4,,Jordan Herrera,Mark Alford,Republican,28.6%,ap:29:26027,175064,Jordan Herrera,Dem,71342,Mark Alford,OK,,,,
-House,MO-05,5,,Emanuel Cleaver II,Rick Brattin,Democrat,61.7%,ap:29:26029,50040,Emanuel Cleaver,Dem,71344,Rick Brattin,OK,,,,
-House,MO-06,6,,Josh Smead,Chris Stigall,Neither,30.4%,ap:29:26031,175137,Josh Smead,Dem,175141,Chris Stigall,OK,,,,
-House,MO-07,7,,Missi Hesketh,Eric Burlison,Republican,28.4%,ap:29:26033,166011,Missi Hesketh,Dem,71357,Eric Burlison,OK,,,,
-House,MO-08,8,,Chris Reichard,Jason Smith,Republican,22.7%,ap:29:26035,175154,Chris Reichard,Dem,62802,Jason Smith,OK,,,,
-House,MS-01,1,,Cliff Johnson,Trent Kelly,Republican,31.2%,ap:28:27167,169311,Cliff Johnson,Dem,64498,Trent Kelly,OK,,,,
-House,MS-02,2,,Bennie Thompson,Ron Eller,Democrat,60.3%,ap:28:25929,1335,Bennie Thompson,Dem,70474,Ron Eller,OK,,,,
-House,MS-03,3,,Michael Chiaradio,Michael Guest,Republican,35.3%,ap:28:26488,169321,Michael Chiaradio,Dem,66867,Michael Guest,OK,,,,
-House,MS-04,4,,Jeffrey Hulum III,Mike Ezell,Republican,28.5%,ap:28:26489,125972,Jeffrey Hulum,Dem,70484,Mike Ezell,OK,,,,
-House,MT-01,1,,Sam Forstag,Aaron Flint,Neither,44.1%,ap:30:28447,171715,Sam Forstag,Dem,171717,Aaron Flint,OK,,,,
-House,MT-02,2,,Brian Miller,Troy Downing,Republican,34.7%,ap:30:28576,171720,Brian Miller,Dem,66818,Troy Downing,OK,,,,
-House,NC-01,1,,Don Davis,Laurie Buckhout,Democrat,44.2%,ap:37:35385,70238,Don Davis,Dem,160568,Laurie Buckhout,OK,,,,
-House,NC-02,2,,Deborah Ross,Eugene Douglass,Democrat,67.2%,ap:37:35386,55909,Deborah Ross,Dem,160570,Eugene Douglass,OK,,,,
-House,NC-03,3,,Raymond Smith Jr.,Greg Murphy,Republican,43.1%,ap:37:34969,136139,Raymond Smith,Dem,67890,Greg Murphy,OK,,,,
-House,NC-04,4,,Valerie Foushee,Max Ganorkar,Democrat,73.0%,ap:37:35387,70258,Valerie Foushee,Dem,70247,Mahesh Ganorkar,OK,,,,
-House,NC-05,5,,Chuck Hubbard,Virginia Foxx,Republican,41.0%,ap:37:35388,136990,Chuck Hubbard,Dem,1877,Virginia Foxx,OK,,,,
-House,NC-06,6,,Cyril Jefferson,Addison McDowell,Republican,41.3%,ap:37:35389,169330,Cyril Jefferson,Dem,160574,Addison McDowell,OK,,,,
-House,NC-07,7,,Kimberly Hardy,David Rouzer,Republican,43.0%,ap:37:34973,136676,Kimberly Hardy,Dem,35605,David Rouzer,OK,,,,
-House,NC-08,8,,Colby Watson,Mark Harris,Republican,40.2%,ap:37:35390,169332,Colby Watson,Dem,63306,Mark Harris,OK,,,,
-House,NC-09,9,,Richard Ojeda,Richard Hudson,Republican,42.0%,ap:37:34975,169336,Richard Ojeda,Dem,61758,Richard Hudson,OK,,,,
-House,NC-10,10,,Ashley Bell,Pat Harrigan,Republican,41.0%,ap:37:35391,169338,Ashley Bell,Dem,70312,Pat Harrigan,OK,,,,
-House,NC-11,11,,Jamie Ager,Jennifer Balkcom,Neither,45.2%,ap:37:34977,169343,Jamie Ager,Dem,136989,Jennifer Balkcom,OK,,,,
-House,NC-12,12,,Alma Adams,Jack Codiga,Democrat,73.5%,ap:37:35419,55929,Alma Adams,Dem,169349,Jack Codiga,OK,,,,
-House,NC-13,13,,Paul Barringer,Brad Knott,Republican,41.7%,ap:37:35753,169350,Paul Barringer,Dem,160591,Brad Knott,OK,,,,
-House,NC-14,14,,Lakesha Womack,Tim Moore,Republican,42.4%,ap:37:36216,169353,Lakesha Womack,Dem,35346,Tim Moore,OK,,,,
-House,ND-AL,AL,,Trygve Hammer,Julie Fedorchak,Republican,31.3%,ap:38:35342,135150,Trygve Hammer,Dem,134890,Julie Fedorchak,OK,,,,
-House,NE-01,1,,Chris Backemeyer,Mike Flood,Republican,43.4%,ap:31:28382,171157,Chris Backemeyer,Dem,69972,Mike Flood,OK,,,,
-House,NE-02,2,,Denise Powell,Brinker Harding,Neither,52.3%,ap:31:28385,171159,Denise Powell,Dem,29888,Brinker Harding,OK,,,,
-House,NE-03,3,,Becky Stille,Adrian Smith,Republican,22.8%,ap:31:28384,171162,Becky Stille,Dem,30010,Adrian Smith,OK,,,,
-House,NH-01,1,,Stefany Shaheen,Anthony DiLorenzo,Neither,51.0%,ap:33:30015,176328,Stefany Shaheen,Dem,176351,Anthony DiLorenzo,OK,,,,
-House,NH-02,2,,Maggie Goodlander,Lily Tang Williams,Democrat,51.8%,ap:33:30017,165222,Maggie Goodlander,Dem,71514,Lily Tang Williams,OK,,,,
-House,NJ-01,1,,Donald Norcross,Damon Galdo,Democrat,59.5%,ap:34:31202,63457,Donald Norcross,Dem,163024,Damon Galdo,OK,,,,
-House,NJ-02,2,,Zack Mullock,Jeff Van Drew,Republican,43.6%,ap:34:31205,172144,Zack Mullock,Dem,56642,Jeff Van Drew,OK,,,,
-House,NJ-03,3,,Herb Conaway Jr.,Michael Patrick McGuire,Democrat,54.3%,ap:34:31216,163041,Herb Conaway,Dem,172146,Michael McGuire,OK,,,,
-House,NJ-04,4,,Rachel Peace,Chris Smith,Republican,34.8%,ap:34:31208,172977,Rachel Peace,Dem,1352,Christopher Smith,OK,,,,
-House,NJ-05,5,,Josh Gottheimer,Sean Joseph Kirrane,Democrat,50.8%,ap:34:31211,65116,Josh Gottheimer,Dem,172981,Sean Kirrane,OK,,,,
-House,NJ-06,6,,Frank Pallone Jr.,Hillary Herzig,Democrat,53.3%,ap:34:31212,375,Frank Pallone,Dem,172147,Hillary Herzig,OK,,,,
-House,NJ-07,7,,Rebecca Bennett,Tom Kean Jr.,Republican,49.4%,ap:34:31218,172149,Rebecca Bennett,Dem,56741,Thomas Kean,OK,,,,
-House,NJ-09,9,,Nellie Pou,Rosie Pino,Democrat,49.4%,ap:34:31226,56710,Nellie Pou,Dem,172151,Rosie Pino,OK,,,,
-House,NJ-10,10,,LaMonica McIver,Carmen Bucco,Democrat,75.8%,ap:34:31220,166034,LaMonica McIver,Dem,134469,Carmen Bucco,OK,,,,
-House,NJ-11,11,,Analilia Mejia,Joe Hathaway,Democrat,54.4%,ap:34:31230,169283,Analilia Mejia,Dem,169287,Joe Hathaway,OK,,,,
-House,NJ-12,12,,Adam Hamawy,Gregg Mele,Neither,62.3%,ap:34:31223,172164,Adam Hamawy,Dem,67763,Gregg Mele,OK,,,,
-House,NM-01,1,,Melanie Stansbury,Didi Okpareke,Democrat,56.5%,ap:35:34051,69709,Melanie Stansbury,Dem,172993,Ndidiamaka Okpareke,OK,,,,
-House,NM-02,2,,Gabe Vasquez,Greg Cunningham,Democrat,49.1%,ap:35:33279,70156,Gabe Vasquez,Dem,134067,Gregory Cunningham,OK,,,,
-House,NM-03,3,,Teresa Leger Fernandez,Martin Zamora,Democrat,52.7%,ap:35:32052,68488,Teresa Leger Fernandez,Dem,133670,Martin Zamora,OK,,,,
-House,NV-01,1,,Dina Titus,Carrie Ann Buck,Democrat,51.1%,ap:32:3,30878,Dina Titus,Dem,132279,Carrie Buck,OK,,,,
-House,NV-02,2,,Teresa Benitez-Thompson,David Flippo,Neither,42.9%,ap:32:30989,131937,Teresa Benitez-Thompson,Dem,132830,David Flippo,OK,,,,
-House,NV-03,3,,Susie Lee,Marty O'Donnell,Democrat,49.6%,ap:32:30155,65174,Susie Lee,Dem,164356,Marty O'Donnell,OK,,,,
-House,NV-04,4,,Steven Horsford,Cody Whipple,Democrat,51.2%,ap:32:30992,62079,Steven Horsford,Dem,172349,Cody Whipple,OK,,,,
-House,NY-01,1,,Chris Gallant,Nick LaLota,Republican,44.9%,ap:36:36581,174317,Chris Gallant,Dem,71409,Nicholas LaLota,OK,,,,
-House,NY-02,2,,Pat Halpin,Andrew Garbarino,Republican,43.0%,ap:36:36582,174320,Pat Halpin,Dem,68984,Andrew Garbarino,OK,,,,
-House,NY-03,3,,Tom Suozzi,Mike LiPetri Jr.,Democrat,47.8%,ap:36:36583,33896,Tom Suozzi,Dem,68983,Michael LiPetri,OK,,,,
-House,NY-04,4,,Laura Gillen,Jeanine Driscoll,Democrat,50.6%,ap:36:36584,71419,Laura Gillen,Dem,174413,Jeanine Driscoll,OK,,,,
-House,NY-05,5,,Gregory Meeks,George Marsh,Democrat,71.4%,ap:36:36585,1521,Gregory Meeks,Dem,174656,George Marsh,OK,,,,
-House,NY-06,6,,Grace Meng,Joseph Chou,Democrat,53.3%,ap:36:36586,62304,Grace Meng,Dem,168114,Joseph Chou,OK,,,,
-House,NY-07,7,,Claire Valdez,Melvin Rivera,Neither,73.6%,ap:36:36587,163900,Claire Valdez,Dem,174657,Melvin Rivera,OK,,,,
-House,NY-08,8,,Hakeem Jeffries,Lewis Mizrahi,Democrat,72.4%,ap:36:36588,33006,Hakeem Jeffries,Dem,174658,Lewis Mizrahi,OK,,,,
-House,NY-09,9,,Yvette Clarke,Joel Anabilah-Azumah,Democrat,70.7%,ap:36:39860,32471,Yvette Clarke,Dem,174659,Joel Azumah,OK,,,,
-House,NY-10,10,,Brad Lander,Jennifer Moore,Neither,81.0%,ap:36:36590,156181,Brad Lander,Dem,174660,Jennifer Moore,OK,,,,
-House,NY-11,11,,Mike DeCillis,Nicole Malliotakis,Republican,37.6%,ap:36:36591,174581,Mike DeCillis,Dem,68997,Nicole Malliotakis,OK,,,,
-House,NY-12,12,,Micah Lasher,Caroline Shinkle,Neither,82.4%,ap:36:36592,158225,Micah Lasher,Dem,174661,Caroline Shinkle,OK,,,,
-House,NY-13,13,,Darializa Avila Chevalier,Jomo Williams,Neither,80.2%,ap:36:36593,174529,Darializa Avila Chevalier,Dem,159659,Jomo Williams,OK,,,,
-House,NY-14,14,,Alexandria Ocasio-Cortez,Diamant Hysenaj,Democrat,66.2%,ap:36:36594,67104,Alexandria Ocasio-Cortez,Dem,174662,Diamant Hysenaj,OK,,,,
-House,NY-15,15,,Ritchie Torres,Stylo Sapaskis,Democrat,74.4%,ap:36:36595,69011,Ritchie Torres,Dem,65223,Stylo Sapaskis,OK,,,,
-House,NY-16,16,,George Latimer,Joseph Cinquemani,Democrat,66.7%,ap:36:36596,33155,George Latimer,Dem,174345,Joseph Cinquemani,OK,,,,
-House,NY-17,17,,Cait Conley,Mike Lawler,Republican,50.3%,ap:36:36597,174325,Cait Conley,Dem,71449,Mike Lawler,OK,,,,
-House,NY-18,18,,Pat Ryan,Jackie Auringer,Democrat,51.7%,ap:36:36598,71452,Pat Ryan,Dem,174346,Jackie Auringer,OK,,,,
-House,NY-19,19,,Josh Riley,Peter Oberacker Jr.,Democrat,50.9%,ap:36:36599,71456,Josh Riley,Dem,159063,Peter Oberacker,OK,,,,
-House,NY-20,20,,Paul Tonko,Ralph Ambrosio,Democrat,57.2%,ap:36:36600,57037,Paul Tonko,Dem,164781,Ralph Ambrosio,OK,,,,
-House,NY-21,21,,Blake Gendebien,Anthony Constantino,Neither,39.6%,ap:36:36601,174330,Blake Gendebien,Dem,174348,Anthony Constantino,OK,,,,
-House,NY-22,22,,John Mannion,Kailee Buller,Democrat,53.8%,ap:36:36602,158604,John Mannion,Dem,174349,Kailee Buller,OK,,,,
-House,NY-23,23,,Aaron Gies,Nick Langworthy,Republican,39.4%,ap:36:36603,174331,Aaron Gies,Dem,71466,Nicholas Langworthy,OK,,,,
-House,NY-24,24,,Alissa Ellman,Claudia Tenney,Republican,38.4%,ap:36:36604,174332,Alissa Ellman,Dem,63809,Claudia Tenney,OK,,,,
-House,NY-25,25,,Joe Morelle,Virginia McIntyre,Democrat,59.4%,ap:36:36605,57063,Joe Morelle,Dem,174350,Virginia McIntyre,OK,,,,
-House,NY-26,26,,Tim Kennedy,Dennis Hannon,Democrat,59.8%,ap:36:39859,153125,Tim Kennedy,Dem,174351,Dennis Hannon,OK,,,,
-House,OH-01,1,,Greg Landsman,Eric Conroy,Democrat,48.7%,ap:39:36015,70105,Greg Landsman,Dem,170879,Eric Conroy,OK,,,,
-House,OH-02,2,,Jen Mazzuckelli,Dave Taylor,Republican,28.7%,ap:39:37258,170899,Jen Mazzuckelli,Dem,161559,David Taylor,OK,,,,
-House,OH-03,3,,Joyce Beatty,Cleophus Dulaney,Democrat,70.3%,ap:39:36019,57169,Joyce Beatty,Dem,68426,Cleophus Dulaney,OK,,,,
-House,OH-04,4,,Josh Kolasinski,Jim Jordan,Republican,28.5%,ap:39:36021,170906,Josh Kolasinski,Dem,57253,Jim Jordan,OK,,,,
-House,OH-05,5,,Brian Shaver,Bob Latta,Republican,38.0%,ap:39:36023,170908,Brian Shaver,Dem,57148,Bob Latta,OK,,,,
-House,OH-06,6,,Elizabeth Kirtley,Michael Rulli,Republican,32.6%,ap:39:36025,170915,Elizabeth Kirtley,Dem,142433,Michael Rulli,OK,,,,
-House,OH-07,7,,Brian Poindexter,Max Miller,Republican,44.5%,ap:39:36027,170928,Brian Poindexter,Dem,70139,Max Miller,OK,,,,
-House,OH-08,8,,Vanessa Enoch,Warren Davidson,Republican,42.1%,ap:39:37564,66226,Vanessa Enoch,Dem,64698,Warren Davidson,OK,,,,
-House,OH-09,9,,Marcy Kaptur,Derek Merrin,Democrat,44.6%,ap:39:36031,405,Marcy Kaptur,Dem,142329,Derek Merrin,OK,,,,
-House,OH-10,10,,Kristina Knickerbocker,Mike Turner,Republican,46.1%,ap:39:36033,170962,Kristina Knickerbocker,Dem,1376,Mike Turner,OK,,,,
-House,OH-11,11,,Shontel Brown,Mike Kirchner,Democrat,77.7%,ap:39:36035,69721,Shontel Brown,Dem,170932,Mike Kirchner,OK,,,,
-House,OH-12,12,,Jerrad Christian,Troy Balderson,Republican,34.8%,ap:39:37571,161573,Jerrad Christian,Dem,66237,Troy Balderson,OK,,,,
-House,OH-13,13,,Emilia Sykes,Carey Coleman,Democrat,51.7%,ap:39:36039,70115,Emilia Sykes,Dem,170975,Carey Coleman,OK,,,,
-House,OH-14,14,,Maria Jukic,Dave Joyce,Republican,39.7%,ap:39:36041,171016,Maria Jukic,Dem,62559,David Joyce,OK,,,,
-House,OH-15,15,,Don Leonard,Mike Carey,Republican,44.9%,ap:39:36043,170767,Don Leonard,Dem,161548,Mike Carey,OK,,,,
-House,OK-01,1,,John Croisant,Mark Tedford,Neither,39.0%,ap:40:37030,139666,John Croisant,Dem,141923,Mark Tedford,OK,,,,
-House,OK-02,2,,Brandon Wade,Josh Brecheen,Republican,21.7%,ap:40:37855,70950,Brandon Wade,Dem,70937,Josh Brecheen,OK,,,,
-House,OK-03,3,,Suzie Byrd,Frank Lucas,Republican,26.8%,ap:40:37034,173687,Suzie Byrd,Dem,1396,Frank Lucas,OK,,,,
-House,OK-04,4,,Mitchell Jacob,Tom Cole,Republican,33.0%,ap:40:37036,163438,Mitchell Jacob,Dem,173693,Tom Cole,OK,,,,
-House,OK-05,5,,Jena Nelson,Stephanie Bice,Republican,41.0%,ap:40:37856,141550,Jena Nelson,Dem,68613,Stephanie Bice,OK,,,,
-House,OR-01,1,,Suzanne Bonamici,Barbara Kahl,Democrat,69.6%,ap:41:39031,61555,Suzanne Bonamici,Dem,172158,Barbara Kahl,OK,,,,
-House,OR-02,2,,Chris Beck,Cliff Bentz,Republican,36.1%,ap:41:38529,172160,Chris Beck,Dem,68648,Cliff Bentz,OK,,,,
-House,OR-03,3,,Maxine Dexter,Loran Ayles,Democrat,73.8%,ap:41:38530,141066,Maxine Dexter,Dem,172173,Loran Ayles,OK,,,,
-House,OR-04,4,,Val Hoyle,Monique DeSpain,Democrat,56.2%,ap:41:38531,70181,Val Hoyle,Dem,162738,Monique DeSpain,OK,,,,
-House,OR-05,5,,Janelle Bynum,Patti Adair,Democrat,54.4%,ap:41:38532,140239,Janelle Bynum,Dem,172177,Patti Adair,OK,,,,
-House,OR-06,6,,Andrea Salinas,David Russ,Democrat,55.8%,ap:41:39166,70189,Andrea Salinas,Dem,70195,David Russ,OK,,,,
-House,PA-01,1,,Bob Harvie,Brian Fitzpatrick,Republican,50.2%,ap:42:39008,171221,Bob Harvie,Dem,64827,Brian Fitzpatrick,OK,,,,
-House,PA-02,2,,Brendan Boyle,Jessica Arriaga,Democrat,68.1%,ap:42:39303,63512,Brendan Boyle,Dem,171508,Jessica Arriaga,OK,,,,
-House,PA-04,4,,Madeleine Dean,Aurora Stuski,Democrat,58.0%,ap:42:39011,66414,Madeleine Dean,Dem,171513,Aurora Stuski,OK,,,,
-House,PA-05,5,,Mary Gay Scanlon,Nick Manganaro,Democrat,64.4%,ap:42:39012,66421,Mary Scanlon,Dem,171514,Nick Manganaro,OK,,,,
-House,PA-06,6,,Chrissy Houlahan,Marty Young,Democrat,55.8%,ap:42:39013,66427,Chrissy Houlahan,Dem,171515,Marty Young,OK,,,,
-House,PA-07,7,,Bob Brooks,Ryan Mackenzie,Republican,48.4%,ap:42:39014,146242,Bob Brooks,Dem,145268,Ryan Mackenzie,OK,,,,
-House,PA-08,8,,Paige Cognetti,Rob Bresnahan,Republican,45.7%,ap:42:39015,171223,Paige Cognetti,Dem,161765,Rob Bresnahan,OK,,,,
-House,PA-09,9,,Rachel Wallace,Dan Meuser,Republican,30.9%,ap:42:40041,171224,Rachel Wallace,Dem,58537,Dan Meuser,OK,,,,
-House,PA-10,10,,Janelle Stelson,Scott Perry,Republican,47.4%,ap:42:39017,161767,Janelle Stelson,Dem,61618,Scott Perry,OK,,,,
-House,PA-11,11,,Nancy Mannion,Lloyd Smucker,Republican,39.2%,ap:42:39018,171520,Nancy Mannion,Dem,64833,Lloyd Smucker,OK,,,,
-House,PA-12,12,,Summer Lee,James Hayes,Democrat,59.7%,ap:42:39019,70046,Summer Lee,Dem,161773,James Hayes,OK,,,,
-House,PA-13,13,,Beth Farnham,John Joyce,Republican,27.0%,ap:42:39020,161774,Beth Farnham,Dem,66452,John Joyce,OK,,,,
-House,PA-14,14,,Alan Bradstock,Guy Reschenthaler,Republican,33.2%,ap:42:39021,171521,Alan Bradstock,Dem,66458,Guy Reschenthaler,OK,,,,
-House,PA-15,15,,Ray Bilger,"Glenn ""G.T."" Thompson",Republican,30.8%,ap:42:40306,171225,Ray Bilger,Dem,58283,Glenn Thompson,OK,,,,
-House,PA-16,16,,Justin Wagner,Mike Kelly,Republican,38.5%,ap:42:39023,171522,Justin Wagner,Dem,60917,Mike Kelly,OK,,,,
-House,PA-17,17,,Chris Deluzio,Tony Guy,Democrat,52.8%,ap:42:39024,70062,Chris Deluzio,Dem,171523,Tony Guy,OK,,,,
-House,RI-01,1,,Gabe Amo,Kellie Keenan,Democrat,61.3%,ap:44:40015,71848,Gabe Amo,Dem,178107,Kellie Keenan,OK,,,,
-House,RI-02,2,,Seth Magaziner,Vic Mellor,Democrat,53.5%,ap:44:40017,71484,Seth Magaziner,Dem,178109,Victor Mellor,OK,,,,
-House,SC-01,1,,Nancy Lacore,Jenny Costa Honeycutt,Neither,43.4%,ap:45:41922,172882,Nancy Lacore,Dem,172886,Jenny Costa Honeycutt,OK,,,,
-House,SC-02,2,,Zyon El-Khalifa,Joe Wilson,Republican,42.9%,ap:45:41003,172893,Zyon Khalifa,Dem,1410,Joe Wilson,OK,,,,
-House,SC-03,3,,Eunice Lehmacher,Sheri Biggs,Republican,28.2%,ap:45:41004,145219,Eunice Lehmacher,Dem,163529,Sheri Biggs,OK,,,,
-House,SC-04,4,,Courtney McClain,William Timmons,Republican,38.0%,ap:45:41313,173077,Courtney McClain,Dem,66899,William Timmons,OK,,,,
-House,SC-05,5,,Mallory Dittmer,Wes Climer,Neither,38.4%,ap:45:41972,172899,Mallory Dittmer,Dem,144639,Wes Climer,OK,,,,
-House,SC-06,6,,Jim Clyburn,John Peterson,Democrat,61.5%,ap:45:41315,1414,James Clyburn,Dem,173079,John Peterson,OK,,,,
-House,SC-07,7,,John Vincent,Russell Fry,Republican,36.7%,ap:45:41908,173081,John Vincent,Dem,70931,Russell Fry,OK,,,,
-House,SD-AL,AL,,Nikki Gronli,Marty Jackley,Neither,35.0%,ap:46:42005,173282,Nikki Gronli,Dem,66829,Marty Jackley,OK,,,,
-House,TN-01,1,,Kristi Burke,Diana Harshbarger,Republican,20.8%,ap:47:43003,174783,Kristi Burke,Dem,69252,Diana Harshbarger,OK,,,,
-House,TN-02,2,,Michaela Barnett,Tim Burchett,Republican,32.9%,ap:47:43007,174786,Michaela Barnett,Dem,58256,Tim Burchett,OK,,,,
-House,TN-03,3,,Anna Golladay,Chuck Fleischmann,Republican,31.9%,ap:47:43009,174787,Anna Golladay,Dem,60964,Chuck Fleischmann,OK,,,,
-House,TN-04,4,,Victoria Broderick,Scott DesJarlais,Republican,37.9%,ap:47:43011,164959,Victoria Broderick,Dem,61091,Scott DesJarlais,OK,,,,
-House,TN-05,5,,Chaz Molder,Charlie Hatcher,Neither,38.3%,ap:47:43013,174800,Chaz Molder,Dem,174795,Charlie Hatcher,OK,,,,
-House,TN-06,6,,Mike Croley,Johnny Garrett,Neither,36.6%,ap:47:43015,174802,Mike Croley,Dem,147493,Johnny Garrett,OK,,,,
-House,TN-07,7,,Darden Copeland,Matt Van Epps,Republican,38.6%,ap:47:43017,169085,Darden Copeland,Dem,169074,Matt Van Epps,OK,,,,
-House,TN-08,8,,Heidi Kuhn,David Kustoff,Republican,39.8%,ap:47:43019,174809,Heidi Kuhn,Dem,65268,David Kustoff,OK,,,,
-House,TN-09,9,,Justin Pearson,Brent Taylor,Neither,39.3%,ap:47:43020,165260,Justin Pearson,Dem,147801,Brent Taylor,OK,,,,
-House,TX-01,1,,Yolanda Prince,Nathaniel Moran,Republican,25.1%,ap:48:45871,153531,Yolanda Prince,Dem,69805,Nathaniel Moran,OK,,,,
-House,TX-02,2,,Shaun Finnie,Steve Toth,Neither,38.5%,ap:48:45872,169699,Shaun Finnie,Dem,64604,Steve Toth,OK,,,,
-House,TX-03,3,,Evan Hunt,Keith Self,Republican,38.0%,ap:48:45873,169700,Evan Hunt,Dem,43333,Keith Self,OK,,,,
-House,TX-04,4,,Jason Pearce,Pat Fallon,Republican,37.4%,ap:48:45874,169702,Jason Pearce,Dem,69628,Pat Fallon,OK,,,,
-House,TX-05,5,,Chelsey Hockett,Lance Gooden,Republican,39.1%,ap:48:45875,169703,Chelsey Hockett,Dem,66063,Lance Gooden,OK,,,,
-House,TX-06,6,,Danny Minton,Jake Ellzey,Republican,38.4%,ap:48:45876,169705,Danny Minton,Dem,65914,Jake Ellzey,OK,,,,
-House,TX-07,7,,Lizzie Fletcher,Alexander Hale,Democrat,62.0%,ap:48:45877,65918,Lizzie Fletcher,Dem,169987,Alexander Hale,OK,,,,
-House,TX-08,8,,Laura Jones,Jessica Hart Steinmann,Neither,36.0%,ap:48:45878,160558,Laura Jones,Dem,169992,Jessica Hart Steinmann,OK,,,,
-House,TX-09,9,,Leticia Gutierrez,Alex Mealer,Neither,40.0%,ap:48:45879,169707,Leticia Gutierrez,Dem,157689,Alex Mealer,OK,,,,
-House,TX-10,10,,Caitlin McClay Rourk,Chris Gober,Neither,38.5%,ap:48:45880,169713,Caitlin Rourk,Dem,169999,Chris Gober,OK,,,,
-House,TX-11,11,,Claire Reynolds,August Pfluger,Republican,32.7%,ap:48:45881,169715,Claire Reynolds,Dem,68246,August Pfluger,OK,,,,
-House,TX-12,12,,Heli Rodriguez Prilliman,Craig Goldman,Republican,37.9%,ap:48:45882,169718,Heli Rodriguez Prilliman,Dem,150570,Craig Goldman,OK,,,,
-House,TX-13,13,,Mark Nair,Ronny Jackson,Republican,26.7%,ap:48:45883,169719,Mark Nair,Dem,68255,Ronny Jackson,OK,,,,
-House,TX-14,14,,Thurman Bill Bartie,Randy Weber,Republican,37.7%,ap:48:45884,169720,"Thurman ""Bill"" Bartie",Dem,61980,Randy Weber,OK,,,,
-House,TX-15,15,,Bobby Pulido,Monica De La Cruz,Republican,41.0%,ap:48:45885,169724,Bobby Pulido,Dem,69841,Monica De La Cruz,OK,,,,
-House,TX-16,16,,Veronica Escobar,Adam Bauman,Democrat,58.3%,ap:48:45886,160564,Veronica Escobar,Dem,170237,Adam Bauman,OK,,,,
-House,TX-17,17,,Casey Shepard,Pete Sessions,Republican,39.0%,ap:48:45887,169727,Casey Shepard,Dem,358,Pete Sessions,OK,,,,
-House,TX-18,18,,Christian Menefee,Ronald Whitfield,Democrat,77.9%,ap:48:45888,169213,Christian Menefee,Dem,169216,Ronald Whitfield,OK,,,,
-House,TX-19,19,,Kyle Rable,Tom Sell,Neither,23.9%,ap:48:45889,169729,Kyle Rable,Dem,170010,Tom Sell,OK,,,,
-House,TX-20,20,,Joaquin Castro,Edgardo BÃ¡ez,Democrat,64.5%,ap:48:45890,58407,Joaquin Castro,Dem,170243,Edgardo Baez,OK,,,,
-House,TX-21,21,,Kristin Hook,Tex Teixeira,Neither,38.9%,ap:48:45891,160786,Kristin Hook,Dem,170021,Mark Teixeira,OK,,,,
-House,TX-22,22,,Marquette Greene-Scott,Trever Nehls,Neither,38.7%,ap:48:45892,160787,Marquette Greene-Scott,Dem,170023,Trever Nehls,OK,,,,
-House,TX-23,23,,Katy Padilla Stout,Brandon Herrera,Neither,42.5%,ap:48:45893,169736,Katy Padilla Stout,Dem,160818,Brandon Herrera,OK,,,,
-House,TX-24,24,,Kevin Burge,Beth Van Duyne,Republican,41.8%,ap:48:45894,169739,Kevin Burge,Dem,68157,Beth Van Duyne,OK,,,,
-House,TX-25,25,,Dione Sims,Roger Williams,Republican,37.8%,ap:48:45895,169743,Dione Sims,Dem,62001,Roger Williams,OK,,,,
-House,TX-26,26,,Steven Shook,Brandon Gill,Republican,37.9%,ap:48:45896,170236,Steven Shook,Dem,160826,Brandon Gill,OK,,,,
-House,TX-27,27,,Tanya Lloyd,Michael Cloud,Republican,39.3%,ap:48:45897,160792,Tanya Lloyd,Dem,66028,Michael Cloud,OK,,,,
-House,TX-28,28,,Henry Cuellar,Tano Tijerina,Democrat,44.8%,ap:48:47179,327,Henry Cuellar,Dem,170026,Tano Tijerina,OK,,,,
-House,TX-29,29,,Sylvia Garcia,Martha Fierro,Democrat,65.5%,ap:48:45899,42158,Sylvia Garcia,Dem,155566,Martha Fierro,OK,,,,
-House,TX-30,30,,Frederick Haynes III,Everett Jackson,Neither,73.9%,ap:48:45900,169745,Frederick Haynes,Dem,170028,Everett Jackson,OK,,,,
-House,TX-31,31,,Justin Early,John Carter,Republican,39.0%,ap:48:48732,169747,Justin Early,Dem,1441,John Carter,OK,,,,
-House,TX-32,32,,Dan Barrios,Jace Yarbrough,Neither,40.9%,ap:48:48733,169748,Dan Barrios,Dem,170039,Jace Yarbrough,OK,,,,
-House,TX-33,33,,Colin Allred,Patrick Gillespie,Neither,66.7%,ap:48:49477,65997,Colin Allred,Dem,69900,Patrick Gillespie,OK,,,,
-House,TX-34,34,,Vicente Gonzalez,Eric Flores,Democrat,44.9%,ap:48:49478,64608,Vicente Gonzalez,Dem,170051,Eric Flores,OK,,,,
-House,TX-35,35,,Johnny Garcia,Carlos De La Cruz Jr.,Neither,44.7%,ap:48:49479,169753,Johnny Garcia,Dem,170052,Carlos De La Cruz,OK,,,,
-House,TX-36,36,,Rhonda Hart,Brian Babin,Republican,37.3%,ap:48:49480,160562,Rhonda Hart,Dem,41484,Brian Babin,OK,,,,
-House,TX-37,37,,Greg Casar,Lauren Peña,Democrat,78.8%,ap:48:49950,69909,Greg Casar,Dem,170246,Lauren Peña,OK,,,,
-House,TX-38,38,,Melissa McDonough,Jon Bonck,Neither,39.4%,ap:48:49951,160805,Melissa McDonough,Dem,170064,Jon Bonck,OK,,,,
-House,UT-01,1,,Ben McAdams,Riley Owen,Neither,62.1%,ap:49:45669,67074,Ben McAdams,Dem,174358,Riley Owen,OK,,,,
-House,UT-02,2,,Peter Crosby,Blake Moore,Republican,35.1%,ap:49:45670,174361,Peter Crosby,Dem,68817,Blake Moore,OK,,,,
-House,UT-03,3,,Kent Udell,Celeste Maloy,Republican,28.8%,ap:49:49642,174364,Kent Udell,Dem,71846,Celeste Maloy,OK,,,,
-House,UT-04,4,,Jonny Larsen,Mike Kennedy,Republican,33.3%,ap:49:49548,174366,Jonny Larsen,Dem,67064,Mike Kennedy,OK,,,,
-House,VA-01,1,,Shannon Taylor,Rob Wittman,Republican,47.5%,ap:51:47001,168785,Shannon Taylor,Dem,57798,Robert Wittman,OK,,,,
-House,VA-02,2,,Elaine Luria,Jen Kiggans,Republican,49.9%,ap:51:47003,66930,Elaine Luria,Dem,70896,Jen Kiggans,OK,,,,
-House,VA-03,3,,Bobby Scott,Edwin Rivera Jr.,Democrat,67.5%,ap:51:47005,1451,Bobby Scott,Dem,178102,Edwin Rivera,OK,,,,
-House,VA-04,4,,Jennifer McClellan,Robert Murray Jr.,Democrat,66.6%,ap:51:47007,148452,Jennifer McClellan,Dem,178103,Robert Murray,OK,,,,
-House,VA-05,5,,Tom Perriello,John McGuire III,Republican,43.8%,ap:51:47009,59015,Tom Perriello,Dem,148085,John McGuire,OK,,,,
-House,VA-06,6,,Beth Macy,Ben Cline,Republican,37.9%,ap:51:47011,178092,Beth Macy,Dem,45587,Ben Cline,OK,,,,
-House,VA-07,7,,Eugene Vindman,Doug Ollivant,Democrat,51.4%,ap:51:47013,163798,Eugene Vindman,Dem,174940,Doug Ollivant,OK,,,,
-House,VA-08,8,,Don Beyer,Tony Sabio,Democrat,75.4%,ap:51:47015,45543,Don Beyer,Dem,178104,Tony Sabio,OK,,,,
-House,VA-09,9,,Joy Powers,Morgan Griffith,Republican,27.8%,ap:51:47017,169028,Joy Powers,Dem,58574,H. Griffith,OK,,,,
-House,VA-10,10,,Suhas Subramanyam,Dave Beckwith,Democrat,54.3%,ap:51:47019,148507,Suhas Subramanyam,Dem,174943,Dave Beckwith,OK,,,,
-House,VA-11,11,,James Walkinshaw,Arthur Purves,Democrat,67.7%,ap:51:47021,169002,James Walkinshaw,Dem,178105,Arthur Purves,OK,,,,
-House,VT-AL,AL,,Becca Balint,Gerald Malloy,Democrat,66.4%,ap:50:46374,71178,Becca Balint,Dem,71174,Gerald Malloy,OK,,,,
-House,WA-01,1,,Suzan DelBene,Mary Silva,Democrat,64.9%,ap:53:2,61012,Suzan DelBene,Dem,165711,Mary Silva,OK,,,,
-House,WA-02,2,,Rick Larsen,Edwin Feller,Democrat,62.2%,ap:53:48008,1468,Rick Larsen,Dem,176038,Edwin Feller,OK,,,,
-House,WA-03,3,,Marie Gluesenkamp Perez,John Braun,Democrat,48.3%,ap:53:48009,71012,Marie Gluesenkamp Perez,Dem,151238,John Braun,OK,,,,
-House,WA-04,4,,John Duresky,Amanda McKinney,Neither,39.4%,ap:53:48011,176056,John Duresky,Dem,176055,Amanda McKinney,OK,,,,
-House,WA-05,5,,Carmela Conroy,Michael Baumgartner,Republican,44.4%,ap:53:48013,165728,Carmela Conroy,Dem,62292,Michael Baumgartner,OK,,,,
-House,WA-06,6,,Emily Randall,Teresa Fox,Democrat,60.0%,ap:53:48015,152486,Emily Randall,Dem,176084,Teresa Fox,OK,,,,
-House,WA-07,7,,Pramila Jayapal,Nirav Sheth,Democrat,88.7%,ap:53:48017,65298,Pramila Jayapal,Dem,165741,Nirav Sheth,OK,,,,
-House,WA-08,8,,Kim Schrier,Spencer Meline,Democrat,53.0%,ap:53:48020,67243,Kim Schrier,Dem,176089,Spencer Meline,OK,,,,
-House,WA-09,9,,Adam Smith,Doug Basler,Democrat,71.3%,ap:53:4,1488,Adam Smith,Dem,64065,Doug Basler,OK,,,,
-House,WA-10,10,,Marilyn Strickland,Chris Chung,Democrat,59.3%,ap:53:49358,68952,Marilyn Strickland,Dem,165818,Chris Chung,OK,,,,
-House,WI-01,1,,Mitchell Berman,Bryan Steil,Republican,47.7%,ap:55:50040,175180,Mitchell Berman,Dem,67339,Bryan Steil,OK,,,,
-House,WI-03,3,,Rebecca Cooke,Derrick Van Orden,Republican,46.2%,ap:55:50048,164787,Rebecca Cooke,Dem,69183,Derrick Van Orden,OK,,,,
-House,WI-04,4,,Gwen Moore,Tim Rogers,Democrat,76.2%,ap:55:50052,48730,Gwen Moore,Dem,67353,Tim Rogers,OK,,,,
-House,WI-05,5,,Andy Beck,Scott Fitzgerald,Republican,38.8%,ap:55:50056,175224,Andy Beck,Dem,59140,Scott Fitzgerald,OK,,,,
-House,WI-06,6,,Brad Smith,Glenn Grothman,Republican,41.6%,ap:55:50060,175226,Brad Smith,Dem,59087,Glenn Grothman,OK,,,,
-House,WI-07,7,,Fred Clark,Michael Alfonso,Neither,38.6%,ap:55:50064,153573,Fred Clark,Dem,175232,Michael Alfonso,OK,,,,
-House,WI-08,8,,Rick Crosson,Tony Wied,Republican,41.7%,ap:55:50068,175235,Rick Crosson,Dem,164795,Tony Wied,OK,,,,
-House,WV-01,1,,Vince George,Carol Miller,Republican,27.4%,ap:54:49273,170763,Vince George,Dem,170765,Carol Miller,OK,,,,
-House,WV-02,2,,Ace Parsi,Riley Moore,Republican,29.8%,ap:54:49274,170766,Ace Parsi,Dem,155080,Riley Moore,OK,,,,
-House,WY-AL,AL,,Lisa Kinney,Chuck Gray,Neither,26.5%,ap:56:51401,175352,Lisa Kinney,Dem,154187,Chuck Gray,OK,,,,
+Office,State/District,District number,Special Election,Democrat (or non-R indie),Republican,Incumbent,Harris 2-p %,AP contest ID,AP Dem ID,AP Dem name,AP Dem party,AP Rep ID,AP Rep name,Match check,backup_votes_dem,backup_votes_rep,backup_pct_reporting,backup_time_updated,backup_Demname,backup_Repname,check Dem,Check Rep
+Senate,AL,,,Everett Wess,Barry Moore,Neither,34.6%,ap:01:1755,171276,Everett Wess,Dem,66781,Barry Moore,OK,759335,917347,98.70%,2026-11-04T14:44:23.000Z,Everett Wess,Barry Moore,0,0
+Senate,AK,,,Mary Peltola,Dan Sullivan,Republican,43.2%,ap:02:3079,70718,Mary Peltola,Dem,64262,Dan Sullivan,OK,102701,102075,74.30%,2026-11-04T14:44:23.000Z,Mary Peltola,Dan S. Sullivan,0,0
+Senate,AR,,,Hallie Shoffner,Tom Cotton,Republican,34.3%,ap:05:6345,169665,Hallie Shoffner,Dem,61872,Tom Cotton,OK,375596,480526,99.00%,2026-11-04T14:44:23.000Z,Hallie Shoffner,Tom Cotton,0,0
+Senate,CO,,,John Hickenlooper,Mark Baisley,Democrat,55.6%,ap:08:7168,60601,John Hickenlooper,Dem,104446,Mark Baisley,OK,1310885,773924,77.30%,2026-11-04T14:44:23.000Z,John Hickenlooper,Mark Baisley,0,0
+Senate,DE,,,Chris Coons,Michael Katz,Democrat,57.5%,ap:10:8362,60997,Chris Coons,Dem,103229,Michael Katz,OK,240347,137764,98.60%,2026-11-04T14:44:23.000Z,Chris Coons,Mike Katz,0,0
+Senate,FL,,Yes,Angie Nixon,Ashley Moody,Republican,43.4%,ap:12:84979,110984,Angie Nixon,Dem,109657,Ashley Moody,OK,3969186,4207947,99.00%,2026-11-04T14:44:23.000Z,Angie Nixon,Ashley Moody,0,0
+Senate,GA,,,Jon Ossoff,Mike Collins,Democrat,48.9%,ap:13:12301,65866,Jon Ossoff,Dem,63367,Mike Collins,OK,2463132,1711322,98.70%,2026-11-04T14:44:23.000Z,Jon Ossoff,Mike Collins,0,0
+Senate,ID,,,Todd Achilles,Jim Risch,Republican,31.2%,ap:16:13252,162421,Todd Achilles,Ind,15344,Jim Risch,OK,232663,392297,96.70%,2026-11-04T14:44:23.000Z,Todd Achilles,Jim Risch,0,0
+Senate,IL,,,Juliana Stratton,Don Tracy,Neither,55.6%,ap:17:16430,118184,Juliana Stratton,Dem,170432,Don Tracy,OK,2418659,1487039,92.50%,2026-11-04T14:44:23.000Z,Juliana Stratton,Don Tracy,0,0
+Senate,IA,,,Josh Turek,Ashley Hinson,Neither,43.3%,ap:19:17247,114917,Josh Turek,Dem,68744,Ashley Hinson,OK,686487,630615,98.70%,2026-11-04T14:44:23.000Z,Josh Turek,Ashley Hinson,0,0
+Senate,KS,,,Adam Hamilton,Roger Marshall,Republican,41.8%,ap:20:17585,175305,Adam Hamilton,Dem,65324,Roger Marshall,OK,556414,503230,98.50%,2026-11-04T14:44:23.000Z,Adam Hamilton,Roger Marshall,0,0
+Senate,KY,,,Charles Booker,Andy Barr,Neither,34.5%,ap:21:18783,68558,Charles Booker,Dem,60705,Andy Barr,OK,611987,784000,99.00%,2026-11-04T14:44:23.000Z,Charles Booker,Andy Barr,0,0
+Senate,LA,,,Jamie Davis,Julia Letlow,Neither,38.8%,ap:22:20157,172214,Jamie Davis,Dem,69687,Julia Letlow,OK,720106,745963,99.00%,2026-11-04T14:44:23.000Z,Jamie Davis,Julia Letlow,0,0
+Senate,ME,,,Troy Jackson,Susan Collins,Republican,53.5%,ap:23:20643,54967,Troy Jackson,Dem,1727,Susan Collins,OK,342661,293629,86.00%,2026-11-04T14:44:23.000Z,Troy Jackson,Susan Collins,0,0
+Senate,MA,,,Ed Markey,John Deaton,Democrat,63.0%,ap:25:24467,888,Ed Markey,Dem,165705,John Deaton,OK,1450896,730863,85.10%,2026-11-04T14:44:23.000Z,Ed Markey,John Deaton,0,0
+Senate,MI,,,Abdul El-Sayed,Mike Rogers,Neither,49.3%,ap:26:24463,67151,Abdul El-Sayed,Dem,1169,Mike Rogers,OK,2497852,2162890,96.60%,2026-11-04T14:44:23.000Z,Abdul El-Sayed,Mike Rogers,0,0
+Senate,MN,,,Peggy Flanagan,Michele Tafoya,Neither,52.2%,ap:27:25151,126236,Peggy Flanagan,Dem,177166,Michele Tafoya,OK,1520299,1232683,98.80%,2026-11-04T14:44:23.000Z,Peggy Flanagan,Michele Tafoya,0,0
+Senate,MS,,,Scott Colom,Cindy Hyde-Smith,Republican,38.4%,ap:28:26692,169318,Scott Colom,Dem,28529,Cindy Hyde-Smith,OK,462821,462778,95.60%,2026-11-04T14:44:23.000Z,Scott Colom,Cindy Hyde-Smith,0,0
+Senate,MT,,,Seth Bodnar,Kurt Alme,Neither,39.7%,ap:30:27607,177955,Seth Bodnar,Ind,171710,Kurt Alme,OK,159468,201399,83.40%,2026-11-04T14:44:23.000Z,Seth Bodnar,Kurt Alme,0,0
+Senate,NE,,,Dan Osborn,Pete Ricketts,Republican,39.6%,ap:31:28594,168007,Dan Osborn,Ind,51566,Pete Ricketts,OK,321218,370411,91.00%,2026-11-04T14:44:23.000Z,Dan Osborn,Pete Ricketts,0,0
+Senate,NH,,,Chris Pappas,John E. Sununu,Neither,51.4%,ap:33:30003,56360,Chris Pappas,Dem,176348,John Sununu,OK,332906,248354,90.50%,2026-11-04T14:44:23.000Z,Chris Pappas,John Sununu,0,0
+Senate,NJ,,,Cory Booker,Justin Murphy,Democrat,53.0%,ap:34:31296,63133,Cory Booker,Dem,162656,Justin Murphy,OK,1781640,1013579,94.10%,2026-11-04T14:44:23.000Z,Cory Booker,Justin Murphy,0,0
+Senate,NM,,,Ben Ray Lujan,Larry Marker,Democrat,53.1%,ap:35:33948,56805,Ben Lujan,Dem,163922,Larry Marker,OK,455165,265557,98.00%,2026-11-04T14:44:23.000Z,Ben Ray Lujan,Larry Marker,0,0
+Senate,NC,,,Roy Cooper,Michael Whatley,Neither,48.4%,ap:37:35984,34471,Roy Cooper,Dem,169297,Michael Whatley,OK,2467963,1643088,99.00%,2026-11-04T14:44:23.000Z,Roy Cooper,Michael Whatley,0,0
+Senate,OH,,Yes,Sherrod Brown,Jon Husted,Republican,44.3%,ap:39:84327,1384,Sherrod Brown,Dem,139415,Jon Husted,OK,2301042,2077748,98.80%,2026-11-04T14:44:23.000Z,Sherrod Brown,Jon Husted,0,0
+Senate,OK,,,N'Kiyla Jasmine Thomas,Kevin Hern,Neither,32.5%,ap:40:37960,173585,N'Kiyla Thomas,Dem,67018,Kevin Hern,OK,434563,634081,98.60%,2026-11-04T14:44:23.000Z,N'Kiyla Jasmine Thomas,Kevin Hern,0,0
+Senate,OR,,,Jeff Merkley,David Brock Smith,Democrat,57.4%,ap:41:38952,57469,Jeff Merkley,Dem,141335,David Smith,OK,864411,619239,75.30%,2026-11-04T14:44:23.000Z,Jeff Merkley,David Brock Smith,0,0
+Senate,RI,,,Jack Reed,Raymond McKay,Democrat,57.1%,ap:44:40003,964,Jack Reed,Dem,63908,Raymond McKay,OK,236408,104649,97.10%,2026-11-04T14:44:23.000Z,Jack Reed,Raymond McKay,0,0
+Senate,SC,,,Annie Andrews,Darline Graham,Republican,40.9%,ap:45:41938,70916,Annie Andrews,Dem,178208,Darline Graham,OK,1042362,951165,99.00%,2026-11-04T14:44:23.000Z,Annie Andrews,Darline Graham,0,0
+Senate,SD,,,Brian Bengs,Mike Rounds,Republican,35.1%,ap:46:42003,70405,Brian Bengs,Ind,580,Mike Rounds,OK,120484,184571,99.00%,2026-11-04T14:44:23.000Z,Brian Bengs,Mike Rounds,0,0
+Senate,TN,,,Marquita Bradshaw,Bill Hagerty,Republican,34.9%,ap:47:43441,69240,Marquita Bradshaw,Dem,69233,Bill Hagerty,OK,886911,1138407,99.00%,2026-11-04T14:44:23.000Z,Marquita Bradshaw,Bill Hagerty,0,0
+Senate,TX,,,James Talarico,Ken Paxton,Neither,43.1%,ap:48:46643,153037,James Talarico,Dem,58352,Ken Paxton,OK,5440114,4248109,97.40%,2026-11-04T14:44:23.000Z,James Talarico,Ken Paxton,0,0
+Senate,VA,,,Mark Warner,Bert Mizusawa,Democrat,52.9%,ap:51:47917,1782,Mark Warner,Dem,174928,Bert Mizusawa,OK,2169089,1373176,96.80%,2026-11-04T14:44:23.000Z,Mark Warner,Bert Mizusawa,0,0
+Senate,WV,,,Rachel Fetty Anderson,Shelley Moore Capito,Republican,28.7%,ap:54:49137,46544,Rachel Anderson,Dem,441,Shelley Capito,OK,172922,266068,93.70%,2026-11-04T14:44:23.000Z,Rachel Fetty Anderson,Shelley Moore Capito,0,0
+Senate,WY,,,James Byrd,Harriet Hageman,Neither,26.5%,ap:56:51677,153086,James Byrd,Dem,67595,Harriet Hageman,OK,65097,122157,97.00%,2026-11-04T14:44:23.000Z,James Byrd,Harriet Hageman,0,0
+Governor,AL,,,Doug Jones,Tommy Tuberville,Neither,34.6%,ap:01:1019,3610,Doug Jones,Dem,68308,Thomas Tuberville,OK,803468,872445,98.70%,2026-11-04T14:43:49.000Z,Doug Jones,Tommy Tuberville,0,0
+Governor,AZ,,,Katie Hobbs,Andy Biggs,Democrat,47.2%,ap:04:3014,70987,Katie Hobbs,Dem,52611,Andy Biggs,OK,1192610,913069,82.80%,2026-11-04T14:43:49.000Z,Katie Hobbs,Andy Biggs,0,0
+Governor,AR,,,Fredrick Love,Sarah Huckabee Sanders,Republican,34.3%,ap:05:5626,102193,Fred Love,Dem,70516,Sarah Huckabee Sanders,OK,341621,477042,99.00%,2026-11-04T14:43:49.000Z,Fred Love,Sarah Huckabee Sanders,0,0
+Governor,CA,,,Xavier Becerra,Steve Hilton,Neither,60.4%,ap:06:6123,94,Xavier Becerra,Dem,172439,Steve Hilton,OK,4982430,2804925,59.30%,2026-11-04T14:43:49.000Z,Xavier Becerra,Steve Hilton,0,0
+Governor,CO,,,Phil Weiser,Victor Marx,Neither,55.6%,ap:08:6619,104361,Phil Weiser,Dem,174624,Victor Marx,OK,1319726,728640,76.90%,2026-11-04T14:43:49.000Z,Phil Weiser,Victor Marx,0,0
+Governor,CT,,,Ned Lamont,Ryan Fazio,Democrat,57.4%,ap:09:7019,51911,Ned Lamont,Dem,109320,Ryan Fazio,OK,718126,503032,93.20%,2026-11-04T14:43:49.000Z,Ned Lamont,Ryan Fazio,0,0
+Governor,FL,,,David Jolly,Byron Donalds,Neither,43.4%,ap:12:10045,63159,David Jolly,Dem,62408,Byron Donalds,OK,4024554,4132275,99.00%,2026-11-04T14:43:49.000Z,David Jolly,Byron Donalds,0,0
+Governor,GA,,,Keisha Lance Bottoms,Rick Jackson,Neither,48.9%,ap:13:12029,110638,Keisha Lance Bottoms,Dem,171426,Rick Jackson,OK,2268462,1908261,98.60%,2026-11-04T14:43:49.000Z,Keisha Lance Bottoms,Rick Jackson,0,0
+Governor,HI,,,Josh Green,Gary Cordery,Democrat,61.8%,ap:15:12480,71471,Josh Green,Dem,71276,Gary Cordery,OK,231607,78529,77.20%,2026-11-04T14:43:49.000Z,Josh Green,Gary Cordery,0,0
+Governor,ID,,,Terri Pickens,Brad Little,Republican,31.2%,ap:16:13676,112763,Terri Pickens,Dem,53635,Brad Little,OK,218778,389223,94.50%,2026-11-04T14:43:49.000Z,Terri Pickens,Brad Little,0,0
+Governor,IL,,,JB Pritzker,Darren Bailey,Democrat,55.6%,ap:17:15989,17710,JB Pritzker,Dem,71049,Darren Bailey,OK,2335631,1438609,90.80%,2026-11-04T14:43:49.000Z,JB Pritzker,Darren Bailey,0,0
+Governor,IA,,,Rob Sand,Zach Lahn,Neither,43.3%,ap:19:17076,114528,Rob Sand,Dem,173748,Zach Lahn,OK,757326,607415,98.90%,2026-11-04T14:43:49.000Z,Rob Sand,Zach Lahn,0,0
+Governor,KS,,,Cindy Holscher,Ty Masterson,Neither,41.8%,ap:20:17559,115817,Cindy Holscher,Dem,114681,Ty Masterson,OK,546587,541030,97.90%,2026-11-04T14:43:49.000Z,Cindy Holscher,Ty Masterson,0,0
+Governor,ME,,,Hannah Pingree,Robert Charles,Neither,53.5%,ap:23:20646,174083,Hannah Pingree,Dem,174086,Robert Charles,OK,353346,235427,86.10%,2026-11-04T14:43:49.000Z,Hannah Pingree,Bobby Charles,0,0
+Governor,MD,,,Wes Moore,Dan Cox,Democrat,64.8%,ap:24:22091,71129,Wes Moore,Dem,64816,Dan Cox,OK,1163909,617114,78.30%,2026-11-04T14:43:49.000Z,Wes Moore,Dan Cox,0,0
+Governor,MA,,,Maura Healey,Mike Minogue,Democrat,63.0%,ap:25:22957,71279,Maura Healey,Dem,176606,Michael Minogue,OK,1426344,783556,85.20%,2026-11-04T14:43:49.000Z,Maura Healey,Michael Minogue,0,0
+Governor,MI,,,Jocelyn Benson,John James,Neither,49.3%,ap:26:24074,128670,Jocelyn Benson,Dem,166570,John James,OK,2591316,2078052,96.60%,2026-11-04T14:43:49.000Z,Jocelyn Benson,John James,0,0
+Governor,MN,,,Amy Klobuchar,Lisa Demuth,Neither,52.2%,ap:27:24704,159027,Amy Klobuchar,Dem,126628,Lisa Demuth,OK,1569097,1205798,98.80%,2026-11-04T14:43:49.000Z,Amy Klobuchar,Lisa Demuth,0,0
+Governor,NE,,,Lynne Walz,Jim Pillen,Republican,39.6%,ap:31:28006,129088,Lynne Walz,Dem,69957,Jim Pillen,OK,311363,373465,91.30%,2026-11-04T14:43:49.000Z,Lynne Walz,Jim Pillen,0,0
+Governor,NV,,,Aaron Ford,Joe Lombardo,Republican,48.4%,ap:32:29861,131963,Aaron Ford,Dem,70779,Joseph Lombardo,OK,506653,432732,87.20%,2026-11-04T14:43:49.000Z,Aaron Ford,Joe Lombardo,0,0
+Governor,NH,,,Cinde Warmington,Kelly Ayotte,Republican,51.4%,ap:33:30005,139961,Cinde Warmington,Dem,61040,Kelly Ayotte,OK,278209,300866,90.50%,2026-11-04T14:43:49.000Z,Cinde Warmington,Kelly Ayotte,0,0
+Governor,NM,,,Deb Haaland,Gregg Hull,Neither,53.1%,ap:35:32238,64378,Deb Haaland,Dem,172994,Greggory Hull,OK,412834,308315,98.00%,2026-11-04T14:43:49.000Z,Deb Haaland,Greggory Hull,0,0
+Governor,NY,,,Kathy Hochul,Bruce Blakeman,Democrat,56.3%,ap:36:39760,61285,Kathy Hochul,Dem,61145,Bruce Blakeman,OK,3551333,2347633,87.60%,2026-11-04T14:43:49.000Z,Kathy Hochul,Bruce Blakeman,0,0
+Governor,OH,,,Amy Acton,Vivek Ramaswamy,Neither,44.3%,ap:39:36005,170750,Amy Acton,Dem,71843,Vivek Ramaswamy,OK,2404178,2039730,98.80%,2026-11-04T14:43:49.000Z,Amy Acton,Vivek Ramaswamy,0,0
+Governor,OK,,,Cyndi Munson,Mike Mazzei,Neither,32.5%,ap:40:37857,138897,Cyndi Munson,Dem,137606,Mike Mazzei,OK,509215,576653,98.60%,2026-11-04T14:43:49.000Z,Cyndi Munson,Mike Mazzei,0,0
+Governor,OR,,,Tina Kotek,Christine Drazan,Democrat,57.4%,ap:41:38019,70205,Tina Kotek,Dem,70218,Christine Drazan,OK,795725,699400,75.10%,2026-11-04T14:43:49.000Z,Tina Kotek,Christine Drazan,0,0
+Governor,PA,,,Josh Shapiro,Stacy Garrity,Democrat,49.1%,ap:42:39292,70066,Josh Shapiro,Dem,146618,Stacy Garrity,OK,2988584,1904636,97.80%,2026-11-04T14:43:49.000Z,Josh Shapiro,Stacy Garrity,0,0
+Governor,RI,,,Helena Foulkes,Aaron Guckian,Neither,57.1%,ap:44:40005,71486,Helena Foulkes,Dem,143645,Aaron Guckian,OK,203894,46997,97.10%,2026-11-04T14:43:49.000Z,Helena Foulkes,Aaron Guckian,0,0
+Governor,SC,,,Jermaine Johnson,Alan Wilson,Neither,40.9%,ap:45:41191,145291,Jermaine Johnson,Dem,143843,Alan Wilson,OK,959001,1050190,99.00%,2026-11-04T14:43:49.000Z,Jermaine Johnson,Alan Wilson,0,0
+Governor,SD,,,Dan Ahlers,Larry Rhoden,Republican,35.1%,ap:46:42222,68738,Dan Ahlers,Dem,58102,Larry Rhoden,OK,111131,193317,99.00%,2026-11-04T14:43:49.000Z,Dan Ahlers,Larry Rhoden,0,0
+Governor,TN,,,Jerri Green,Marsha Blackburn,Neither,34.9%,ap:47:43440,147782,Jerri Green,Dem,682,Marsha Blackburn,OK,902546,955259,98.90%,2026-11-04T14:43:49.000Z,Jerri Green,Marsha Blackburn,0,0
+Governor,TX,,,Gina Hinojosa,Greg Abbott,Republican,43.1%,ap:48:45901,152027,Gina Hinojosa,Dem,41404,Greg Abbott,OK,5226388,4523160,97.40%,2026-11-04T14:43:49.000Z,Gina Hinojosa,Greg Abbott,0,0
+Governor,VT,,,Amanda Janoo,Phil Scott,Republican,66.4%,ap:50:46375,175074,Amanda Janoo,Dem,45443,Phil Scott,OK,141467,163169,99.00%,2026-11-04T14:43:49.000Z,Amanda Janoo,Phil Scott,0,0
+Governor,WI,,,David Crowley,Tom Tiffany,Neither,49.6%,ap:55:50016,156426,David Crowley,Dem,67975,Tom Tiffany,OK,1438721,1221668,98.50%,2026-11-04T14:43:49.000Z,David Crowley,Tom Tiffany,0,0
+Governor,WY,,,Kenneth Casner,Eric Barlow,Neither,26.5%,ap:56:51403,49137,Kenneth Casner,Dem,153633,Eric Barlow,OK,27469,128480,97.00%,2026-11-04T14:43:49.000Z,Kenneth Casner,Eric Barlow,0,0
+House,AK-AL,AL,,Bill Hill,Nick Begich III,Republican,43.2%,ap:02:2015,177719,Bill Hill,Ind,70724,Nick Begich,OK,85838,105353,74.10%,2026-11-04T14:46:53.000Z,Bill Hill,Nick Begich,0,0
+House,AL-01,1,,Clyde Jones Jr.,Jerry Carl,Neither,31.8%,ap:01:1005,171283,Clyde Jones,Dem,68313,Jerry Carl,OK,94940,137025,99.00%,2026-11-04T14:46:53.000Z,Clyde Jones,Jerry Carl,0,0
+House,AL-02,2,,Shomari Figures,Rhett Marques,Democrat,42.7%,ap:01:1374,160906,Shomari Figures,Dem,100547,Rhett Marques,OK,124422,107049,99.00%,2026-11-04T14:46:53.000Z,Shomari Figures,Rhett Marques,0,0
+House,AL-03,3,,Lee McInnis,Mike Rogers,Republican,26.5%,ap:01:1375,171289,Lee McInnis,Dem,1161,Mike Rogers,OK,79926,141799,96.70%,2026-11-04T14:46:53.000Z,Lee McInnis,Mike Rogers,0,0
+House,AL-04,4,,Amanda Pusczek,Robert Aderholt,Republican,16.5%,ap:01:1011,171292,Amanda Pusczek,Dem,523,Robert Aderholt,OK,53633,160008,98.90%,2026-11-04T14:46:53.000Z,Amanda Pusczek,Robert Aderholt,0,0
+House,AL-05,5,,Andrew Sneed,Dale Strong,Republican,35.3%,ap:01:1376,171296,Andrew Sneed,Dem,70499,Dale Strong,OK,124763,142080,99.00%,2026-11-04T14:46:53.000Z,Andrew Sneed,Dale Strong,0,0
+House,AL-06,6,,Maurice Mercer,Gary Palmer,Republican,32.5%,ap:01:1377,176563,Maurice Mercer,Dem,63532,Gary Palmer,OK,110957,149921,98.30%,2026-11-04T14:46:53.000Z,Maurice Mercer,Gary Palmer,0,0
+House,AL-07,7,,Terri Sewell,Ammie Akin,Democrat,59.0%,ap:01:1378,60639,Terri Sewell,Dem,176560,Ammie Akin,OK,174823,77085,99.00%,2026-11-04T14:46:53.000Z,Terri Sewell,Ammie Akin,0,0
+House,AR-01,1,,Terri Green,Rick Crawford,Republican,26.9%,ap:05:5104,169662,Terri Yarbrough Green,Dem,60226,Rick Crawford,OK,60047,126902,99.00%,2026-11-04T14:46:53.000Z,Terri Yarbrough Green,Rick Crawford,0,0
+House,AR-02,2,,Chris Jones,French Hill,Republican,42.0%,ap:05:5105,70529,Chris Jones,Dem,63416,French Hill,OK,123025,127427,99.00%,2026-11-04T14:46:53.000Z,Chris Jones,French Hill,0,0
+House,AR-03,3,,Robb Ryerse,Steve Womack,Republican,37.2%,ap:05:6092,66360,Robb Ryerse,Dem,60238,Steve Womack,OK,96189,127303,99.00%,2026-11-04T14:46:53.000Z,Robb Ryerse,Steve Womack,0,0
+House,AR-04,4,,James Russell,Bruce Westerman,Republican,29.7%,ap:05:5107,70528,James Russell,Dem,63418,Bruce Westerman,OK,69153,131253,99.00%,2026-11-04T14:46:53.000Z,James Russell,Bruce Westerman,0,0
+House,AZ-01,1,,Amish Shah,Jay Feely,Neither,48.4%,ap:04:3004,101869,Amish Shah,Dem,174913,Thomas Feely,OK,163584,141196,85.20%,2026-11-04T14:46:53.000Z,Amish Shah,Jay Feely,0,0
+House,AZ-02,2,,Jonathan Nez,Eli Crane,Republican,42.4%,ap:04:3006,164639,Jonathan Nez,Dem,70963,Eli Crane,OK,135023,133070,78.30%,2026-11-04T14:46:53.000Z,Jonathan Nez,Eli Crane,0,0
+House,AZ-04,4,,Greg Stanton,Zuhdi Jasser,Democrat,53.3%,ap:04:3010,67576,Greg Stanton,Dem,164826,Zuhdi Jasser,OK,132395,75216,85.10%,2026-11-04T14:46:53.000Z,Greg Stanton,Zuhdi Jasser,0,0
+House,AZ-05,5,,Elizabeth Lee,Mark Lamb,Neither,39.9%,ap:04:3012,174922,Elizabeth Lee,Dem,164629,Mark Lamb,OK,131226,137240,83.90%,2026-11-04T14:46:53.000Z,Elizabeth Lee,Mark Lamb,0,0
+House,AZ-06,6,,JoAnna Mendoza,Juan Ciscomani,Republican,49.6%,ap:04:3544,101892,JoAnna Mendoza,Dem,70979,Juan Ciscomani,OK,157269,133502,79.50%,2026-11-04T14:46:53.000Z,JoAnna Mendoza,Juan Ciscomani,0,0
+House,AZ-07,7,,Adelita Grijalva,Daniel Butierez,Democrat,61.2%,ap:04:3920,167589,Adelita Grijalva,Dem,164828,Daniel Butierez,OK,111192,44298,81.50%,2026-11-04T14:46:53.000Z,Adelita Grijalva,Daniel Butierez,0,0
+House,AZ-08,8,,Bernadette Greene-Placentia,Abraham Hamadeh,Republican,41.8%,ap:04:3924,174923,Bernadette Greene-Placentia,Dem,101964,Abraham Hamadeh,OK,121500,127063,85.20%,2026-11-04T14:46:53.000Z,Bernadette Greene-Placentia,Abraham Hamadeh,0,0
+House,AZ-09,9,,Dani Sterbinsky,Paul Gosar,Republican,34.3%,ap:04:4173,174925,Danielle Sterbinsky,Dem,61002,Paul Gosar,OK,101203,138732,83.20%,2026-11-04T14:46:53.000Z,Danielle Sterbinsky,Paul Gosar,0,0
+House,CA-01,1,,Mike McGuire,James Gallagher,Republican,56.3%,ap:06:6478,105490,Mike McGuire,Dem,105529,James Gallagher,OK,88089,66369,50.10%,2026-11-04T14:46:53.000Z,Mike McGuire,James Gallagher,0,0
+House,CA-02,2,,Jared Huffman,Robin Littau,Democrat,62.7%,ap:06:5692,62063,Jared Huffman,Dem,172490,Robin Littau,OK,105910,50258,48.50%,2026-11-04T14:46:53.000Z,Jared Huffman,Robin Littau,0,0
+House,CA-03,3,,Ami Bera,Robb Tucker,Democrat,55.3%,ap:06:5693,60686,Ami Bera,Dem,172498,Robb Tucker,OK,95372,71774,49.40%,2026-11-04T14:46:53.000Z,Ami Bera,Robb Tucker,0,0
+House,CA-05,5,,Michael Masuda,Tom McClintock,Republican,39.4%,ap:06:5695,172505,Michael Masuda,Dem,52499,Tom McClintock,OK,79957,102646,61.20%,2026-11-04T14:46:53.000Z,Michael Masuda,Tom McClintock,0,0
+House,CA-06,6,,Richard Pan,Kevin Kiley,Republican,54.3%,ap:06:5696,105173,Richard Pan,Dem,69756,Kevin Kiley,OK,86732,64143,50.10%,2026-11-04T14:46:53.000Z,Richard Pan,Kevin Kiley,0,0
+House,CA-08,8,,John Garamendi,Rudy Recile,Democrat,67.6%,ap:06:5698,7136,John Garamendi,Dem,70672,Rudy Recile,OK,111130,42498,64.50%,2026-11-04T14:46:53.000Z,John Garamendi,Rudy Recile,0,0
+House,CA-09,9,,Josh Harder,John McBride,Democrat,55.9%,ap:06:5699,66533,Josh Harder,Dem,161038,John McBride,OK,78226,40665,55.60%,2026-11-04T14:46:53.000Z,Josh Harder,John McBride,0,0
+House,CA-10,10,,Mark DeSaulnier,Jeff Frese,Democrat,67.3%,ap:06:8514,60108,Mark DeSaulnier,Dem,172523,Jeff Frese,OK,131901,59082,62.10%,2026-11-04T14:46:53.000Z,Mark DeSaulnier,Jeff Frese,0,0
+House,CA-13,13,,Adam Gray,Kevin Lincoln,Democrat,50.2%,ap:06:5703,70545,Adam Gray,Dem,105816,Kevin Lincoln,OK,58217,36724,57.20%,2026-11-04T14:46:53.000Z,Adam Gray,Kevin Lincoln,0,0
+House,CA-15,15,,Kevin Mullin,Charles Hoelter,Democrat,74.8%,ap:06:5705,70553,Kevin Mullin,Dem,172543,Charles Hoelter,OK,101072,29546,51.10%,2026-11-04T14:46:53.000Z,Kevin Mullin,Charles Hoelter,0,0
+House,CA-16,16,,Sam Liccardo,Peter Soule,Democrat,74.9%,ap:06:5706,105726,Sam Liccardo,Dem,172547,Peter Soule,OK,109418,34765,46.90%,2026-11-04T14:46:53.000Z,Sam Liccardo,Peter Soulé,0,0
+House,CA-17,17,,Ro Khanna,Ritesh Tandon,Democrat,70.4%,ap:06:5707,7547,Ro Khanna,Dem,68020,Ritesh Tandon,OK,72364,30251,46.10%,2026-11-04T14:46:53.000Z,Ro Khanna,Ritesh Tandon,0,0
+House,CA-18,18,,Zoe Lofgren,Shane Lewis,Democrat,64.7%,ap:06:5708,49,Zoe Lofgren,Dem,172551,Shane Lewis,OK,71383,28238,54.40%,2026-11-04T14:46:53.000Z,Zoe Lofgren,Shane Lewis,0,0
+House,CA-19,19,,Jimmy Panetta,Peter Coe Verbica,Democrat,67.9%,ap:06:5709,65030,Jimmy Panetta,Dem,106620,Peter Verbica,OK,130744,50899,56.60%,2026-11-04T14:46:53.000Z,Jimmy Panetta,Peter Verbica,0,0
+House,CA-20,20,,Sandra Van Scotter,Vince Fong,Republican,33.5%,ap:06:5710,172559,Sandra Van Scotter,Dem,105858,Vince Fong,OK,54329,90999,57.10%,2026-11-04T14:46:53.000Z,Sandra Van Scotter,Vince Fong,0,0
+House,CA-21,21,,Jim Costa,Kyle Kirkland,Democrat,53.1%,ap:06:5711,6818,Jim Costa,Dem,161069,Kyle Kirkland,OK,53874,32732,53.50%,2026-11-04T14:46:53.000Z,Jim Costa,Kyle Kirkland,0,0
+House,CA-22,22,,Randy Villegas,David Valadao,Republican,49.1%,ap:06:5712,172562,Randy Villegas,Dem,62229,David Valadao,OK,54337,27480,57.10%,2026-11-04T14:46:53.000Z,Randy Villegas,David Valadao,0,0
+House,CA-23,23,,Tessa Lynn Hodge,Jay Obernolte,Republican,40.0%,ap:06:5713,172565,Tessa Hodge,Dem,67998,Jay Obernolte,OK,63681,67169,57.00%,2026-11-04T14:46:53.000Z,Tessa Hodge,Jay Obernolte,0,0
+House,CA-24,24,,Salud Carbajal,Bob Smith,Democrat,62.8%,ap:06:5714,65043,Salud Carbajal,Dem,172569,Bob Smith,OK,108231,56044,59.40%,2026-11-04T14:46:53.000Z,Salud Carbajal,Bob Smith,0,0
+House,CA-25,25,,Raul Ruiz,Joe Males,Democrat,53.0%,ap:06:5715,62342,Raul Ruiz,Dem,172570,Joe Males,OK,69581,38455,45.70%,2026-11-04T14:46:53.000Z,Raul Ruiz,Joe Males,0,0
+House,CA-26,26,,Jacqui Irwin,Sam Gallucci,Neither,57.8%,ap:06:5716,105658,Jacqui Irwin,Dem,172576,Sam Gallucci,OK,103007,64050,70.70%,2026-11-04T14:46:53.000Z,Jacqui Irwin,Sam Gallucci,0,0
+House,CA-27,27,,George Whitesides,Jason Gibbs,Democrat,55.1%,ap:06:5717,161079,George Whitesides,Dem,172581,Jason Gibbs,OK,101352,62911,68.70%,2026-11-04T14:46:53.000Z,George Whitesides,Jason Gibbs,0,0
+House,CA-28,28,,Judy Chu,April Verlato,Democrat,63.1%,ap:06:5718,52450,Judy Chu,Dem,161080,April Verlato,OK,121906,56394,62.60%,2026-11-04T14:46:53.000Z,Judy Chu,April Verlato,0,0
+House,CA-30,30,,Laura Friedman,Scott Meyers,Democrat,70.7%,ap:06:5720,105888,Laura Friedman,Dem,172584,Scott Meyers,OK,133724,43453,64.30%,2026-11-04T14:46:53.000Z,Laura Friedman,Scott Meyers,0,0
+House,CA-31,31,,Gil Cisneros,Eric Ching,Democrat,56.3%,ap:06:5721,66574,Gil Cisneros,Dem,70626,Eric Ching,OK,104133,58969,69.50%,2026-11-04T14:46:53.000Z,Gil Cisneros,Eric Ching,0,0
+House,CA-32,32,,Brad Sherman,Larry Thompson,Democrat,62.9%,ap:06:5722,84,Brad Sherman,Dem,68116,Larry Thompson,OK,122950,62742,64.50%,2026-11-04T14:46:53.000Z,Brad Sherman,Larry Thompson,0,0
+House,CA-33,33,,Pete Aguilar,Stephanie Vargas,Democrat,55.0%,ap:06:5723,62883,Pete Aguilar,Dem,172596,Stephanie Vargas,OK,76663,36648,58.50%,2026-11-04T14:46:53.000Z,Pete Aguilar,Stephanie Vargas,0,0
+House,CA-35,35,,Norma Torres,Mike Cargile,Democrat,54.0%,ap:06:5725,63684,Norma Torres,Dem,68059,Mike Cargile,OK,72707,38102,56.50%,2026-11-04T14:46:53.000Z,Norma Torres,Mike Cargile,0,0
+House,CA-36,36,,Ted Lieu,Houston Brignano,Democrat,70.2%,ap:06:5726,63666,Ted Lieu,Dem,172601,Houston Brignano,OK,148056,61486,61.20%,2026-11-04T14:46:53.000Z,Ted Lieu,Houston Brignano,0,0
+House,CA-38,38,,Hilda Solis,Pedro Casas,Neither,56.4%,ap:06:5728,105686,Hilda Solis,Dem,161095,Pedro Casas,OK,97536,52489,69.40%,2026-11-04T14:46:53.000Z,Hilda Solis,Pedro Casas,0,0
+House,CA-39,39,,Mark Takano,Steve Manos,Democrat,54.9%,ap:06:5729,8584,Mark Takano,Dem,106493,Steve Manos,OK,48095,25504,44.00%,2026-11-04T14:46:53.000Z,Mark Takano,Steve Manos,0,0
+House,CA-41,41,,Linda Sanchez,Mitch Clemmons,Democrat,57.3%,ap:06:5731,116,Linda Sanchez,Dem,106776,Mitch Clemmons,OK,109542,59126,69.10%,2026-11-04T14:46:53.000Z,Linda Sánchez,Mitch Clemmons,0,0
+House,CA-42,42,,Robert Garcia,Brian Burley,Democrat,56.8%,ap:06:5732,70642,Robert Garcia,Dem,68082,Brian Burley,OK,115522,78160,61.20%,2026-11-04T14:46:53.000Z,Robert Garcia,Brian Burley,0,0
+House,CA-43,43,,Maxine Waters,Cristian Morales,Democrat,75.3%,ap:06:5733,104,Maxine Waters,Dem,70695,Cristian Morales,OK,99258,22906,75.50%,2026-11-04T14:46:53.000Z,Maxine Waters,Cristian Morales,0,0
+House,CA-44,44,,Nanette BarragÃ¡n,Genevieve Angel,Democrat,68.2%,ap:06:5734,65073,Nanette Barragan,Dem,172622,Genevieve Angel,OK,96194,24340,73.90%,2026-11-04T14:46:53.000Z,Nanette Barragan,Genevieve Angel,0,0
+House,CA-45,45,,Derek Tran,Chuong Vo,Democrat,52.0%,ap:06:5735,161118,Derek Tran,Dem,172625,Chuong Vo,OK,102552,72049,62.40%,2026-11-04T14:46:53.000Z,Derek Tran,Chuong Vo,0,0
+House,CA-46,46,,Lou Correa,David Pan,Democrat,58.3%,ap:06:5736,52470,Lou Correa,Dem,161119,David Pan,OK,82766,38843,66.00%,2026-11-04T14:46:53.000Z,Lou Correa,David Pan,0,0
+House,CA-47,47,,Dave Min,Jenny Le Roux,Democrat,55.2%,ap:06:5739,66599,Dave Min,Dem,69777,Jenny Rae Le Roux,OK,113811,86784,59.10%,2026-11-04T14:46:53.000Z,Dave Min,Jenny Rae Le Roux,0,0
+House,CA-48,48,,Marni von Wilpert,Jim Desmond,Neither,51.7%,ap:06:8149,172653,Marni von Wilpert,Dem,172645,Jim Desmond,OK,92924,63015,52.20%,2026-11-04T14:46:53.000Z,Marni von Wilpert,Jim Desmond,0,0
+House,CA-49,49,,Mike Levin,Armen Kurdian,Democrat,56.2%,ap:06:5741,66621,Mike Levin,Dem,172642,Armen Kurdian,OK,120614,89194,59.30%,2026-11-04T14:46:53.000Z,Mike Levin,Armen Kurdian,0,0
+House,CA-50,50,,Scott Peters,Steve Cohen,Democrat,59.4%,ap:06:5742,50902,Scott Peters,Dem,172640,Steve Cohen,OK,117694,75182,60.10%,2026-11-04T14:46:53.000Z,Scott Peters,Steve Cohen,0,0
+House,CA-51,51,,Sara Jacobs,Ricardo Cabrera,Democrat,59.4%,ap:06:6235,66619,Sara Jacobs,Dem,172637,Ricardo Cabrera,OK,109166,63712,60.20%,2026-11-04T14:46:53.000Z,Sara Jacobs,Ricardo Cabrera,0,0
+House,CA-52,52,,Juan Vargas,Jeff Belle,Democrat,59.0%,ap:06:7296,52480,Juan Vargas,Dem,172634,Jeff Belle,OK,90084,40604,63.70%,2026-11-04T14:46:53.000Z,Juan Vargas,Jeff Belle,0,0
+House,CO-01,1,,Melat Kiros,Christy Peterson,Neither,78.8%,ap:08:7191,174612,Melat Kiros,Dem,174613,Christy Peterson,OK,169159,30046,68.60%,2026-11-04T14:46:53.000Z,Melat Kiros,Christy Peterson,0,0
+House,CO-02,2,,Joe Neguse,Kelley Dennison,Democrat,70.5%,ap:08:6614,67047,Joe Neguse,Dem,174614,Kelley Dennison,OK,218458,68383,72.80%,2026-11-04T14:46:53.000Z,Joe Neguse,Kelley Dennison,0,0
+House,CO-03,3,,Dwayne Romero,Jeff Hurd,Republican,45.0%,ap:08:6615,174617,Dwayne Romero,Dem,164158,Jeff Hurd,OK,145702,146913,80.90%,2026-11-04T14:46:53.000Z,Dwayne Romero,Jeff Hurd,0,0
+House,CO-04,4,,Eileen Laubacher,Lauren Boebert,Republican,40.6%,ap:08:6616,174618,Eileen Laubacher,Dem,68897,Lauren Boebert,OK,168729,163835,83.10%,2026-11-04T14:46:53.000Z,Eileen Laubacher,Lauren Boebert,0,0
+House,CO-05,5,,Jessica Killin,Jeff Crank,Republican,45.3%,ap:08:6617,174619,Jessica Killin,Dem,164202,Jeff Crank,OK,121772,106966,72.10%,2026-11-04T14:46:53.000Z,Jessica Killin,Jeff Crank,0,0
+House,CO-06,6,,Jason Crow,Jason Clark,Democrat,60.2%,ap:08:6618,67060,Jason Crow,Dem,60607,Jason Clark,OK,145611,69398,71.70%,2026-11-04T14:46:53.000Z,Jason Crow,Jason Clark,0,0
+House,CO-07,7,,Brittany Pettersen,Tim Bennett,Democrat,57.7%,ap:08:6954,70799,Brittany Pettersen,Dem,174621,Tim Bennett,OK,200679,120133,83.70%,2026-11-04T14:46:53.000Z,Brittany Pettersen,Tim Bennett,0,0
+House,CO-08,8,,Manny Rutinel,Gabe Evans,Republican,49.1%,ap:08:7727,164328,Manny Rutinel,Dem,104836,Gabe Evans,OK,124631,91712,78.50%,2026-11-04T14:46:53.000Z,Manny Rutinel,Gabe Evans,0,0
+House,CT-01,1,,Luke Bronin,Amy Chai,Neither,61.6%,ap:09:7007,72925,Luke Bronin,Dem,71816,Amy Chai,OK,147041,75116,91.20%,2026-11-04T14:46:53.000Z,Luke Bronin,Amy Chai,0,0
+House,CT-02,2,,Joe Courtney,George Austin,Democrat,53.9%,ap:09:7009,1231,Joe Courtney,Dem,177493,George Austin,OK,172032,103373,92.50%,2026-11-04T14:46:53.000Z,Joe Courtney,George Austin,0,0
+House,CT-03,3,,Rosa DeLauro,Chris Lancia,Democrat,57.2%,ap:09:7011,1141,Rosa DeLauro,Dem,177494,Christopher Lancia,OK,143837,86832,94.30%,2026-11-04T14:46:53.000Z,Rosa DeLauro,Christopher Lancia,0,0
+House,CT-04,4,,Jim Himes,Michael Goldstein,Democrat,61.9%,ap:09:7013,59590,Jim Himes,Dem,71515,Michael Goldstein,OK,156445,77960,97.60%,2026-11-04T14:46:53.000Z,Jim Himes,Michael Goldstein,0,0
+House,CT-05,5,,Jahana Hayes,Chris Shea,Democrat,52.8%,ap:09:7015,67521,Jahana Hayes,Dem,177495,Chris Shea,OK,130124,93794,87.50%,2026-11-04T14:46:53.000Z,Jahana Hayes,Chris Shea,0,0
+House,DE-AL,AL,,Sarah McBride,Joseph Arminio,Democrat,57.5%,ap:10:8074,104205,Sarah McBride,Dem,168065,Joseph Arminio,OK,243467,134966,98.60%,2026-11-04T14:46:53.000Z,Sarah McBride,Joseph Arminio,0,0
+House,FL-01,1,,Gay Valimont,Jimmy Patronis,Republican,31.2%,ap:12:11126,166296,Gay Valimont,Dem,168593,Jimmy Patronis,OK,103429,181723,99.00%,2026-11-04T14:46:53.000Z,Gay Valimont,Jimmy Patronis,0,0
+House,FL-02,2,,Amanda Green,Austin Rogers,Neither,40.9%,ap:12:10009,175643,Amanda Green,Dem,175650,Austin Rogers,OK,147791,160968,99.00%,2026-11-04T14:46:53.000Z,Amanda Green,Austin Rogers,0,0
+House,FL-03,3,,Seth Harp,Kat Cammack,Republican,39.4%,ap:12:10011,175716,Seth Harp,Dem,69383,Kat Cammack,OK,128866,165313,99.00%,2026-11-04T14:46:53.000Z,Seth Harp,Kat Cammack,0,0
+House,FL-04,4,,LaShonda Holloway,Aaron Bean,Republican,44.0%,ap:12:10013,65738,LaShonda Holloway,Dem,52113,Aaron Bean,OK,144752,151095,99.00%,2026-11-04T14:46:53.000Z,LaShonda Holloway,Aaron Bean,0,0
+House,FL-05,5,,Rachel Grage,John Rutherford,Republican,39.1%,ap:12:10015,166531,Rachel Grage,Dem,65658,John Rutherford,OK,145081,187877,99.00%,2026-11-04T14:46:53.000Z,Rachel Grage,John Rutherford,0,0
+House,FL-06,6,,Eric Yonce,Randy Fine,Republican,34.8%,ap:12:10017,175726,Eric Yonce,Dem,108833,Randy Fine,OK,132264,195252,99.00%,2026-11-04T14:46:53.000Z,Eric Yonce,Randy Fine,0,0
+House,FL-07,7,,Bale Dalton,Ryan Elijah,Neither,43.7%,ap:12:10019,175729,Bale Dalton,Dem,175731,Ryan Elijah,OK,159488,161189,99.00%,2026-11-04T14:46:53.000Z,Bale Dalton,Ryan Elijah,0,0
+House,FL-08,8,,Jennifer Jenkins,Mike Haridopolos,Republican,41.8%,ap:12:10021,175733,Jennifer Jenkins,Dem,53079,Mike Haridopolos,OK,149586,169863,99.00%,2026-11-04T14:46:53.000Z,Jennifer Jenkins,Mike Haridopolos,0,0
+House,FL-09,9,,Darren Soto,Dan Green,Democrat,41.1%,ap:12:10023,65743,Darren Soto,Dem,175734,Dan Green,OK,143174,141697,99.00%,2026-11-04T14:46:53.000Z,Darren Soto,Dan Green,0,0
+House,FL-11,11,,James Pericola,Joe Strada,Neither,42.1%,ap:12:10027,175754,James Pericola,Dem,175760,Joe Strada,OK,168108,193518,99.00%,2026-11-04T14:46:53.000Z,James Pericola,Joe Strada,0,0
+House,FL-12,12,,Kimberly Overman,Gus Bilirakis,Republican,42.2%,ap:12:10029,175763,Kimberly Overman,Dem,52981,Gus Bilirakis,OK,131309,150746,99.00%,2026-11-04T14:46:53.000Z,Kimberly Overman,Gus Bilirakis,0,0
+House,FL-13,13,,Leela Gray,Anna Paulina Luna,Republican,43.3%,ap:12:10031,175764,Leela Gray,Dem,69410,Anna Luna,OK,152600,155117,99.00%,2026-11-04T14:46:53.000Z,Leela Gray,Anna Paulina Luna,0,0
+House,FL-14,14,,Kathy Castor,Mike Beltran,Democrat,44.7%,ap:12:10033,10546,Kathy Castor,Dem,110141,Mike Beltran,OK,153586,137599,99.00%,2026-11-04T14:46:53.000Z,Kathy Castor,Mike Beltran,0,0
+House,FL-15,15,,Robert People,Laurel Lee,Republican,40.0%,ap:12:10035,175772,Robert People,Dem,71597,Laurel Lee,OK,137390,163251,99.00%,2026-11-04T14:46:53.000Z,Robert People,Laurel Lee,0,0
+House,FL-16,16,,Kelly Kirschner,Sydney Gruters,Neither,43.1%,ap:12:10037,175814,Kelly Kirschner,Dem,175816,Sydney Gruters,OK,160942,175512,99.00%,2026-11-04T14:46:53.000Z,Kelly Kirschner,Sydney Gruters,0,0
+House,FL-17,17,,Matthew Montavon,Greg Steube,Republican,38.9%,ap:12:10039,166329,Matthew Montavon,Dem,67645,Greg Steube,OK,143570,209055,99.00%,2026-11-04T14:46:53.000Z,Matthew Montavon,Greg Steube,0,0
+House,FL-18,18,,Curtis Gibson,Scott Franklin,Republican,41.5%,ap:12:10041,175820,Curtis Gibson,Dem,69374,Scott Franklin,OK,127564,137590,99.00%,2026-11-04T14:46:53.000Z,Curtis Gibson,Scott Franklin,0,0
+House,FL-19,19,,Victor Arias,Jim Schwartzel,Neither,34.8%,ap:12:11670,175822,Victor Arias,Dem,175834,Jim Schwartzel,OK,122351,198668,99.00%,2026-11-04T14:46:53.000Z,Victor Arias,Jim Schwartzel,0,0
+House,FL-20,20,,Debbie Wasserman Schultz,Brent Andersen,Democrat,68.7%,ap:12:83114,11357,Debbie Wasserman Schultz,Dem,175842,Brent Andersen,OK,182554,53361,99.00%,2026-11-04T14:46:53.000Z,Debbie Wasserman Schultz,Brent Andersen,0,0
+House,FL-21,21,,James Martin,Brian Mast,Republican,41.8%,ap:12:10393,175844,James Martin,Dem,65757,Brian Mast,OK,152430,183773,99.00%,2026-11-04T14:46:53.000Z,James Martin,Brian Mast,0,0
+House,FL-22,22,,Pia Dandiya,Casey Askar,Neither,44.8%,ap:12:10396,175847,Pia Dandiya,Dem,69371,Casey Askar,OK,153047,141886,99.00%,2026-11-04T14:46:53.000Z,Pia Dandiya,Casey Askar,0,0
+House,FL-23,23,,Lois Frankel,Deborah Adeimy,Democrat,56.9%,ap:12:10398,10720,Lois Frankel,Dem,71614,Deborah Adeimy,OK,169831,88876,99.00%,2026-11-04T14:46:53.000Z,Lois Frankel,Deborah Adeimy,0,0
+House,FL-24,24,,Oliver Gilbert,Te Mayonna Brown,Neither,69.5%,ap:12:11128,175858,Oliver Gilbert,Dem,175862,Te Brown,OK,164819,39534,99.00%,2026-11-04T14:46:53.000Z,Oliver Gilbert,Te Brown,0,0
+House,FL-25,25,,Jared Moskowitz,Scott Singer,Democrat,45.4%,ap:12:11129,71620,Jared Moskowitz,Dem,175868,Scott Singer,OK,143753,130787,99.00%,2026-11-04T14:46:53.000Z,Jared Moskowitz,Scott Singer,0,0
+House,FL-26,26,,Nicole Locklin,Mario DÃiaz-Balart,Republican,40.7%,ap:12:11586,175870,Nicole Locklin,Dem,878,Mario Diaz-Balart,OK,112775,114547,99.00%,2026-11-04T14:46:53.000Z,Nicole Locklin,Mario Diaz-Balart,0,0
+House,FL-27,27,,Eliott Rodriguez,MarÃ­a Elvira Salazar,Republican,42.6%,ap:12:11587,175872,Eliott Rodriguez,Dem,67671,Maria Elvira Salazar,OK,123358,124474,99.00%,2026-11-04T14:46:53.000Z,Eliott Rodriguez,Maria Elvira Salazar,0,0
+House,FL-28,28,,Phil Ehr,Carlos Gimenez,Republican,37.2%,ap:12:83078,67615,Phil Ehr,Dem,69391,Carlos Gimenez,OK,107839,124978,99.00%,2026-11-04T14:46:53.000Z,Phil Ehr,Carlos Gimenez,0,0
+House,GA-01,1,,Amanda Hollowell,Jim Kingston,Neither,42.1%,ap:13:11007,171463,Amanda Hollowell,Dem,171470,James Kingston,OK,132465,140216,99.00%,2026-11-04T14:46:53.000Z,Amanda Hollowell,Jim Kingston,0,0
+House,GA-02,2,,Sanford Bishop,Matt Day,Democrat,53.8%,ap:13:11009,1253,Sanford Bishop,Dem,171473,Matt Day,OK,148193,95263,98.70%,2026-11-04T14:46:53.000Z,Sanford Bishop,Matt Day,0,0
+House,GA-03,3,,Maura Keller,Brian Jack,Republican,35.1%,ap:13:11011,162598,Maura Keller,Dem,162599,Brian Jack,OK,133120,188569,97.80%,2026-11-04T14:46:53.000Z,Maura Keller,Brian Jack,0,0
+House,GA-04,4,,Hank Johnson,James Duffie,Democrat,76.5%,ap:13:11013,59400,Hank Johnson,Dem,171475,Jim Duffie,OK,217144,45619,99.00%,2026-11-04T14:46:53.000Z,Hank Johnson,Jim Duffie,0,0
+House,GA-05,5,,Nikema Williams,John Oscar Salvesen,Democrat,86.2%,ap:13:11015,69465,Nikema Williams,Dem,162601,John Salvesen,OK,272596,29638,98.20%,2026-11-04T14:46:53.000Z,Nikema Williams,John Salvesen,0,0
+House,GA-06,6,,Lucy McBath,Kevin Martin,Democrat,75.2%,ap:13:12547,66683,Lucy McBath,Dem,171478,Kevin Martin,OK,262846,62058,83.10%,2026-11-04T14:46:53.000Z,Lucy McBath,Kevin Martin,0,0
+House,GA-07,7,,Tony Kozycki,Rich McCormick,Republican,38.8%,ap:13:11019,171482,Tony Kozycki,Dem,68907,Rich McCormick,OK,149323,191539,98.40%,2026-11-04T14:46:53.000Z,Tony Kozycki,Rich McCormick,0,0
+House,GA-08,8,,Kelly Esti,Austin Scott,Republican,34.6%,ap:13:11021,171484,Kelly Esti,Dem,13031,Austin Scott,OK,104852,159798,99.00%,2026-11-04T14:46:53.000Z,Kelly Esti,Austin Scott,0,0
+House,GA-09,9,,Caitlyn Gegen,Andrew Clyde,Republican,32.8%,ap:13:11023,171485,Caitlyn Gegen,Dem,68908,Andrew Clyde,OK,125526,182886,99.00%,2026-11-04T14:46:53.000Z,Caitlyn Gegen,Andrew Clyde,0,0
+House,GA-10,10,,Pam Delancy,Houston Gaines,Neither,39.5%,ap:13:11025,171490,Pamela Delancy,Dem,110700,Houston Gaines,OK,150900,174269,99.00%,2026-11-04T14:46:53.000Z,Pamela Delancy,Houston Gaines,0,0
+House,GA-11,11,,Chris Harden,John Cowan,Neither,38.2%,ap:13:11610,171494,Chris Harden,Dem,68797,John Cowan,OK,146861,182159,99.00%,2026-11-04T14:46:53.000Z,Chris Harden,John Cowan,0,0
+House,GA-12,12,,Ceretta Smith,Rick Allen,Republican,42.9%,ap:13:12237,111431,Ceretta Smith,Dem,61316,Rick Allen,OK,129499,140842,96.60%,2026-11-04T14:46:53.000Z,Ceretta Smith,Rick Allen,0,0
+House,GA-13,13,,Jasmine Clark,Jonathan Chavez,Neither,71.3%,ap:13:12238,111174,Jasmine Clark,Dem,70385,Jonathan Chavez,OK,247937,62650,99.00%,2026-11-04T14:46:53.000Z,Jasmine Clark,Jonathan Chavez,0,0
+House,GA-14,14,,Shawn Harris,Clay Fuller,Republican,31.5%,ap:13:12463,162594,Shawn Harris,Dem,68794,Clay Fuller,OK,118336,168752,99.00%,2026-11-04T14:46:53.000Z,Shawn Harris,Clay Fuller,0,0
+House,HI-01,1,,Ed Case,Adriel Lam,Democrat,62.6%,ap:15:12881,1786,Ed Case,Dem,110164,Adriel Lam,OK,100096,28685,75.90%,2026-11-04T14:46:53.000Z,Ed Case,Adriel Lam,0,0
+House,HI-02,2,,Jill Tokuda,Brenton Awa,Democrat,61.0%,ap:15:12008,71475,Jill Tokuda,Dem,110751,Brenton Awa,OK,112448,51439,73.30%,2026-11-04T14:46:53.000Z,Jill Tokuda,Brenton Awa,0,0
+House,IA-01,1,,Christina Bohannan,Mariannette Miller-Meeks,Republican,45.7%,ap:19:17071,70409,Christina Bohannan,Dem,59745,Mariannette Miller-Meeks,OK,182396,150471,99.00%,2026-11-04T14:46:53.000Z,Christina Bohannan,Mariannette Miller-Meeks,0,0
+House,IA-02,2,,Lindsay James,Joe Mitchell,Neither,44.9%,ap:19:17072,114693,Lindsay James,Dem,114676,Joe Mitchell,OK,171512,157722,99.00%,2026-11-04T14:46:53.000Z,Lindsay James,Joe Mitchell,0,0
+House,IA-03,3,,Sarah Trone Garriott,Zach Nunn,Republican,47.8%,ap:19:17073,114740,Sarah Trone Garriott,Dem,70417,Zach Nunn,OK,189217,163441,98.80%,2026-11-04T14:46:53.000Z,Sarah Trone Garriott,Zach Nunn,0,0
+House,IA-04,4,,Dave Dawson,Chris McGowan,Neither,34.0%,ap:19:17074,113747,Dave Dawson,Dem,173759,Chris McGowan,OK,123940,178845,98.70%,2026-11-04T14:46:53.000Z,Dave Dawson,Chris McGowan,0,0
+House,ID-01,1,,Kaylee Peterson,Russ Fulcher,Republican,26.9%,ap:16:13253,162330,Kaylee Peterson,Dem,63500,Russ Fulcher,OK,104633,236432,96.20%,2026-11-04T14:46:53.000Z,Kaylee Peterson,Russ Fulcher,0,0
+House,ID-02,2,,Ellie Gilbreath,Mike Simpson,Republican,36.2%,ap:16:13254,172087,Ellie Gilbreath,Dem,504,Mike Simpson,OK,125631,159461,92.50%,2026-11-04T14:46:53.000Z,Ellie Gilbreath,Mike Simpson,0,0
+House,IL-01,1,,Jonathan Jackson,Christian Maxwell,Democrat,66.2%,ap:17:15990,71064,Jonathan Jackson,Dem,170439,Christian Maxwell,OK,152797,64679,81.40%,2026-11-04T14:46:53.000Z,Jonathan Jackson,Christian Maxwell,0,0
+House,IL-02,2,,Donna Miller,Michael Noack,Neither,66.8%,ap:17:16310,117308,Donna Miller,Dem,170444,Michael Noack,OK,151056,56729,84.70%,2026-11-04T14:46:53.000Z,Donna Miller,Michael Noack,0,0
+House,IL-03,3,,Delia Ramirez,Angel Oakley,Democrat,65.9%,ap:17:15992,71076,Delia Ramirez,Dem,167406,Angel Oakley,OK,135622,43533,80.00%,2026-11-04T14:46:53.000Z,Delia Ramirez,Angel Oakley,0,0
+House,IL-04,4,,Patty Garcia,Lupe Castillo,Neither,64.4%,ap:17:15993,170445,Patty Garcia,Dem,119629,Lupe Castillo,OK,106460,24604,81.60%,2026-11-04T14:46:53.000Z,Patty Garcia,Lupe Castillo,0,0
+House,IL-05,5,,Mike Quigley,Tommy Hanson,Democrat,68.8%,ap:17:15994,59914,Mike Quigley,Dem,59282,Tommy Hanson,OK,182429,59049,92.20%,2026-11-04T14:46:53.000Z,Mike Quigley,Tommy Hanson,0,0
+House,IL-06,6,,Sean Casten,Niki Conforti,Democrat,52.8%,ap:17:15995,66114,Sean Casten,Dem,71083,Niki Conforti,OK,157598,94627,91.90%,2026-11-04T14:46:53.000Z,Sean Casten,Niki Conforti,0,0
+House,IL-07,7,,La Shawn Ford,Chad Koppie,Neither,83.1%,ap:17:15996,16342,La Shawn Ford,Dem,16946,Chad Koppie,OK,161505,19954,74.20%,2026-11-04T14:46:53.000Z,La Shawn Ford,Chad Koppie,0,0
+House,IL-08,8,,Melissa Bean,Jennifer Davis,Neither,53.5%,ap:17:15997,1273,Melissa Bean,Dem,170467,Jennifer Davis,OK,116252,63187,76.10%,2026-11-04T14:46:53.000Z,Melissa Bean,Jennifer Davis,0,0
+House,IL-09,9,,Daniel Biss,John Elleson,Neither,68.5%,ap:17:15998,66099,Daniel Biss,Dem,66122,John Elleson,OK,183362,58435,93.90%,2026-11-04T14:46:53.000Z,Daniel Biss,John Elleson,0,0
+House,IL-10,10,,Brad Schneider,Carl Lambrecht,Democrat,61.2%,ap:17:15999,61646,Brad Schneider,Dem,161847,Carl Lambrecht,OK,158188,68962,94.80%,2026-11-04T14:46:53.000Z,Brad Schneider,Carl Lambrecht,0,0
+House,IL-11,11,,Bill Foster,Jeff Walter,Democrat,55.8%,ap:17:16000,58367,Bill Foster,Dem,170484,Jeff Walter,OK,150318,79644,83.10%,2026-11-04T14:46:53.000Z,Bill Foster,Jeff Walter,0,0
+House,IL-12,12,,Julie Fortier,Mike Bost,Republican,27.9%,ap:17:16001,170487,Julie Fortier,Dem,15698,Mike Bost,OK,83281,189443,95.80%,2026-11-04T14:46:53.000Z,Julie Fortier,Mike Bost,0,0
+House,IL-13,13,,Nikki Budzinski,Jeff Wilson,Democrat,55.3%,ap:17:16002,71104,Nikki Budzinski,Dem,170489,Jeff Wilson,OK,157315,93863,98.50%,2026-11-04T14:46:53.000Z,Nikki Budzinski,Jeff Wilson,0,0
+House,IL-14,14,,Lauren Underwood,James Marter,Democrat,52.6%,ap:17:16003,66136,Lauren Underwood,Dem,64572,James Marter,OK,148101,88756,93.20%,2026-11-04T14:46:53.000Z,Lauren Underwood,James Marter,0,0
+House,IL-15,15,,Jennifer Todd,Mary Miller,Republican,29.8%,ap:17:16004,170491,Jennifer Todd,Dem,68410,Mary Miller,OK,93579,184953,94.40%,2026-11-04T14:46:53.000Z,Jennifer Todd,Mary Miller,0,0
+House,IL-16,16,,Paul Nolley,Darin LaHood,Republican,38.5%,ap:17:16005,170497,Paul Nolley,Dem,16982,Darin LaHood,OK,120645,170760,92.90%,2026-11-04T14:46:53.000Z,Paul Nolley,Darin LaHood,0,0
+House,IL-17,17,,Eric Sorensen,Dillan Vancil,Democrat,52.4%,ap:17:16006,71116,Eric Sorensen,Dem,170498,Dillan Vancil,OK,137341,91497,92.40%,2026-11-04T14:46:53.000Z,Eric Sorensen,Dillan Vancil,0,0
+House,IN-01,1,,Frank Mrvan,Barb Regnitz,Democrat,50.2%,ap:18:15014,69958,Frank Mrvan,Dem,170346,Barb Regnitz,OK,134585,79724,90.00%,2026-11-04T14:46:53.000Z,Frank Mrvan,Barb Regnitz,0,0
+House,IN-02,2,,Jamee Decio,Rudy Yakym,Republican,36.5%,ap:18:15017,170348,Jamee Decio,Dem,71760,Rudy Yakym,OK,87169,97503,92.90%,2026-11-04T14:46:53.000Z,Jamee Decio,Rudy Yakym,0,0
+House,IN-03,3,,Kelly Thompson,Marlin Stutzman,Republican,34.1%,ap:18:15020,113870,Kelly Thompson,Dem,53887,Marlin Stutzman,OK,90180,109692,98.30%,2026-11-04T14:46:53.000Z,Kelly Thompson,Marlin Stutzman,0,0
+House,IN-04,4,,Drew Cox,Jim Baird,Republican,35.0%,ap:18:15023,170349,Drew Cox,Dem,66172,Jim Baird,OK,95115,112408,96.30%,2026-11-04T14:46:53.000Z,Drew Cox,Jim Baird,0,0
+House,IN-05,5,,J. D. Ford,Victoria Spartz,Republican,41.4%,ap:18:15026,113146,J.D. Ford,Dem,162937,Victoria Spartz,OK,134476,125851,99.00%,2026-11-04T14:46:53.000Z,J.D. Ford,Victoria Spartz,0,0
+House,IN-06,6,,Cinde Wirth,Jefferson Shreve,Republican,33.5%,ap:18:15029,70017,Cynthia Wirth,Dem,113296,Jefferson Shreve,OK,90439,111022,98.40%,2026-11-04T14:46:53.000Z,Cynthia Wirth,Jefferson Shreve,0,0
+House,IN-07,7,,André Carson,Patrick McAuley,Democrat,71.1%,ap:18:15032,57849,André Carson,Dem,170598,Patrick McAuley,OK,157368,41360,99.00%,2026-11-04T14:46:53.000Z,André Carson,Patrick McAuley,0,0
+House,IN-08,8,,Mary Allen,Mark Messmer,Republican,31.7%,ap:18:15035,170362,Mary Allen,Dem,112975,Mark Messmer,OK,95206,117503,94.60%,2026-11-04T14:46:53.000Z,Mary Allen,Mark Messmer,0,0
+House,IN-09,9,,Brad Meyer,Erin Houchin,Republican,34.8%,ap:18:15038,170365,Brad Meyer,Dem,162955,Erin Houchin,OK,96890,120835,96.50%,2026-11-04T14:46:53.000Z,Brad Meyer,Erin Houchin,0,0
+House,KS-01,1,,Lauren Reinhold,Tracey Mann,Republican,34.1%,ap:20:17007,175314,Lauren Reinhold,Dem,69297,Tracey Mann,OK,94651,149757,98.50%,2026-11-04T14:46:53.000Z,Lauren Reinhold,Tracey Mann,0,0
+House,KS-02,2,,Don Coover,Derek Schmidt,Republican,40.0%,ap:20:17355,175316,Don Coover,Dem,54125,Derek Schmidt,OK,109091,125026,95.90%,2026-11-04T14:46:53.000Z,Don Coover,Derek Schmidt,0,0
+House,KS-03,3,,Sharice Davids,Eric Jenkins,Democrat,52.1%,ap:20:17009,67314,Sharice Davids,Dem,115820,Eric Jenkins,OK,200463,129248,98.50%,2026-11-04T14:46:53.000Z,Sharice Davids,Eric Jenkins,0,0
+House,KS-04,4,,Katy Tyndell,Ron Estes,Republican,38.1%,ap:20:17720,175322,Katy Tyndell,Dem,65853,Ron Estes,OK,113553,138445,98.50%,2026-11-04T14:46:53.000Z,Katy Tyndell,Ron Estes,0,0
+House,KY-01,1,,Drew Williams,James Comer,Republican,26.0%,ap:21:18622,116236,John Williams,Dem,54203,James Comer,OK,73910,153992,99.00%,2026-11-04T14:46:53.000Z,John Williams,James Comer,0,0
+House,KY-02,2,,Megan Wingfield,Brett Guthrie,Republican,29.0%,ap:21:18624,169784,Megan Wingfield,Dem,54282,S. Guthrie,OK,81111,145139,99.00%,2026-11-04T14:46:53.000Z,Megan Wingfield,Brett Guthrie,0,0
+House,KY-03,3,,Morgan McGarvey,Maria Teresa Rodriguez,Democrat,59.6%,ap:21:18009,69995,Morgan McGarvey,Dem,169788,Maria Rodriguez,OK,174775,73717,99.00%,2026-11-04T14:46:53.000Z,Morgan McGarvey,Maria Rodriguez,0,0
+House,KY-04,4,,Melissa Strange,Ed Gallrein,Neither,31.9%,ap:21:18835,169790,Melissa Strange,Dem,163294,Ed Gallrein,OK,103713,137623,99.00%,2026-11-04T14:46:53.000Z,Melissa Strange,Ed Gallrein,0,0
+House,KY-05,5,,Ned Pillersdorf,Hal Rogers,Republican,17.7%,ap:21:18013,169791,Ned Pillersdorf,Dem,208,Hal Rogers,OK,49805,139808,99.00%,2026-11-04T14:46:53.000Z,Ned Pillersdorf,Hal Rogers,0,0
+House,KY-06,6,,Zach Dembo,Ralph Alvarado,Neither,42.4%,ap:21:18015,169796,Zach Dembo,Dem,115622,Ralph Alvarado,OK,138777,114030,99.00%,2026-11-04T14:46:53.000Z,Zach Dembo,Ralph Alvarado,0,0
+House,MA-03,3,,Lori Trahan,Gary Grossi,Democrat,59.7%,ap:25:22949,67479,Lori Trahan,Dem,168132,Gary Grossi,OK,142214,63622,77.00%,2026-11-04T14:46:53.000Z,Lori Trahan,Gary Grossi,0,0
+House,MA-04,4,,Jake Auchincloss,Tom Stalcup,Democrat,60.1%,ap:25:22950,69114,Jake Auchincloss,Dem,176612,Thomas Stalcup,OK,151763,82430,76.60%,2026-11-04T14:46:53.000Z,Jake Auchincloss,Thomas Stalcup,0,0
+House,MA-06,6,,Dan Koh,Micah Jones,Neither,60.6%,ap:25:22952,67477,Dan Koh,Dem,176618,Micah Jones,OK,189381,107730,87.80%,2026-11-04T14:46:53.000Z,Dan Koh,Micah Jones,0,0
+House,MA-08,8,,Stephen Lynch,Robert Burke,Democrat,63.5%,ap:25:22954,890,Stephen Lynch,Dem,71287,Robert Burke,OK,153188,59177,74.50%,2026-11-04T14:46:53.000Z,Stephen Lynch,Robert Burke,0,0
+House,MA-09,9,,Bill Keating,Tyler MacAllister,Democrat,55.5%,ap:25:23865,22757,Bill Keating,Dem,176621,R. Macallister,OK,195766,124794,87.60%,2026-11-04T14:46:53.000Z,Bill Keating,Tyler Macallister,0,0
+House,MD-01,1,,Dan Schwartz,Andy Harris,Republican,41.4%,ap:24:21746,173037,Dan Schwartz,Dem,58831,Andy Harris,OK,119088,150615,83.40%,2026-11-04T14:46:53.000Z,Dan Schwartz,Andy Harris,0,0
+House,MD-02,2,,Johnny Olszewski,Dave Wallace,Democrat,59.5%,ap:24:21749,120088,John Olszewski,Dem,61587,Dave Wallace,OK,144727,90370,79.90%,2026-11-04T14:46:53.000Z,Johnny Olszewski Jr.,Dave Wallace,0,0
+House,MD-03,3,,Sarah Elfreth,Berney Flowers,Democrat,62.3%,ap:24:21752,122027,Sarah Elfreth,Dem,71145,Berney Flowers,OK,173282,91627,82.40%,2026-11-04T14:46:53.000Z,Sarah Elfreth,Berney Flowers,0,0
+House,MD-04,4,,Glenn Ivey,George McDermott,Democrat,87.9%,ap:24:21754,64788,Glenn Ivey,Dem,28197,George McDermott,OK,145407,10374,73.20%,2026-11-04T14:46:53.000Z,Glenn Ivey,George McDermott,0,0
+House,MD-05,5,,Adrian Boafo,Chris Chaffee,Neither,67.0%,ap:24:21757,122885,Adrian Boafo,Dem,63872,Chris Chaffee,OK,187218,84348,85.90%,2026-11-04T14:46:53.000Z,Adrian Boafo,Chris Chaffee,0,0
+House,MD-06,6,,April McClain Delaney,Robin Ficker,Democrat,53.0%,ap:24:21760,162500,April McClain Delaney,Dem,28349,Robin Ficker,OK,133881,97242,80.80%,2026-11-04T14:46:53.000Z,April McClain Delaney,Robin Ficker,0,0
+House,MD-07,7,,Kweisi Mfume,Scott Collier,Democrat,80.3%,ap:24:21762,57618,Kweisi Mfume,Dem,166880,Scott Collier,OK,139411,27689,67.30%,2026-11-04T14:46:53.000Z,Kweisi Mfume,Scott Collier,0,0
+House,MD-08,8,,Jamie Raskin,Cheryl Riley,Democrat,79.0%,ap:24:21764,64804,Jamie Raskin,Dem,162511,Cheryl Riley,OK,198781,37606,80.20%,2026-11-04T14:46:53.000Z,Jamie Raskin,Cheryl Riley,0,0
+House,ME-01,1,,Chellie Pingree,Ronald Russell,Democrat,61.0%,ap:23:20644,59613,Chellie Pingree,Dem,164623,Ronald Russell,OK,225811,112208,86.80%,2026-11-04T14:46:53.000Z,Chellie Pingree,Ronald Russell,0,0
+House,ME-02,2,,Matthew Dunlap,Paul LePage,Neither,45.4%,ap:23:20645,174146,Matthew Dunlap,Dem,60414,Paul LePage,OK,148454,147747,84.60%,2026-11-04T14:46:53.000Z,Matthew Dunlap,Paul LePage,0,0
+House,MI-01,1,,Callie Barr,Jack Bergman,Republican,39.2%,ap:26:23805,166546,Callie Barr,Dem,65336,Jack Bergman,OK,178381,216960,96.80%,2026-11-04T14:46:53.000Z,Callie Barr,Jack Bergman,0,0
+House,MI-02,2,,Ben Ambrose,John Moolenaar,Republican,34.7%,ap:26:23806,175186,Ben Ambrose,Dem,55100,John Moolenaar,OK,131823,218977,97.80%,2026-11-04T14:46:53.000Z,Ben Ambrose,John Moolenaar,0,0
+House,MI-03,3,,Hillary Scholten,Terri DeBoer,Democrat,54.0%,ap:26:23807,69080,Hillary Scholten,Dem,175191,Terri DeBoer,OK,211061,152988,98.20%,2026-11-04T14:46:53.000Z,Hillary Scholten,Terri DeBoer,0,0
+House,MI-04,4,,Sean McCann,Bill Huizenga,Republican,47.2%,ap:26:23808,124461,Sean McCann,Dem,55092,Bill Huizenga,OK,180543,173158,94.80%,2026-11-04T14:46:53.000Z,Sean McCann,Bill Huizenga,0,0
+House,MI-05,5,,Christian Vukasovich,Tim Walberg,Republican,36.3%,ap:26:23809,175194,Christian Vukasovich,Dem,25659,Tim Walberg,OK,129797,198729,95.10%,2026-11-04T14:46:53.000Z,Christian Vukasovich,Tim Walberg,0,0
+House,MI-06,6,,Debbie Dingell,Heather Smiley,Democrat,61.9%,ap:26:23810,64120,Debbie Dingell,Dem,166560,Heather Smiley,OK,262932,118422,93.70%,2026-11-04T14:46:53.000Z,Debbie Dingell,Heather Smiley,0,0
+House,MI-07,7,,William Lawrence,Tom Barrett,Republican,49.3%,ap:26:23811,117036,William Lawrence,Dem,70830,Tom Barrett,OK,201719,189203,96.20%,2026-11-04T14:46:53.000Z,William Lawrence,Tom Barrett,0,0
+House,MI-08,8,,Kristen McDonald Rivet,Tom Smith,Democrat,49.0%,ap:26:23812,129761,Kristen McDonald Rivet,Dem,175198,Thomas Smith,OK,195378,147562,99.00%,2026-11-04T14:46:53.000Z,Kristen McDonald Rivet,Thomas Smith,0,0
+House,MI-09,9,,Ray Pooley,Lisa McClain,Republican,33.6%,ap:26:23813,175199,Ray Pooley,Dem,69093,Lisa McClain,OK,136707,246019,95.80%,2026-11-04T14:46:53.000Z,Ray Pooley,Lisa McClain,0,0
+House,MI-10,10,,Christina Bertrand Hines,Mike Bouchard,Neither,46.7%,ap:26:23814,175201,Christina Hines,Dem,175202,Michael Bouchard,OK,188078,162347,94.70%,2026-11-04T14:46:53.000Z,Christina Hines,Michael Bouchard,0,0
+House,MI-11,11,,Jeremy Moss,Ethan Baker,Neither,58.2%,ap:26:23815,126863,Jeremy Moss,Dem,126141,Ethan Baker,OK,238750,144529,99.00%,2026-11-04T14:46:53.000Z,Jeremy Moss,Ethan Baker,0,0
+House,MI-12,12,,Rashida Tlaib,James Hooper,Democrat,70.0%,ap:26:23816,67177,Rashida Tlaib,Dem,70842,James Hooper,OK,244652,67451,97.30%,2026-11-04T14:46:53.000Z,Rashida Tlaib,James Hooper,0,0
+House,MI-13,13,,Donavan McKinney,T.P. Nykoriak,Neither,71.0%,ap:26:23817,127012,Donavan McKinney,Dem,175209,T.P. Nykoriak,OK,209882,54484,67.40%,2026-11-04T14:46:53.000Z,Donavan McKinney,T.P. Nykoriak,0,0
+House,MN-01,1,,Jake Johnson,Brad Finstad,Republican,43.9%,ap:27:24007,177170,Jake Johnson,Dem,55192,Brad Finstad,OK,163059,162738,98.70%,2026-11-04T14:46:53.000Z,Jake Johnson,Brad Finstad,0,0
+House,MN-02,2,,Matt Little,Eric Pratt,Neither,53.0%,ap:27:24010,126020,Matt Little,Dem,124448,Eric Pratt,OK,213653,159829,98.90%,2026-11-04T14:46:53.000Z,Matt Little,Eric Pratt,0,0
+House,MN-03,3,,Kelly Morrison,Tyler Bass,Democrat,60.9%,ap:27:24013,126730,Kelly Morrison,Dem,177176,Tyler Bass,OK,242079,135505,98.70%,2026-11-04T14:46:53.000Z,Kelly Morrison,Tyler Bass,0,0
+House,MN-04,4,,Betty McCollum,Paul Wikstrom,Democrat,68.2%,ap:27:24016,989,Betty McCollum,Dem,164734,Paul Wikstrom,OK,245699,90068,98.60%,2026-11-04T14:46:53.000Z,Betty McCollum,Paul Wikstrom,0,0
+House,MN-05,5,,Ilhan Omar,John Nagel,Democrat,81.7%,ap:27:24019,67375,Ilhan Omar,Dem,164742,John Nagel,OK,263166,55805,99.00%,2026-11-04T14:46:53.000Z,Ilhan Omar,John Nagel,0,0
+House,MN-06,6,,Doug Chapin,Tom Emmer,Republican,40.0%,ap:27:24022,177185,Doug Chapin,Dem,60721,Tom Emmer,OK,162213,204707,99.00%,2026-11-04T14:46:53.000Z,Doug Chapin,Tom Emmer,0,0
+House,MN-07,7,,Erik Osberg,Michelle Fischbach,Republican,31.4%,ap:27:24025,177186,Erik Osberg,Dem,55298,Michelle Fischbach,OK,115807,214506,98.80%,2026-11-04T14:46:53.000Z,Erik Osberg,Michelle Fischbach,0,0
+House,MN-08,8,,Trina Swanson,Pete Stauber,Republican,42.7%,ap:27:24028,177189,Trina Swanson,Dem,67384,Pete Stauber,OK,168350,190743,98.80%,2026-11-04T14:46:53.000Z,Trina Swanson,Pete Stauber,0,0
+House,MO-01,1,,Wesley Bell,Paul Berry III,Democrat,79.0%,ap:29:27025,166001,Wesley Bell,Dem,65385,Paul Berry,OK,189175,32362,99.00%,2026-11-04T14:46:53.000Z,Wesley Bell,Paul Berry,0,0
+House,MO-02,2,,FP Wellman,Ann Wagner,Republican,46.0%,ap:29:26023,175058,Fred Wellman,Dem,62594,Ann Wagner,OK,169477,153132,99.00%,2026-11-04T14:46:53.000Z,Fred Wellman,Ann Wagner,0,0
+House,MO-03,3,,Bethany Mann,Bob Onder,Republican,36.4%,ap:29:26025,71334,Bethany Mann,Dem,130690,Bob Onder,OK,125271,149239,98.90%,2026-11-04T14:46:53.000Z,Bethany Mann,Bob Onder,0,0
+House,MO-04,4,,Jordan Herrera,Mark Alford,Republican,28.6%,ap:29:26027,175064,Jordan Herrera,Dem,71342,Mark Alford,OK,88423,150944,96.90%,2026-11-04T14:46:53.000Z,Jordan Herrera,Mark Alford,0,0
+House,MO-05,5,,Emanuel Cleaver II,Rick Brattin,Democrat,61.7%,ap:29:26029,50040,Emanuel Cleaver,Dem,71344,Rick Brattin,OK,179256,72572,99.00%,2026-11-04T14:46:53.000Z,Emanuel Cleaver,Rick Brattin,0,0
+House,MO-06,6,,Josh Smead,Chris Stigall,Neither,30.4%,ap:29:26031,175137,Josh Smead,Dem,175141,Chris Stigall,OK,100416,151219,99.00%,2026-11-04T14:46:53.000Z,Josh Smead,Chris Stigall,0,0
+House,MO-07,7,,Missi Hesketh,Eric Burlison,Republican,28.4%,ap:29:26033,166011,Missi Hesketh,Dem,71357,Eric Burlison,OK,89710,157599,99.00%,2026-11-04T14:46:53.000Z,Missi Hesketh,Eric Burlison,0,0
+House,MO-08,8,,Chris Reichard,Jason Smith,Republican,22.7%,ap:29:26035,175154,Chris Reichard,Dem,62802,Jason Smith,OK,65751,152677,98.30%,2026-11-04T14:46:53.000Z,Chris Reichard,Jason Smith,0,0
+House,MS-01,1,,Cliff Johnson,Trent Kelly,Republican,31.2%,ap:28:27167,169311,Cliff Johnson,Dem,64498,Trent Kelly,OK,94273,138744,95.90%,2026-11-04T14:46:53.000Z,Cliff Johnson,Trent Kelly,0,0
+House,MS-02,2,,Bennie Thompson,Ron Eller,Democrat,60.3%,ap:28:25929,1335,Bennie Thompson,Dem,70474,Ron Eller,OK,164261,73001,95.10%,2026-11-04T14:46:53.000Z,Bennie Thompson,Ron Eller,0,0
+House,MS-03,3,,Michael Chiaradio,Michael Guest,Republican,35.3%,ap:28:26488,169321,Michael Chiaradio,Dem,66867,Michael Guest,OK,101882,143578,95.00%,2026-11-04T14:46:53.000Z,Michael Chiaradio,Michael Guest,0,0
+House,MS-04,4,,Jeffrey Hulum III,Mike Ezell,Republican,28.5%,ap:28:26489,125972,Jeffrey Hulum,Dem,70484,Mike Ezell,OK,76856,131074,96.40%,2026-11-04T14:46:53.000Z,Jeffrey Hulum,Mike Ezell,0,0
+House,MT-01,1,,Sam Forstag,Aaron Flint,Neither,44.1%,ap:30:28447,171715,Sam Forstag,Dem,171717,Aaron Flint,OK,108776,96638,78.30%,2026-11-04T14:46:53.000Z,Sam Forstag,Aaron Flint,0,0
+House,MT-02,2,,Brian Miller,Troy Downing,Republican,34.7%,ap:30:28576,171720,Brian Miller,Dem,66818,Troy Downing,OK,66491,119897,91.60%,2026-11-04T14:46:53.000Z,Brian Miller,Troy Downing,0,0
+House,NC-01,1,,Don Davis,Laurie Buckhout,Democrat,44.2%,ap:37:35385,70238,Don Davis,Dem,160568,Laurie Buckhout,OK,156564,146259,99.00%,2026-11-04T14:46:53.000Z,Don Davis,Laurie Buckhout,0,0
+House,NC-02,2,,Deborah Ross,Eugene Douglass,Democrat,67.2%,ap:37:35386,55909,Deborah Ross,Dem,160570,Eugene Douglass,OK,245402,76763,99.00%,2026-11-04T14:46:53.000Z,Deborah Ross,Eugene Douglass,0,0
+House,NC-03,3,,Raymond Smith Jr.,Greg Murphy,Republican,43.1%,ap:37:34969,136139,Raymond Smith,Dem,67890,Greg Murphy,OK,117350,117583,99.00%,2026-11-04T14:46:53.000Z,Raymond Smith,Greg Murphy,0,0
+House,NC-04,4,,Valerie Foushee,Max Ganorkar,Democrat,73.0%,ap:37:35387,70258,Valerie Foushee,Dem,70247,Mahesh Ganorkar,OK,283255,67799,99.00%,2026-11-04T14:46:53.000Z,Valerie Foushee,Max Ganorkar,0,0
+House,NC-05,5,,Chuck Hubbard,Virginia Foxx,Republican,41.0%,ap:37:35388,136990,Chuck Hubbard,Dem,1877,Virginia Foxx,OK,139034,138935,99.00%,2026-11-04T14:46:53.000Z,Chuck Hubbard,Virginia Foxx,0,0
+House,NC-06,6,,Cyril Jefferson,Addison McDowell,Republican,41.3%,ap:37:35389,169330,Cyril Jefferson,Dem,160574,Addison McDowell,OK,140001,133737,99.00%,2026-11-04T14:46:53.000Z,Cyril Jefferson,Addison McDowell,0,0
+House,NC-07,7,,Kimberly Hardy,David Rouzer,Republican,43.0%,ap:37:34973,136676,Kimberly Hardy,Dem,35605,David Rouzer,OK,157560,159985,99.00%,2026-11-04T14:46:53.000Z,Kimberly Hardy,David Rouzer,0,0
+House,NC-08,8,,Colby Watson,Mark Harris,Republican,40.2%,ap:37:35390,169332,Colby Watson,Dem,63306,Mark Harris,OK,141915,147094,99.00%,2026-11-04T14:46:53.000Z,Colby Watson,Mark Harris,0,0
+House,NC-09,9,,Richard Ojeda,Richard Hudson,Republican,42.0%,ap:37:34975,169336,Richard Ojeda,Dem,61758,Richard Hudson,OK,138707,132692,99.00%,2026-11-04T14:46:53.000Z,Richard Ojeda,Richard Hudson,0,0
+House,NC-10,10,,Ashley Bell,Pat Harrigan,Republican,41.0%,ap:37:35391,169338,Ashley Bell,Dem,70312,Pat Harrigan,OK,143137,146166,99.00%,2026-11-04T14:46:53.000Z,Ashley Bell,Pat Harrigan,0,0
+House,NC-11,11,,Jamie Ager,Jennifer Balkcom,Neither,45.2%,ap:37:34977,169343,Jamie Ager,Dem,136989,Jennifer Balkcom,OK,195637,141427,99.00%,2026-11-04T14:46:53.000Z,Jamie Ager,Jennifer Balkcom,0,0
+House,NC-12,12,,Alma Adams,Jack Codiga,Democrat,73.5%,ap:37:35419,55929,Alma Adams,Dem,169349,Jack Codiga,OK,219672,50864,99.00%,2026-11-04T14:46:53.000Z,Alma Adams,Jack Codiga,0,0
+House,NC-13,13,,Paul Barringer,Brad Knott,Republican,41.7%,ap:37:35753,169350,Paul Barringer,Dem,160591,Brad Knott,OK,159981,152329,99.00%,2026-11-04T14:46:53.000Z,Paul Barringer,Brad Knott,0,0
+House,NC-14,14,,Lakesha Womack,Tim Moore,Republican,42.4%,ap:37:36216,169353,Lakesha Womack,Dem,35346,Tim Moore,OK,147388,140973,99.00%,2026-11-04T14:46:53.000Z,Lakesha Womack,Tim Moore,0,0
+House,ND-AL,AL,,Trygve Hammer,Julie Fedorchak,Republican,31.3%,ap:38:35342,135150,Trygve Hammer,Dem,134890,Julie Fedorchak,OK,85892,134477,97.30%,2026-11-04T14:46:53.000Z,Trygve Hammer,Julie Fedorchak,0,0
+House,NE-01,1,,Chris Backemeyer,Mike Flood,Republican,43.4%,ap:31:28382,171157,Chris Backemeyer,Dem,69972,Mike Flood,OK,113806,122874,90.70%,2026-11-04T14:46:53.000Z,Chris Backemeyer,Mike Flood,0,0
+House,NE-02,2,,Denise Powell,Brinker Harding,Neither,52.3%,ap:31:28385,171159,Denise Powell,Dem,29888,Brinker Harding,OK,138733,100895,87.30%,2026-11-04T14:46:53.000Z,Denise Powell,Brinker Harding,0,0
+House,NE-03,3,,Becky Stille,Adrian Smith,Republican,22.8%,ap:31:28384,171162,Becky Stille,Dem,30010,Adrian Smith,OK,48495,172321,95.40%,2026-11-04T14:46:53.000Z,Becky Stille,Adrian Smith,0,0
+House,NH-01,1,,Stefany Shaheen,Anthony DiLorenzo,Neither,51.0%,ap:33:30015,176328,Stefany Shaheen,Dem,176351,Anthony DiLorenzo,OK,174062,130219,94.80%,2026-11-04T14:46:53.000Z,Stefany Shaheen,Anthony DiLorenzo,0,0
+House,NH-02,2,,Maggie Goodlander,Lily Tang Williams,Democrat,51.8%,ap:33:30017,165222,Maggie Goodlander,Dem,71514,Lily Tang Williams,OK,169202,109106,85.70%,2026-11-04T14:46:53.000Z,Maggie Goodlander,Lily Tang Williams,0,0
+House,NJ-01,1,,Donald Norcross,Damon Galdo,Democrat,59.5%,ap:34:31202,63457,Donald Norcross,Dem,163024,Damon Galdo,OK,176028,74655,92.70%,2026-11-04T14:46:53.000Z,Donald Norcross,Damon Galdo,0,0
+House,NJ-02,2,,Zack Mullock,Jeff Van Drew,Republican,43.6%,ap:34:31205,172144,Zack Mullock,Dem,56642,Jeff Van Drew,OK,135445,129028,95.00%,2026-11-04T14:46:53.000Z,Zack Mullock,Jeff Van Drew,0,0
+House,NJ-03,3,,Herb Conaway Jr.,Michael Patrick McGuire,Democrat,54.3%,ap:34:31216,163041,Herb Conaway,Dem,172146,Michael McGuire,OK,169036,96539,93.10%,2026-11-04T14:46:53.000Z,Herb Conaway,Michael McGuire,0,0
+House,NJ-04,4,,Rachel Peace,Chris Smith,Republican,34.8%,ap:34:31208,172977,Rachel Peace,Dem,1352,Christopher Smith,OK,106911,154601,96.00%,2026-11-04T14:46:53.000Z,Rachel Peace,Christopher Smith,0,0
+House,NJ-05,5,,Josh Gottheimer,Sean Joseph Kirrane,Democrat,50.8%,ap:34:31211,65116,Josh Gottheimer,Dem,172981,Sean Kirrane,OK,168450,93609,96.10%,2026-11-04T14:46:53.000Z,Josh Gottheimer,Sean Kirrane,0,0
+House,NJ-06,6,,Frank Pallone Jr.,Hillary Herzig,Democrat,53.3%,ap:34:31212,375,Frank Pallone,Dem,172147,Hillary Herzig,OK,143589,64345,94.70%,2026-11-04T14:46:53.000Z,Frank Pallone,Hillary Herzig,0,0
+House,NJ-07,7,,Rebecca Bennett,Tom Kean Jr.,Republican,49.4%,ap:34:31218,172149,Rebecca Bennett,Dem,56741,Thomas Kean,OK,186422,135037,94.30%,2026-11-04T14:46:53.000Z,Rebecca Bennett,Thomas Kean Jr.,0,0
+House,NJ-09,9,,Nellie Pou,Rosie Pino,Democrat,49.4%,ap:34:31226,56710,Nellie Pou,Dem,172151,Rosie Pino,OK,123133,58682,94.30%,2026-11-04T14:46:53.000Z,Nellie Pou,Rosie Pino,0,0
+House,NJ-10,10,,LaMonica McIver,Carmen Bucco,Democrat,75.8%,ap:34:31220,166034,LaMonica McIver,Dem,134469,Carmen Bucco,OK,146699,27192,88.90%,2026-11-04T14:46:53.000Z,LaMonica McIver,Carmen Bucco,0,0
+House,NJ-11,11,,Analilia Mejia,Joe Hathaway,Democrat,54.4%,ap:34:31230,169283,Analilia Mejia,Dem,169287,Joe Hathaway,OK,162528,104979,92.20%,2026-11-04T14:46:53.000Z,Analilia Mejia,Joe Hathaway,0,0
+House,NJ-12,12,,Adam Hamawy,Gregg Mele,Neither,62.3%,ap:34:31223,172164,Adam Hamawy,Dem,67763,Gregg Mele,OK,160586,64797,93.10%,2026-11-04T14:46:53.000Z,Adam Hamawy,Gregg Mele,0,0
+House,NM-01,1,,Melanie Stansbury,Didi Okpareke,Democrat,56.5%,ap:35:34051,69709,Melanie Stansbury,Dem,172993,Ndidiamaka Okpareke,OK,178261,102301,97.90%,2026-11-04T14:46:53.000Z,Melanie Stansbury,Ndidiamaka Okpareke,0,0
+House,NM-02,2,,Gabe Vasquez,Greg Cunningham,Democrat,49.1%,ap:35:33279,70156,Gabe Vasquez,Dem,134067,Gregory Cunningham,OK,123113,86650,98.00%,2026-11-04T14:46:53.000Z,Gabriel Vasquez,Gregory Cunningham,0,0
+House,NM-03,3,,Teresa Leger Fernandez,Martin Zamora,Democrat,52.7%,ap:35:32052,68488,Teresa Leger Fernandez,Dem,133670,Martin Zamora,OK,139967,87653,98.00%,2026-11-04T14:46:53.000Z,Teresa Leger Fernandez,Martin Zamora,0,0
+House,NV-01,1,,Dina Titus,Carrie Ann Buck,Democrat,51.1%,ap:32:3,30878,Dina Titus,Dem,132279,Carrie Buck,OK,127098,81873,88.20%,2026-11-04T14:46:53.000Z,Dina Titus,Carrie Buck,0,0
+House,NV-02,2,,Teresa Benitez-Thompson,David Flippo,Neither,42.9%,ap:32:30989,131937,Teresa Benitez-Thompson,Dem,132830,David Flippo,OK,145046,126186,86.40%,2026-11-04T14:46:53.000Z,Teresa Benitez-Thompson,David Flippo,0,0
+House,NV-03,3,,Susie Lee,Marty O'Donnell,Democrat,49.6%,ap:32:30155,65174,Susie Lee,Dem,164356,Marty O'Donnell,OK,146863,95845,85.50%,2026-11-04T14:46:53.000Z,Susie Lee,Marty O'Donnell,0,0
+House,NV-04,4,,Steven Horsford,Cody Whipple,Democrat,51.2%,ap:32:30992,62079,Steven Horsford,Dem,172349,Cody Whipple,OK,134980,84017,87.00%,2026-11-04T14:46:53.000Z,Steven Horsford,Cody Whipple,0,0
+House,NY-01,1,,Chris Gallant,Nick LaLota,Republican,44.9%,ap:36:36581,174317,Chris Gallant,Dem,71409,Nicholas LaLota,OK,145869,152546,86.30%,2026-11-04T14:46:53.000Z,Christopher Gallant,Nicholas LaLota,0,0
+House,NY-02,2,,Pat Halpin,Andrew Garbarino,Republican,43.0%,ap:36:36582,174320,Pat Halpin,Dem,68984,Andrew Garbarino,OK,119079,125338,78.20%,2026-11-04T14:46:53.000Z,Patrick Halpin,Andrew Garbarino,0,0
+House,NY-03,3,,Tom Suozzi,Mike LiPetri Jr.,Democrat,47.8%,ap:36:36583,33896,Tom Suozzi,Dem,68983,Michael LiPetri,OK,144174,117001,87.30%,2026-11-04T14:46:53.000Z,Thomas Suozzi,Michael LiPetri,0,0
+House,NY-04,4,,Laura Gillen,Jeanine Driscoll,Democrat,50.6%,ap:36:36584,71419,Laura Gillen,Dem,174413,Jeanine Driscoll,OK,151336,116912,85.00%,2026-11-04T14:46:53.000Z,Laura Gillen,Jeanine Driscoll,0,0
+House,NY-05,5,,Gregory Meeks,George Marsh,Democrat,71.4%,ap:36:36585,1521,Gregory Meeks,Dem,174656,George Marsh,OK,129931,31082,91.10%,2026-11-04T14:46:53.000Z,Gregory Meeks,George Marsh,0,0
+House,NY-06,6,,Grace Meng,Joseph Chou,Democrat,53.3%,ap:36:36586,62304,Grace Meng,Dem,168114,Joseph Chou,OK,92474,41225,87.20%,2026-11-04T14:46:53.000Z,Grace Meng,Joseph Chou,0,0
+House,NY-07,7,,Claire Valdez,Melvin Rivera,Neither,73.6%,ap:36:36587,163900,Claire Valdez,Dem,174657,Melvin Rivera,OK,135179,24370,85.00%,2026-11-04T14:46:53.000Z,Claire Valdez,Melvin Rivera,0,0
+House,NY-08,8,,Hakeem Jeffries,Lewis Mizrahi,Democrat,72.4%,ap:36:36588,33006,Hakeem Jeffries,Dem,174658,Lewis Mizrahi,OK,128197,31969,87.30%,2026-11-04T14:46:53.000Z,Hakeem Jeffries,Lewis Mizrahi,0,0
+House,NY-09,9,,Yvette Clarke,Joel Anabilah-Azumah,Democrat,70.7%,ap:36:39860,32471,Yvette Clarke,Dem,174659,Joel Azumah,OK,146503,30378,95.60%,2026-11-04T14:46:53.000Z,Yvette Clarke,Joel Azumah,0,0
+House,NY-10,10,,Brad Lander,Jennifer Moore,Neither,81.0%,ap:36:36590,156181,Brad Lander,Dem,174660,Jennifer Moore,OK,167343,31912,90.90%,2026-11-04T14:46:53.000Z,Brad Lander,Jennifer Moore,0,0
+House,NY-11,11,,Mike DeCillis,Nicole Malliotakis,Republican,37.6%,ap:36:36591,174581,Mike DeCillis,Dem,68997,Nicole Malliotakis,OK,79370,101719,94.30%,2026-11-04T14:46:53.000Z,Mike DeCillis,Nicole Malliotakis,0,0
+House,NY-12,12,,Micah Lasher,Caroline Shinkle,Neither,82.4%,ap:36:36592,158225,Micah Lasher,Dem,174661,Caroline Shinkle,OK,193614,50212,88.10%,2026-11-04T14:46:53.000Z,Micah Lasher,Caroline Shinkle,0,0
+House,NY-13,13,,Darializa Avila Chevalier,Jomo Williams,Neither,80.2%,ap:36:36593,174529,Darializa Avila Chevalier,Dem,159659,Jomo Williams,OK,141014,18308,79.80%,2026-11-04T14:46:53.000Z,Darializa Avila Chevalier,Jomo Williams,0,0
+House,NY-14,14,,Alexandria Ocasio-Cortez,Diamant Hysenaj,Democrat,66.2%,ap:36:36594,67104,Alexandria Ocasio-Cortez,Dem,174662,Diamant Hysenaj,OK,107129,29505,95.60%,2026-11-04T14:46:53.000Z,Alexandria Ocasio-Cortez,Diamant Hysenaj,0,0
+House,NY-15,15,,Ritchie Torres,Stylo Sapaskis,Democrat,74.4%,ap:36:36595,69011,Ritchie Torres,Dem,65223,Stylo Sapaskis,OK,93812,13004,93.80%,2026-11-04T14:46:53.000Z,Ritchie Torres,Stylo Sapaskis,0,0
+House,NY-16,16,,George Latimer,Joseph Cinquemani,Democrat,66.7%,ap:36:36596,33155,George Latimer,Dem,174345,Joseph Cinquemani,OK,77759,16733,32.10%,2026-11-04T14:46:53.000Z,George Latimer,Joseph Cinquemani,0,0
+House,NY-17,17,,Cait Conley,Mike Lawler,Republican,50.3%,ap:36:36597,174325,Cait Conley,Dem,71449,Mike Lawler,OK,133219,121881,60.90%,2026-11-04T14:46:53.000Z,Cait Conley,Mike Lawler,0,0
+House,NY-18,18,,Pat Ryan,Jackie Auringer,Democrat,51.7%,ap:36:36598,71452,Pat Ryan,Dem,174346,Jackie Auringer,OK,168846,99522,89.50%,2026-11-04T14:46:53.000Z,Pat Ryan,Jackie Auringer,0,0
+House,NY-19,19,,Josh Riley,Peter Oberacker Jr.,Democrat,50.9%,ap:36:36599,71456,Josh Riley,Dem,159063,Peter Oberacker,OK,165758,123624,97.20%,2026-11-04T14:46:53.000Z,Josh Riley,Peter Oberacker,0,0
+House,NY-20,20,,Paul Tonko,Ralph Ambrosio,Democrat,57.2%,ap:36:36600,57037,Paul Tonko,Dem,164781,Ralph Ambrosio,OK,180051,102987,93.60%,2026-11-04T14:46:53.000Z,Paul Tonko,Ralph Ambrosio,0,0
+House,NY-21,21,,Blake Gendebien,Anthony Constantino,Neither,39.6%,ap:36:36601,174330,Blake Gendebien,Dem,174348,Anthony Constantino,OK,133714,139792,81.20%,2026-11-04T14:46:53.000Z,Blake Gendebien,Anthony Constantino,0,0
+House,NY-22,22,,John Mannion,Kailee Buller,Democrat,53.8%,ap:36:36602,158604,John Mannion,Dem,174349,Kailee Buller,OK,159032,113377,73.20%,2026-11-04T14:46:53.000Z,John Mannion,Kailee Buller,0,0
+House,NY-23,23,,Aaron Gies,Nick Langworthy,Republican,39.4%,ap:36:36603,174331,Aaron Gies,Dem,71466,Nicholas Langworthy,OK,119749,181807,97.30%,2026-11-04T14:46:53.000Z,Aaron Gies,Nick Langworthy,0,0
+House,NY-24,24,,Alissa Ellman,Claudia Tenney,Republican,38.4%,ap:36:36604,174332,Alissa Ellman,Dem,63809,Claudia Tenney,OK,112261,171460,95.90%,2026-11-04T14:46:53.000Z,Alissa Ellman,Claudia Tenney,0,0
+House,NY-25,25,,Joe Morelle,Virginia McIntyre,Democrat,59.4%,ap:36:36605,57063,Joe Morelle,Dem,174350,Virginia McIntyre,OK,176301,103422,98.00%,2026-11-04T14:46:53.000Z,Joseph Morelle,Virginia McIntyre,0,0
+House,NY-26,26,,Tim Kennedy,Dennis Hannon,Democrat,59.8%,ap:36:39859,153125,Tim Kennedy,Dem,174351,Dennis Hannon,OK,158733,83531,83.70%,2026-11-04T14:46:53.000Z,Timothy Kennedy,Dennis Hannon,0,0
+House,OH-01,1,,Greg Landsman,Eric Conroy,Democrat,48.7%,ap:39:36015,70105,Greg Landsman,Dem,170879,Eric Conroy,OK,176453,139343,98.00%,2026-11-04T14:46:53.000Z,Greg Landsman,Eric Conroy,0,0
+House,OH-02,2,,Jen Mazzuckelli,Dave Taylor,Republican,28.7%,ap:39:37258,170899,Jen Mazzuckelli,Dem,161559,David Taylor,OK,97638,175411,98.00%,2026-11-04T14:46:53.000Z,Jen Mazzuckelli,David Taylor,0,0
+House,OH-03,3,,Joyce Beatty,Cleophus Dulaney,Democrat,70.3%,ap:39:36019,57169,Joyce Beatty,Dem,68426,Cleophus Dulaney,OK,231925,68407,98.00%,2026-11-04T14:46:53.000Z,Joyce Beatty,Cleophus Dulaney,0,0
+House,OH-04,4,,Josh Kolasinski,Jim Jordan,Republican,28.5%,ap:39:36021,170906,Josh Kolasinski,Dem,57253,Jim Jordan,OK,95497,197084,98.00%,2026-11-04T14:46:53.000Z,Joshua Kolasinski,Jim Jordan,0,0
+House,OH-05,5,,Brian Shaver,Bob Latta,Republican,38.0%,ap:39:36023,170908,Brian Shaver,Dem,57148,Bob Latta,OK,128142,163382,98.00%,2026-11-04T14:46:53.000Z,Brian Shaver,Bob Latta,0,0
+House,OH-06,6,,Elizabeth Kirtley,Michael Rulli,Republican,32.6%,ap:39:36025,170915,Elizabeth Kirtley,Dem,142433,Michael Rulli,OK,107310,163675,98.00%,2026-11-04T14:46:53.000Z,Elizabeth Kirtley,Michael Rulli,0,0
+House,OH-07,7,,Brian Poindexter,Max Miller,Republican,44.5%,ap:39:36027,170928,Brian Poindexter,Dem,70139,Max Miller,OK,180614,148177,99.00%,2026-11-04T14:46:53.000Z,Brian Poindexter,Max Miller,0,0
+House,OH-08,8,,Vanessa Enoch,Warren Davidson,Republican,42.1%,ap:39:37564,66226,Vanessa Enoch,Dem,64698,Warren Davidson,OK,154828,168689,98.00%,2026-11-04T14:46:53.000Z,Vanessa Enoch,Warren Davidson,0,0
+House,OH-09,9,,Marcy Kaptur,Derek Merrin,Democrat,44.6%,ap:39:36031,405,Marcy Kaptur,Dem,142329,Derek Merrin,OK,159306,142830,98.00%,2026-11-04T14:46:53.000Z,Marcy Kaptur,Derek Merrin,0,0
+House,OH-10,10,,Kristina Knickerbocker,Mike Turner,Republican,46.1%,ap:39:36033,170962,Kristina Knickerbocker,Dem,1376,Mike Turner,OK,149024,144086,98.00%,2026-11-04T14:46:53.000Z,Kristina Knickerbocker,Mike Turner,0,0
+House,OH-11,11,,Shontel Brown,Mike Kirchner,Democrat,77.7%,ap:39:36035,69721,Shontel Brown,Dem,170932,Mike Kirchner,OK,219971,43373,99.00%,2026-11-04T14:46:53.000Z,Shontel Brown,Mike Kirchner,0,0
+House,OH-12,12,,Jerrad Christian,Troy Balderson,Republican,34.8%,ap:39:37571,161573,Jerrad Christian,Dem,66237,Troy Balderson,OK,131211,191926,98.00%,2026-11-04T14:46:53.000Z,Jerrad Christian,Troy Balderson,0,0
+House,OH-13,13,,Emilia Sykes,Carey Coleman,Democrat,51.7%,ap:39:36039,70115,Emilia Sykes,Dem,170975,Carey Coleman,OK,190593,122078,98.00%,2026-11-04T14:46:53.000Z,Emilia Sykes,Carey Coleman,0,0
+House,OH-14,14,,Maria Jukic,Dave Joyce,Republican,39.7%,ap:39:36041,171016,Maria Jukic,Dem,62559,David Joyce,OK,146651,179467,98.00%,2026-11-04T14:46:53.000Z,Maria Jukic,David Joyce,0,0
+House,OH-15,15,,Don Leonard,Mike Carey,Republican,44.9%,ap:39:36043,170767,Don Leonard,Dem,161548,Mike Carey,OK,149287,130225,98.00%,2026-11-04T14:46:53.000Z,Don Leonard,Mike Carey,0,0
+House,OK-01,1,,John Croisant,Mark Tedford,Neither,39.0%,ap:40:37030,139666,John Croisant,Dem,141923,Mark Tedford,OK,110521,121260,99.00%,2026-11-04T14:46:53.000Z,John Croisant,Mark Tedford,0,0
+House,OK-02,2,,Brandon Wade,Josh Brecheen,Republican,21.7%,ap:40:37855,70950,Brandon Wade,Dem,70937,Josh Brecheen,OK,61378,143983,99.00%,2026-11-04T14:46:53.000Z,Brandon Wade,Josh Brecheen,0,0
+House,OK-03,3,,Suzie Byrd,Frank Lucas,Republican,26.8%,ap:40:37034,173687,Suzie Byrd,Dem,1396,Frank Lucas,OK,68787,122138,99.00%,2026-11-04T14:46:53.000Z,Suzie Byrd,Frank Lucas,0,0
+House,OK-04,4,,Mitchell Jacob,Tom Cole,Republican,33.0%,ap:40:37036,163438,Mitchell Jacob,Dem,173693,Tom Cole,OK,81683,119897,93.40%,2026-11-04T14:46:53.000Z,Mitchell Jacob,Tom Cole,0,0
+House,OK-05,5,,Jena Nelson,Stephanie Bice,Republican,41.0%,ap:40:37856,141550,Jena Nelson,Dem,68613,Stephanie Bice,OK,127608,130972,99.00%,2026-11-04T14:46:53.000Z,Jena Nelson,Stephanie Bice,0,0
+House,OR-01,1,,Suzanne Bonamici,Barbara Kahl,Democrat,69.6%,ap:41:39031,61555,Suzanne Bonamici,Dem,172158,Barbara Kahl,OK,154258,67166,68.30%,2026-11-04T14:46:53.000Z,Suzanne Bonamici,Barbara Kahl,0,0
+House,OR-02,2,,Chris Beck,Cliff Bentz,Republican,36.1%,ap:41:38529,172160,Chris Beck,Dem,68648,Cliff Bentz,OK,115706,185635,92.60%,2026-11-04T14:46:53.000Z,Chris Beck,Cliff Bentz,0,0
+House,OR-03,3,,Maxine Dexter,Loran Ayles,Democrat,73.8%,ap:41:38530,141066,Maxine Dexter,Dem,172173,Loran Ayles,OK,164418,51095,65.50%,2026-11-04T14:46:53.000Z,Maxine Dexter,Loran Ayles,0,0
+House,OR-04,4,,Val Hoyle,Monique DeSpain,Democrat,56.2%,ap:41:38531,70181,Val Hoyle,Dem,162738,Monique DeSpain,OK,148193,117593,82.30%,2026-11-04T14:46:53.000Z,Val Hoyle,Monique DeSpain,0,0
+House,OR-05,5,,Janelle Bynum,Patti Adair,Democrat,54.4%,ap:41:38532,140239,Janelle Bynum,Dem,172177,Patti Adair,OK,166185,134477,79.80%,2026-11-04T14:46:53.000Z,Janelle Bynum,Patti Adair,0,0
+House,OR-06,6,,Andrea Salinas,David Russ,Democrat,55.8%,ap:41:39166,70189,Andrea Salinas,Dem,70195,David Russ,OK,113919,82550,63.10%,2026-11-04T14:46:53.000Z,Andrea Salinas,David Russ,0,0
+House,PA-01,1,,Bob Harvie,Brian Fitzpatrick,Republican,50.2%,ap:42:39008,171221,Bob Harvie,Dem,64827,Brian Fitzpatrick,OK,188011,168470,98.40%,2026-11-04T14:46:53.000Z,Bob Harvie,Brian Fitzpatrick,0,0
+House,PA-02,2,,Brendan Boyle,Jessica Arriaga,Democrat,68.1%,ap:42:39303,63512,Brendan Boyle,Dem,171508,Jessica Arriaga,OK,142752,34547,95.80%,2026-11-04T14:46:53.000Z,Brendan Boyle,Jessica Arriaga,0,0
+House,PA-04,4,,Madeleine Dean,Aurora Stuski,Democrat,58.0%,ap:42:39011,66414,Madeleine Dean,Dem,171513,Aurora Stuski,OK,231425,113464,99.00%,2026-11-04T14:46:53.000Z,Madeleine Dean,Aurora Stuski,0,0
+House,PA-05,5,,Mary Gay Scanlon,Nick Manganaro,Democrat,64.4%,ap:42:39012,66421,Mary Scanlon,Dem,171514,Nick Manganaro,OK,212884,82693,98.80%,2026-11-04T14:46:53.000Z,Mary Gay Scanlon,Nick Manganaro,0,0
+House,PA-06,6,,Chrissy Houlahan,Marty Young,Democrat,55.8%,ap:42:39013,66427,Chrissy Houlahan,Dem,171515,Marty Young,OK,198715,110297,99.00%,2026-11-04T14:46:53.000Z,Chrissy Houlahan,Marty Young,0,0
+House,PA-07,7,,Bob Brooks,Ryan Mackenzie,Republican,48.4%,ap:42:39014,146242,Bob Brooks,Dem,145268,Ryan Mackenzie,OK,164370,128655,98.30%,2026-11-04T14:46:53.000Z,Bob Brooks,Ryan Mackenzie,0,0
+House,PA-08,8,,Paige Cognetti,Rob Bresnahan,Republican,45.7%,ap:42:39015,171223,Paige Cognetti,Dem,161765,Rob Bresnahan,OK,152583,128081,98.20%,2026-11-04T14:46:53.000Z,Paige Cognetti,Rob Bresnahan,0,0
+House,PA-09,9,,Rachel Wallace,Dan Meuser,Republican,30.9%,ap:42:40041,171224,Rachel Wallace,Dem,58537,Dan Meuser,OK,99924,163850,95.10%,2026-11-04T14:46:53.000Z,Rachel Wallace,Dan Meuser,0,0
+House,PA-10,10,,Janelle Stelson,Scott Perry,Republican,47.4%,ap:42:39017,161767,Janelle Stelson,Dem,61618,Scott Perry,OK,173845,142059,98.90%,2026-11-04T14:46:53.000Z,Janelle Stelson,Scott Perry,0,0
+House,PA-11,11,,Nancy Mannion,Lloyd Smucker,Republican,39.2%,ap:42:39018,171520,Nancy Mannion,Dem,64833,Lloyd Smucker,OK,133726,166905,98.50%,2026-11-04T14:46:53.000Z,Nancy Mannion,Lloyd Smucker,0,0
+House,PA-12,12,,Summer Lee,James Hayes,Democrat,59.7%,ap:42:39019,70046,Summer Lee,Dem,161773,James Hayes,OK,193488,102413,98.70%,2026-11-04T14:46:53.000Z,Summer Lee,James Hayes,0,0
+House,PA-13,13,,Beth Farnham,John Joyce,Republican,27.0%,ap:42:39020,161774,Beth Farnham,Dem,66452,John Joyce,OK,90902,189426,99.00%,2026-11-04T14:46:53.000Z,Beth Farnham,John Joyce,0,0
+House,PA-14,14,,Alan Bradstock,Guy Reschenthaler,Republican,33.2%,ap:42:39021,171521,Alan Bradstock,Dem,66458,Guy Reschenthaler,OK,116747,158743,98.60%,2026-11-04T14:46:53.000Z,Alan Bradstock,Guy Reschenthaler,0,0
+House,PA-15,15,,Ray Bilger,"Glenn ""G.T."" Thompson",Republican,30.8%,ap:42:40306,171225,Ray Bilger,Dem,58283,Glenn Thompson,OK,96404,170953,97.90%,2026-11-04T14:46:53.000Z,Ray Bilger,Glenn Thompson,0,0
+House,PA-16,16,,Justin Wagner,Mike Kelly,Republican,38.5%,ap:42:39023,171522,Justin Wagner,Dem,60917,Mike Kelly,OK,131595,154125,95.90%,2026-11-04T14:46:53.000Z,Justin Wagner,Mike Kelly,0,0
+House,PA-17,17,,Chris Deluzio,Tony Guy,Democrat,52.8%,ap:42:39024,70062,Chris Deluzio,Dem,171523,Tony Guy,OK,207711,122919,99.00%,2026-11-04T14:46:53.000Z,Chris Deluzio,Tony Guy,0,0
+House,RI-01,1,,Gabe Amo,Kellie Keenan,Democrat,61.3%,ap:44:40015,71848,Gabe Amo,Dem,178107,Kellie Keenan,OK,109860,44528,97.20%,2026-11-04T14:46:53.000Z,Gabe Amo,Kellie Keenan,0,0
+House,RI-02,2,,Seth Magaziner,Vic Mellor,Democrat,53.5%,ap:44:40017,71484,Seth Magaziner,Dem,178109,Victor Mellor,OK,119134,73353,96.90%,2026-11-04T14:46:53.000Z,Seth Magaziner,Victor Mellor,0,0
+House,SC-01,1,,Nancy Lacore,Jenny Costa Honeycutt,Neither,43.4%,ap:45:41922,172882,Nancy Lacore,Dem,172886,Jenny Costa Honeycutt,OK,161878,158570,98.90%,2026-11-04T14:46:53.000Z,Nancy Lacore,Jenny Costa Honeycutt,0,0
+House,SC-02,2,,Zyon El-Khalifa,Joe Wilson,Republican,42.9%,ap:45:41003,172893,Zyon Khalifa,Dem,1410,Joe Wilson,OK,144593,147620,99.00%,2026-11-04T14:46:53.000Z,Zyon Khalifa,Joe Wilson,0,0
+House,SC-03,3,,Eunice Lehmacher,Sheri Biggs,Republican,28.2%,ap:45:41004,145219,Eunice Lehmacher,Dem,163529,Sheri Biggs,OK,93821,173801,99.00%,2026-11-04T14:46:53.000Z,Eunice Lehmacher,Sheri Biggs,0,0
+House,SC-04,4,,Courtney McClain,William Timmons,Republican,38.0%,ap:45:41313,173077,Courtney McClain,Dem,66899,William Timmons,OK,129561,146808,99.00%,2026-11-04T14:46:53.000Z,Courtney McClain,William Timmons,0,0
+House,SC-05,5,,Mallory Dittmer,Wes Climer,Neither,38.4%,ap:45:41972,172899,Mallory Dittmer,Dem,144639,Wes Climer,OK,135157,151553,99.00%,2026-11-04T14:46:53.000Z,Mallory Dittmer,Wes Climer,0,0
+House,SC-06,6,,Jim Clyburn,John Peterson,Democrat,61.5%,ap:45:41315,1414,James Clyburn,Dem,173079,John Peterson,OK,180559,79497,99.00%,2026-11-04T14:46:53.000Z,Jim Clyburn,John Peterson,0,0
+House,SC-07,7,,John Vincent,Russell Fry,Republican,36.7%,ap:45:41908,173081,John Vincent,Dem,70931,Russell Fry,OK,131319,172308,99.00%,2026-11-04T14:46:53.000Z,John Vincent,Russell Fry,0,0
+House,SD-AL,AL,,Nikki Gronli,Marty Jackley,Neither,35.0%,ap:46:42005,173282,Nikki Gronli,Dem,66829,Marty Jackley,OK,109967,195570,99.00%,2026-11-04T14:46:53.000Z,Nikki Gronli,Marty Jackley,0,0
+House,TN-01,1,,Kristi Burke,Diana Harshbarger,Republican,20.8%,ap:47:43003,174783,Kristi Burke,Dem,69252,Diana Harshbarger,OK,61682,141117,99.00%,2026-11-04T14:46:53.000Z,Kristi Burke,Diana Harshbarger,0,0
+House,TN-02,2,,Michaela Barnett,Tim Burchett,Republican,32.9%,ap:47:43007,174786,Michaela Barnett,Dem,58256,Tim Burchett,OK,103311,144892,99.00%,2026-11-04T14:46:53.000Z,Michaela Barnett,Tim Burchett,0,0
+House,TN-03,3,,Anna Golladay,Chuck Fleischmann,Republican,31.9%,ap:47:43009,174787,Anna Golladay,Dem,60964,Chuck Fleischmann,OK,95051,136110,98.30%,2026-11-04T14:46:53.000Z,Anna Golladay,Chuck Fleischmann,0,0
+House,TN-04,4,,Victoria Broderick,Scott DesJarlais,Republican,37.9%,ap:47:43011,164959,Victoria Broderick,Dem,61091,Scott DesJarlais,OK,95585,95305,99.00%,2026-11-04T14:46:53.000Z,Victoria Broderick,Scott DesJarlais,0,0
+House,TN-05,5,,Chaz Molder,Charlie Hatcher,Neither,38.3%,ap:47:43013,174800,Chaz Molder,Dem,174795,Charlie Hatcher,OK,99841,110408,99.00%,2026-11-04T14:46:53.000Z,Chaz Molder,Charlie Hatcher,0,0
+House,TN-06,6,,Mike Croley,Johnny Garrett,Neither,36.6%,ap:47:43015,174802,Mike Croley,Dem,147493,Johnny Garrett,OK,113177,120950,99.00%,2026-11-04T14:46:53.000Z,Mike Croley,Johnny Garrett,0,0
+House,TN-07,7,,Darden Copeland,Matt Van Epps,Republican,38.6%,ap:47:43017,169085,Darden Copeland,Dem,169074,Matt Van Epps,OK,115867,121100,99.00%,2026-11-04T14:46:53.000Z,Darden Copeland,Matt Van Epps,0,0
+House,TN-08,8,,Heidi Kuhn,David Kustoff,Republican,39.8%,ap:47:43019,174809,Heidi Kuhn,Dem,65268,David Kustoff,OK,102406,114045,99.00%,2026-11-04T14:46:53.000Z,Heidi Kuhn,David Kustoff,0,0
+House,TN-09,9,,Justin Pearson,Brent Taylor,Neither,39.3%,ap:47:43020,165260,Justin Pearson,Dem,147801,Brent Taylor,OK,109371,111924,99.00%,2026-11-04T14:46:53.000Z,Justin Pearson,Brent Taylor,0,0
+House,TX-01,1,,Yolanda Prince,Nathaniel Moran,Republican,25.1%,ap:48:45871,153531,Yolanda Prince,Dem,69805,Nathaniel Moran,OK,81598,181987,97.00%,2026-11-04T14:46:53.000Z,Yolanda Prince,Nathaniel Moran,0,0
+House,TX-02,2,,Shaun Finnie,Steve Toth,Neither,38.5%,ap:48:45872,169699,Shaun Finnie,Dem,64604,Steve Toth,OK,138871,144543,97.70%,2026-11-04T14:46:53.000Z,Shaun Finnie,Steve Toth,0,0
+House,TX-03,3,,Evan Hunt,Keith Self,Republican,38.0%,ap:48:45873,169700,Evan Hunt,Dem,43333,Keith Self,OK,151667,169243,99.00%,2026-11-04T14:46:53.000Z,Evan Hunt,Keith Self,0,0
+House,TX-04,4,,Jason Pearce,Pat Fallon,Republican,37.4%,ap:48:45874,169702,Jason Pearce,Dem,69628,Pat Fallon,OK,134563,171652,99.00%,2026-11-04T14:46:53.000Z,Jason Pearce,Pat Fallon,0,0
+House,TX-05,5,,Chelsey Hockett,Lance Gooden,Republican,39.1%,ap:48:45875,169703,Chelsey Hockett,Dem,66063,Lance Gooden,OK,122855,130278,95.30%,2026-11-04T14:46:53.000Z,Chelsey Hockett,Lance Gooden,0,0
+House,TX-06,6,,Danny Minton,Jake Ellzey,Republican,38.4%,ap:48:45876,169705,Danny Minton,Dem,65914,Jake Ellzey,OK,128394,140014,98.00%,2026-11-04T14:46:53.000Z,Danny Minton,Jake Ellzey,0,0
+House,TX-07,7,,Lizzie Fletcher,Alexander Hale,Democrat,62.0%,ap:48:45877,65918,Lizzie Fletcher,Dem,169987,Alexander Hale,OK,159773,62217,98.60%,2026-11-04T14:46:53.000Z,Lizzie Fletcher,Alexander Hale,0,0
+House,TX-08,8,,Laura Jones,Jessica Hart Steinmann,Neither,36.0%,ap:48:45878,160558,Laura Jones,Dem,169992,Jessica Hart Steinmann,OK,124441,141660,92.70%,2026-11-04T14:46:53.000Z,Laura Jones,Jessica Hart Steinmann,0,0
+House,TX-09,9,,Leticia Gutierrez,Alex Mealer,Neither,40.0%,ap:48:45879,169707,Leticia Gutierrez,Dem,157689,Alex Mealer,OK,97888,72227,83.70%,2026-11-04T14:46:53.000Z,Leticia Gutierrez,Alex Mealer,0,0
+House,TX-10,10,,Caitlin McClay Rourk,Chris Gober,Neither,38.5%,ap:48:45880,169713,Caitlin Rourk,Dem,169999,Chris Gober,OK,138832,161425,99.00%,2026-11-04T14:46:53.000Z,Caitlin Rourk,Chris Gober,0,0
+House,TX-11,11,,Claire Reynolds,August Pfluger,Republican,32.7%,ap:48:45881,169715,Claire Reynolds,Dem,68246,August Pfluger,OK,94353,138627,98.60%,2026-11-04T14:46:53.000Z,Claire Reynolds,August Pfluger,0,0
+House,TX-12,12,,Heli Rodriguez Prilliman,Craig Goldman,Republican,37.9%,ap:48:45882,169718,Heli Rodriguez Prilliman,Dem,150570,Craig Goldman,OK,127456,144438,99.00%,2026-11-04T14:46:53.000Z,Angela Rodriguez Prilliman,Craig Goldman,0,0
+House,TX-13,13,,Mark Nair,Ronny Jackson,Republican,26.7%,ap:48:45883,169719,Mark Nair,Dem,68255,Ronny Jackson,OK,84197,158134,98.90%,2026-11-04T14:46:53.000Z,Mark Nair,Ronny Jackson,0,0
+House,TX-14,14,,Thurman Bill Bartie,Randy Weber,Republican,37.7%,ap:48:45884,169720,"Thurman ""Bill"" Bartie",Dem,61980,Randy Weber,OK,129930,152618,99.00%,2026-11-04T14:46:53.000Z,Thurman Bartie,Randy Weber,0,0
+House,TX-15,15,,Bobby Pulido,Monica De La Cruz,Republican,41.0%,ap:48:45885,169724,Bobby Pulido,Dem,69841,Monica De La Cruz,OK,126204,76305,95.10%,2026-11-04T14:46:53.000Z,Bobby Pulido,Monica De La Cruz,0,0
+House,TX-16,16,,Veronica Escobar,Adam Bauman,Democrat,58.3%,ap:48:45886,160564,Veronica Escobar,Dem,170237,Adam Bauman,OK,138543,57247,99.00%,2026-11-04T14:46:53.000Z,Veronica Escobar,Adam Bauman,0,0
+House,TX-17,17,,Casey Shepard,Pete Sessions,Republican,39.0%,ap:48:45887,169727,Casey Shepard,Dem,358,Pete Sessions,OK,124480,143523,93.90%,2026-11-04T14:46:53.000Z,Casey Shepard,Pete Sessions,0,0
+House,TX-18,18,,Christian Menefee,Ronald Whitfield,Democrat,77.9%,ap:48:45888,169213,Christian Menefee,Dem,169216,Ronald Whitfield,OK,192537,31263,90.60%,2026-11-04T14:46:53.000Z,Christian Menefee,Ronald Whitfield,0,0
+House,TX-19,19,,Kyle Rable,Tom Sell,Neither,23.9%,ap:48:45889,169729,Kyle Rable,Dem,170010,Tom Sell,OK,67674,154079,97.60%,2026-11-04T14:46:53.000Z,Kyle Rable,Tom Sell,0,0
+House,TX-20,20,,Joaquin Castro,Edgardo BÃ¡ez,Democrat,64.5%,ap:48:45890,58407,Joaquin Castro,Dem,170243,Edgardo Baez,OK,149397,43097,99.00%,2026-11-04T14:46:53.000Z,Joaquin Castro,Edgardo Baez,0,0
+House,TX-21,21,,Kristin Hook,Tex Teixeira,Neither,38.9%,ap:48:45891,160786,Kristin Hook,Dem,170021,Mark Teixeira,OK,162088,194302,99.00%,2026-11-04T14:46:53.000Z,Kristin Hook,Mark Teixeira,0,0
+House,TX-22,22,,Marquette Greene-Scott,Trever Nehls,Neither,38.7%,ap:48:45892,160787,Marquette Greene-Scott,Dem,170023,Trever Nehls,OK,139482,150074,96.30%,2026-11-04T14:46:53.000Z,Marquette Greene-Scott,Trever Nehls,0,0
+House,TX-23,23,,Katy Padilla Stout,Brandon Herrera,Neither,42.5%,ap:48:45893,169736,Katy Padilla Stout,Dem,160818,Brandon Herrera,OK,142032,119795,98.90%,2026-11-04T14:46:53.000Z,Katy Padilla Stout,Brandon Herrera,0,0
+House,TX-24,24,,Kevin Burge,Beth Van Duyne,Republican,41.8%,ap:48:45894,169739,Kevin Burge,Dem,68157,Beth Van Duyne,OK,149697,171751,96.50%,2026-11-04T14:46:53.000Z,Kevin Burge,Beth Van Duyne,0,0
+House,TX-25,25,,Dione Sims,Roger Williams,Republican,37.8%,ap:48:45895,169743,Dione Sims,Dem,62001,Roger Williams,OK,122854,142721,99.00%,2026-11-04T14:46:53.000Z,Dione Sims,Roger Williams,0,0
+House,TX-26,26,,Steven Shook,Brandon Gill,Republican,37.9%,ap:48:45896,170236,Steven Shook,Dem,160826,Brandon Gill,OK,147944,182648,99.00%,2026-11-04T14:46:53.000Z,Steven Shook,Brandon Gill,0,0
+House,TX-27,27,,Tanya Lloyd,Michael Cloud,Republican,39.3%,ap:48:45897,160792,Tanya Lloyd,Dem,66028,Michael Cloud,OK,137927,144467,99.00%,2026-11-04T14:46:53.000Z,Tanya Lloyd,Michael Cloud,0,0
+House,TX-28,28,,Henry Cuellar,Tano Tijerina,Democrat,44.8%,ap:48:47179,327,Henry Cuellar,Dem,170026,Tano Tijerina,OK,113315,51065,93.20%,2026-11-04T14:46:53.000Z,Henry Cuellar,Tano Tijerina,0,0
+House,TX-29,29,,Sylvia Garcia,Martha Fierro,Democrat,65.5%,ap:48:45899,42158,Sylvia Garcia,Dem,155566,Martha Fierro,OK,133649,33541,84.90%,2026-11-04T14:46:53.000Z,Sylvia Garcia,Martha Fierro,0,0
+House,TX-30,30,,Frederick Haynes III,Everett Jackson,Neither,73.9%,ap:48:45900,169745,Frederick Haynes,Dem,170028,Everett Jackson,OK,186871,39247,93.10%,2026-11-04T14:46:53.000Z,Frederick Haynes,Everett Jackson,0,0
+House,TX-31,31,,Justin Early,John Carter,Republican,39.0%,ap:48:48732,169747,Justin Early,Dem,1441,John Carter,OK,136734,164012,98.00%,2026-11-04T14:46:53.000Z,Justin Early,John Carter,0,0
+House,TX-32,32,,Dan Barrios,Jace Yarbrough,Neither,40.9%,ap:48:48733,169748,Dan Barrios,Dem,170039,Jace Yarbrough,OK,134781,142834,95.00%,2026-11-04T14:46:53.000Z,Dan Barrios,Jace Yarbrough,0,0
+House,TX-33,33,,Colin Allred,Patrick Gillespie,Neither,66.7%,ap:48:49477,65997,Colin Allred,Dem,69900,Patrick Gillespie,OK,150891,41157,91.40%,2026-11-04T14:46:53.000Z,Colin Allred,Patrick Gillespie,0,0
+House,TX-34,34,,Vicente Gonzalez,Eric Flores,Democrat,44.9%,ap:48:49478,64608,Vicente Gonzalez,Dem,170051,Eric Flores,OK,112667,80572,99.00%,2026-11-04T14:46:53.000Z,Vicente Gonzalez,Eric Flores,0,0
+House,TX-35,35,,Johnny Garcia,Carlos De La Cruz Jr.,Neither,44.7%,ap:48:49479,169753,Johnny Garcia,Dem,170052,Carlos De La Cruz,OK,139984,112574,97.20%,2026-11-04T14:46:53.000Z,Johnny Garcia,Carlos De La Cruz,0,0
+House,TX-36,36,,Rhonda Hart,Brian Babin,Republican,37.3%,ap:48:49480,160562,Rhonda Hart,Dem,41484,Brian Babin,OK,119489,137887,98.70%,2026-11-04T14:46:53.000Z,Rhonda Hart,Brian Babin,0,0
+House,TX-37,37,,Greg Casar,Lauren Peña,Democrat,78.8%,ap:48:49950,69909,Greg Casar,Dem,170246,Lauren Peña,OK,254957,49469,99.00%,2026-11-04T14:46:53.000Z,Greg Casar,Lauren Peña,0,0
+House,TX-38,38,,Melissa McDonough,Jon Bonck,Neither,39.4%,ap:48:49951,160805,Melissa McDonough,Dem,170064,Jon Bonck,OK,143784,156834,99.00%,2026-11-04T14:46:53.000Z,Melissa McDonough,Jon Bonck,0,0
+House,UT-01,1,,Ben McAdams,Riley Owen,Neither,62.1%,ap:49:45669,67074,Ben McAdams,Dem,174358,Riley Owen,OK,128961,44607,60.00%,2026-11-04T14:46:53.000Z,Ben McAdams,Riley Owen,0,0
+House,UT-02,2,,Peter Crosby,Blake Moore,Republican,35.1%,ap:49:45670,174361,Peter Crosby,Dem,68817,Blake Moore,OK,83211,95926,67.80%,2026-11-04T14:46:53.000Z,Peter Crosby,Blake Moore,0,0
+House,UT-03,3,,Kent Udell,Celeste Maloy,Republican,28.8%,ap:49:49642,174364,Kent Udell,Dem,71846,Celeste Maloy,OK,59899,97974,56.20%,2026-11-04T14:46:53.000Z,Kent Udell,Celeste Maloy,0,0
+House,UT-04,4,,Jonny Larsen,Mike Kennedy,Republican,33.3%,ap:49:49548,174366,Jonny Larsen,Dem,67064,Mike Kennedy,OK,69735,87002,56.50%,2026-11-04T14:46:53.000Z,Jonny Larsen,Mike Kennedy,0,0
+House,VA-01,1,,Shannon Taylor,Rob Wittman,Republican,47.5%,ap:51:47001,168785,Shannon Taylor,Dem,57798,Robert Wittman,OK,207827,198416,98.40%,2026-11-04T14:46:53.000Z,Shannon Taylor,Rob Wittman,0,0
+House,VA-02,2,,Elaine Luria,Jen Kiggans,Republican,49.9%,ap:51:47003,66930,Elaine Luria,Dem,70896,Jen Kiggans,OK,178696,150080,96.80%,2026-11-04T14:46:53.000Z,Elaine Luria,Jen Kiggans,0,0
+House,VA-03,3,,Bobby Scott,Edwin Rivera Jr.,Democrat,67.5%,ap:51:47005,1451,Bobby Scott,Dem,178102,Edwin Rivera,OK,179529,59999,98.00%,2026-11-04T14:46:53.000Z,Bobby Scott,Edwin Rivera,0,0
+House,VA-04,4,,Jennifer McClellan,Robert Murray Jr.,Democrat,66.6%,ap:51:47007,148452,Jennifer McClellan,Dem,178103,Robert Murray,OK,222936,81148,96.90%,2026-11-04T14:46:53.000Z,Jennifer McClellan,Robert Murray,0,0
+House,VA-05,5,,Tom Perriello,John McGuire III,Republican,43.8%,ap:51:47009,59015,Tom Perriello,Dem,148085,John McGuire,OK,176168,181221,97.00%,2026-11-04T14:46:53.000Z,Tom Perriello,John McGuire,0,0
+House,VA-06,6,,Beth Macy,Ben Cline,Republican,37.9%,ap:51:47011,178092,Beth Macy,Dem,45587,Ben Cline,OK,140202,175794,98.10%,2026-11-04T14:46:53.000Z,Beth Macy,Ben Cline,0,0
+House,VA-07,7,,Eugene Vindman,Doug Ollivant,Democrat,51.4%,ap:51:47013,163798,Eugene Vindman,Dem,174940,Doug Ollivant,OK,191361,121015,97.90%,2026-11-04T14:46:53.000Z,Eugene Vindman,Doug Ollivant,0,0
+House,VA-08,8,,Don Beyer,Tony Sabio,Democrat,75.4%,ap:51:47015,45543,Don Beyer,Dem,178104,Tony Sabio,OK,248016,56291,95.30%,2026-11-04T14:46:53.000Z,Donald Beyer,Tony Sabio,0,0
+House,VA-09,9,,Joy Powers,Morgan Griffith,Republican,27.8%,ap:51:47017,169028,Joy Powers,Dem,58574,H. Griffith,OK,99441,193790,98.00%,2026-11-04T14:46:53.000Z,Joy Powers,Morgan Griffith,0,0
+House,VA-10,10,,Suhas Subramanyam,Dave Beckwith,Democrat,54.3%,ap:51:47019,148507,Suhas Subramanyam,Dem,174943,Dave Beckwith,OK,201943,124125,96.90%,2026-11-04T14:46:53.000Z,Suhas Subramanyam,Dave Beckwith,0,0
+House,VA-11,11,,James Walkinshaw,Arthur Purves,Democrat,67.7%,ap:51:47021,169002,James Walkinshaw,Dem,178105,Arthur Purves,OK,234391,78657,91.20%,2026-11-04T14:46:53.000Z,James Walkinshaw,Arthur Purves,0,0
+House,VT-AL,AL,,Becca Balint,Gerald Malloy,Democrat,66.4%,ap:50:46374,71178,Becca Balint,Dem,71174,Gerald Malloy,OK,198668,94012,99.00%,2026-11-04T14:46:53.000Z,Becca Balint,Gerald Malloy,0,0
+House,WA-01,1,,Suzan DelBene,Mary Silva,Democrat,64.9%,ap:53:2,61012,Suzan DelBene,Dem,165711,Mary Silva,OK,128234,59950,56.70%,2026-11-04T14:46:53.000Z,Suzan DelBene,Mary Silva,0,0
+House,WA-02,2,,Rick Larsen,Edwin Feller,Democrat,62.2%,ap:53:48008,1468,Rick Larsen,Dem,176038,Edwin Feller,OK,159891,74732,64.10%,2026-11-04T14:46:53.000Z,Rick Larsen,Edwin Feller,0,0
+House,WA-03,3,,Marie Gluesenkamp Perez,John Braun,Democrat,48.3%,ap:53:48009,71012,Marie Gluesenkamp Perez,Dem,151238,John Braun,OK,143417,115271,66.70%,2026-11-04T14:46:53.000Z,Marie Gluesenkamp Perez,John Braun,0,0
+House,WA-04,4,,John Duresky,Amanda McKinney,Neither,39.4%,ap:53:48011,176056,John Duresky,Dem,176055,Amanda McKinney,OK,62569,74133,57.80%,2026-11-04T14:46:53.000Z,John Duresky,Amanda McKinney,0,0
+House,WA-05,5,,Carmela Conroy,Michael Baumgartner,Republican,44.4%,ap:53:48013,165728,Carmela Conroy,Dem,62292,Michael Baumgartner,OK,94806,96663,57.40%,2026-11-04T14:46:53.000Z,Carmela Conroy,Michael Baumgartner,0,0
+House,WA-06,6,,Emily Randall,Teresa Fox,Democrat,60.0%,ap:53:48015,152486,Emily Randall,Dem,176084,Teresa Fox,OK,153397,83371,69.50%,2026-11-04T14:46:53.000Z,Emily Randall,Teresa Fox,0,0
+House,WA-07,7,,Pramila Jayapal,Nirav Sheth,Democrat,88.7%,ap:53:48017,65298,Pramila Jayapal,Dem,165741,Nirav Sheth,OK,177700,24654,53.50%,2026-11-04T14:46:53.000Z,Pramila Jayapal,Nirav Sheth,0,0
+House,WA-08,8,,Kim Schrier,Spencer Meline,Democrat,53.0%,ap:53:48020,67243,Kim Schrier,Dem,176089,Spencer Meline,OK,125927,92610,60.30%,2026-11-04T14:46:53.000Z,Kim Schrier,Spencer Meline,0,0
+House,WA-09,9,,Adam Smith,Doug Basler,Democrat,71.3%,ap:53:4,1488,Adam Smith,Dem,64065,Doug Basler,OK,105825,34118,54.70%,2026-11-04T14:46:53.000Z,Adam Smith,Doug Basler,0,0
+House,WA-10,10,,Marilyn Strickland,Chris Chung,Democrat,59.3%,ap:53:49358,68952,Marilyn Strickland,Dem,165818,Chris Chung,OK,106481,57982,61.50%,2026-11-04T14:46:53.000Z,Marilyn Strickland,Chris Chung,0,0
+House,WI-01,1,,Mitchell Berman,Bryan Steil,Republican,47.7%,ap:55:50040,175180,Mitchell Berman,Dem,67339,Bryan Steil,OK,158839,146885,99.00%,2026-11-04T14:46:53.000Z,Mitchell Berman,Bryan Steil,0,0
+House,WI-03,3,,Rebecca Cooke,Derrick Van Orden,Republican,46.2%,ap:55:50048,164787,Rebecca Cooke,Dem,69183,Derrick Van Orden,OK,172757,150872,99.00%,2026-11-04T14:46:53.000Z,Rebecca Cooke,Derrick Van Orden,0,0
+House,WI-04,4,,Gwen Moore,Tim Rogers,Democrat,76.2%,ap:55:50052,48730,Gwen Moore,Dem,67353,Tim Rogers,OK,211898,46301,99.00%,2026-11-04T14:46:53.000Z,Gwen Moore,Tim Rogers,0,0
+House,WI-05,5,,Andy Beck,Scott Fitzgerald,Republican,38.8%,ap:55:50056,175224,Andy Beck,Dem,59140,Scott Fitzgerald,OK,153277,220990,99.00%,2026-11-04T14:46:53.000Z,Andrew Beck,Scott Fitzgerald,0,0
+House,WI-06,6,,Brad Smith,Glenn Grothman,Republican,41.6%,ap:55:50060,175226,Brad Smith,Dem,59087,Glenn Grothman,OK,141346,172138,97.80%,2026-11-04T14:46:53.000Z,Brad Smith,Glenn Grothman,0,0
+House,WI-07,7,,Fred Clark,Michael Alfonso,Neither,38.6%,ap:55:50064,153573,Fred Clark,Dem,175232,Michael Alfonso,OK,145694,186035,96.30%,2026-11-04T14:46:53.000Z,Fred Clark,Michael Alfonso,0,0
+House,WI-08,8,,Rick Crosson,Tony Wied,Republican,41.7%,ap:55:50068,175235,Rick Crosson,Dem,164795,Tony Wied,OK,151471,177258,99.00%,2026-11-04T14:46:53.000Z,Rick Crosson,Tony Wied,0,0
+House,WV-01,1,,Vince George,Carol Miller,Republican,27.4%,ap:54:49273,170763,Vince George,Dem,170765,Carol Miller,OK,82347,118735,95.60%,2026-11-04T14:46:53.000Z,Vince George,Carol Miller,0,0
+House,WV-02,2,,Ace Parsi,Riley Moore,Republican,29.8%,ap:54:49274,170766,Ace Parsi,Dem,155080,Riley Moore,OK,98235,143757,91.70%,2026-11-04T14:46:53.000Z,Ace Parsi,Riley Moore,0,0
+House,WY-AL,AL,,Lisa Kinney,Chuck Gray,Neither,26.5%,ap:56:51401,175352,Lisa Kinney,Dem,154187,Chuck Gray,OK,61687,99891,96.60%,2026-11-04T14:46:53.000Z,Lisa Kinney,Chuck Gray,0,0

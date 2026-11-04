@@ -173,43 +173,44 @@ The Bench,House,PA-07,Bob Brooks,1,
 The Bench,House,SC-01,Nancy Lacore,1,
 The Bench,House,TX-15,Bobby Pulido,1,
 The Bench,House,TX-35,Johnny Garcia,1,
-VoteVets,Governor,MD,Wes Moore,1,
-VoteVets,Senate,AK,Mary Peltola,1,
-VoteVets,Senate,IA,Josh Turek,1,
-VoteVets,Senate,MT,Seth Bodnar,1,
-VoteVets,Senate,RI,Jack Reed,1,Jack Reed
-VoteVets,House,AZ-06,JoAnna Mendoza,1,
-VoteVets,House,CA-19,Jimmy Panetta,1,
-VoteVets,House,CA-24,Salud Carbajal,1,
-VoteVets,House,CA-31,Gil Cisneros,1,
-VoteVets,House,CA-36,Ted Lieu,1,
-VoteVets,House,CA-45,Derek Tran,1,
-VoteVets,House,CO-03,Dwayne Romero,1,
-VoteVets,House,CO-04,Eileen Laubacher,1,
-VoteVets,House,CO-05,Jessica Killin,1,
-VoteVets,House,CO-06,Jason Crow,1,
-VoteVets,House,CT-01,Luke Bronin,1,
-VoteVets,House,FL-07,Bale Dalton,1,
-VoteVets,House,FL-13,Leela Gray,1,
-VoteVets,House,GA-14,Shawn Harris,1,
-VoteVets,House,KY-06,Zach Dembo,1,
-VoteVets,House,MA-04,Jake Auchincloss,1,
-VoteVets,House,MI-01,Callie Barr,1,
-VoteVets,House,MO-02,Fred Wellman,1,
-VoteVets,House,NC-01,Don Davis,1,
-VoteVets,House,NC-03,Raymond Smith,1,Raymond Smith
-VoteVets,House,NH-02,Maggie Goodlander,1,
-VoteVets,House,NJ-03,Herb Conaway,1,
-VoteVets,House,NJ-07,Rebecca Bennett,1,
-VoteVets,House,NY-01,Chris Gallant,1,
-VoteVets,House,NY-17,Cait Conley,1,
-VoteVets,House,NY-18,Pat Ryan,1,
-VoteVets,House,OH-10,Kristina Knickerbocker,1,
-VoteVets,House,PA-06,Chrissy Houlahan,1,
-VoteVets,House,PA-17,Chris Deluzio,1,
-VoteVets,House,SC-01,Nancy Lacore,1,
-VoteVets,House,VA-02,Elaine Luria,1,
-VoteVets,House,VA-07,Eugene Vindman,1,
+VoteVets/Veteran,Governor,MD,Wes Moore,1,
+VoteVets/Veteran,Senate,AK,Mary Peltola,1,
+VoteVets/Veteran,Senate,IA,Josh Turek,1,
+VoteVets/Veteran,Senate,MT,Seth Bodnar,1,
+VoteVets/Veteran,Senate,RI,Jack Reed,1,Jack Reed
+VoteVets/Veteran,House,AZ-06,JoAnna Mendoza,1,
+VoteVets/Veteran,House,CA-19,Jimmy Panetta,1,
+VoteVets/Veteran,House,CA-24,Salud Carbajal,1,
+VoteVets/Veteran,House,CA-31,Gil Cisneros,1,
+VoteVets/Veteran,House,CA-36,Ted Lieu,1,
+VoteVets/Veteran,House,CA-45,Derek Tran,1,
+VoteVets/Veteran,House,CO-03,Dwayne Romero,1,
+VoteVets/Veteran,House,CO-04,Eileen Laubacher,1,
+VoteVets/Veteran,House,CO-05,Jessica Killin,1,
+VoteVets/Veteran,House,CO-06,Jason Crow,1,
+VoteVets/Veteran,House,CT-01,Luke Bronin,1,
+VoteVets/Veteran,House,FL-07,Bale Dalton,1,
+VoteVets/Veteran,House,FL-13,Leela Gray,1,
+VoteVets/Veteran,House,GA-14,Shawn Harris,1,
+VoteVets/Veteran,House,KY-06,Zach Dembo,1,
+VoteVets/Veteran,House,MA-04,Jake Auchincloss,1,
+VoteVets/Veteran,House,MI-01,Callie Barr,1,
+VoteVets/Veteran,House,MO-02,Fred Wellman,1,
+VoteVets/Veteran,House,NC-01,Don Davis,1,
+VoteVets/Veteran,House,NC-03,Raymond Smith,1,Raymond Smith
+VoteVets/Veteran,House,NC-09,Richard Ojeda,1,
+VoteVets/Veteran,House,NH-02,Maggie Goodlander,1,
+VoteVets/Veteran,House,NJ-03,Herb Conaway,1,
+VoteVets/Veteran,House,NJ-07,Rebecca Bennett,1,
+VoteVets/Veteran,House,NY-01,Chris Gallant,1,
+VoteVets/Veteran,House,NY-17,Cait Conley,1,
+VoteVets/Veteran,House,NY-18,Pat Ryan,1,
+VoteVets/Veteran,House,OH-10,Kristina Knickerbocker,1,
+VoteVets/Veteran,House,PA-06,Chrissy Houlahan,1,
+VoteVets/Veteran,House,PA-17,Chris Deluzio,1,
+VoteVets/Veteran,House,SC-01,Nancy Lacore,1,
+VoteVets/Veteran,House,VA-02,Elaine Luria,1,
+VoteVets/Veteran,House,VA-07,Eugene Vindman,1,
 WelcomePAC,House,CA-13,Adam Gray,1,
 WelcomePAC,House,FL-07,Bale Dalton,1,
 WelcomePAC,House,FL-22,Pia Dandiya,1,
@@ -233,3 +234,20 @@ Progressive Primary Upsets,House,MI-13,Donavan McKinney,1,
 Progressive Primary Upsets,Senate,MI,Abdul El-Sayed,1,
 Progressive Primary Upsets,Senate,MN,Peggy Flanagan,1,
 Progressive Primary Upsets,Senate,FL,Angie Nixon,1,
+Blue-collar job/Farmer,House,PA-07,Bob Brooks,1,Firefighter (~20 yrs Bethlehem FD); runs lawn-care/snow-removal business
+Blue-collar job/Farmer,House,NC-11,Jamie Ager,1,Farmer (Hickory Nut Gap Farm)
+Blue-collar job/Farmer,House,MT-01,Sam Forstag,1,Smokejumper / wildland firefighter
+Blue-collar job/Farmer,House,OH-07,Brian Poindexter,1,Union ironworker (Ironworkers Local 17)
+Blue-collar job/Farmer,House,MI-09,Ray Pooley,1,CNC machinist
+Blue-collar job/Farmer,House,MO-08,Chris Reichard,1,Union electrician / communications technician (IBEW Local 1)
+Blue-collar job/Farmer,House,OK-02,Brandon Wade,1,Oil and gas worker (~23 yrs; IUOE Local 351)
+Blue-collar job/Farmer,House,KS-02,Don Coover,1,Rancher
+Blue-collar job/Farmer,House,WI-03,Rebecca Cooke,1,Waitress (still waits tables)
+Blue-collar job/Farmer,Senate,LA,Jamie Davis,1,Crop farmer
+Blue-collar job/Farmer,Senate,NE,Dan Osborn,1,"steamfitter at Grunwald Mechanical,"
+Blue-collar job/Farmer,House,AK-AL,Bill Hill,1,owns and operates his own commercial fishing boat in Bristol Bay
+Blue-collar job/Farmer,House,NY-21,Blake Gendebien,1,Dairy farm
+Blue-collar job/Farmer,House,GA-14,Shawn Harris,1,"After military service, cattle farm"
+Blue-collar job/Farmer,House,MS-03,Michael Chiaradio,1,"""farmer and entrepreneur who raises sheep, pigs, and cows in Shubuta, Mississippi"" ... though he's in a suit and tie "
+Blue-collar job/Farmer,House,WI-07,Fred Clark,1,Forester
+Blue-collar job/Farmer,Senate,AR,Hallie Shoffner,1,Farmer -- had to shut down farm bc of prices

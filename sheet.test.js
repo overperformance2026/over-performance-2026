@@ -249,16 +249,17 @@ test("fetchSheetText: non-200, 401/HTML pages and timeouts throw", async () => {
 
 const committed = (year, f) => readFileSync(new URL(`./data/${year}/${f}`, import.meta.url), "utf8");
 
-test("the committed 2026 copy parses to 482 clean races", () => {
+test("the committed 2026 copy parses to 481 clean races (AK-Gov is out until the final RCV count)", () => {
   const { races, warnings } = parseBundle(committed(2026, "sheet.csv"), committed(2026, "categories.csv"));
-  assert.equal(races.length, 482);
+  assert.equal(races.length, 481);
   assert.deepEqual(warnings.filter((w) => !/Pressley/.test(w)), [], "no warnings (the skipped Pressley row has check 0 and makes none)");
   assert.ok(races.every((r) => r.problem === undefined));
-  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 194, open: 103 });
+  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 194, open: 102 });
   assert.equal(races.filter((r) => r.attrs.includes("The Squad")).length, 6);
   assert.ok(races.some((r) => r.label === "AK-AL" && r.office === "house"), "at-large AL kept");
   assert.equal(races.filter((r) => r.office === "senate").length, 35);
-  assert.equal(races.filter((r) => r.office === "governor").length, 36);
+  assert.equal(races.filter((r) => r.office === "governor").length, 35);
+  assert.ok(!races.some((r) => r.office === "governor" && r.label === "AK"));
   assert.equal(races.filter((r) => r.office === "house").length, 411);
   // (commit afdcc10 also compared the first 481 races field by field with the old pipeline's races.json: identical)
 });
