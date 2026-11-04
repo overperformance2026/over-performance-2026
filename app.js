@@ -19,7 +19,7 @@ const CONFIG = {
 };
 // Minimum share of expected vote counted for a race to show (and to count in the average).
 const REPORTING_OPTIONS = [[0, "≥0%"], [0.1, "≥10%"], [0.5, "≥50%"], [0.75, "≥75%"], [0.9, "≥90%"], [0.95, "≥95%"]];
-// The page picks its default: <body data-default-reporting="0.1"> starts at ≥10% (2026); omitted = ≥50%.
+// The page picks its default: <body data-default-reporting="0.75"> starts at ≥75% (2026); omitted = ≥50%.
 const DEFAULT_REPORTING = Number(document.body.dataset.defaultReporting ?? 0.5);
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
 
@@ -252,7 +252,8 @@ async function main() {
   const incInfo = document.getElementById("incumbency-info");
   // The box is on whenever there is enough data, unless the user switched it off. Their choice is
   // remembered, so it survives the box being forced off (and greyed out) for a while.
-  let wantsIncumbency = true;
+  // A page can start with it off: <body data-default-incumbency="off"> (2026); omitted = on.
+  let wantsIncumbency = document.body.dataset.defaultIncumbency !== "off";
   const renderIncumbency = (effect) => {
     incBox.checked = effect.enabled && wantsIncumbency; // too few races: raw over/under, box greyed out
     incBox.disabled = !effect.enabled;
