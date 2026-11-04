@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { mergeVotes, politicoLayer, buildRows, backupIndex, backupLayers, PRIORITY } from "./merge.js";
+import { mergeVotes, politicoLayer, buildRows, backupIndex, backupLayers, keepBestBackups, PRIORITY } from "./merge.js";
 import { parseBundle } from "./sheet.js";
 import { incumbencyEffect, averageOverUnder } from "./compute.js";
 
@@ -131,6 +131,30 @@ test("backupLayers: the committed backups stand in only until the published Shee
   const cleared = backupLayers(committed, { races: [race({ backup: null })] });
   assert.equal(buildRows({ races: [race()], ...cleared })[0].votesSource, null);
   assert.equal(backupLayers(null, null).committed.size, 0);
+});
+
+test("keepBestBackups: a blank or older snapshot of the published Sheet never takes votes away", () => {
+  const B = (d, r, pct = 0.5) => ({ demVotes: d, repVotes: r, pct, asOf: 1 });
+  const read = (...bs) => ({ races: bs.map((b, i) => ({ contestId: `c${i}`, backup: b })), warnings: [] });
+  const best = new Map();
+  const good = keepBestBackups(read(B(10, 5), B(20, 20), null), best);
+  assert.deepEqual(good.races.map((r) => r.backup && r.backup.demVotes), [10, 20, null]);
+  // a snapshot caught mid-update: every vote cell blank / zero
+  const blank = keepBestBackups(read(B(0, 0, 0), null, B(0, 0, 0)), best);
+  assert.deepEqual(blank.races.map((r) => r.backup && r.backup.demVotes), [10, 20, 0], "earlier good votes kept; a race never seen stays as read");
+  // an older snapshot: fewer votes for one race, more for another
+  const mixed = keepBestBackups(read(B(8, 5), B(30, 25), B(4, 4)), best);
+  assert.deepEqual(mixed.races.map((r) => r.backup.demVotes), [10, 30, 4], "per race, the larger total wins");
+  assert.equal(best.get("c1").demVotes, 30, "and is remembered");
+  // the input is untouched; other fields pass through; problem races and blank IDs are left alone
+  const input = { races: [{ contestId: "c0", backup: B(1, 1), label: "X" }, { contestId: "", backup: B(1, 1) }, { contestId: "p", problem: "bad", backup: null }], warnings: ["w"] };
+  const out = keepBestBackups(input, best);
+  assert.equal(out.races[0].backup.demVotes, 10);
+  assert.equal(out.races[0].label, "X");
+  assert.equal(input.races[0].backup.demVotes, 1, "not mutated");
+  assert.deepEqual(out.warnings, ["w"]);
+  assert.equal(out.races[1].backup.demVotes, 1);
+  assert.equal(best.has(""), false);
 });
 
 // ---- real 2024 data ----------------------------------------------------------------------------------

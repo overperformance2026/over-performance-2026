@@ -2,7 +2,7 @@ import { attributeNames, averageOverUnder, applyFilters, incumbencyEffect, apply
 import { createPoller, makeFetchOffice } from "./poller.js";
 import { createRefresher } from "./refresher.js";
 import { parseSheet, parseCategories, applyCategories, fetchSheetText } from "./sheet.js";
-import { buildRows, backupLayers } from "./merge.js";
+import { buildRows, backupLayers, keepBestBackups } from "./merge.js";
 import { assertDataDir, summarizeSources, liveIsStale, describeSource } from "./status.js";
 
 // One code path for every year. Each page says what it shows, e.g.
@@ -144,7 +144,7 @@ async function main() {
   const state = {
     committed: null, committedCats: null,
     live: null, liveCats: null,
-    liveFailure: null, sheetTried: false,
+    liveFailure: null, sheetTried: false, bestBackups: new Map(),
     politico: {}, lastSuccess: Object.fromEntries(OFFICES.map(([o]) => [o, null])),
     rateLimited: false, warnings: [],
   };
@@ -162,12 +162,12 @@ async function main() {
     if (!CONFIG.sheetUrl) return;
     const failures = [];
     const [sheet, cats] = await Promise.allSettled([
-      fetchSheetText(CONFIG.sheetUrl),
-      CONFIG.categoriesUrl ? fetchSheetText(CONFIG.categoriesUrl) : Promise.resolve(null),
+      fetchSheetText(CONFIG.sheetUrl, { cache: "reload" }), // never the browser's 5-minute-old copy
+      CONFIG.categoriesUrl ? fetchSheetText(CONFIG.categoriesUrl, { cache: "reload" }) : Promise.resolve(null),
     ]);
     if (sheet.status === "fulfilled") {
       try {
-        state.live = parseSheet(sheet.value);
+        state.live = keepBestBackups(parseSheet(sheet.value), state.bestBackups); // see merge.js: the published copies can disagree
       } catch (e) {
         failures.push(`race list: ${e.message}`);
       }
@@ -308,9 +308,15 @@ async function main() {
   }
 
   // ---- the published Sheet: read now, then every 5 minutes -----------------------------------
+  // A read with no votes at all may be a blank snapshot (see keepBestBackups): look again every 30 s, for
+  // up to five minutes, rather than show nothing until the next 5-minute read. (Before the polls close
+  // it is simply true, and costs ten extra reads per viewer.)
+  let blankRetries = 0;
+  const hasVotes = () => state.live?.races.some((r) => r.backup && r.backup.demVotes + r.backup.repVotes > 0) ?? false;
   const reloadSheet = async () => {
     await readLive();
     refresh();
+    if (CONFIG.sheetUrl && !hasVotes() && blankRetries++ < 10) setTimeout(reloadSheet, 30_000);
   };
   reloadSheet();
   createRefresher({

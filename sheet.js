@@ -260,8 +260,11 @@ export function parseBundle(sheetText, categoriesText) {
 /**
  * GET a published-Sheet CSV. 5 s timeout, no query changes, throws on a non-200 or on an HTML
  * body (a sign-in page or an error page is not a sheet). Returns the CSV text.
+ * `cache: "reload"` skips the BROWSER's copy (Google sends max-age=300, so a blank snapshot read once
+ * would otherwise be served again for five minutes); the URL itself is never changed.
  */
 export async function fetchSheetText(url, {
+  cache = undefined,
   fetchImpl = (...a) => fetch(...a),
   timeoutMs = SHEET_TIMEOUT_MS,
   setTimer = (fn, ms) => setTimeout(fn, ms),
@@ -270,7 +273,7 @@ export async function fetchSheetText(url, {
   const ctl = new AbortController();
   const timer = setTimer(() => ctl.abort(), timeoutMs);
   try {
-    const res = await fetchImpl(url, { signal: ctl.signal });
+    const res = await fetchImpl(url, cache ? { signal: ctl.signal, cache } : { signal: ctl.signal });
     if (!res.ok) throw new SheetError(`HTTP ${res.status}`);
     const type = res.headers?.get?.("content-type") ?? "";
     const text = await res.text();

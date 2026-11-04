@@ -94,6 +94,26 @@ export function buildRows({ races, committed = new Map(), sheet = new Map(), pol
 export const backupIndex = (races) => new Map(races.filter((r) => r.backup).map((r) => [r.contestId, r.backup]));
 
 /**
+ * Google's published CSV is served from several copies that can be out of step: one read may be an
+ * older snapshot, or caught mid-update with every vote cell blank. Counted votes only grow, so keep
+ * the highest-total backup seen for each race this session and let a read that is behind or blank
+ * not take it away. `best` (contest ID -> backup) is updated in place; returns the parsed Sheet
+ * with each race's backup replaced where the new read was behind.
+ * (A typo in the Sheet is therefore not undone by the page's own 5-minute re-read: reload the page.)
+ */
+export function keepBestBackups(parsed, best) {
+  const total = (b) => (b ? b.demVotes + b.repVotes : -1);
+  const races = parsed.races.map((r) => {
+    if (!r.contestId || r.problem) return r;
+    const prev = best.get(r.contestId);
+    if (total(prev) > total(r.backup)) return { ...r, backup: prev };
+    if (r.backup) best.set(r.contestId, r.backup);
+    return r;
+  });
+  return { ...parsed, races };
+}
+
+/**
  * The backup layers for buildRows. The committed copy is only a STAND-IN for the published Sheet: once
  * the Sheet has loaded it replaces the committed backups entirely, so a typo that was committed can be
  * undone by clearing it in the Sheet (otherwise its higher total would keep winning). Before the Sheet

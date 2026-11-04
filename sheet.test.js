@@ -222,6 +222,15 @@ test("fetchSheetText: returns the CSV; sends no cache-busting query and a 5 s ab
   assert.deepEqual(seen, ["https://x/pub?gid=0&single=true&output=csv", ["signal"]]);
 });
 
+test("fetchSheetText: cache 'reload' skips the browser's copy without touching the URL", async () => {
+  let seen;
+  await fetchSheetText("https://x/pub?gid=0&single=true&output=csv", {
+    cache: "reload",
+    fetchImpl: async (url, opts) => ((seen = [url, opts.cache]), res("a,b\n1,2")),
+  });
+  assert.deepEqual(seen, ["https://x/pub?gid=0&single=true&output=csv", "reload"]);
+});
+
 test("fetchSheetText: non-200, 401/HTML pages and timeouts throw", async () => {
   await assert.rejects(fetchSheetText("u", { fetchImpl: async () => res("nope", { status: 500 }) }), /HTTP 500/);
   await assert.rejects(fetchSheetText("u", { fetchImpl: async () => res("x", { status: 401 }) }), /HTTP 401/);
