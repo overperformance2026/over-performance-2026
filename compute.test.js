@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting, applyFilters, incumbencyEffect, applyIncumbency, MIN_GROUP } from "./compute.js";
+import { computeRows, filterRows, attributeNames, averageOverUnder, filterByReporting, applyFilters, incumbencyEffect, applyIncumbency, marginView, MIN_GROUP } from "./compute.js";
 
 // ---- synthetic fixtures -------------------------------------------------
 
@@ -207,6 +207,24 @@ test("incumbencyEffect: boosts are group means minus the open-seat mean (slope f
   assert.deepEqual(e.n, { dem: 5, rep: 5, open: 5 });
   near(e.dem, 0.02);
   near(e.rep, -0.03);
+});
+
+test("marginView: the page's fields carry the margin numbers, so everything downstream works on margins", () => {
+  const rows = [
+    { dem2p: 0.6, harris2p: 0.5, overUnder: 0.1, rawOverUnder: 0.1, demMargin: 0.2, harrisMargin: -0.05, rawMarginOverUnder: 0.25, incumbent: "dem", incumbencyBoost: 0.02, pctReporting: 0.9 },
+    { dem2p: 0.6, harris2p: 0.5, overUnder: 0.1, rawOverUnder: 0.1, demMargin: null, harrisMargin: -0.05, rawMarginOverUnder: null, incumbent: "rep", incumbencyBoost: null, pctReporting: 0.9 },
+  ];
+  const v = marginView(rows);
+  assert.deepEqual([v[0].dem2p, v[0].harris2p, v[0].overUnder, v[0].rawOverUnder, v[0].incumbencyBoost], [0.2, -0.05, 0.25, 0.25, null]);
+  assert.deepEqual([v[1].dem2p, v[1].harris2p, v[1].overUnder, v[1].rawOverUnder], [null, -0.05, null, null], "no margin: null, not the 2-party number");
+  assert.equal(rows[0].dem2p, 0.6, "the input rows are untouched");
+  assert.equal(v[0].incumbent, "dem", "other fields pass through");
+  // the incumbency effect and the average run on the margin numbers
+  const sample = SAMPLE.map((r, i) => ({ ...r, rawMarginOverUnder: r.rawOverUnder * 2, demMargin: 0.1, harrisMargin: 0.1 - r.rawOverUnder * 2 }));
+  const e = incumbencyEffect(marginView(sample), 0);
+  near(e.dem, 0.04);
+  near(e.rep, -0.06);
+  near(averageOverUnder(marginView(sample)).mean, sample.reduce((a, r) => a + r.rawMarginOverUnder, 0) / sample.length);
 });
 
 test("incumbencyEffect: disabled below MIN_GROUP in any one group, with the counts to show", () => {

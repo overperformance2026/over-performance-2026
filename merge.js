@@ -14,8 +14,8 @@ export const PRIORITY = ["politico", "sheet", "committed"]; // tie-break order
 
 /**
  * @param {{committed?: object|null, sheet?: object|null, politico?: object|null}} layers
- *   each layer: {demVotes, repVotes, pct, asOf} or null/undefined
- * @returns {{demVotes: number, repVotes: number, pct: number|null, asOf: number|null, source: string}|null}
+ *   each layer: {demVotes, repVotes, pct, asOf, totVotes?} or null/undefined
+ * @returns {{demVotes: number, repVotes: number, pct: number|null, asOf: number|null, totVotes: number|null, source: string}|null}
  *   null when no layer has votes (a layer with no votes at all does not count).
  */
 export function mergeVotes(layers) {
@@ -29,7 +29,11 @@ export function mergeVotes(layers) {
   }
   if (best === null) return null;
   const { l, source } = best;
-  return { demVotes: l.demVotes, repVotes: l.repVotes, pct: isNum(l.pct) ? l.pct : null, asOf: isNum(l.asOf) ? l.asOf : null, source };
+  // totVotes (every candidate's votes) comes from the same layer as the Dem and Rep votes, for the margin view
+  return {
+    demVotes: l.demVotes, repVotes: l.repVotes, pct: isNum(l.pct) ? l.pct : null, asOf: isNum(l.asOf) ? l.asOf : null,
+    totVotes: isNum(l.totVotes) && l.totVotes >= l.demVotes + l.repVotes ? l.totVotes : null, source,
+  };
 }
 
 /** One race's Politico layer from an office payload {summaries, asOf}, or null. */
@@ -40,7 +44,9 @@ export function politicoLayer(race, payload, index = indexPayload(payload)) {
   const demVotes = votes(race.demId);
   const repVotes = votes(race.repId);
   if (!isNum(demVotes) || !isNum(repVotes)) return null;
-  return { demVotes, repVotes, pct: isNum(c.progress?.pct) ? c.progress.pct : null, asOf: payload.asOf ?? null };
+  // every candidate listed counts toward the total (third parties, write-ins)
+  const totVotes = c.results.reduce((sum, r) => sum + (isNum(r?.votes) ? r.votes : 0), 0);
+  return { demVotes, repVotes, totVotes, pct: isNum(c.progress?.pct) ? c.progress.pct : null, asOf: payload.asOf ?? null };
 }
 
 function indexPayload(payload) {
@@ -87,7 +93,17 @@ export function buildRows({ races, committed = new Map(), sheet = new Map(), pol
     if (m) contests.push({ id: r.contestId, results: [{ id: r.demId, votes: m.demVotes }, { id: r.repId, votes: m.repVotes }], progress: { pct: m.pct } });
   });
   const rows = computeRows({ metadata, summaries: { contests }, races });
-  return rows.map((row, i) => ({ ...row, votesSource: merged[i]?.source ?? null, votesAsOf: merged[i]?.asOf ?? null }));
+  return rows.map((row, i) => {
+    // The margin view: (Dem - Rep) / all votes, against Harris's margin from the Sheet. Null unless both are known.
+    const tot = merged[i]?.totVotes ?? null;
+    const harrisMargin = isNum(races[i].harrisMargin) ? races[i].harrisMargin : null;
+    const demMargin = tot > 0 && isNum(row.demVotes) && isNum(row.repVotes) ? (row.demVotes - row.repVotes) / tot : null;
+    return {
+      ...row, votesSource: merged[i]?.source ?? null, votesAsOf: merged[i]?.asOf ?? null,
+      totVotes: tot, demMargin, harrisMargin,
+      rawMarginOverUnder: demMargin !== null && harrisMargin !== null ? demMargin - harrisMargin : null,
+    };
+  });
 }
 
 /** Index a parsed race list's backups by contest ID, for buildRows. */

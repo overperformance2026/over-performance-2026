@@ -24,7 +24,7 @@ td.neg { color: var(--neg); font-weight: 600; }
   th, td { padding: 6px 4px; white-space: normal; font-size: 0.85rem; }
   th { font-size: 0.75rem; }
 }
-#filter-box, #reporting-box { display: inline-block; margin: 10px 16px 0 0; font-size: 0.9rem; }
+#filter-box, #reporting-box, #metric-box { display: inline-block; margin: 10px 16px 0 0; font-size: 0.9rem; }
 #filter-box[hidden] { display: none; }
 #year-link { display: inline-block; margin-top: 10px; font-size: 0.9rem; }
 /* 16px: iOS Safari zooms the page when a smaller select is focused. */

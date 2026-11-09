@@ -1,4 +1,4 @@
-import { attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency } from "./compute.js";
+import { attributeNames, averageOverUnder, applyFilters, incumbencyEffect, applyIncumbency, marginView } from "./compute.js";
 import { createPoller, makeFetchOffice } from "./poller.js";
 import { createRefresher } from "./refresher.js";
 import { parseSheet, parseCategories, applyCategories, fetchSheetText } from "./sheet.js";
@@ -23,17 +23,28 @@ const REPORTING_OPTIONS = [[0, "≥0%"], [0.1, "≥10%"], [0.5, "≥50%"], [0.75
 const DEFAULT_REPORTING = Number(document.body.dataset.defaultReporting ?? 0.5);
 const OFFICES = [["senate", "Senate"], ["governor", "Governor"], ["house", "House"]];
 
+// "2p": Dem share of the two-party vote vs Harris's; "margin": (Dem - Rep) / all votes vs Harris's. In margin mode
+// the rows are swapped for marginView(rows), so the same two columns show the margin numbers (signed points).
+let metric = "2p";
+const margin = () => metric === "margin";
+
 const COLUMNS = [
   { key: "label", title: "State / district", text: (r) => r.label },
   { key: "dem", title: "Dem (or anti-Rep Indep.)", text: (r) => r.dem.name ?? "—" },
   { key: "overUnder", title: "Over/under", num: true, text: (r) => signed(r.overUnder), cls: (r) => sign(r.overUnder) },
   { key: "rep", title: "Republican", hideSm: true, text: (r) => r.rep.name ?? "—" },
-  { key: "dem2p", title: "Dem 2-p %", num: true, text: (r) => pct(r.dem2p) },
-  { key: "harris2p", title: "Harris 2-p %", num: true, hideSm: true, text: (r) => pct(r.harris2p) },
+  { key: "dem2p", title: () => (margin() ? "Dem margin" : "Dem 2-p %"), num: true, text: (r) => (margin() ? signed(r.dem2p) : pct(r.dem2p)) },
+  { key: "harris2p", title: () => (margin() ? "Harris margin" : "Harris 2-p %"), num: true, hideSm: true, text: (r) => (margin() ? signed(r.harris2p) : pct(r.harris2p)) },
   // Shown only while the incumbency box is checked (CSS: main.show-incumbency .inc-col).
   { key: "incumbencyBoost", title: "Incumb. eff.", num: true, optional: true, text: (r) => (hasBoost(r) ? signed(r.incumbencyBoost) : "—") },
   { key: "pctReporting", title: "% reporting", num: true, reportingCol: true, text: (r) => pct(r.pctReporting, 0) },
 ];
+
+const titleOf = (col) => (typeof col.title === "function" ? col.title() : col.title);
+/** Column headers follow the metric: re-title every header cell on the page. */
+const retitle = () => {
+  for (const th of document.querySelectorAll("th[data-key]")) th.textContent = titleOf(COLUMNS.find((c) => c.key === th.dataset.key));
+};
 
 const pct = (x, digits = 1) => (x === null || x === undefined ? "—" : `${(x * 100).toFixed(digits)}%`);
 const signed = (x) => (x === null ? "—" : `${x >= 0 ? "+" : "−"}${Math.abs(x * 100).toFixed(1)}`);
@@ -82,7 +93,7 @@ function renderTable(initialRows) {
 
   for (const col of COLUMNS) {
     const th = document.createElement("th");
-    th.textContent = col.title;
+    th.textContent = titleOf(col);
     th.dataset.key = col.key;
     th.className = [col.num ? "num" : "", col.hideSm ? "hide-sm" : "", col.optional ? "inc-col" : "", col.reportingCol ? "reporting-col" : ""].join(" ").trim();
     th.addEventListener("click", () => {
@@ -214,6 +225,7 @@ async function main() {
   reporting.value = String(DEFAULT_REPORTING);
   if (reporting.selectedIndex < 0) reporting.value = "0.5"; // an unknown data-default-reporting falls back to ≥50%
   const challengersBox = document.getElementById("challengers");
+  const metricSelect = document.getElementById("metric");
   const warnEl = document.getElementById("load-warn");
 
   // The category drop-down follows the Sheet: rebuilt when a re-read changes the category names.
@@ -267,12 +279,15 @@ async function main() {
   const apply = () => {
     const attr = select.value;
     const min = Number(reporting.value);
-    const effect = incumbencyEffect(allRows(), min);
+    metric = metricSelect.value === "margin" ? "margin" : "2p";
+    retitle();
+    const view = (rows) => (margin() ? marginView(rows) : rows); // the metric the page is showing
+    const effect = incumbencyEffect(view(allRows()), min);
     renderIncumbency(effect);
     // "Dem challengers only" drops Dem incumbents from the tables and from the average (and its "X of Y").
     // The incumbency effect above still comes from all races, so it does not depend on this box.
     const adjust = (rows) => {
-      const adjusted = applyIncumbency(rows, incBox.checked ? effect : null);
+      const adjusted = applyIncumbency(view(rows), incBox.checked ? effect : null);
       return challengersBox.checked ? adjusted.filter((r) => r.incumbent !== "dem") : adjusted;
     };
     for (const s of sections) {
@@ -302,6 +317,7 @@ async function main() {
   });
   select.addEventListener("change", apply);
   challengersBox.addEventListener("change", apply);
+  metricSelect.addEventListener("change", apply);
 
   refresh(); // first paint from the committed copy (and any warnings)
   if (!state.committed && !state.live) {

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
-  parseCsv, csvTable, parseVotes, parsePct, parseTime, parseHarris, parseSheet, parseCategories,
+  parseCsv, csvTable, parseVotes, parsePct, parseTime, parseHarris, parseMargin, parseSheet, parseCategories,
   applyCategories, parseBundle, fetchSheetText, SheetError, SHEET_TIMEOUT_MS,
 } from "./sheet.js";
 
@@ -84,9 +84,38 @@ test("parseSheet: a good row, with the backup cells read", () => {
   const r = races[0];
   assert.deepEqual([r.contestId, r.office, r.label, r.harris2p, r.demId, r.repId, r.demName, r.repName, r.incumbent],
     ["c1", "senate", "AZ", 0.472, "1", "2", "Dana Dem", "Rex Rep", "open"]);
-  assert.deepEqual(r.backup, { demVotes: 1000, repVotes: 900, pct: 0.85, asOf: Date.UTC(2026, 10, 3, 21), asOfText: "2026-11-03T21:00:00Z" });
+  assert.deepEqual(r.backup, { demVotes: 1000, repVotes: 900, pct: 0.85, asOf: Date.UTC(2026, 10, 3, 21), asOfText: "2026-11-03T21:00:00Z", totVotes: null });
   assert.equal(r.problem, undefined);
   assert.deepEqual(r.attrs, []);
+});
+
+test("parseMargin: a fraction or a percent, between -1 and 1; anything else is null", () => {
+  assert.equal(parseMargin("-0.3053467532"), -0.3053467532);
+  assert.equal(parseMargin("-30.5%"), -0.305);
+  assert.equal(parseMargin("0.12"), 0.12);
+  assert.equal(parseMargin("0"), 0);
+  assert.equal(parseMargin("12%"), 0.12);
+  for (const bad of ["", "n/a", "1.5", "-1.01", "150%", null, undefined]) assert.equal(parseMargin(bad), null, String(bad));
+});
+
+test("parseSheet: reads Harris_2024_margin and backup_tot_votes; a total below Dem + Rep is dropped with ONE warning", () => {
+  const withMargin = (o, margin, total) => row({ ...o }) + `,${margin},${total}`;
+  const text = HEAD + ",Harris_2024_margin,backup_tot_votes\n" + [
+    withMargin({ "State/District": "A1", "AP contest ID": "c1", backup_votes_dem: "1,000", backup_votes_rep: "900", backup_pct_reporting: "90%" }, "-0.05", '"2,000"'), // commas are fine inside quotes
+    withMargin({ "State/District": "A2", "AP contest ID": "c2", backup_votes_dem: "1000", backup_votes_rep: "900", backup_pct_reporting: "90%" }, "-30.5%", "1500"),
+    withMargin({ "State/District": "A3", "AP contest ID": "c3", backup_votes_dem: "1000", backup_votes_rep: "900", backup_pct_reporting: "90%" }, "", "1500"),
+    withMargin({ "State/District": "A4", "AP contest ID": "c4", backup_votes_dem: "1000", backup_votes_rep: "900" }, "wat", ""),
+  ].join("\n");
+  const { races, warnings } = parseSheet(text);
+  assert.deepEqual(races.map((r) => r.harrisMargin), [-0.05, -0.305, null, null]);
+  assert.deepEqual(races.map((r) => r.backup.totVotes), [2000, null, null, null], "1500 < 1000 + 900 is not a possible total");
+  assert.ok(races.every((r) => r.backup.demVotes === 1000 && r.backup.repVotes === 900), "the votes themselves are unaffected");
+  assert.equal(warnings.length, 2, "one for the bad margin cell, one for all the bad totals");
+  assert.ok(warnings.some((w) => /A4.*Harris_2024_margin "wat"/.test(w)));
+  assert.ok(warnings.some((w) => /^2 races \(Senate A2, Senate A3\): backup_tot_votes is below Dem \+ Rep/.test(w)));
+  // a sheet without the two columns (the older committed copies) still parses, with no margin
+  const old = parseSheet(sheet(row({ backup_votes_dem: "5", backup_votes_rep: "4" })));
+  assert.deepEqual([old.races[0].harrisMargin, old.races[0].backup.totVotes, old.warnings], [null, null, []]);
 });
 
 test("parseSheet: display names are the AP columns, not the typed ones; extra columns are ignored", () => {
@@ -94,7 +123,7 @@ test("parseSheet: display names are the AP columns, not the typed ones; extra co
   const { races, warnings } = parseSheet(extra);
   assert.equal(races[0].demName, "Dana Dem");
   assert.deepEqual(warnings, []);
-  assert.deepEqual(Object.keys(races[0]).sort(), ["attrs", "backup", "contestId", "demId", "demName", "harris2p", "incumbent", "label", "office", "repId", "repName"]);
+  assert.deepEqual(Object.keys(races[0]).sort(), ["attrs", "backup", "contestId", "demId", "demName", "harris2p", "harrisMargin", "incumbent", "label", "office", "repId", "repName"]);
 });
 
 test("parseSheet: old column names (Politico ..., Harris 2-p) still work", () => {
@@ -248,6 +277,15 @@ test("fetchSheetText: non-200, 401/HTML pages and timeouts throw", async () => {
 // ---- the committed copies ------------------------------------------------------------------------
 
 const committed = (year, f) => readFileSync(new URL(`./data/${year}/${f}`, import.meta.url), "utf8");
+
+test("both committed copies carry the margin columns: a Harris margin and a possible total for every race", () => {
+  for (const year of [2024, 2026]) {
+    const { races, warnings } = parseBundle(committed(year, "sheet.csv"), committed(year, "categories.csv"));
+    assert.deepEqual(warnings.filter((w) => /margin|backup_tot_votes/.test(w)), [], `${year}: no margin warnings`);
+    assert.ok(races.every((r) => r.harrisMargin !== null), `${year}: every race has a Harris margin`);
+    assert.ok(races.every((r) => r.backup.totVotes >= r.backup.demVotes + r.backup.repVotes), `${year}: every total covers Dem + Rep`);
+  }
+});
 
 test("the committed 2026 copy parses to 480 clean races (AK-Gov and AK-AL are out until the final RCV count)", () => {
   const { races, warnings } = parseBundle(committed(2026, "sheet.csv"), committed(2026, "categories.csv"));

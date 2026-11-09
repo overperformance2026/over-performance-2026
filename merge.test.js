@@ -23,7 +23,10 @@ test("mergeVotes: a tie goes to Politico, then the Sheet, then the committed cop
 
 test("mergeVotes: Dem votes, Rep votes and % reporting all come from the winner; never mixed", () => {
   const m = mergeVotes({ politico: L(100, 90, 0.4, 111), sheet: L(300, 200, 0.9, 222), committed: L(10, 10, 0.99, 333) });
-  assert.deepEqual(m, { demVotes: 300, repVotes: 200, pct: 0.9, asOf: 222, source: "sheet" });
+  assert.deepEqual(m, { demVotes: 300, repVotes: 200, pct: 0.9, asOf: 222, totVotes: null, source: "sheet" });
+  // the all-votes total comes from the winning layer too (and is dropped if it cannot be right: below Dem + Rep)
+  assert.equal(mergeVotes({ politico: { ...L(100, 90), totVotes: 999 }, sheet: { ...L(300, 200), totVotes: 520 } }).totVotes, 520);
+  assert.equal(mergeVotes({ sheet: { ...L(300, 200), totVotes: 499 } }).totVotes, null);
   // the winner's missing pct stays missing: it is NOT borrowed from another layer
   assert.equal(mergeVotes({ politico: L(1, 1, 0.99), sheet: L(9, 9, null) }).pct, null);
   assert.equal(mergeVotes({ sheet: { demVotes: 9, repVotes: 9 } }).asOf, null);
@@ -40,7 +43,7 @@ test("mergeVotes: blank, malformed, zero-vote and missing layers do not count", 
 test("politicoLayer: reads the race's two candidates; missing contest or candidate is null", () => {
   const race = { contestId: "c1", demId: "1", repId: "2" };
   const payload = { asOf: 77, summaries: { contests: [{ id: "c1", results: [{ id: "1", votes: 10 }, { id: "2", votes: 4 }, { id: "9", votes: 99 }], progress: { pct: 0.3 } }, { id: "c2", results: [{ id: "1", votes: 5 }] }] } };
-  assert.deepEqual(politicoLayer(race, payload), { demVotes: 10, repVotes: 4, pct: 0.3, asOf: 77 });
+  assert.deepEqual(politicoLayer(race, payload), { demVotes: 10, repVotes: 4, totVotes: 113, pct: 0.3, asOf: 77 }, "total = every candidate listed");
   assert.equal(politicoLayer({ ...race, contestId: "c2" }, payload), null, "Rep votes missing");
   assert.equal(politicoLayer({ ...race, contestId: "zz" }, payload), null);
   assert.equal(politicoLayer(race, { asOf: 1, summaries: { contests: [] } }), null, "empty summaries file");
@@ -131,6 +134,33 @@ test("backupLayers: the committed backups stand in only until the published Shee
   const cleared = backupLayers(committed, { races: [race({ backup: null })] });
   assert.equal(buildRows({ races: [race()], ...cleared })[0].votesSource, null);
   assert.equal(backupLayers(null, null).committed.size, 0);
+});
+
+test("buildRows: the margin view is (Dem - Rep) / all votes, against Harris's margin; null unless both are known", () => {
+  const b = (d, r, tot) => ({ demVotes: d, repVotes: r, pct: 0.9, asOf: 1, totVotes: tot });
+  const rows = buildRows({
+    races: [
+      race({ contestId: "c1", harrisMargin: -0.1, backup: b(600, 300, 1000) }),
+      race({ contestId: "c2", harrisMargin: -0.1, backup: b(600, 300, null) }), // no total
+      race({ contestId: "c3", harrisMargin: null, backup: b(600, 300, 1000) }), // no Harris margin
+    ],
+    sheet: new Map([["c1", b(600, 300, 1000)], ["c2", b(600, 300, null)], ["c3", b(600, 300, 1000)]]),
+  });
+  assert.equal(rows[0].totVotes, 1000);
+  assert.ok(Math.abs(rows[0].demMargin - 0.3) < 1e-12);
+  assert.ok(Math.abs(rows[0].rawMarginOverUnder - 0.4) < 1e-12);
+  assert.equal(rows[0].harrisMargin, -0.1);
+  assert.deepEqual([rows[1].demMargin, rows[1].rawMarginOverUnder], [null, null]);
+  assert.ok(Math.abs(rows[2].demMargin - 0.3) < 1e-12);
+  assert.equal(rows[2].rawMarginOverUnder, null);
+  // the 2-party numbers are untouched by all of this
+  assert.ok(Math.abs(rows[0].dem2p - 600 / 900) < 1e-12);
+  // a Politico layer's total counts every candidate in the file
+  const pol = buildRows({
+    races: [race({ contestId: "c1", harrisMargin: 0 })],
+    politico: { senate: { asOf: 5, summaries: { contests: [{ id: "c1", results: [{ id: "1", votes: 500 }, { id: "2", votes: 300 }, { id: "9", votes: 200 }], progress: { pct: 0.5 } }] } } },
+  });
+  assert.ok(Math.abs(pol[0].demMargin - 0.2) < 1e-12, "(500 - 300) / 1000");
 });
 
 test("keepBestBackups: a blank or older snapshot of the published Sheet never takes votes away", () => {

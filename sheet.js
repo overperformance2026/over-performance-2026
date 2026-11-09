@@ -13,7 +13,11 @@ const REQUIRED = [
   "Office", "State/District", "Special Election", "Incumbent", "Harris 2-p",
   "AP contest ID", "AP Dem ID", "AP Dem name", "AP Rep ID", "AP Rep name",
 ];
-const BACKUP = { dem: "backup_votes_dem", rep: "backup_votes_rep", pct: "backup_pct_reporting", time: "backup_time_updated" };
+const BACKUP = {
+  dem: "backup_votes_dem", rep: "backup_votes_rep", pct: "backup_pct_reporting", time: "backup_time_updated",
+  total: "backup_tot_votes", // every candidate's votes, for the margin view; optional
+};
+const HARRIS_MARGIN = "Harris_2024_margin"; // (Harris - Trump) / all votes; optional
 const CATEGORY_COLUMNS = ["category", "office", "state/district", "candidate", "check"];
 const SPECIAL = " (special)"; // appended to the label of a special election
 const INCUMBENT ={ democrat: "dem", republican: "rep", neither: "open" };
@@ -140,7 +144,24 @@ export function parseHarris(v) {
   return /^\d{1,3}(\.\d+)?%$/.test(s) ? Math.round(parseFloat(s) * 1e4) / 1e6 : null;
 }
 
-/** The backup_* cells of one row -> {backup, warning}. Blank = no backup; malformed = ignored + warning. */
+/**
+ * A margin cell -> a fraction between -1 and 1, or null. "-0.305" and "-30.5%" both mean -30.5 points.
+ * Blank, text or out of range -> null.
+ */
+export function parseMargin(v) {
+  const s = String(v ?? "").trim();
+  if (!s) return null;
+  const n = Number(s.replace(/\s*%$/, ""));
+  if (!Number.isFinite(n)) return null;
+  const f = s.endsWith("%") ? n / 100 : n;
+  return Math.abs(f) <= 1 ? f : null;
+}
+
+/**
+ * The backup_* cells of one row -> {backup, warning, totalBelowTwoParty}. Blank = no backup; malformed =
+ * ignored + warning. backup.totVotes (all candidates' votes) is null when blank, unreadable, or below
+ * Dem + Rep (a total that cannot be right): the caller counts those and warns once.
+ */
 function parseBackup(row, where) {
   const cells = [row[BACKUP.dem], row[BACKUP.rep], row[BACKUP.pct], row[BACKUP.time]];
   if (cells.every((c) => !c)) return { backup: null, warning: null };
@@ -151,7 +172,10 @@ function parseBackup(row, where) {
   if (demVotes === null || repVotes === null) return ignore(`votes ${JSON.stringify(row[BACKUP.dem])} / ${JSON.stringify(row[BACKUP.rep])} are not whole numbers`);
   const pct = parsePct(row[BACKUP.pct]);
   if (row[BACKUP.pct] && pct === null) return ignore(`% reporting ${JSON.stringify(row[BACKUP.pct])} is not a percentage`);
-  return { backup: { demVotes, repVotes, pct, asOf: parseTime(row[BACKUP.time]), asOfText: row[BACKUP.time] }, warning: null };
+  let totVotes = parseVotes(row[BACKUP.total]);
+  const totalBelowTwoParty = totVotes !== null && totVotes < demVotes + repVotes;
+  if (totalBelowTwoParty) totVotes = null;
+  return { backup: { demVotes, repVotes, pct, asOf: parseTime(row[BACKUP.time]), asOfText: row[BACKUP.time], totVotes }, warning: null, totalBelowTwoParty };
 }
 
 // ---- the metadata tab ---------------------------------------------------------------------------
@@ -159,8 +183,8 @@ function parseBackup(row, where) {
 /**
  * Metadata tab CSV -> {races, warnings}. Throws SheetError if it is not a usable sheet (empty, a
  * required column missing, no data rows), so the caller falls back to the other copy.
- * Each race: {contestId, office, label, harris2p, demId, repId, demName, repName, incumbent, attrs: [],
- * backup: {demVotes, repVotes, pct, asOf, asOfText} | null, problem?: string}.
+ * Each race: {contestId, office, label, harris2p, harrisMargin, demId, repId, demName, repName, incumbent,
+ * attrs: [], backup: {demVotes, repVotes, pct, asOf, asOfText, totVotes} | null, problem?: string}.
  */
 export function parseSheet(text) {
   const { headers, rows } = csvTable(text, canonicalHeader);
@@ -171,6 +195,7 @@ export function parseSheet(text) {
   const warnings = [];
   const seenLabel = new Set();
   const seenContest = new Set();
+  const badTotals = []; // races whose backup total is below Dem + Rep: one warning for all of them
   rows.forEach((row, i) => {
     const line = i + 2; // sheet line number
     const office = row.Office.toLowerCase();
@@ -189,10 +214,13 @@ export function parseSheet(text) {
     if (row["AP contest ID"] && seenContest.has(row["AP contest ID"])) problems.push("duplicate contest ID");
     seenLabel.add(`${office}|${label}`);
     seenContest.add(row["AP contest ID"]);
-    const { backup, warning } = parseBackup(row, base);
+    const { backup, warning, totalBelowTwoParty } = parseBackup(row, base);
     if (warning) warnings.push(warning);
+    if (totalBelowTwoParty) badTotals.push(`${row.Office} ${row["State/District"]}`);
+    const harrisMargin = parseMargin(row[HARRIS_MARGIN]);
+    if (row[HARRIS_MARGIN] && harrisMargin === null) warnings.push(`${base}: ${HARRIS_MARGIN} ${JSON.stringify(row[HARRIS_MARGIN])} is not a margin; margin view unavailable for this race`);
     const race = {
-      contestId: row["AP contest ID"], office, label, harris2p,
+      contestId: row["AP contest ID"], office, label, harris2p, harrisMargin,
       demId: row["AP Dem ID"], repId: row["AP Rep ID"],
       demName: row["AP Dem name"] || null, repName: row["AP Rep name"] || null,
       incumbent, attrs: [], backup,
@@ -203,6 +231,10 @@ export function parseSheet(text) {
     }
     races.push(race);
   });
+  if (badTotals.length) {
+    const eg = badTotals.slice(0, 4).join(", ");
+    warnings.push(`${badTotals.length} race${badTotals.length === 1 ? "" : "s"} (${eg}${badTotals.length > 4 ? ", ..." : ""}): ${BACKUP.total} is below Dem + Rep votes; margin view unavailable for them`);
+  }
   return { races, warnings };
 }
 

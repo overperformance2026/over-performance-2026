@@ -72,6 +72,23 @@ export function computeRows({ metadata, summaries, races }) {
   });
 }
 
+/**
+ * The margin view of the rows: the same rows with the fields the page reads (dem2p, harris2p, overUnder,
+ * rawOverUnder) swapped for the margin versions, (Dem - Rep) / all votes against Harris's margin, so
+ * the incumbency effect, the average, the filters and the table all work on margins unchanged.
+ * A row without a margin (no total votes, no Harris margin) gets null numbers.
+ */
+export function marginView(rows) {
+  return rows.map((r) => ({
+    ...r,
+    dem2p: isNum(r.demMargin) ? r.demMargin : null,
+    harris2p: isNum(r.harrisMargin) ? r.harrisMargin : null,
+    overUnder: isNum(r.rawMarginOverUnder) ? r.rawMarginOverUnder : null,
+    rawOverUnder: isNum(r.rawMarginOverUnder) ? r.rawMarginOverUnder : null,
+    incumbencyBoost: null,
+  }));
+}
+
 /** Rows tagged with `attr` (a Sheet TRUE/FALSE column name). Empty/null attr means no filter. */
 export function filterRows(rows, attr) {
   return attr ? rows.filter((r) => r.attrs.includes(attr)) : rows;
