@@ -198,8 +198,10 @@ test("2024 from the committed Sheet copy alone: 441 rows, all from the committed
   assert.ok(rows.every((r) => r.votesSource === "committed" && r.problem === null && r.overUnder !== null));
   const e = incumbencyEffect(rows, 0.5);
   assert.deepEqual(e.n, { dem: 186, rep: 186, open: 69 });
-  assert.equal((e.dem * 100).toFixed(1), "2.0");
-  assert.equal((e.rep * 100).toFixed(1), "-1.5");
+  // the Harris slope is estimated (0.92), not fixed at 1; the fixed-slope answer was +2.0 / -1.5
+  assert.equal((e.dem * 100).toFixed(1), "3.0");
+  assert.equal((e.rep * 100).toFixed(1), "-2.3");
+  assert.equal(e.slope.toFixed(2), "0.92");
   assert.ok(Math.abs(averageOverUnder(rows).mean * 100 - -0.1) < 0.05);
   const gallego = rows.find((r) => r.dem.name === "Ruben Gallego");
   assert.ok(Math.abs(gallego.overUnder - (1676335 / (1676335 + 1595761) - 0.472)) < 1e-9);

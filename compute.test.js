@@ -191,22 +191,62 @@ test("averageOverUnder: simple mean over rows that have a number; counts both", 
 
 // ---- incumbency effect ---------------------------------------------------
 
-const ir = (incumbent, raw, pct = 0.9, extra = {}) => ({ incumbent, rawOverUnder: raw, overUnder: raw, pctReporting: pct, attrs: [], ...extra });
-const many = (incumbent, raws, pct) => raws.map((x) => ir(incumbent, x, pct));
-// 5 / 5 / 5: dem mean .03, rep mean -.02, open mean .01 -> dem +.02, rep -.03
+const ir = (incumbent, raw, pct = 0.9, extra = {}) => ({ incumbent, rawOverUnder: raw, overUnder: raw, harris2p: 0.5, pctReporting: pct, attrs: [], ...extra });
+// Rows generated from an exact model, raw over/under = 0.01 + SLOPE_MINUS_1 * (harris - 0.5) + effect(group), so least
+// squares recovers the effects exactly. Dem incumbents sit in Dem-leaning seats and Rep incumbents in Rep-leaning ones.
+const SLOPE_MINUS_1 = -0.1; // a Harris slope of 0.9
+const model = (incumbent, hs, effect, pct = 0.9) => hs.map((h) => ir(incumbent, 0.01 + SLOPE_MINUS_1 * (h - 0.5) + effect, pct, { harris2p: h }));
+// 5 / 5 / 5: dem +.02, rep -.03, open 0 (relative to open seats)
 const SAMPLE = [
-  ...many("dem", [0.01, 0.02, 0.03, 0.04, 0.05]),
-  ...many("rep", [-0.04, -0.03, -0.02, -0.01, 0.0]),
-  ...many("open", [0.0, 0.005, 0.01, 0.015, 0.02]),
+  ...model("dem", [0.55, 0.6, 0.65, 0.7, 0.75], 0.02),
+  ...model("rep", [0.25, 0.3, 0.35, 0.4, 0.45], -0.03),
+  ...model("open", [0.3, 0.4, 0.5, 0.6, 0.7], 0),
 ];
-const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-12, `${a} vs ${b}`);
+const near = (a, b) => assert.ok(Math.abs(a - b) < 1e-9, `${a} vs ${b}`);
 
-test("incumbencyEffect: boosts are group means minus the open-seat mean (slope fixed at 1)", () => {
+test("incumbencyEffect: the Harris slope is estimated, so the effects are recovered even when the groups sit at different Harris levels", () => {
   const e = incumbencyEffect(SAMPLE, 0);
   assert.equal(e.enabled, true);
   assert.deepEqual(e.n, { dem: 5, rep: 5, open: 5 });
   near(e.dem, 0.02);
   near(e.rep, -0.03);
+  near(e.slope, 0.9);
+});
+
+test("incumbencyEffect: with a true Dem effect of +0.5 points, fixing the slope at 1 would say negative; estimating it says +0.5", () => {
+  // the groups differ in Harris, and a slope under 1 makes Dem-leaning seats look like under-performance
+  const rows = [
+    ...model("dem", [0.55, 0.6, 0.65, 0.7, 0.75], 0.005),
+    ...model("rep", [0.25, 0.3, 0.35, 0.4, 0.45], -0.03),
+    ...model("open", [0.3, 0.4, 0.5, 0.6, 0.7], 0),
+  ];
+  const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+  const g = (k) => rows.filter((r) => r.incumbent === k).map((r) => r.rawOverUnder);
+  assert.ok(mean(g("dem")) - mean(g("open")) < 0, "fixed slope (group means of the raw over/under): negative, the wrong sign");
+  const e = incumbencyEffect(rows, 0);
+  near(e.dem, 0.005);
+  assert.ok(e.dem > 0);
+});
+
+test("incumbencyEffect: a slope above 1 and a different intercept are recovered too", () => {
+  const rows = [
+    ...[0.55, 0.6, 0.65, 0.7, 0.75].map((h) => ir("dem", 0.05 + 0.2 * (h - 0.5) + 0.01, 0.9, { harris2p: h })),
+    ...[0.25, 0.3, 0.35, 0.4, 0.45].map((h) => ir("rep", 0.05 + 0.2 * (h - 0.5) - 0.02, 0.9, { harris2p: h })),
+    ...[0.3, 0.4, 0.5, 0.6, 0.7].map((h) => ir("open", 0.05 + 0.2 * (h - 0.5), 0.9, { harris2p: h })),
+  ];
+  const e = incumbencyEffect(rows, 0);
+  near(e.slope, 1.2);
+  near(e.dem, 0.01);
+  near(e.rep, -0.02);
+});
+
+test("incumbencyEffect: no variation in Harris means no single fit: disabled, not a wrong number", () => {
+  const flat = [...many5("dem", 0.02), ...many5("rep", -0.03), ...many5("open", 0)];
+  const e = incumbencyEffect(flat, 0);
+  assert.equal(e.enabled, false);
+  assert.deepEqual([e.dem, e.rep, e.slope], [null, null, null]);
+  assert.deepEqual(e.n, { dem: 5, rep: 5, open: 5 });
+  function many5(group, raw) { return Array.from({ length: 5 }, () => ir(group, raw)); } // every row at harris 0.5
 });
 
 test("marginView: the page's fields carry the margin numbers, so everything downstream works on margins", () => {
@@ -220,7 +260,8 @@ test("marginView: the page's fields carry the margin numbers, so everything down
   assert.equal(rows[0].dem2p, 0.6, "the input rows are untouched");
   assert.equal(v[0].incumbent, "dem", "other fields pass through");
   // the incumbency effect and the average run on the margin numbers
-  const sample = SAMPLE.map((r, i) => ({ ...r, rawMarginOverUnder: r.rawOverUnder * 2, demMargin: 0.1, harrisMargin: 0.1 - r.rawOverUnder * 2 }));
+  // a margin is twice a two-party share's distance from 50%, so the margin effects are twice the 2-party ones
+  const sample = SAMPLE.map((r) => ({ ...r, rawMarginOverUnder: r.rawOverUnder * 2, demMargin: 0.1, harrisMargin: r.harris2p * 2 }));
   const e = incumbencyEffect(marginView(sample), 0);
   near(e.dem, 0.04);
   near(e.rep, -0.06);
@@ -242,6 +283,7 @@ test("incumbencyEffect: excludes rows below the threshold, null over/under and u
   const extra = [
     ir("dem", 0.5, 0.3), // below threshold
     ir("dem", null, 0.9), // no number
+    ir("dem", 0.5, 0.9, { harris2p: null }), // no Harris number
     ir(null, 0.5, 0.9), // unknown group
     ir("rep", 0.5, 0.2),
   ];
@@ -252,7 +294,7 @@ test("incumbencyEffect: excludes rows below the threshold, null over/under and u
   assert.equal(incumbencyEffect(SAMPLE, 0.85).enabled, true);
   assert.equal(incumbencyEffect(SAMPLE, 0.95).enabled, false);
   // Unknown % reporting can't meet a threshold: excluded whenever minPct > 0, counted at 0.
-  const unknown = [...SAMPLE, ir("dem", 0.1, null)];
+  const unknown = [...SAMPLE, ir("dem", 0.1, null, { harris2p: 0.6 })];
   assert.equal(incumbencyEffect(unknown, 0.5).n.dem, 5);
   assert.equal(incumbencyEffect(unknown, 0.0001).n.dem, 5);
   assert.equal(incumbencyEffect(unknown, 0.95).n.dem, 0);
@@ -271,16 +313,17 @@ test("incumbencyEffect ignores the category: it takes rows, not a filter", () =>
 test("applyIncumbency: over/under = raw - boost, open rows boost 0, raw untouched, no mutation", () => {
   const e = incumbencyEffect(SAMPLE, 0);
   const out = applyIncumbency(SAMPLE, e);
-  near(out[0].overUnder, 0.01 - 0.02);
+  near(out[0].overUnder, SAMPLE[0].rawOverUnder - 0.02);
   near(out[0].incumbencyBoost, 0.02);
-  near(out[5].overUnder, -0.04 + 0.03);
+  near(out[5].overUnder, SAMPLE[5].rawOverUnder + 0.03);
   const open = out.find((r) => r.incumbent === "open");
   assert.equal(open.incumbencyBoost, 0);
   near(open.overUnder, open.rawOverUnder);
   assert.ok(out.every((r, i) => r.rawOverUnder === SAMPLE[i].rawOverUnder));
-  assert.equal(SAMPLE[0].overUnder, 0.01, "input rows are not mutated");
-  // The adjusted group means line up: dem rows now average the open-seat mean.
-  near(averageOverUnder(out.filter((r) => r.incumbent === "dem")).mean, averageOverUnder(out.filter((r) => r.incumbent === "open")).mean);
+  assert.equal(SAMPLE[0].overUnder, SAMPLE[0].rawOverUnder, "input rows are not mutated");
+  // What is left no longer depends on the group: the adjusted over/under is the same line for everyone
+  // (0.01 - 0.1 * (harris - 0.5)), whoever the incumbent is.
+  for (const r of out) near(r.overUnder, 0.01 + SLOPE_MINUS_1 * (r.harris2p - 0.5));
 });
 
 test("applyIncumbency: disabled effect or null effect returns the rows unchanged", () => {

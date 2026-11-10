@@ -118,31 +118,63 @@ export function applyFilters(rows, attr, min) {
 }
 
 /**
- * Incumbency effect, pooled across offices. The Harris coefficient is fixed at 1, so the regression
- * of (dem2p - harris2p) on intercept + DemInc + RepInc is just group means of the raw over/under:
- *   dem = mean(raw | Dem incumbent) - mean(raw | open),  rep = mean(raw | Rep incumbent) - mean(raw | open).
- * Sample: races with a numeric raw over/under at least `minPct` reporting (unknown % reporting
- * counts only when minPct is 0, as in the table filter, filterByReporting) and a
- * known incumbent group. The category filter plays no part.
- * enabled needs MIN_GROUP races in each of dem / rep / open; dem and rep are null when disabled.
- * @returns {{dem: number|null, rep: number|null, n: {dem: number, rep: number, open: number}, enabled: boolean}}
+ * Least squares of y on the columns of X (rows of numbers) by the normal equations, or null if the
+ * columns are collinear (so there is no single answer). Small and dependency-free: k is 4 here.
+ */
+function leastSquares(X, y) {
+  const k = X[0].length;
+  const A = Array.from({ length: k }, (_, a) => Array.from({ length: k }, (_, b) => X.reduce((s, x) => s + x[a] * x[b], 0)));
+  const b = Array.from({ length: k }, (_, a) => X.reduce((s, x, i) => s + x[a] * y[i], 0));
+  const scale = Math.max(...A.flat().map(Math.abs));
+  for (let c = 0; c < k; c++) { // Gauss-Jordan with partial pivoting, on [A | b]
+    let p = c;
+    for (let r = c + 1; r < k; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r;
+    if (Math.abs(A[p][c]) < scale * 1e-12) return null;
+    [A[c], A[p]] = [A[p], A[c]];
+    [b[c], b[p]] = [b[p], b[c]];
+    for (let r = 0; r < k; r++) {
+      if (r === c) continue;
+      const f = A[r][c] / A[c][c];
+      for (let j = c; j < k; j++) A[r][j] -= f * A[c][j];
+      b[r] -= f * b[c];
+    }
+  }
+  return b.map((v, i) => v / A[i][i]);
+}
+
+/**
+ * Incumbency effect, pooled across offices: the coefficients on DemInc and RepInc in
+ *   dem2p = a + slope * harris2p + dem * DemInc + rep * RepInc   (open seats are the baseline),
+ * fitted by least squares with the Harris slope ESTIMATED, not fixed at 1. (A slope under 1 is
+ * regression to the mean; forcing it to 1 loads that onto the groups sitting at the extremes, and
+ * Dem incumbents, mostly in Dem-leaning seats, got a spurious negative effect.) Fitted on the raw
+ * over/under (dem2p - harris2p), which gives the same incumbency coefficients with slope - 1.
+ * Sample: races with a numeric raw over/under and Harris number, at least `minPct` reporting
+ * (unknown % reporting counts only when minPct is 0, as in the table filter, filterByReporting) and
+ * a known incumbent group. The category filter plays no part.
+ * enabled needs MIN_GROUP races in each of dem / rep / open and a fit that is not degenerate.
+ * dem, rep and slope are null when disabled.
+ * @returns {{dem: number|null, rep: number|null, slope: number|null, n: {dem: number, rep: number, open: number}, enabled: boolean}}
  */
 export function incumbencyEffect(rows, minPct) {
-  const groups = { dem: [], rep: [], open: [] };
+  const sample = [];
   for (const r of rows) {
-    if (!isNum(r.rawOverUnder) || !INCUMBENT_GROUPS.includes(r.incumbent)) continue;
+    if (!isNum(r.rawOverUnder) || !isNum(r.harris2p) || !INCUMBENT_GROUPS.includes(r.incumbent)) continue;
     // Unknown % reporting can't be shown to meet a threshold, so it only counts when there is none.
     if (r.pctReporting === null ? minPct > 0 : r.pctReporting < minPct) continue;
-    groups[r.incumbent].push(r.rawOverUnder);
+    sample.push(r);
   }
-  const n = { dem: groups.dem.length, rep: groups.rep.length, open: groups.open.length };
-  const enabled = INCUMBENT_GROUPS.every((g) => n[g] >= MIN_GROUP);
-  const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+  const count = (g) => sample.filter((r) => r.incumbent === g).length;
+  const n = { dem: count("dem"), rep: count("rep"), open: count("open") };
+  const fit = INCUMBENT_GROUPS.every((g) => n[g] >= MIN_GROUP)
+    ? leastSquares(sample.map((r) => [1, r.harris2p, r.incumbent === "dem" ? 1 : 0, r.incumbent === "rep" ? 1 : 0]), sample.map((r) => r.rawOverUnder))
+    : null;
   return {
-    dem: enabled ? mean(groups.dem) - mean(groups.open) : null,
-    rep: enabled ? mean(groups.rep) - mean(groups.open) : null,
+    dem: fit ? fit[2] : null,
+    rep: fit ? fit[3] : null,
+    slope: fit ? 1 + fit[1] : null,
     n,
-    enabled,
+    enabled: fit !== null,
   };
 }
 
