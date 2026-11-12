@@ -287,18 +287,18 @@ test("both committed copies carry the margin columns: a Harris margin and a poss
   }
 });
 
-test("the committed 2026 copy parses to 480 clean races (AK-Gov and AK-AL are out until the final RCV count)", () => {
+test("the committed 2026 copy parses to 479 clean races (AK-Gov and AK-AL are out until the final RCV count; RI-Gov, whose strongest opponent was an independent)", () => {
   const { races, warnings } = parseBundle(committed(2026, "sheet.csv"), committed(2026, "categories.csv"));
-  assert.equal(races.length, 480);
+  assert.equal(races.length, 479);
   assert.deepEqual(warnings.filter((w) => !/Pressley/.test(w)), [], "no warnings (the skipped Pressley row has check 0 and makes none)");
   assert.ok(races.every((r) => r.problem === undefined));
-  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 193, open: 102 });
+  assert.deepEqual(races.reduce((n, r) => ((n[r.incumbent] = (n[r.incumbent] ?? 0) + 1), n), {}), { dem: 185, rep: 193, open: 101 });
   assert.equal(races.filter((r) => r.attrs.includes("The Squad")).length, 6);
   assert.ok(races.some((r) => r.label === "DE-AL" && r.office === "house"), "at-large AL kept");
   assert.ok(!races.some((r) => r.label === "AK-AL"), "AK-AL is out until the final RCV count");
   assert.equal(races.filter((r) => r.office === "senate").length, 35);
-  assert.equal(races.filter((r) => r.office === "governor").length, 35);
-  assert.ok(!races.some((r) => r.office === "governor" && r.label === "AK"));
+  assert.equal(races.filter((r) => r.office === "governor").length, 34);
+  assert.ok(!races.some((r) => r.office === "governor" && (r.label === "AK" || r.label === "RI")));
   assert.equal(races.filter((r) => r.office === "house").length, 410);
   // (commit afdcc10 also compared the first 481 races field by field with the old pipeline's races.json: identical)
 });
